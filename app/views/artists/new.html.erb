@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col mt-4">
+      <img src="" alt="" class="img-fluid">
+    </div>
+    <div class="col card p-4 m-4 bg-light">
+      <h1>Are you an artist?</h1>
+      <h2>Share your art with the world!</h2>
+      <p>Easy and free to sign up!</p>
+
+      <%= simple_form_for @artist do |f|%>
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :artist_name %>
+      <%= f.input :birth_place %>
+      <%= f.input :photo %>
+      <%= f.input :bio %>
+      <%= f.input :age %>
+      <%= f.input :city %>
+      <%= f.input :website %>
+      <%= f.input :instagram %>
+      <%= f.input :facebook %>
+      <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+      <% end %>
+    </div>
+  </div>
+</div>
