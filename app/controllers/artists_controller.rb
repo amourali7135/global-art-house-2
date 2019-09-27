@@ -9,8 +9,8 @@ class ArtistsController < ApplicationController
   end
 
   def create
-    @artist = Artist.new(params[:id])
-    user = current_user
+    @artist = Artist.new(artist_params)
+    @artist.user_id = current_user.id
     if @artist.save
       redirect_to dashboard_path
     else
@@ -42,6 +42,6 @@ class ArtistsController < ApplicationController
   end
 
   def artist_params
-    params.require(:artist).permit( :first_name, :last_name, :email, :photo, :artist_name, :photo, :bio, :age, :languages_spoken, :instagram, :facebook, :website, :birth_place, :city, :country, :longitude, :latitude)
+    params.require(:artist).permit( :first_name, :last_name, :photo, :artist_name, :photo, :bio, :age, :languages_spoken, :instagram, :facebook, :website, :birth_place, :city, :country, :longitude, :latitude)
   end
 end

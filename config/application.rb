@@ -2,6 +2,9 @@ require_relative 'boot'
 
 require 'rails/all'
 
+# require "attachinary/orm/active_record" # active_record or mongoid #added for attachinary
+
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)

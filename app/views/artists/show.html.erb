@@ -1,2 +1,51 @@
-<h1>Artists#show</h1>
-<p>Find me in app/views/artists/show.html.erb</p>
+<h1>Artist<h1>
+<div class="container">
+  <div class="row">
+    First name: <%=@artist.first_name %>
+    <br>
+    Last name: <%=@artist.last_name %>
+    <br>
+    <%=@artist.artist_name %>
+    <br>
+    <%=@artist.birth_place %>
+    <br>
+     <%= cl_image_tag(@artist.photo,
+    width: 200, height: 150, crop: :fill) %>
+    <br>
+    <%=@artist.bio %>
+    <br>
+    <%=@artist.age %>
+    <br>
+    <%=@artist.city %>
+    <br>
+    <%=@artist.website %>
+    <br>
+    <%=@artist.instagram %>
+    <br>
+    <%=@artist.facebook %>
+    <br>
+
+    Here is one example of their art.
+    Click here to see more of their art!
+    <%= link_to 'See their art!', artist_arts_path(@artist.id)  %>
+
+    <% @artist.arts.each do |art| %>
+    Name: <%= art.title %>
+    <br>
+    Art description: <%= art.description %>
+    <br>
+    Completed on: <%= art.completion_date %>
+    <br>
+    Inspiration: <%= art.inspiration %>
+    <br>
+    Available to buy? <%= art.available %>
+    <br>
+    <% if art.available?%>
+   Price: <%= art.price_cents %>
+   <% end %>
+    <%= cl_image_tag(art.photo,
+    width: 200, height: 150, crop: :fill) %>
+    <% end %>
+
+
+

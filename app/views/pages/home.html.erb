@@ -1,3 +1,7 @@
+Make conditional if user is not an artist only for it to show!
+Show art they have,add new art, edit existing art, see followed shit.
+If statement for different shit to show!
+
 <div class="container">
   <div class="row">
     <div class="class">
@@ -7,3 +11,12 @@
     </div>
   </div>
 </div>
+
+
+<% if current_user.@artist? %>
+<h1>  Show your art to the world</h1>
+<%= link_to "Add Art", new_artist_art_path(@artist.id), class: 'btn btn-secondary' %>
+<% elsif current_user.nil? %>
+<h2>Hello!<h2>
+<% else %>%
+<% end %>

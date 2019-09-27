@@ -1,17 +1,18 @@
 class ArtsController < ApplicationController
   def index
+    @artist = Artist.find(params[:artist_id])
     @arts = Art.all
   end
 
 
   def new
-    @artist = Artist.find(params[:member_id])
+    @artist = Artist.find(params[:artist_id])
     @art = Art.new
   end
 
   def create
     @art = Art.new(art_params)
-    @artist = Artist.find(params[:member_id])
+    @artist = Artist.find(params[:artist_id])
     @art.artist = @artist
     if @art.save
       redirect_to @art.artist
@@ -46,6 +47,6 @@ class ArtsController < ApplicationController
   private
 
   def art_params
-    params.require(:art).permit(:title, :photo, :description, :completion_date, :inspiration, :available, :price_cents)
+    params.require(:art).permit(:title, :description, :completion_date, :inspiration, :available, :price_cents)
   end
 end

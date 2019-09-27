@@ -1,15 +1,15 @@
 <section class="clean-block clean-catalog dark">
   <div class="container">
     <div class="block-heading">
-      <h2 class="text-info">Artists</h2>
+      <h2 class="text-info">Artists!</h2>
     </div>
 
     <div class="content">
       <div class="products pl-5 card-grid-3c">
         <% @artists.each do |artist| %>
         <div>
-          <%= link_to business_path(business.id) do %>
-          <%= business.name %>
+          <%= link_to artist_path(artist.id) do %>
+          <%= artist.first_name %> <%= artist.last_name %>
           <% end %>
         </div>
         <% end %>
@@ -17,3 +17,4 @@
     </div>
   </div>
 </section>
+

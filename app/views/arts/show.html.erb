@@ -1,2 +1,34 @@
-<h1>Arts#show</h1>
-<p>Find me in app/views/arts/show.html.erb</p>
+<h1>Artist<h1>
+<div class="container">
+  <div class="row">
+    First name: <%=@artist.first_name %>
+    <br>
+    Last name: <%=@artist.last_name %>
+    <br>
+    <%=@artist.artist_name %>
+    <br>
+    <%=@artist.birth_place %>
+    <br>
+     <%= cl_image_tag(@artist.photo,
+    width: 200, height: 150, crop: :fill) %>
+    <br>
+    <%=@artist.bio %>
+    <br>
+    <%=@artist.age %>
+    <br>
+    <%=@artist.city %>
+    <br>
+    <%=@artist.website %>
+    <br>
+    <%=@artist.instagram %>
+    <br>
+    <%=@artist.facebook %>
+    <br>
+
+<% @art.photos.each do |photo| %>
+  <%= cl_image_tag(photo,
+    width: 400, height: 300, crop: :fill) %>
+<% end %>
+
+
+

@@ -1,2 +1,23 @@
-<h1>Arts#index</h1>
-<p>Find me in app/views/arts/index.html.erb</p>
+    welcome to <%= @artist.first_name %>'s art!
+    <br>
+    <%= @artist.first_name %>
+
+    <% @artist.arts.each do |art| %>
+    Name: <%= art.title %>
+    <br>
+    Art description: <%= art.description %>
+    <br>
+    Completed on: <%= art.completion_date %>
+    <br>
+    Inspiration: <%= art.inspiration %>
+    <br>
+    Available to buy? <%= art.available %>
+    <br>
+    <% if art.available?%>
+   Price: <%= art.price_cents %>
+   <% end %>
+    <%= cl_image_tag(art.photo,
+    width: 200, height: 150, crop: :fill) %>
+    <% end %>
+  </div>
+</div>

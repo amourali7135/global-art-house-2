@@ -1,2 +1,21 @@
-<h1>Arts#new</h1>
-<p>Find me in app/views/arts/new.html.erb</p>
+ <div class="container">
+   <div class="row">
+     <div class="col mt-4">
+       <img src="" alt="" class="img-fluid">
+     </div>
+     <div class="col card p-4 m-4 bg-light">
+       <h2>Share your art with the world!</h2>
+
+       <%= simple_form_for [@artist, @art] do |f|%>
+       <%= f.input :title %>
+       <%= f.input :photo %>
+       <%= f.input :description %>
+       <%= f.input :completion_date %>
+       <%= f.input :inspiration %>
+       <%= f.input :available %>
+       <%= f.input :price_cents %>
+       <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+       <% end %>
+     </div>
+   </div>
+ </div>

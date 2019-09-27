@@ -15,6 +15,14 @@ gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'cloudinary', '~> 1.9.1'
+gem 'carrierwave', '~> 1.2'
+gem 'attachinary', :git => 'git://github.com/ThomasConnolly/attachinary.git'
+gem 'jquery-fileupload-rails', git: 'git://github.com/ollnixon/jquery-fileupload-rails.git'
+gem 'coffee-rails'
+gem 'geocoder'
+
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
