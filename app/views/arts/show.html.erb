@@ -1,3 +1,15 @@
+Show how many people like this piece!
+
+<div class="container">
+<div class="row">
+<%= link_to 'like', art_likes_path(@art) %>
+<%= link_to 'unlike', art_unlikes_path(@art) %>
+<%=  %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
 <h1>Artist<h1>
 <div class="container">
   <div class="row">
@@ -24,11 +36,39 @@
     <br>
     <%=@artist.facebook %>
     <br>
-
-<% @art.photos.each do |photo| %>
-  <%= cl_image_tag(photo,
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+<%# @art.photos.each do |photo| %>
+  <%= cl_image_tag(@art.photo,
     width: 400, height: 300, crop: :fill) %>
-<% end %>
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <%= render partial: 'comments/form', locals: {comment: @comment} %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <%= render partial: 'comments/comment', collection: @art.comments %>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+<h1>COMMENTS TEST</h1>
+  </div>
+</div>
+
+
+
+
+
+
 
 
 

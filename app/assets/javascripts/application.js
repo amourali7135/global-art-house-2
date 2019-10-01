@@ -3,3 +3,6 @@
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 //= require_tree .
+//= require chosen-jquery
+//= require jquery
+//= require jquery_ujs

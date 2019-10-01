@@ -1,4 +1,5 @@
-class Like < ApplicationRecord
-  belongs_to :art
-  belongs_to :artist
+class Like < Socialization::ActiveRecordStores::Like
+  
+
+  
 end

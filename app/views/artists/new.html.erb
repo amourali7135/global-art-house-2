@@ -11,12 +11,13 @@
       <%= simple_form_for @artist do |f|%>
       <%= f.input :first_name %>
       <%= f.input :last_name %>
-      <%= f.input :artist_name %>
-      <%= f.input :birth_place %>
+      <%= f.input :artist_name, label: "Artist name if you have one?" %>
       <%= f.input :photo %>
-      <%= f.input :bio %>
+      <%= f.input :bio, label: "Biography" %>
       <%= f.input :age %>
+      <%= f.input :country, collection: CountryStateSelect.countries_collection.sort %>
       <%= f.input :city %>
+      <%= f.input :birth_place, label: "Country of birth", collection: CountryStateSelect.countries_collection.sort %>
       <%= f.input :website %>
       <%= f.input :instagram %>
       <%= f.input :facebook %>

@@ -21,11 +21,27 @@ gem 'attachinary', :git => 'git://github.com/ThomasConnolly/attachinary.git'
 gem 'jquery-fileupload-rails', git: 'git://github.com/ollnixon/jquery-fileupload-rails.git'
 gem 'coffee-rails'
 gem 'geocoder'
+gem 'country_select'
+gem 'country_state_select'
+gem 'chosen-rails'
+gem 'city-state'
+gem "algoliasearch-rails"
+gem 'gutentag', '~> 2.5'
+gem 'acts-as-taggable-on', '~> 6.0'
+gem 'jquery-rails'
+gem 'acts_as_favoritor'
+gem 'commontator'
+gem 'socialization'
+
+
+
 
 
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :development, :test do

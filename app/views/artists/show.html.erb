@@ -1,3 +1,35 @@
+Show how many people like + follow them. 
+Not working though.
+
+<div class="container">
+<div class="row">
+    <%= link_to 'like', artist_like_path(@artist) %>
+    <%= link_to 'unlike', artist_unlike_path(@artist) %>
+    <%= link_to 'follow', artist_follow_path(@artist) %>
+    <%= link_to 'unfollow', artist_unfollow_path(@artist) %>
+  </div>
+</div>
+
+<div class="container">
+<div class="row">
+<p><%=@artist.first_name %> has <%= @artist.followees_count %> followers! </p>
+  </div>
+</div>
+
+<div class="container">
+<div class="row">
+<p><%=@artist.likees_count %> likes! </p>
+  </div>
+</div>
+
+<div class="container">
+<div class="row">
+<p><%=link_to 'see followers', artist_followers_path(@artist) %>  </p>
+  </div>
+</div>
+
+
+
 <h1>Artist<h1>
 <div class="container">
   <div class="row">
@@ -24,6 +56,8 @@
     <br>
     <%=@artist.facebook %>
     <br>
+
+
 
     Here is one example of their art.
     Click here to see more of their art!

@@ -18,6 +18,7 @@
    <% end %>
     <%= cl_image_tag(art.photo,
     width: 200, height: 150, crop: :fill) %>
+    <%= link_to 'See this!', artist_art_path(@artist.id, art)  %>
     <% end %>
   </div>
 </div>

@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_26_155410) do
+ActiveRecord::Schema.define(version: 2019_10_01_150804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "art_tags", force: :cascade do |t|
-    t.bigint "art_id"
-    t.bigint "tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["art_id"], name: "index_art_tags_on_art_id"
-    t.index ["tag_id"], name: "index_art_tags_on_tag_id"
-  end
 
   create_table "artists", force: :cascade do |t|
     t.string "first_name"
@@ -42,6 +33,9 @@ ActiveRecord::Schema.define(version: 2019_09_26_155410) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "state"
+    t.integer "followees_count", default: 0
+    t.integer "likees_count", default: 0
     t.index ["user_id"], name: "index_artists_on_user_id"
   end
 
@@ -57,22 +51,6 @@ ActiveRecord::Schema.define(version: 2019_09_26_155410) do
     t.datetime "updated_at", null: false
     t.string "photo"
     t.index ["artist_id"], name: "index_arts_on_artist_id"
-  end
-
-  create_table "attachinary_files", force: :cascade do |t|
-    t.string "attachinariable_type"
-    t.bigint "attachinariable_id"
-    t.string "scope"
-    t.string "public_id"
-    t.string "version"
-    t.integer "width"
-    t.integer "height"
-    t.string "format"
-    t.string "resource_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent"
-    t.index ["attachinariable_type", "attachinariable_id"], name: "index_attachinary_files_attachinariable"
   end
 
   create_table "cart_products", force: :cascade do |t|
@@ -101,6 +79,23 @@ ActiveRecord::Schema.define(version: 2019_09_26_155410) do
     t.index ["user_id"], name: "index_conversations_on_user_id"
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.string "favoritable_type", null: false
+    t.bigint "favoritable_id", null: false
+    t.string "favoritor_type", null: false
+    t.bigint "favoritor_id", null: false
+    t.string "scope", default: "favorite", null: false
+    t.boolean "blocked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blocked"], name: "index_favorites_on_blocked"
+    t.index ["favoritable_id", "favoritable_type"], name: "fk_favoritables"
+    t.index ["favoritable_type", "favoritable_id"], name: "index_favorites_on_favoritable_type_and_favoritable_id"
+    t.index ["favoritor_id", "favoritor_type"], name: "fk_favorites"
+    t.index ["favoritor_type", "favoritor_id"], name: "index_favorites_on_favoritor_type_and_favoritor_id"
+    t.index ["scope"], name: "index_favorites_on_scope"
+  end
+
   create_table "followers", force: :cascade do |t|
     t.bigint "artist_id"
     t.bigint "user_id"
@@ -108,6 +103,36 @@ ActiveRecord::Schema.define(version: 2019_09_26_155410) do
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_followers_on_artist_id"
     t.index ["user_id"], name: "index_followers_on_user_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.string "follower_type"
+    t.integer "follower_id"
+    t.string "followable_type"
+    t.integer "followable_id"
+    t.datetime "created_at"
+    t.index ["followable_id", "followable_type"], name: "fk_followables"
+    t.index ["follower_id", "follower_type"], name: "fk_follows"
+  end
+
+  create_table "gutentag_taggings", id: :serial, force: :cascade do |t|
+    t.integer "tag_id", null: false
+    t.integer "taggable_id", null: false
+    t.string "taggable_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_gutentag_taggings_on_tag_id"
+    t.index ["taggable_type", "taggable_id", "tag_id"], name: "unique_taggings", unique: true
+    t.index ["taggable_type", "taggable_id"], name: "index_gutentag_taggings_on_taggable_type_and_taggable_id"
+  end
+
+  create_table "gutentag_tags", id: :serial, force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "taggings_count", default: 0, null: false
+    t.index ["name"], name: "index_gutentag_tags_on_name", unique: true
+    t.index ["taggings_count"], name: "index_gutentag_tags_on_taggings_count"
   end
 
   create_table "languages", force: :cascade do |t|
@@ -119,12 +144,23 @@ ActiveRecord::Schema.define(version: 2019_09_26_155410) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.bigint "art_id"
-    t.bigint "artist_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["art_id"], name: "index_likes_on_art_id"
-    t.index ["artist_id"], name: "index_likes_on_artist_id"
+    t.string "liker_type"
+    t.integer "liker_id"
+    t.string "likeable_type"
+    t.integer "likeable_id"
+    t.datetime "created_at"
+    t.index ["likeable_id", "likeable_type"], name: "fk_likeables"
+    t.index ["liker_id", "liker_type"], name: "fk_likes"
+  end
+
+  create_table "mentions", force: :cascade do |t|
+    t.string "mentioner_type"
+    t.integer "mentioner_id"
+    t.string "mentionable_type"
+    t.integer "mentionable_id"
+    t.datetime "created_at"
+    t.index ["mentionable_id", "mentionable_type"], name: "fk_mentionables"
+    t.index ["mentioner_id", "mentioner_type"], name: "fk_mentions"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -188,10 +224,29 @@ ActiveRecord::Schema.define(version: 2019_09_26_155410) do
     t.index ["user_id"], name: "index_shopping_carts_on_user_id"
   end
 
-  create_table "tags", force: :cascade do |t|
-    t.string "tagging"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "taggings", id: :serial, force: :cascade do |t|
+    t.integer "tag_id"
+    t.string "taggable_type"
+    t.integer "taggable_id"
+    t.string "tagger_type"
+    t.integer "tagger_id"
+    t.string "context", limit: 128
+    t.datetime "created_at"
+    t.index ["context"], name: "index_taggings_on_context"
+    t.index ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
+    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
+    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
+    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
+    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
+  end
+
+  create_table "tags", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.integer "taggings_count", default: 0
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -202,12 +257,12 @@ ActiveRecord::Schema.define(version: 2019_09_26_155410) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "art_tags", "arts"
-  add_foreign_key "art_tags", "tags"
   add_foreign_key "artists", "users"
   add_foreign_key "arts", "artists"
   add_foreign_key "cart_products", "arts"
@@ -217,8 +272,6 @@ ActiveRecord::Schema.define(version: 2019_09_26_155410) do
   add_foreign_key "conversations", "users"
   add_foreign_key "followers", "artists"
   add_foreign_key "followers", "users"
-  add_foreign_key "likes", "artists"
-  add_foreign_key "likes", "arts"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "orders", "artists"

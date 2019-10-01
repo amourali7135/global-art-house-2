@@ -3,13 +3,13 @@ class ArtsController < ApplicationController
     @artist = Artist.find(params[:artist_id])
     @arts = Art.all
   end
-
-
+  
+  
   def new
     @artist = Artist.find(params[:artist_id])
     @art = Art.new
   end
-
+  
   def create
     @art = Art.new(art_params)
     @artist = Artist.find(params[:artist_id])
@@ -20,11 +20,13 @@ class ArtsController < ApplicationController
       render "new"
     end
   end
-
+  
   def show
+    @comment = Comment.new
     @art = Art.find(params[:id])
+    @artist = @art.artist #nested, he changed it to make it work...OHHHH. 
   end
-
+  
   def update
     @art = Art.find(params[:id])
     if @art.update(art_params)
@@ -33,20 +35,34 @@ class ArtsController < ApplicationController
       render 'edit'
     end
   end
-
+  
   def destroy
     @art = Art.find(params[:id])
     @art.destroy
     redirect_to arts
   end
-
+  
   def edit
     @art = Art.find(params[:id])
   end
-
+  
+  def likes
+    @user = current_user # before_action :authenticate_user, only: [:likes]
+    @art = Art.find(params[:id])
+    @user.like!(@art)
+    redirect_to @art, notice: "Liked this art successfully!"
+  end
+  
+  def unlikes
+    @user = current_user # before_action :authenticate_user, only: [:likes]
+    @art = Art.find(params[:id])
+    @user.unlike!(@art)
+    redirect_to @art, notice: "Unliked this art successfully!"
+  end
+  
   private
-
+  
   def art_params
-    params.require(:art).permit(:title, :description, :completion_date, :inspiration, :available, :price_cents)
+    params.require(:art).permit(:title, :description, :completion_date, :inspiration, :available, :price_cents, :tags_as_string, :tag_list)
   end
 end

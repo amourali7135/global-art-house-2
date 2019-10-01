@@ -2,10 +2,14 @@
   "name": "global-art-house-2",
   "private": true,
   "dependencies": {
+    "@mapbox/mapbox-gl-geocoder": "^4.4.2",
     "@rails/webpacker": "^4.0.7",
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
-    "popper.js": "^1.15.0"
+    "mapbox-gl": "^1.4.0",
+    "places.js": "^1.16.4",
+    "popper.js": "^1.15.0",
+    "select2": "^4.0.10"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.8.1"
