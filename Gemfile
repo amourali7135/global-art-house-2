@@ -32,6 +32,8 @@ gem 'jquery-rails'
 gem 'acts_as_favoritor'
 gem 'commontator'
 gem 'socialization'
+gem 'pg_search'
+
 
 
 

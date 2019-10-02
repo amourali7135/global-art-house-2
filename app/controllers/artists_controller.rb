@@ -6,7 +6,7 @@ class ArtistsController < ApplicationController
   end
   
   def new
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
     @artist = Artist.new
   end
   

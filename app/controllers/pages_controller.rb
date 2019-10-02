@@ -5,36 +5,45 @@ class PagesController < ApplicationController
     if current_user
       @user = current_user
       @artist = Artist.find_by(user_id: @user.id) #user_id: refers to artist table one!
+      # @artist = Artist.find(params[:id])
     end
-  end
-  
-  def dashboard
-    @user = current_user
-    @artist = Artist.find_by(user_id: @user.id) #user_id: refers to artist table one!
-  end
-  
-  def country
-  
+    @artists = Artist.geocoded #returns flats with coordinates
     
+    @markers = @artists.map do |artist|
+      {
+      lat: artist.latitude,
+      lng: artist.longitude
+    }
   end
+end
+
+def dashboard
+  @user = current_user
+  @artist = Artist.find_by(user_id: @user.id) #user_id: refers to artist table one!
+end
+
+def country
   
-  def city
-    
-  end
   
-  def about
-    
-  end
+end
+
+def city
   
-  def explore
-    
-  end
+end
+
+def about
   
-  def help
-    
-  end
+end
+
+def explore
   
-  def contact
-    
-  end
+end
+
+def help
+  
+end
+
+def contact
+  
+end
 end

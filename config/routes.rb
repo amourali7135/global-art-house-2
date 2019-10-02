@@ -129,7 +129,7 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
   get 'country', to: 'pages#country', as: 'country'
   get 'city', to: 'pages#city', as: 'city'
-
+  
   
   get 'art/:id/likes', to: 'arts#likes', as: :art_likes
   get 'art/:id/unlike', to: 'arts#unlikes', as: :art_unlikes
@@ -138,4 +138,6 @@ Rails.application.routes.draw do
   get 'artist/:id/follow', to: 'artists#follow', as: :artist_follow
   get 'artist/:id/unfollow', to: 'artists#unfollow', as: :artist_unfollow
   get 'artist/:id/followers', to: 'artists#followers', as: :artist_followers
+
+  get '/search' => 'search#index'
 end

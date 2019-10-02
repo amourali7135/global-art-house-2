@@ -1,10 +1,11 @@
-Show how many people like this piece!
+Fix liking auto.  
 
 <div class="container">
 <div class="row">
 <%= link_to 'like', art_likes_path(@art) %>
 <%= link_to 'unlike', art_unlikes_path(@art) %>
-<%=  %>
+<br>
+<p><%=@art.likees_count %> likes! </p>
   </div>
 </div>
 
@@ -40,12 +41,18 @@ Show how many people like this piece!
 </div>
 <div class="container">
   <div class="row">
-<%# @art.photos.each do |photo| %>
   <%= cl_image_tag(@art.photo,
     width: 400, height: 300, crop: :fill) %>
-
   </div>
 </div>
+
+<ul>
+  <% @art.photos.each do |picture| %>
+    <li><%= cl_image_tag(picture.photo, width: 400, height: 300, crop: :fill) %></li>
+  <% end %>
+</ul>
+
+
 
 <div class="container">
   <div class="row">

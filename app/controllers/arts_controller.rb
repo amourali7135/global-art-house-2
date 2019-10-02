@@ -65,4 +65,13 @@ class ArtsController < ApplicationController
   def art_params
     params.require(:art).permit(:title, :description, :completion_date, :inspiration, :available, :price_cents, :tags_as_string, :tag_list)
   end
-end
+  
+  def create_pictures
+    images = params.dig(:art, :photos) || []
+    images.each do |image|
+      @art.photos.create(image: image)
+    end
+  end
+    
+  end
+  

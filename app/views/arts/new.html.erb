@@ -8,14 +8,14 @@
 
        <%= simple_form_for [@artist, @art] do |f|%>
        <%= f.input :title %>
-       <%= f.input :photo %>
+       <%= f.input :photo, label: "Select photos together", as: :file, input_html: { multiple: true } %>
        <%= f.input :description %>
        <%= f.input :completion_date %>
        <%= f.input :inspiration, label: "Inspiration for this art?" %>
        <%= f.input :available, label: "Available for purchase?" %>
        <%= f.input :price_cents, label: "Price" %>
-       <%= f.input :tag_list, label: "Add tags", hint: "Add your tags, separated by commas" %>
-       <%= f.input :tag_list, as: :check_boxes, collection: [ "test 1", "test 2", "test 3", "test ACB" ] %>
+       <%#= f.input :tag_list, label: "Add tags", hint: "Add your tags, separated by commas" %>
+       <%#= f.input :tag_list, as: :check_boxes, collection: [ "test 1", "test 2", "test 3", "test ACB" ] %>
        <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
        <% end %>
      </div>

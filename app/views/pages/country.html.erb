@@ -1,0 +1,15 @@
+Country name, flag, cards for, top artists, top art, cities, trendy shit, etc.  
+Do I have to make a new table and redo this?  Hmm.  
+
+Select your Country:
+      <%#= f.input :birth_place, label: "Country of birth", collection: CountryStateSelect.countries_collection.sort %>
+
+<%= simple_form_for @country do |f| %>
+<%= f.input :country_field, collection: CountryStateSelect.countries_collection %>
+<%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+<% end %>
+
+
+
+
+

@@ -2,10 +2,15 @@ import "bootstrap";
 import {  initAutocomplete  } from "../plugins/init_autocomplete";
 import $ from 'jquery';
 import 'select2';
+import { initMapbox } from '../plugins/init_mapbox';
+import 'mapbox-gl/dist/mapbox-gl.css';
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+
 
 // $('#city-input').select2();
 
 initAutocomplete();
+initMapbox();
 
 
 // document.addEventListener('DOMContentLoaded', function() {

@@ -5,19 +5,13 @@ class Art < ApplicationRecord
   acts_as_likeable
   acts_as_mentionable
 
-  
-  
   Gutentag::ActiveRecord.call self
   
   mount_uploader :photo, PhotoUploader
   
-  # has_many :art_tags
   has_many :cart_products
   has_many :comments, -> {order(:created_at => :desc)}
-  # has_many :likes
-  has_one :photos, dependent: :destroy
-  # has_many :reactions
-  # has_one :photos
+  has_many :photos, dependent: :destroy
   
   has_many :comments, dependent: :destroy
   
@@ -26,18 +20,29 @@ class Art < ApplicationRecord
   validates :photo, presence: true
   validates :title,  presence: true
   
-  
-  # This also goes in your model.
-  
-  # # Return the tag names separated by a comma and space
-  # def tags_as_string
-  #   tag_names.join(", ")
-  # end
-  
-  # # Split up the provided value by commas and (optional) spaces.
-  # def tags_as_string=(string)
-  #   self.tag_names = string.split(/,\s*/)
-  # end
-  
-  
+ include PgSearch::Model
+  pg_search_scope :global_search,
+    against: [ :title, :description, :inspiration ],
+    associated_against: {
+      artist: [ :first_name, :last_name, :artist_name, :bio, :birth_place, :city, :country,  ]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
+
+
+
+# This also goes in your model.
+
+# # Return the tag names separated by a comma and space
+# def tags_as_string
+#   tag_names.join(", ")
+# end
+
+# # Split up the provided value by commas and (optional) spaces.
+# def tags_as_string=(string)
+#   self.tag_names = string.split(/,\s*/)
+# end
+
+
 end
