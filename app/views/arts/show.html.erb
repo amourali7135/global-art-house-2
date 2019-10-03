@@ -1,11 +1,11 @@
-Fix liking auto.  
+Fix liking auto.
 
 <div class="container">
 <div class="row">
 <%= link_to 'like', art_likes_path(@art) %>
 <%= link_to 'unlike', art_unlikes_path(@art) %>
 <br>
-<p><%=@art.likees_count %> likes! </p>
+<p><%=@art.get_likes.size %> likes! </p>
   </div>
 </div>
 

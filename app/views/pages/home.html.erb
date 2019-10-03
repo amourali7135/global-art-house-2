@@ -6,8 +6,8 @@ If statement for different shit to show!
   <div class="row">
     <div class="class">
       <h1>Welcome to Global Art House!</h1>
-      
-      <% if current_user && current_user.artist   %> # Or nobody logged in, thanks sonia.
+
+      <% if current_user && current_user.artist   %>
          <h1> Add your art! <h1>
          <%= link_to "new", new_artist_art_path(@artist, @art), class: 'btn btn-primary' %>
          <% else %>
@@ -31,8 +31,12 @@ If statement for different shit to show!
   </div>
 </div>
 
-
+    <%= form_with(url: '/artists_countries', method: :get) do |f| %>
+      <%= f.select :country, collection: CountryStateSelect.countries_collection.sort %>
+      <%= f.submit %>
+    <% end %>
 <div
+
   id="map"
   style="width: 100%;
   height: 600px;"

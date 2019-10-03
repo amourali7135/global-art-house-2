@@ -1,0 +1,26 @@
+Country name, flag, cards for, top artists, top art, cities, trendy shit, etc.
+Do I have to make a new table and redo this?  Hmm.
+How do I connect this from the front page?
+
+Select your Country:
+    <%#= f.input :birth_place, label: "Country of birth", collection: CountryStateSelect.countries_collection.sort %>
+
+    <%#= select_tag(:country, options_for_select(CountryStateSelect.countries_collection.sort)) %>
+
+    <%= form_with(url: '/artists_countries', method: :get) do |f| %>
+      <%= f.select :country, collection: CountryStateSelect.countries_collection.sort %>
+      <%= f.submit %>
+    <% end %>
+
+    <% if params[:country] %>
+    <p>All of the artists of <%= params[:country] %> ! </p>
+      <%= flag_icon(params[:country].to_sym.downcase, class:"flag-size") %>
+      <% @artists.each do |artist| %>
+        <div>
+          <%= artist.first_name %>
+          <%= artist.last_name%>
+        </div>
+      <% end %>
+    <% end %>
+
+

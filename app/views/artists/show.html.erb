@@ -1,24 +1,26 @@
-Show how many people like + follow them. 
+Show how many people like + follow them.
 Not working though.
 
+<%#= link_to 'Country artist', artist_country_path(@artist.country) %>
+
 <div class="container">
 <div class="row">
-    <%= link_to 'like', artist_like_path(@artist) %>
-    <%= link_to 'unlike', artist_unlike_path(@artist) %>
-    <%= link_to 'follow', artist_follow_path(@artist) %>
-    <%= link_to 'unfollow', artist_unfollow_path(@artist) %>
+    <%= link_to 'like', artist_like_path(@artist), method: :post %>
+    <%= link_to 'unlike', artist_unlike_path(@artist), method: :post %>
+    <%= link_to 'follow', artist_follow_path(@artist), method: :post %>
+    <%= link_to 'unfollow', artist_unfollow_path(@artist), method: :post %>
   </div>
 </div>
 
 <div class="container">
 <div class="row">
-<p><%=@artist.first_name %> has <%= @artist.followees_count %> followers! </p>
+<p><%=@artist.first_name %> has <%= @artist.followers_count %> followers! </p>
   </div>
 </div>
 
 <div class="container">
 <div class="row">
-<p><%=@artist.likees_count %> likes! </p>
+<p><%=@artist.get_likes.size %> likes! </p>
   </div>
 </div>
 

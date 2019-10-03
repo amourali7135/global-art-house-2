@@ -1,34 +1,36 @@
 class Art < ApplicationRecord
-  belongs_to :artist
-  
+  belongs_to :artist, dependent: :destroy
+
   acts_as_taggable_on :tags
-  acts_as_likeable
-  acts_as_mentionable
+  # acts_as_likeable
+  # acts_as_mentionable
+  acts_as_votable
+
 
   Gutentag::ActiveRecord.call self
-  
+
   mount_uploader :photo, PhotoUploader
-  
+
   has_many :cart_products
   has_many :comments, -> {order(:created_at => :desc)}
   has_many :photos, dependent: :destroy
-  
+
   has_many :comments, dependent: :destroy
-  
-  
+
+
   validates :description,  presence: true
   validates :photo, presence: true
   validates :title,  presence: true
-  
- include PgSearch::Model
+
+  include PgSearch::Model
   pg_search_scope :global_search,
-    against: [ :title, :description, :inspiration ],
-    associated_against: {
-      artist: [ :first_name, :last_name, :artist_name, :bio, :birth_place, :city, :country,  ]
-    },
-    using: {
-      tsearch: { prefix: true }
-    }
+  against: [ :title, :description, :inspiration ],
+  associated_against: {
+  artist: [ :first_name, :last_name, :artist_name, :bio, :birth_place, :city, :country,  ]
+},
+using: {
+tsearch: { prefix: true }
+}
 
 
 

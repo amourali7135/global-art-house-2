@@ -84,44 +84,45 @@ Rails.application.routes.draw do
   # get 'arts/update'
   # get 'arts/destroy'
   # get 'arts/edit'
-  
+
   devise_for :users
-  
+
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
+
   # mount Attachinary::Engine => "/attachinary" #added for attachinary
-  
-  
-  
-  
+
+
+
+  get '/artists_countries/', to: 'artists#countries', as: :artist_country
+
   resources :artists do
     resources :arts
   end
-  
+
   resources :arts do
     resources :comments, only: [:create, :destroy]
   end
-  
-  
-  
+
+
+
   # resources :arts, only: [:show, :edit, :update, :destroy] do
   #   # resources :comments, only: [:index, :create, :destroy], shallow: true
   #   # resources :likes, only: [:create, :destroy], shallow: true
   #   resources :photos, only: [:create]
   # end
-  
+
   resources :cart_products, only: [:destroy]
   resources :shopping_carts, only: [:show] do
     resources :orders, only: [:new, :create]
   end
-  
+
   resources :orders, only: [:show] do
     resources :payments, only: [:new, :create]
   end
-  
+
   resources :follows, only: [:index]
-  
+
   get 'about', to: 'pages#about', as: 'about'
   get 'explore', to: 'pages#explore', as: 'explore'
   get "help", to: "pages#help", as: 'help'
@@ -129,15 +130,15 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
   get 'country', to: 'pages#country', as: 'country'
   get 'city', to: 'pages#city', as: 'city'
-  
-  
+
+
   get 'art/:id/likes', to: 'arts#likes', as: :art_likes
   get 'art/:id/unlike', to: 'arts#unlikes', as: :art_unlikes
   get 'artist/:id/like', to: 'artists#like', as: :artist_like
   get 'artist/:id/unlike', to: 'artists#unlike', as: :artist_unlike
   get 'artist/:id/follow', to: 'artists#follow', as: :artist_follow
   get 'artist/:id/unfollow', to: 'artists#unfollow', as: :artist_unfollow
-  get 'artist/:id/followers', to: 'artists#followers', as: :artist_followers
+  post 'artist/:id/followers', to: 'artists#followers', as: :artist_followers
 
   get '/search' => 'search#index'
 end

@@ -33,6 +33,10 @@ gem 'acts_as_favoritor'
 gem 'commontator'
 gem 'socialization'
 gem 'pg_search'
+gem 'flag-icons-rails'
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
+gem 'acts_as_votable'
+
 
 
 
