@@ -94,7 +94,7 @@ Rails.application.routes.draw do
 
 
 
-  get '/artists_countries/', to: 'artists#countries', as: :artist_country
+  get '/artists_countries/', to: 'artists#countries', as: :artist_country #guido moved this to the top!
 
   resources :artists do
     resources :arts

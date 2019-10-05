@@ -1,8 +1,6 @@
-//= require rails-ujs
-//= require jquery-fileupload/basic
-//= require cloudinary/jquery.cloudinary
-//= require attachinary
-//= require_tree .
-//= require chosen-jquery
 //= require jquery
 //= require jquery_ujs
+//= require select2
+//= require_tree .
+//= require cloudinary/jquery.cloudinary
+//= require select2_simple_form

@@ -7,6 +7,7 @@ class ArtistsController < ApplicationController
 
   def new
     # @user = User.find(params[:user_id])
+    @category = ['Painting', 'Drawing', 'Sculpting', 'FML', 'Cartman']
     @artist = Artist.new
   end
 

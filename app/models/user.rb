@@ -8,10 +8,7 @@ class User < ApplicationRecord
   has_many :comments
 
   acts_as_follower
-  # acts_as_liker
-  # acts_as_mentioner
   acts_as_voter
-
 
   attr_writer :login
 

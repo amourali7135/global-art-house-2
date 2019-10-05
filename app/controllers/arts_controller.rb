@@ -6,6 +6,7 @@ class ArtsController < ApplicationController
 
 
   def new
+    @type = ["Abstract", "Realist", "Neo-hipster", "FML", "Moana"]
     @artist = Artist.find(params[:artist_id])
     @art = Art.new
   end

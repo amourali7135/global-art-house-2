@@ -21,6 +21,7 @@
       <%= f.input :website %>
       <%= f.input :instagram %>
       <%= f.input :facebook %>
+      <%= f.input :form, as: :select2, collection: @category, multiple: true, label: "What types of art do you do?"  %>
       <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
       <% end %>
     </div>

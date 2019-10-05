@@ -3,9 +3,7 @@ Do I have to make a new table and redo this?  Hmm.
 How do I connect this from the front page?
 
 Select your Country:
-    <%#= f.input :birth_place, label: "Country of birth", collection: CountryStateSelect.countries_collection.sort %>
 
-    <%#= select_tag(:country, options_for_select(CountryStateSelect.countries_collection.sort)) %>
 
     <%= form_with(url: '/artists_countries', method: :get) do |f| %>
       <%= f.select :country, collection: CountryStateSelect.countries_collection.sort %>

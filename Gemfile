@@ -36,6 +36,11 @@ gem 'pg_search'
 gem 'flag-icons-rails'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'acts_as_votable'
+gem "select2-rails"
+gem 'select2_simple_form', github: 'lndl/select2_simple_form', tag: '0.7.3'
+# source 'https://rails-assets.org' do
+#   gem 'rails-assets-select2', '~> 4.0.0'
+#   end
 
 
 

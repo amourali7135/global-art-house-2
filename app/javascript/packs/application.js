@@ -1,30 +1,16 @@
 import "bootstrap";
 import {  initAutocomplete  } from "../plugins/init_autocomplete";
-import $ from 'jquery';
-import 'select2';
 import { initMapbox } from '../plugins/init_mapbox';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+import $ from 'jquery';
+import select2 from 'select2';
 
-
-// $('#city-input').select2();
+$(document).ready(function)() {
+  $('#select2-input select2-default').select2();
+}
 
 initAutocomplete();
 initMapbox();
 
 
-// document.addEventListener('DOMContentLoaded', function() {
-//   console.log('hehe')
-//   return CountryStateSelect({
-//     country_id: "artist_country",
-//     state_id: "artist_state"
-//   });
-// })
-
-// $(document).on('ready', function () {
-//   console.log('ready')
-//   return CountryStateSelect({
-//     country_id: "artist_country",
-//     state_id: "artist_state"
-//   });
-// });
