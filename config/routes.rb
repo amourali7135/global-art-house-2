@@ -96,6 +96,8 @@ Rails.application.routes.draw do
 
   get '/artists_countries/', to: 'artists#countries', as: :artist_country #guido moved this to the top!
 
+
+
   resources :artists do
     resources :arts
   end
@@ -138,7 +140,8 @@ Rails.application.routes.draw do
   get 'artist/:id/unlike', to: 'artists#unlike', as: :artist_unlike
   get 'artist/:id/follow', to: 'artists#follow', as: :artist_follow
   get 'artist/:id/unfollow', to: 'artists#unfollow', as: :artist_unfollow
-  post 'artist/:id/followers', to: 'artists#followers', as: :artist_followers
+  get 'artist/:id/followers', to: 'artists#followers', as: :artist_followers
+
 
   get '/search' => 'search#index'
 end

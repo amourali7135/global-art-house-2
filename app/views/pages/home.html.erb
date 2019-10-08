@@ -1,40 +1,28 @@
-Make conditional if user is not an artist only for it to show!
-Show art they have,add new art, edit existing art, see followed shit.
-If statement for different shit to show!
+Lots of carousels and sliders to showcase everything.  
+Random artists from random countries and sorted by various categories to display.
 
-<div class="container">
-  <div class="row">
-    <div class="class">
-      <h1>Welcome to Global Art House!</h1>
 
-      <% if current_user && current_user.artist   %>
-         <h1> Add your art! <h1>
-         <%= link_to "new", new_artist_art_path(@artist, @art), class: 'btn btn-primary' %>
-         <% else %>
-      <h3>Artist? Register here to share your art with the world!</h3>
-      <%= link_to "new", new_artist_path, class: 'btn btn-primary' %>
-      <% end %>
-    </div>
-  </div>
-</div>
+<%= render partial: 'shared/banner'  %>
 
 
 <div class="container">
   <div class="row">
   <h3>Explore art all around the world</h3>
+  <h3>Click somewhere on the map or search</h3>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
-  <p>Click somewhere on the map or search</p>
+  
   </div>
 </div>
 
-    <%= form_with(url: '/artists_countries', method: :get) do |f| %>
-      <%= f.select :country, collection: CountryStateSelect.countries_collection.sort %>
-      <%= f.submit %>
-    <% end %>
+ <%= simple_form_for(:country, as: :select2, method: :get, url: '/artists_countries') do |f| %>
+  <%= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort %>
+  <%= f.submit %>
+<% end %>  
+
 <div
 
   id="map"

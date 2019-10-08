@@ -6,8 +6,6 @@ class Artist < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_country?
   after_validation :geocode, if: :will_save_change_to_city?
   acts_as_followable
-  # acts_as_likeable
-  # acts_as_mentionable
   acts_as_votable
 
 

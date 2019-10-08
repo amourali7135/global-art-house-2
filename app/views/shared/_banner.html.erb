@@ -1,0 +1,13 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.artranked.com/images/ba/ba36d9da66b4df7ba69a49c846c0383d.jpeg);">
+  <div class="container">
+    <h1>Welcome to Global Art House!</h1>
+
+      <% if current_user && current_user.artist   %>
+         <h1> Share your art with the world! <h1>
+         <%= link_to "Add Your Art", new_artist_art_path(@artist, @art), class: 'btn btn-primary' %>
+         <% else %>
+      <h1>Artist? Register here to share your art with the world!</h1>
+      <%= link_to "new", new_artist_path, class: 'btn btn-primary' %>
+      <% end %>
+  </div>
+</div>

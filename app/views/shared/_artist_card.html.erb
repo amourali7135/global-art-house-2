@@ -1,0 +1,18 @@
+<div class="card-product">
+  <img src=<%= artist.photo %> />
+  <div class="card-product-infos">
+  <% if artist.artist_name? %>
+    <h2><%= artist.first_name %> <%= artist.last_name %>, also known as <%= artist.artist_name %></h2>
+    <p><%= artist.bio %></p>
+    <p> <%= artist.city %></p>
+    <p> <%= artist.form %></p>
+    <%= flag_icon(params[:country][:country].to_sym.downcase) %>
+    <% else %>
+    <h2><%= artist.first_name %> <%= artist.last_name %></h2>
+    <p><%= artist.bio %></p>
+    <p> <%= artist.city %></p>
+    <p> <%= artist.form %></p>
+    <% end %>
+  </div>
+</div>
+

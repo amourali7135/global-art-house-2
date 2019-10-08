@@ -1,24 +1,20 @@
 Country name, flag, cards for, top artists, top art, cities, trendy shit, etc.
-Do I have to make a new table and redo this?  Hmm.
-How do I connect this from the front page?
+Sorted/filtered by...
 
 Select your Country:
 
-
-    <%= form_with(url: '/artists_countries', method: :get) do |f| %>
-      <%= f.select :country, collection: CountryStateSelect.countries_collection.sort %>
-      <%= f.submit %>
-    <% end %>
+<%= simple_form_for(:country, as: :select2, method: :get, url: '/artists_countries') do |f| %>
+  <%= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort %>
+  <%= f.submit %>
+<% end %>  
 
     <% if params[:country] %>
-    <p>All of the artists of <%= params[:country] %> ! </p>
-      <%= flag_icon(params[:country].to_sym.downcase, class:"flag-size") %>
+    <p>All of the artists of <%= params[:country][:country] %> ! </p>
+      <%= flag_icon(params[:country][:country].to_sym.downcase, class:"flag-size") %>
       <% @artists.each do |artist| %>
         <div>
-          <%= artist.first_name %>
-          <%= artist.last_name%>
+          <%= render partial: 'shared/artist_card', locals: {artist: artist} %>
         </div>
       <% end %>
     <% end %>
-
 

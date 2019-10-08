@@ -41,4 +41,7 @@ end
 def contact
 
 end
+
+private
+
 end
