@@ -71,7 +71,7 @@ class ArtsController < ApplicationController
   end
   
   def art_params
-    params.require(:art).permit(:title, :description, :completion_date, :inspiration, :available, :price_cents, :tags_as_string, :tag_list, :style, style: [])
+    params.require(:art).permit(:title, :description, :completion_date, :inspiration, :available, :price_cents, :tags_as_string, :tag_list, :photo, styles: [])
   end
   
 end

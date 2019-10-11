@@ -1,3 +1,4 @@
+Sort by options.  Filtered too.  
 <section class="clean-block clean-catalog dark">
   <div class="container">
     <div class="block-heading">
@@ -18,3 +19,8 @@
   </div>
 </section>
 
+ <% @artists.each do |artist| %>
+        <div>
+          <%= render partial: 'shared/artist_card', locals: {artist: artist} %>
+        </div>
+      <% end %>

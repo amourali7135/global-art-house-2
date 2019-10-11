@@ -14,12 +14,11 @@ class Art < ApplicationRecord
   has_many :cart_products
   has_many :comments, -> {order(:created_at => :desc)}
   has_many :photos, dependent: :destroy
-  
   has_many :comments, dependent: :destroy
   
   
   validates :description,  presence: true
-  validates :photo, presence: true
+  # validates :photo, presence: true
   validates :title,  presence: true
   validates :styles, presence: true
   

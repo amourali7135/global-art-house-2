@@ -1,3 +1,4 @@
+#Only 2 or 3 photo limited somehow
 <div class="card-product">
   <img src=<%= artist.photo %> />
   <div class="card-product-infos">
@@ -5,14 +6,20 @@
     <h2><%= artist.first_name %> <%= artist.last_name %>, also known as <%= artist.artist_name %></h2>
     <p><%= artist.bio %></p>
     <p> <%= artist.city %></p>
+    <p> <%= artist.arts[0][:photo] %></p>  
+    <%= raise %>
     <p> <%= artist.form %></p>
     <%= flag_icon(params[:country][:country].to_sym.downcase) %>
+    <%= link_to artist_path(artist.id)  %>
     <% else %>
     <h2><%= artist.first_name %> <%= artist.last_name %></h2>
     <p><%= artist.bio %></p>
     <p> <%= artist.city %></p>
     <p> <%= artist.form %></p>
+    <p> <%= artist.arts %></p>  
+    <%= flag_icon(params[:country][:country].to_sym.downcase) %>
+    <%= link_to artist_path(artist.id)  %>
     <% end %>
   </div>
 </div>
-
+ 

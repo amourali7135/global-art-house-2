@@ -1,2 +1,22 @@
-<h1>Arts#edit</h1>
-<p>Find me in app/views/arts/edit.html.erb</p>
+ <div class="container">
+   <div class="row">
+     <div class="col mt-4">
+       <img src="" alt="" class="img-fluid">
+     </div>
+     <div class="col card p-4 m-4 bg-light">
+       <h2>Share your art with the world!</h2>
+
+       <%= simple_form_for [@artist, @art] do |f|%>
+       <%= f.input :title %>
+       <%= f.input :photo, label: "Select photos together" %>
+       <%= f.input :description %>
+       <%= f.input :styles, as: :select2, collection: @type, multiple: true, label: "Categorize..."  %>
+       <%= f.input :inspiration, label: "Inspiration for this art?" %>
+       <%= f.input :completion_date %>
+       <%= f.input :available, label: "Available for purchase?" %>
+       <%= f.input :price_cents, label: "Price" %>
+       <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+       <% end %>
+     </div>
+   </div>
+ </div>

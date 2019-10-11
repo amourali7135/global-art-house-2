@@ -2,13 +2,23 @@ Show art they have,add new art, edit existing art, see followed shit.  Tabs.
 <h1> Hello <%= @artist.first_name %>! Show your art to the world</h1>
 <%= link_to "Add Art", new_artist_art_path(@artist.id), class: 'btn btn-primary' %>
 
-<p>Your existing art  <%= @artist.followers  %>   </p>
-
-
+<p>See your existing art  <%= link_to "Your art", artist_arts_path(@artist.id), class: 'btn btn-secondary'  %>   </p>
 
 <p>See who you are following:  <%= @user.all_following  %>   </p>
+
+<p>See your followers:  <%= @user.all_following  %>   </p>
 
 <p>You have  <%= @artist.followers_count  %>  followers.  </p>
 
 <p>They are  <%= @artist.followers  %>   </p>
+
+<p>You have  <%= @artist.followers_count  %>  likes.  </p>
+
+<p>Edit your artist profile  <%= edit_artist_path(@artist.id)  %>   </p>
+
+<p>Change your username or password  <%= edit_user_password_path(@current_user)  %>   </p>
+
+
+
+
 

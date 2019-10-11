@@ -1,17 +1,15 @@
-Fix liking auto.
-
 <div class="container">
 <div class="row">
-<%= link_to 'like', art_likes_path(@art) %>
-<%= link_to 'unlike', art_unlikes_path(@art) %>
+<%= link_to 'Like', art_likes_path(@art) %>
+<%= link_to 'Unlike', art_unlikes_path(@art) %>
 <br>
-<p><%=@art.get_likes.size %> likes! </p>
+<p>Has <%=@art.get_likes.size %> likes! </p>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
-<h1>Artist<h1>
+<h1>Done by this artist:<h1>
 <div class="container">
   <div class="row">
     First name: <%=@artist.first_name %>
@@ -20,23 +18,12 @@ Fix liking auto.
     <br>
     <%=@artist.artist_name %>
     <br>
-    <%=@artist.birth_place %>
+    <p>Also known as <%=@artist.birth_place %> </p>
     <br>
      <%= cl_image_tag(@artist.photo,
     width: 200, height: 150, crop: :fill) %>
     <br>
-    <%=@artist.bio %>
-    <br>
-    <%=@artist.age %>
-    <br>
-    <%=@artist.city %>
-    <br>
-    <%=@artist.website %>
-    <br>
-    <%=@artist.instagram %>
-    <br>
-    <%=@artist.facebook %>
-    <br>
+    <%= link_to 'See this artist', artist_path(@artist) %>
   </div>
 </div>
 <div class="container">
