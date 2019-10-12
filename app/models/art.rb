@@ -1,13 +1,11 @@
 class Art < ApplicationRecord
   belongs_to :artist, dependent: :destroy
   
-  acts_as_taggable_on :tags
-  # acts_as_likeable
-  # acts_as_mentionable
+  acts_as_taggable_on :styles
   acts_as_votable
   
   
-  Gutentag::ActiveRecord.call self
+  #Gutentag::ActiveRecord.call self
   
   mount_uploader :photo, PhotoUploader
   
@@ -31,7 +29,6 @@ class Art < ApplicationRecord
 using: {
 tsearch: { prefix: true }
 }
-
 
 
 # This also goes in your model.

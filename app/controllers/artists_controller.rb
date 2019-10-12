@@ -42,6 +42,7 @@ class ArtistsController < ApplicationController
   end
 
   def edit
+    @category = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramics', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ].sort
     @artist = Artist.find(params[:id])
   end
 
@@ -91,7 +92,7 @@ class ArtistsController < ApplicationController
   private
 
   def artist_params
-    params.require(:artist).permit( :first_name, :last_name, :photo, :artist_name, :photo, :bio, :age, :languages_spoken, :instagram, :facebook, :website, :birth_place, :city, :country, :longitude, :latitude, :form, form: [])
+    params.require(:artist).permit( :first_name, :last_name, :photo, :artist_name, :photo, :bio, :age, :languages_spoken, :instagram, :facebook, :website, :birth_place, :city, :country, :longitude, :latitude, :form, form: [], tag_list: [])
   end
 
   # def country_params

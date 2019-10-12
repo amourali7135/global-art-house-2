@@ -1,22 +1,27 @@
 Show art they have,add new art, edit existing art, see followed shit.  Tabs.
-<h1> Hello <%= @artist.first_name %>! Show your art to the world</h1>
-<%= link_to "Add Art", new_artist_art_path(@artist.id), class: 'btn btn-primary' %>
+<h1> Hello <%= @artist.first_name %>! </h1>
+<p>Add new art to share: <%= link_to "Add Art", new_artist_art_path(@artist.id), class: 'btn btn-primary' %> </p>
 
-<p>See your existing art  <%= link_to "Your art", artist_arts_path(@artist.id), class: 'btn btn-secondary'  %>   </p>
+<p>See your existing art  <%= link_to "Your art", artist_arts_path(@artist.id), class: 'btn btn-primary'  %>   </p>
+
+<%=  %>
+<% @user.all_following.each do |followee| %>
+<%= followee.first_name %> <%= followee.last_name %> <%= followee.artist_name %>
+<% end %>
 
 <p>See who you are following:  <%= @user.all_following  %>   </p>
 
-<p>See your followers:  <%= @user.all_following  %>   </p>
+<p>See your followers:  <%= @user.following_users  %>   </p>
 
 <p>You have  <%= @artist.followers_count  %>  followers.  </p>
 
 <p>They are  <%= @artist.followers  %>   </p>
 
-<p>You have  <%= @artist.followers_count  %>  likes.  </p>
+<p>You have  <%= @artist.get_likes.size  %>  likes.  </p>
 
-<p>Edit your artist profile  <%= edit_artist_path(@artist.id)  %>   </p>
+<p>Edit your artist profile  <%= link_to 'Edit', edit_artist_path(@artist.id)  %>   </p>
 
-<p>Change your username or password  <%= edit_user_password_path(@current_user)  %>   </p>
+<p>Change your username or password  <%= link_to 'Change', edit_user_registration_path(@current_user.id)  %>   </p>
 
 
 

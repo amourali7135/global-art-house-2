@@ -7,12 +7,14 @@ class Artist < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_city?
   acts_as_followable
   acts_as_votable
+  acts_as_taggable_on :forms, :country, :city
 
 
   has_many :arts, dependent: :destroy
   has_many :languages
   has_many :orders
   has_one :photo, dependent: :destroy
+  has_one :user, dependent: :destroy
 
   validates :age, presence: true
   validates :bio, presence: true
@@ -20,6 +22,10 @@ class Artist < ApplicationRecord
   validates :country, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :form, presence: true
   # validates :photo, presence:true, presence: true, on: :update
+
+  
+
 
 end

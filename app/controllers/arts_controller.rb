@@ -44,6 +44,7 @@ class ArtsController < ApplicationController
   end
   
   def edit
+    @type = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ].sort
     @art = Art.find(params[:id])
   end
   
@@ -71,7 +72,7 @@ class ArtsController < ApplicationController
   end
   
   def art_params
-    params.require(:art).permit(:title, :description, :completion_date, :inspiration, :available, :price_cents, :tags_as_string, :tag_list, :photo, styles: [])
+    params.require(:art).permit(:title, :description, :completion_date, :inspiration, :available, :price_cents, :tags_as_string, :tag_list, :photo, styles: [], tag_list: [])
   end
   
 end

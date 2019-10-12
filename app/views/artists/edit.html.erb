@@ -4,19 +4,19 @@
       <img src="" alt="" class="img-fluid">
     </div>
     <div class="col card p-4 m-4 bg-light">
-      <h1>Are you an artist?</h1>
-      <h2>Share your art with the world!</h2>
-      <p>Easy and free to sign up!</p>
+      <h1>Edit your profile</h1>
 
-      <%= simple_form_for @artist do |f|%>
+     <%= simple_form_for @artist do |f|%>
       <%= f.input :first_name %>
       <%= f.input :last_name %>
-      <%= f.input :artist_name %>
-      <%= f.input :birth_place %>
-      <%= f.input :photo %>
-      <%= f.input :bio %>
+      <%= f.input :artist_name, label: "Artist name if you have one?" %>
+      <%= f.input :photo, label: "Reupload original or pick a new photo" %>
       <%= f.input :age %>
+      <%= f.input :bio, label: "Biography" %>
+      <%= f.input :form, as: :select2, collection: @category, multiple: true, label: "What types of art do you do?"  %>
+      <%= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort %>
       <%= f.input :city %>
+      <%= f.input :birth_place, label: "Country of birth if different", collection: CountryStateSelect.countries_collection.sort %>
       <%= f.input :website %>
       <%= f.input :instagram %>
       <%= f.input :facebook %>
