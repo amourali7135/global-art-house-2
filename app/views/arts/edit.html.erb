@@ -8,7 +8,7 @@
 
        <%= simple_form_for [@artist, @art] do |f|%>
        <%= f.input :title %>
-       <%= f.input :photo, label: "Select photos together" %>
+       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
        <%= f.input :photo_cache, as: :hidden %>
        <%= f.input :description %>
        <%= f.input :styles, as: :select2, collection: @type, multiple: true, label: "Categorize..."  %>
@@ -17,6 +17,7 @@
        <%= f.input :available, label: "Available for purchase?" %>
        <%= f.input :price_cents, label: "Price" %>
        <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+       <% end %>
      </div>
    </div>
  </div>

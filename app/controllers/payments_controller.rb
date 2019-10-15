@@ -3,6 +3,7 @@ class PaymentsController < ApplicationController
   end
 
   def new
+    @order = current_user.orders.where(state: 'pending').find(params[:order_id])
   end
 
   def create

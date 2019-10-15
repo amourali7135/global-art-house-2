@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_one :artist, dependent: :destroy
   has_many :comments
+  has_many :orders
+
 
   acts_as_follower
   acts_as_voter

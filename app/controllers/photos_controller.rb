@@ -10,6 +10,11 @@ class PhotosController < ApplicationController
   #     render 'arts/show'
   #   end
   # end
+def destroy
+  @photo = Photo.find(params[:id])
+  @photo.destroy
+  redirect_to @art
+end
 
   private
 

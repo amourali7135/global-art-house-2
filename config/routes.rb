@@ -119,11 +119,14 @@ Rails.application.routes.draw do
     resources :orders, only: [:new, :create]
   end
 
-  resources :orders, only: [:show] do
+  resources :orders, only: [:show, :create] do
     resources :payments, only: [:new, :create]
   end
 
   resources :follows, only: [:index]
+
+  # mount StripeEvent::Engine, at: '/stripe-webhooks'
+
 
   get 'about', to: 'pages#about', as: 'about'
   get 'explore', to: 'pages#explore', as: 'explore'
@@ -144,4 +147,7 @@ Rails.application.routes.draw do
 
 
   get '/search' => 'search#index'
+
+  resources :photos, only: :destroy
+
 end

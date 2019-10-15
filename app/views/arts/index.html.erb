@@ -1,6 +1,6 @@
 Card view with links to show pages.  
 Or is there anything bigger than a card?  Hmm.  
-Edit art if current user is the artist in question. 
+Edit art if current user is the artist in question.
 <br>
 
     welcome to <%= @artist.first_name %>'s art!
@@ -21,7 +21,7 @@ Edit art if current user is the artist in question.
     <% if art.available?%>
    Price: <%= art.price_cents %>
    <% end %>
-    <%= cl_image_tag(art.photo,
+    <%#= cl_image_tag(art.photo,
     width: 200, height: 150, crop: :fill) %>
     <%= link_to 'See this!', artist_art_path(@artist.id, art)  %>
     <% end %>

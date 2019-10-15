@@ -7,9 +7,9 @@ class Artist < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_city?
   acts_as_followable
   acts_as_votable
-  acts_as_taggable_on :forms, :country, :city
+  # acts_as_taggable_on :forms, :country, :city
 
-
+  #maybe a deletion problem.
   has_many :arts, dependent: :destroy
   has_many :languages
   has_many :orders

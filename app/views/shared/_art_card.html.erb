@@ -1,0 +1,9 @@
+<div class="artcard" style="width: 18rem;">
+ <p> <%= cl_image_tag(art.photos.first,
+    width: 200, height: 150, crop: :fill) %> class="card-img-top" alt="..." </p>
+  <div class="card-body">
+    <h3 class="card-title">  <%= art.title %></h3>
+    <p class="card-text">  <%= art.description %></p>
+    <p>Edit this  <%= link_to 'Edit', edit_artist_art_path(@artist, art)  %>   </p>
+    </div>
+</div>

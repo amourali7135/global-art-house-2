@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
+    @arts = Art.all.sample(3)
     if current_user
       @user = current_user
       @artist = Artist.find_by(user_id: @user.id) #user_id: refers to artist table one!
@@ -43,5 +44,6 @@ def contact
 end
 
 private
+
 
 end

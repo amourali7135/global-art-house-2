@@ -20,8 +20,8 @@ const buildMap = () => {
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
     new mapboxgl.Marker()
-      .setLngLat([ marker.lng, marker.lat ])
-      .addTo(map);
+    .setLngLat([ marker.lng, marker.lat ])
+    .addTo(map);
   });
 };
 
@@ -39,7 +39,6 @@ const initMapbox = () => {
     fitMapToMarkers(map, markers);
   }
 };
-
 
 
 export { initMapbox };

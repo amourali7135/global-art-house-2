@@ -1,7 +1,7 @@
 class Art < ApplicationRecord
   belongs_to :artist, dependent: :destroy
   
-  acts_as_taggable_on :styles
+  #acts_as_taggable_on :styles
   acts_as_votable
   
   
@@ -14,12 +14,16 @@ class Art < ApplicationRecord
   has_many :photos, dependent: :destroy
   has_many :comments, dependent: :destroy
   
+  # has_many :pictures, dependent: :destroy
+
   
   validates :description,  presence: true
   # validates :photo, presence: true
   validates :title,  presence: true
   validates :styles, presence: true
-  
+
+  monetize :price_cents
+ 
   include PgSearch::Model
   pg_search_scope :global_search,
   against: [ :title, :description, :inspiration, :styles ],

@@ -79,9 +79,11 @@ Not working though.
     <% if art.available?%>
    Price: <%= art.price_cents %>
    <% end %>
-    <%= cl_image_tag(art.photo,
+    <%#= cl_image_tag(art.photo,
     width: 200, height: 150, crop: :fill) %>
     <% end %>
+
+
 
 
 

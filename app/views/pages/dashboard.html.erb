@@ -4,26 +4,30 @@ Show art they have,add new art, edit existing art, see followed shit.  Tabs.
 
 <p>See your existing art  <%= link_to "Your art", artist_arts_path(@artist.id), class: 'btn btn-primary'  %>   </p>
 
-<%=  %>
-<% @user.all_following.each do |followee| %>
-<%= followee.first_name %> <%= followee.last_name %> <%= followee.artist_name %>
+<% @artist.arts.each do |art| %>
+   <div>
+    <%= render partial: 'shared/art_card', locals: {art: art} %>
+  </div>
 <% end %>
-
-<p>See who you are following:  <%= @user.all_following  %>   </p>
-
-<p>See your followers:  <%= @user.following_users  %>   </p>
 
 <p>You have  <%= @artist.followers_count  %>  followers.  </p>
 
+<p>See your followers:  <%= @user.following_users  %>   </p>
+
 <p>They are  <%= @artist.followers  %>   </p>
 
-<p>You have  <%= @artist.get_likes.size  %>  likes.  </p>
+<p>Your artist profile has  <%= @artist.get_likes.size  %>  likes.  </p>
 
 <p>Edit your artist profile  <%= link_to 'Edit', edit_artist_path(@artist.id)  %>   </p>
 
 <p>Change your username or password  <%= link_to 'Change', edit_user_registration_path(@current_user.id)  %>   </p>
 
 
+DO TABS FOR THIS!
+<p>See who you are following: <% @user.all_following.each do |followee| %> </p>
+<%= followee.first_name %> <%= followee.last_name %> <%= followee.artist_name %>
+<p>Their recent activity: <%= followee.arts.last %> Photo,showlink, date made, title, 
+<% end %>
 
 
 

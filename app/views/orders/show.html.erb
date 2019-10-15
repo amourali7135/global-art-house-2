@@ -1,2 +1,15 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<div class="container">
+  <div class="row py-4">
+    <div class="col-md-3"><%= image_tag @order.art.photos.first, width: '100%' %></div>
+    <div class="col">
+      <h1>Order #<%= @order.id %> <small><span class="badge badge-primary"><%= @order.state %></span></small></h1>
+      <ul class="list-unstyled">
+        <li><strong>ISSUED ON</strong> <%= @order.created_at.to_date %></li>
+        <li><strong>TEDDY</strong> <%= @order.art.title %> [<%= @order.art_sku %>]</li>
+        <li><strong>TOTAL</strong> <%= humanized_money_with_symbol @order.amount %></li>
+        </li>
+      </ul>
+      <p>Estimated delivery within <strong>2 weeks</strong></p>
+    </div>
+  </div>
+</div>

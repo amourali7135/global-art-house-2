@@ -8,6 +8,7 @@ Select your Country:
   <%= f.submit %>
 <% end %>  
 
+
     <% if params[:country] %>
     <p>All of the artists of <%= params[:country][:country] %> ! </p>
       <%= flag_icon(params[:country][:country].to_sym.downcase, class:"flag-size") %>
@@ -17,3 +18,4 @@ Select your Country:
         </div>
       <% end %>
     <% end %>
+

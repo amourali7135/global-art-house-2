@@ -15,6 +15,7 @@ class ArtsController < ApplicationController
     @art = Art.new(art_params)
     @artist = Artist.find(params[:artist_id])
     @art.artist = @artist
+    create_pictures(@art)
     if @art.save
       redirect_to @art.artist
     else
@@ -26,9 +27,11 @@ class ArtsController < ApplicationController
     @comment = Comment.new
     @art = Art.find(params[:id])
     @artist = @art.artist #nested, he changed it to make it work...OHHHH.
+    # @photo = Photo.find(params[:id])
   end
   
   def update
+    @photo = Photo.find(params[:id])
     @art = Art.find(params[:id])
     if @art.update(art_params)
       redirect_to @art
@@ -45,6 +48,7 @@ class ArtsController < ApplicationController
   
   def edit
     @type = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ].sort
+    @photo = Photo.find(params[:id])
     @art = Art.find(params[:id])
   end
   
@@ -64,15 +68,16 @@ class ArtsController < ApplicationController
   
   private
   
-  def create_pictures
+  def create_pictures(art)
     images = params.dig(:art, :photos) || []
+    binding.pry
     images.each do |image|
-      @art.photos.create(image: image)
+      # @art.photos.create(image: image)
+      Photo.create!(photo: image, art: art)
     end
   end
   
   def art_params
-    params.require(:art).permit(:title, :description, :completion_date, :inspiration, :available, :price_cents, :tags_as_string, :tag_list, :photo, styles: [], tag_list: [])
+    params.require(:art).permit(:title, :description, :completion_date, :inspiration, :available, :price_cents, :tags_as_string, :tag_list, :photo, :photos, styles: [], tag_list: [])
   end
-  
 end

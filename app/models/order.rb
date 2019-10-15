@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
-  belongs_to :artist
-  belongs_to :shopping_cart
+  belongs_to :user
+  belongs_to :art
+  monetize :amount_cents
 end

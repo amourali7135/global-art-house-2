@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_03_175638) do
+ActiveRecord::Schema.define(version: 2019_10_15_072740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,13 +48,12 @@ ActiveRecord::Schema.define(version: 2019_10_03_175638) do
     t.date "completion_date"
     t.text "inspiration"
     t.boolean "available"
-    t.integer "price_cents"
     t.bigint "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "photo"
     t.integer "likees_count", default: 0
     t.string "styles"
+    t.integer "price_cents", default: 0, null: false
     t.index ["artist_id"], name: "index_arts_on_artist_id"
   end
 
@@ -65,6 +64,11 @@ ActiveRecord::Schema.define(version: 2019_10_03_175638) do
     t.datetime "updated_at", null: false
     t.index ["art_id"], name: "index_cart_products_on_art_id"
     t.index ["shopping_cart_id"], name: "index_cart_products_on_shopping_cart_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -183,21 +187,16 @@ ActiveRecord::Schema.define(version: 2019_10_03_175638) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "address_line_1"
-    t.string "address_line_2"
-    t.string "address_city"
-    t.integer "address_zipcode"
     t.string "state"
-    t.string "country"
-    t.integer "phone_number"
-    t.jsonb "payment"
-    t.integer "amount_cents"
-    t.bigint "artist_id"
-    t.bigint "shopping_cart_id"
+    t.string "art_sku"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "checkout_session_id"
+    t.bigint "user_id"
+    t.bigint "art_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["artist_id"], name: "index_orders_on_artist_id"
-    t.index ["shopping_cart_id"], name: "index_orders_on_shopping_cart_id"
+    t.index ["art_id"], name: "index_orders_on_art_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -299,8 +298,8 @@ ActiveRecord::Schema.define(version: 2019_10_03_175638) do
   add_foreign_key "followers", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
-  add_foreign_key "orders", "artists"
-  add_foreign_key "orders", "shopping_carts"
+  add_foreign_key "orders", "arts"
+  add_foreign_key "orders", "users"
   add_foreign_key "photos", "arts"
   add_foreign_key "reaction_types", "reactions"
   add_foreign_key "reactions", "arts"

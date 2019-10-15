@@ -42,8 +42,11 @@ gem 'select2_simple_form', github: 'lndl/select2_simple_form', tag: '0.7.3'
 #   gem 'rails-assets-select2', '~> 4.0.0'
 #   end
 gem 'filterrific'
-
-
+gem 'owlcarousel-rails'
+gem 'money-rails'
+gem 'stripe'
+gem 'stripe_event'
+gem 'faker'
 
 
 
