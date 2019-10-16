@@ -6,7 +6,6 @@ class CreateArts < ActiveRecord::Migration[5.2]
       t.date :completion_date
       t.text :inspiration
       t.boolean :available
-      t.integer :price_cents
       t.references :artist, foreign_key: true
 
       t.timestamps

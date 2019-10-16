@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable
 
-  has_one :artist, dependent: :destroy
+  has_one :artist
   has_many :comments
   has_many :orders
 
@@ -27,7 +27,7 @@ class User < ApplicationRecord
   #   else
   #     conditions[:email].downcase! if conditions[:email]
   #     where(conditions.to_h).first
-  #   end
+  #   end  original copy and paste that failed.
 
 
 
@@ -41,6 +41,11 @@ class User < ApplicationRecord
 
 
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
-  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+  validates_format_of :username, with: /\w+/
 end
 
+# gutentag_taggings
+# gutentag_tags
+# taggings
+# tags
+#art tags

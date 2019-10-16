@@ -1,5 +1,5 @@
-Card view with links to show pages.  
-Or is there anything bigger than a card?  Hmm.  
+Card view with links to show pages.
+Or is there anything bigger than a card?  Hmm.
 Edit art if current user is the artist in question.
 <br>
 
@@ -20,9 +20,18 @@ Edit art if current user is the artist in question.
     <br>
     <% if art.available?%>
    Price: <%= art.price_cents %>
+
+ <div class="container">
+  <div class="row">
+<ul>
+     <% art.photos.each do |photo| %>
+    <li><%= cl_image_tag(photo.photo, width: 400, height: 300, crop: :fill) %></li>
+  <% end %>
+
+</ul>
+  </div>
+</div>
    <% end %>
-    <%#= cl_image_tag(art.photo,
-    width: 200, height: 150, crop: :fill) %>
     <%= link_to 'See this!', artist_art_path(@artist.id, art)  %>
     <% end %>
   </div>

@@ -68,6 +68,16 @@ Not working though.
     <% @artist.arts.each do |art| %>
     Name: <%= art.title %>
     <br>
+    <div class="container">
+      <div class="row">
+    <ul>
+        <% art.photos.each do |photo| %>
+        <li><%= cl_image_tag(photo.photo, width: 400, height: 300, crop: :fill) %></li>
+      <% end %>
+    </ul>
+      </div>
+    </div>
+    <br>
     Art description: <%= art.description %>
     <br>
     Completed on: <%= art.completion_date %>
@@ -79,8 +89,6 @@ Not working though.
     <% if art.available?%>
    Price: <%= art.price_cents %>
    <% end %>
-    <%#= cl_image_tag(art.photo,
-    width: 200, height: 150, crop: :fill) %>
     <% end %>
 
 

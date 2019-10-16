@@ -11,6 +11,7 @@
        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
        <%= f.input :photo_cache, as: :hidden %>
        <%= f.input :description %>
+       <%= f.input :kind, as: :select2, collection: @kind, multiple: true, label: "What medium is this?"  %>
        <%= f.input :styles, as: :select2, collection: @type, multiple: true, label: "Categorize..."  %>
        <%= f.input :inspiration, label: "Inspiration for this art?" %>
        <%= f.input :completion_date %>

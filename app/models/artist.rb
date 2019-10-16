@@ -1,5 +1,5 @@
 class Artist < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
   mount_uploader :photo, PhotoUploader
   geocoded_by :country
   geocoded_by :city
@@ -14,7 +14,7 @@ class Artist < ApplicationRecord
   has_many :languages
   has_many :orders
   has_one :photo, dependent: :destroy
-  has_one :user, dependent: :destroy
+
 
   validates :age, presence: true
   validates :bio, presence: true

@@ -4,7 +4,7 @@
 <%= link_to 'Unlike', art_unlikes_path(@art) %>
 
 <% if @art.available? %>
-<p>Price: <%= humanized_money_with_symbol(@art.price) %></p> 
+<p>Price: <%= humanized_money_with_symbol(@art.price) %></p>
 <% end %>
 <br>
 <p>Has <%=@art.get_likes.size %> likes! </p>
@@ -24,22 +24,20 @@
     <p>Also known as <%=@artist.artist_name %> </p>
     <br>
     <p>From <%=@artist.city %> </p>
- 
+
     <%= link_to 'See more of this artist', artist_path(@artist) %>
   </div>
 </div>
 <div class="container">
   <div class="row">
-  <%= cl_image_tag(@art.photo,
-    width: 400, height: 300, crop: :fill) %>
-  </div>
-</div>
-
 <ul>
   <% @art.photos.each do |photo| %>
     <li><%= cl_image_tag(photo.photo, width: 400, height: 300, crop: :fill) %></li>
   <% end %>
 </ul>
+  </div>
+</div>
+
 
 <% if @art.available %>
  <%= form_tag orders_path do %>
@@ -47,16 +45,6 @@
   <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
 <% end %>
 <% end %>
-
-
-<h5>Photos</h5>
-<ul>
-  <% @art.photos.each do |picture| %>
-    <!-- `picture` here is an instance of the Picture model -->
-    <li><%= cl_image_tag(picture.photo, width: 400, height: 300, crop: :fill) %></li>
-  <% end %>
-</ul>
-
 
 
 <p>There are <%= @art.comments.count %> comments </p>

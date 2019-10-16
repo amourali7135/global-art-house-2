@@ -6,6 +6,7 @@ class ArtsController < ApplicationController
   
   
   def new
+    @kind = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ].sort
     @type = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ].sort
     @artist = Artist.find(params[:artist_id])
     @art = Art.new
@@ -47,6 +48,7 @@ class ArtsController < ApplicationController
   end
   
   def edit
+  @kind = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ].sort
     @type = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ].sort
     @photo = Photo.find(params[:id])
     @art = Art.find(params[:id])
@@ -70,7 +72,6 @@ class ArtsController < ApplicationController
   
   def create_pictures(art)
     images = params.dig(:art, :photos) || []
-    binding.pry
     images.each do |image|
       # @art.photos.create(image: image)
       Photo.create!(photo: image, art: art)
