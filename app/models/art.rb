@@ -1,5 +1,5 @@
 class Art < ApplicationRecord
-  belongs_to :artist, dependent: :destroy
+  belongs_to :artist
 
   #acts_as_taggable_on :styles
   acts_as_votable
