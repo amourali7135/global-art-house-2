@@ -14,14 +14,14 @@ Carousels by:  Liked, followers, comments, views, new/recents, country, random a
 
 <div class="container">
   <div class="row">
-  
+
   </div>
 </div>
 
  <%= simple_form_for(:country, as: :select2, method: :get, url: '/artists_countries') do |f| %>
   <%= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort %>
   <%= f.submit %>
-<% end %>  
+<% end %>
 
 <div
 
@@ -113,4 +113,4 @@ Bootstrap Artist Test II
 </div>
 <% end %>
 
-Grid test.  
+Grid test.

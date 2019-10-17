@@ -22,11 +22,17 @@ Show art they have,add new art, edit existing art, see followed shit.  Tabs.
 
 <p>Change your username or password  <%= link_to 'Change', edit_user_registration_path(@current_user.id)  %>   </p>
 
+<div class="container">
+<div class="row">
+<p> See your conversations! <%= link_to 'Convos', conversation_path(@user) %> </p>
+<p> See your conversations! <%= link_to 'Convos', conversations_path %> </p>  right one!
+  </div>
+</div>
 
 DO TABS FOR THIS!
 <p>See who you are following: <% @user.all_following.each do |followee| %> </p>
 <%= followee.first_name %> <%= followee.last_name %> <%= followee.artist_name %>
-<p>Their recent activity: <%= followee.arts.last %> Photo,showlink, date made, title, 
+<p>Their recent activity: <%= followee.arts.last %> Photo,showlink, date made, title,
 <% end %>
 
 

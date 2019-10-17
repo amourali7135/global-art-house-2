@@ -14,6 +14,20 @@ Not working though.
 
 <div class="container">
 <div class="row">
+<% if @conversation %>
+  <p>Send a message (exist) <%= link_to 'Message', @conversation %></p>
+<% else %>
+  <p> Send this artist a message! <%= link_to 'New Message', new_conversation_path(receiver_id: params[:id]) %> </p>
+<% end %>
+<br>
+    <%= @artist.artist_name %> | <%= link_to 'Send a message', new_message_path(receiver_id: @artist.user_id) %>
+
+  </div>
+</div>
+
+
+<div class="container">
+<div class="row">
 <p><%=@artist.first_name %> has <%= @artist.followers_count %> followers! </p>
   </div>
 </div>

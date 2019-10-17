@@ -7,6 +7,11 @@ class Artist < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_city?
   acts_as_followable
   acts_as_votable
+
+
+  def mailboxer_email(object)
+    email
+  end
   # acts_as_taggable_on :forms, :country, :city
 
   #maybe a deletion problem.

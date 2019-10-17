@@ -1,2 +1,7 @@
-<h1>Conversations#index</h1>
-<p>Find me in app/views/conversations/index.html.erb</p>
+<h1>Your conversations</h1>
+
+ <% @conversations.each do |conversation| %>
+        <div>
+          <%= render partial: 'conversation', locals: {conversation: conversation} %>
+        </div>
+ <% end %>

@@ -150,4 +150,9 @@ Rails.application.routes.draw do
 
   resources :photos, only: :destroy
 
+  resources :messages, only: [:new, :create]
+  resources :conversations, only: [:index, :show, :new]
+
+
+
 end

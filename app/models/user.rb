@@ -7,10 +7,15 @@ class User < ApplicationRecord
   has_one :artist
   has_many :comments
   has_many :orders
+  has_many :sent_conversations, class_name: 'Conversation', foreign_key: 'author_id'
+  has_many :received_conversations, class_name: 'Conversation', foreign_key: 'receiver_id'
+  has_many :messages, dependent: :destroy
 
 
   acts_as_follower
   acts_as_voter
+
+
 
   attr_writer :login
 
@@ -35,17 +40,17 @@ class User < ApplicationRecord
     conditions = warden_condition.dup
     login = conditions.delete(:login)
     where(conditions).where(
-    ["lower(username) = :value OR lower(email) = :value",
-    { value: login.strip.downcase}]).first
-  end
+      ["lower(username) = :value OR lower(email) = :value",
+        { value: login.strip.downcase}]).first
+      end
 
 
-  validates :username, presence: :true, uniqueness: { case_sensitive: false }
-  validates_format_of :username, with: /\w+/
-end
+      validates :username, presence: :true, uniqueness: { case_sensitive: false }
+      validates_format_of :username, with: /\w+/
+    end
 
-# gutentag_taggings
-# gutentag_tags
-# taggings
-# tags
-#art tags
+    # gutentag_taggings
+    # gutentag_tags
+    # taggings
+    # tags
+    #art tags
