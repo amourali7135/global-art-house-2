@@ -21,6 +21,13 @@ Edit art if current user is the artist in question.
     <% if art.available?%>
    Price: <%= art.price_cents %>
 
+    convert into artist tags
+    <div class="my-5">
+      <% art.tags.each do |tag| %>
+        <p class="mb-0">TAG: <%= tag.name %></p>
+      <% end %>
+    </div>
+
  <div class="container">
   <div class="row">
 <ul>

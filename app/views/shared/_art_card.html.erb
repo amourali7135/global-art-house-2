@@ -2,7 +2,7 @@
 
 <ul>
      <% art.photos.each do |photo| %>
-    <li><%= cl_image_tag(photo.photo, width: 400, height: 300, crop: :fill) %></li>
+    <li><%= cl_image_tag(photo.photo, width: 150, height: 120, crop: :fill) %></li>
   <% end %>
 </ul>
 

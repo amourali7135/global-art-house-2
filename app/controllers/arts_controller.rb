@@ -1,36 +1,37 @@
 class ArtsController < ApplicationController
   def index
     @artist = Artist.find(params[:artist_id])
-    @arts = Art.all
+    @arts = params[:tag] ? Art.tagged_with(params[:tag]) : Art.all
   end
-  
-  
+
+
   def new
     @kind = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ].sort
     @type = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ].sort
     @artist = Artist.find(params[:artist_id])
     @art = Art.new
   end
-  
+
   def create
     @art = Art.new(art_params)
     @artist = Artist.find(params[:artist_id])
     @art.artist = @artist
     create_pictures(@art)
+    create_tags(@art)
     if @art.save
       redirect_to @art.artist
     else
       render "new"
     end
   end
-  
+
   def show
     @comment = Comment.new
     @art = Art.find(params[:id])
     @artist = @art.artist #nested, he changed it to make it work...OHHHH.
     # @photo = Photo.find(params[:id])
   end
-  
+
   def update
     @photo = Photo.find(params[:id])
     @art = Art.find(params[:id])
@@ -40,36 +41,36 @@ class ArtsController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def destroy
     @art = Art.find(params[:id])
     @art.destroy
     redirect_to arts
   end
-  
+
   def edit
   @kind = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ].sort
     @type = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ].sort
     @photo = Photo.find(params[:id])
     @art = Art.find(params[:id])
   end
-  
+
   def likes
     @user = current_user # before_action :authenticate_user, only: [:likes]
     @art = Art.find(params[:id])
     @art.liked_by @user
     redirect_to @art, notice: "Liked this art successfully!"
   end
-  
+
   def unlikes
     @user = current_user # before_action :authenticate_user, only: [:likes]
     @art = Art.find(params[:id])
     @art.unliked_by @user
     redirect_to @art, notice: "Unliked this art successfully!"
   end
-  
+
   private
-  
+
   def create_pictures(art)
     images = params.dig(:art, :photos) || []
     images.each do |image|
@@ -77,8 +78,16 @@ class ArtsController < ApplicationController
       Photo.create!(photo: image, art: art)
     end
   end
-  
+
+  def create_tags(art)
+    tags = params.dig(:art, :tag_ids) || []
+    tags.reject { |tag| tag == '' }.each do |tag|
+      tag_p = Tag.find_by(name: tag) || Tag.create(name: tag)
+      ArtTag.create!(art: art, tag: tag_p)
+    end
+  end
+
   def art_params
-    params.require(:art).permit(:title, :description, :completion_date, :inspiration, :available, :price_cents, :tags_as_string, :tag_list, :photo, :photos, styles: [], tag_list: [])
+    params.require(:art).permit(:title, :description, :completion_date, :inspiration, :available, :price_cents, :tag_list, :photo, :photos, styles: [])
   end
 end

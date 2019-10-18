@@ -6,7 +6,7 @@ Select your Country:
 <%= simple_form_for(:country, as: :select2, method: :get, url: '/artists_countries') do |f| %>
   <%= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort %>
   <%= f.submit %>
-<% end %>  
+<% end %>
 
 
     <% if params[:country] %>

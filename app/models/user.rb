@@ -52,5 +52,3 @@ class User < ApplicationRecord
     # gutentag_taggings
     # gutentag_tags
     # taggings
-    # tags
-    #art tags

@@ -152,6 +152,7 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:new, :create]
   resources :conversations, only: [:index, :show, :new]
+  get 'tags/:tag', to: 'arts#index', as: :tag
 
 
 

@@ -1,6 +1,9 @@
 require 'faker'
 #I had to nest it according to Rayhan because of ID issues.
 puts "Destroy everything"
+ArtistTag.destroy_all
+ArtTag.destroy_all
+Tag.destroy_all
 Art.destroy_all
 Artist.destroy_all
 User.destroy_all
@@ -11,6 +14,11 @@ User.destroy_all
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "Creating art tags"
+Tag.art_types.each do |art_tag|
+  Tag.create!(name: art_tag)
+end
 
 puts 'Creating 20 fake users...'
 20.times do
@@ -31,12 +39,20 @@ puts 'Creating 20 fake users...'
   bio: Faker::Quote.most_interesting_man_in_the_world,
   age: Faker::Number.between(from: 1, to: 100),
   birth_place: CountryStateSelect.countries_collection.map { |country| country[1].to_s }.sample,
-  city: Faker::Address.city, 
+  city: Faker::Address.city,
   country: CountryStateSelect.countries_collection.map { |country| country[1].to_s }.sample,
   form: artist_categories.sample(2),
   )
   artist.user = user
   artist.save!
+
+    puts 'Linking artist to tags'
+    Tag.art_kinds.sample(2).each do |tag|
+      t = Tag.create!(name: tag)
+      ArtistTag.create!(artist: artist, tag: t)
+    end
+
+
   # end
   # puts 'Finished!'
   art_mediums = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ]
@@ -44,7 +60,7 @@ puts 'Creating 20 fake users...'
   puts 'Creating 50 fake arts...'
   5.times do
     art = Art.new(
-    title: Faker::FunnyName.name, 
+    title: Faker::FunnyName.name,
     description: Faker::Lorem.sentences(number: 1),
     completion_date: Faker::Date.between(from: 300.days.ago, to: Date.today),
     inspiration: Faker::Lorem.sentences(number: 1),
@@ -56,6 +72,13 @@ puts 'Creating 20 fake users...'
     artist: artist
     )
     art.save!
+
+    # Create Art Tags
+    puts 'Linking art to tags'
+    Tag.art_types.sample(2).each do |tag|
+      t = Tag.create!(name: tag)
+      ArtTag.create!(art: art, tag: t)
+    end
 
     photo = Photo.new(
     # remote_photo_url: Faker::LoremPixel.image,

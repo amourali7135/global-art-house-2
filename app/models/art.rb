@@ -13,6 +13,8 @@ class Art < ApplicationRecord
   has_many :comments, -> {order(:created_at => :desc)}
   has_many :photos, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :art_tags
+  has_many :tags, through: :art_tags
 
   # has_many :pictures, dependent: :destroy
 
@@ -35,17 +37,23 @@ tsearch: { prefix: true }
 }
 
 
-# This also goes in your model.
+def self.tagged_with(name)
+    Tag.find_by!(name: name).arts
+  end
 
-# # Return the tag names separated by a comma and space
-# def tags_as_string
-#   tag_names.join(", ")
-# end
+  def self.tag_counts
+    # Tag.select('tags.*, count(art_tags.tag_id) as count').joins(:art_tags).group('art_tags.tag_id')
+    self.tags.count
+  end
 
-# # Split up the provided value by commas and (optional) spaces.
-# def tags_as_string=(string)
-#   self.tag_names = string.split(/,\s*/)
-# end
+  def tag_list
+    tags.map(&:name).join(', ')
+  end
 
-
+  def tag_list=(names)
+    self.tags = names.split(',').map do |n|
+      Tag.where(name: n.strip).first_or_create!
+    end
+  end
 end
+

@@ -19,7 +19,8 @@ class Artist < ApplicationRecord
   has_many :languages
   has_many :orders
   has_one :photo, dependent: :destroy
-
+  has_many :artist_tags
+  has_many :tags, through: :artist_tags
 
   validates :age, presence: true
   validates :bio, presence: true
@@ -30,7 +31,24 @@ class Artist < ApplicationRecord
   validates :form, presence: true
   # validates :photo, presence:true, presence: true, on: :update
 
+  def self.tagged_with(name)
+    Tag.find_by!(name: name).artists
+  end
 
+  def self.tag_counts
+    self.tags.count
+  end
 
+  def tag_list
+    tags.map(&:name).join(', ')
+  end
 
+  def tag_list=(names)
+    self.tags = names.split(',').map do |n|
+      Tag.where(name: n.strip).first_or_create!
+    end
+  end
 end
+
+
+

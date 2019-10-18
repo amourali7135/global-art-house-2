@@ -1,6 +1,17 @@
 Show art they have,add new art, edit existing art, see followed shit.  Tabs.
 <h1> Hello <%= @artist.first_name %>! </h1>
+
+     <%= cl_image_tag(@artist.photo,
+    width: 150, height: 100, crop: :fill) %>
 <p>Add new art to share: <%= link_to "Add Art", new_artist_art_path(@artist.id), class: 'btn btn-primary' %> </p>
+
+Your artist tags
+ <div class="my-5">
+      <% @artist.tags.each do |tag| %>
+        <p class="mb-0">TAG: <%= tag.name %></p>
+      <% end %>
+    </div>
+    <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small></p>
 
 <p>See your existing art  <%= link_to "Your art", artist_arts_path(@artist.id), class: 'btn btn-primary'  %>   </p>
 
@@ -32,7 +43,10 @@ Show art they have,add new art, edit existing art, see followed shit.  Tabs.
 DO TABS FOR THIS!
 <p>See who you are following: <% @user.all_following.each do |followee| %> </p>
 <%= followee.first_name %> <%= followee.last_name %> <%= followee.artist_name %>
+
 <p>Their recent activity: <%= followee.arts.last %> Photo,showlink, date made, title,
+  <%#= cl_image_tag(followee.artist.arts.photo.last,
+    width: 200, height: 150, crop: :fill, class: "d-block w-100") %>
 <% end %>
 
 

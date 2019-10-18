@@ -1,8 +1,8 @@
 class ArtistsController < ApplicationController
 
   def index
-    @user = User.find(params[:user_id])
-    @artists = Artist.all
+    # @user = User.find(params[:user_id])
+    @artists = params[:tag] ? Artist.tagged_with(params[:tag]) : Artist.all
   end
 
   def new
@@ -14,6 +14,7 @@ class ArtistsController < ApplicationController
   def create
     @artist = Artist.new(artist_params)
     @artist.user_id = current_user.id
+    create_tags(@artist)
     if @artist.save
       redirect_to dashboard_path
     else
@@ -100,5 +101,14 @@ class ArtistsController < ApplicationController
   def country_params
     params.require(:country).permit( :country, params[:country], params[:country][:country] )
   end
+
+  def create_tags(artist)
+    tags = params.dig(:artist, :tag_ids) || []
+    tags.reject { |tag| tag == '' }.each do |tag|
+      tag_p = Tag.find_by(name: tag) || Tag.create(name: tag)
+      ArtistTag.create!(artist: artist, tag: tag_p)
+    end
+  end
+
 
 end

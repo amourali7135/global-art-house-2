@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_17_093339) do
+ActiveRecord::Schema.define(version: 2019_10_18_090542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 2019_10_17_093339) do
     t.datetime "updated_at", null: false
     t.index ["art_id"], name: "index_art_tags_on_art_id"
     t.index ["tag_id"], name: "index_art_tags_on_tag_id"
+  end
+
+  create_table "artist_tags", force: :cascade do |t|
+    t.bigint "artist_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_artist_tags_on_artist_id"
+    t.index ["tag_id"], name: "index_artist_tags_on_tag_id"
   end
 
   create_table "artists", force: :cascade do |t|
@@ -65,22 +74,6 @@ ActiveRecord::Schema.define(version: 2019_10_17_093339) do
     t.integer "price_cents", default: 0, null: false
     t.string "kind"
     t.index ["artist_id"], name: "index_arts_on_artist_id"
-  end
-
-  create_table "attachinary_files", force: :cascade do |t|
-    t.string "attachinariable_type"
-    t.bigint "attachinariable_id"
-    t.string "scope"
-    t.string "public_id"
-    t.string "version"
-    t.integer "width"
-    t.integer "height"
-    t.string "format"
-    t.string "resource_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent"
-    t.index ["attachinariable_type", "attachinariable_id"], name: "index_attachinary_files_attachinariable"
   end
 
   create_table "cart_products", force: :cascade do |t|
@@ -172,60 +165,6 @@ ActiveRecord::Schema.define(version: 2019_10_17_093339) do
     t.index ["liker_id", "liker_type"], name: "fk_likes"
   end
 
-  create_table "mailboxer_conversation_opt_outs", id: :serial, force: :cascade do |t|
-    t.string "unsubscriber_type"
-    t.integer "unsubscriber_id"
-    t.integer "conversation_id"
-    t.index ["conversation_id"], name: "index_mailboxer_conversation_opt_outs_on_conversation_id"
-    t.index ["unsubscriber_id", "unsubscriber_type"], name: "index_mailboxer_conversation_opt_outs_on_unsubscriber_id_type"
-  end
-
-  create_table "mailboxer_conversations", id: :serial, force: :cascade do |t|
-    t.string "subject", default: ""
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "mailboxer_notifications", id: :serial, force: :cascade do |t|
-    t.string "type"
-    t.text "body"
-    t.string "subject", default: ""
-    t.string "sender_type"
-    t.integer "sender_id"
-    t.integer "conversation_id"
-    t.boolean "draft", default: false
-    t.string "notification_code"
-    t.string "notified_object_type"
-    t.integer "notified_object_id"
-    t.string "attachment"
-    t.datetime "updated_at", null: false
-    t.datetime "created_at", null: false
-    t.boolean "global", default: false
-    t.datetime "expires"
-    t.index ["conversation_id"], name: "index_mailboxer_notifications_on_conversation_id"
-    t.index ["notified_object_id", "notified_object_type"], name: "index_mailboxer_notifications_on_notified_object_id_and_type"
-    t.index ["notified_object_type", "notified_object_id"], name: "mailboxer_notifications_notified_object"
-    t.index ["sender_id", "sender_type"], name: "index_mailboxer_notifications_on_sender_id_and_sender_type"
-    t.index ["type"], name: "index_mailboxer_notifications_on_type"
-  end
-
-  create_table "mailboxer_receipts", id: :serial, force: :cascade do |t|
-    t.string "receiver_type"
-    t.integer "receiver_id"
-    t.integer "notification_id", null: false
-    t.boolean "is_read", default: false
-    t.boolean "trashed", default: false
-    t.boolean "deleted", default: false
-    t.string "mailbox_type", limit: 25
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "is_delivered", default: false
-    t.string "delivery_method"
-    t.string "message_id"
-    t.index ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
-    t.index ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
-  end
-
   create_table "mentions", force: :cascade do |t|
     t.string "mentioner_type"
     t.integer "mentioner_id"
@@ -282,7 +221,7 @@ ActiveRecord::Schema.define(version: 2019_10_17_093339) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "tagging"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -317,6 +256,8 @@ ActiveRecord::Schema.define(version: 2019_10_17_093339) do
 
   add_foreign_key "art_tags", "arts"
   add_foreign_key "art_tags", "tags"
+  add_foreign_key "artist_tags", "artists"
+  add_foreign_key "artist_tags", "tags"
   add_foreign_key "artists", "users"
   add_foreign_key "arts", "artists"
   add_foreign_key "cart_products", "arts"
@@ -325,9 +266,6 @@ ActiveRecord::Schema.define(version: 2019_10_17_093339) do
   add_foreign_key "comments", "users"
   add_foreign_key "followers", "artists"
   add_foreign_key "followers", "users"
-  add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
-  add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
-  add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
   add_foreign_key "orders", "arts"
   add_foreign_key "orders", "users"
   add_foreign_key "photos", "arts"

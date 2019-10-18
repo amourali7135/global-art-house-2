@@ -1,8 +1,16 @@
 Show how many people like + follow them.
 Not working though.
+Limit amount shown.
 
 <%#= link_to 'Country artist', artist_country_path(@artist.country) %>
+ <div class="my-5">
+      <% @artist.tags.each do |tag| %>
+        <p class="mb-0">TAG: <%= tag.name %></p>
+      <% end %>
+    </div>
+    <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small></p>
 
+<p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small></p>
 <div class="container">
 <div class="row">
     <%= link_to 'like', artist_like_path(@artist) %>
