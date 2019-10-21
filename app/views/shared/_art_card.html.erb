@@ -1,15 +1,34 @@
-<div class="artcard" style="width: 18rem;">
-
-<ul>
-     <% art.photos.each do |photo| %>
-    <li><%= cl_image_tag(photo.photo, width: 150, height: 120, crop: :fill) %></li>
+<div class="card-trip">
+  <% art.photos.each do |photo| %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(photo.photo, width: 150, height: 120, crop: :fill) %>)">
+    </div>
   <% end %>
-</ul>
 
-  <div class="card-body">
-    <h3 class="card-title">  <%= art.title %></h3>
-    <p class="card-text">  <%= art.description %></p>
-    <p>Edit this  <%= link_to 'Edit', edit_artist_art_path(@artist, art)  %>   </p>
+  <div class="card-trip-infos">
+    <h2><%= art.title %></h2>
+    <p><%= art.description %></p>
+    <p><%= art.inspiration %></p>
+    <p>Available to buy? <%= art.available %></p>
+    <% art.tags.each do |tag| %>
+      <p class="mb-0">TAG: <%= tag.name %></p>
+    <% end %>
+    <%= cl_image_tag @artist.photo, class: 'card-trip-user avatar-bordered' %>
+    <%= link_to 'See this!', artist_art_path(@artist.id, art)  %>
+  </div>
+
+  <div class="d-flex justify-content-between w-100">
+    <h2 class="card-trip-pricing">$<%= art.price_cents %></h2>
+    <% if current_user.id = @artist.user_id %>
+        <p>Edit this  <%= link_to 'Edit', edit_artist_art_path(@artist, art)  %>   </p>
+    <% end %>
+    <%#= raise %>
+  </div>
+</div>
+
+   <%# end %> 
+  </div>
+</div>
+
     </div>
 </div>
 

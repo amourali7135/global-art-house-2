@@ -7,20 +7,14 @@ Sort by options.  Filtered too.
 
     <div class="content">
       <div class="products pl-5 card-grid-3c">
-        <% @artists.each do |artist| %>
+      <% @artists.each do |artist| %>
         <div>
-          <%= link_to artist_path(artist.id) do %>
-          <%= artist.first_name %> <%= artist.last_name %>
-          <% end %>
+          <%= render partial: 'shared/artist_card', locals: {artist: artist} %>
         </div>
-        <% end %>
+      <% end %>
       </div>
     </div>
   </div>
 </section>
 
- <% @artists.each do |artist| %>
-        <div>
-          <%= render partial: 'shared/artist_card', locals: {artist: artist} %>
-        </div>
-      <% end %>
+

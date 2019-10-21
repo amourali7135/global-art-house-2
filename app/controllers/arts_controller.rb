@@ -1,6 +1,7 @@
 class ArtsController < ApplicationController
   def index
     @artist = Artist.find(params[:artist_id])
+    # @arts = art.artists
     @arts = params[:tag] ? Art.tagged_with(params[:tag]) : Art.all
   end
 
@@ -17,8 +18,8 @@ class ArtsController < ApplicationController
     @artist = Artist.find(params[:artist_id])
     @art.artist = @artist
     create_pictures(@art)
-    create_tags(@art)
     if @art.save
+      create_tags(@art)
       redirect_to @art.artist
     else
       render "new"
@@ -88,6 +89,6 @@ class ArtsController < ApplicationController
   end
 
   def art_params
-    params.require(:art).permit(:title, :description, :completion_date, :inspiration, :available, :price_cents, :tag_list, :photo, :photos, styles: [])
+    params.require(:art).permit(:title, :description, :completion_date, :inspiration, :available, :price_cents, :tag_list, :photo, :photos, styles: [], tag_list: [])
   end
 end

@@ -13,8 +13,8 @@ class Art < ApplicationRecord
   has_many :comments, -> {order(:created_at => :desc)}
   has_many :photos, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :art_tags
-  has_many :tags, through: :art_tags
+  has_many :art_tags, dependent: :destroy
+  has_many :tags, through: :art_tags, dependent: :destroy
 
   # has_many :pictures, dependent: :destroy
 
@@ -22,13 +22,13 @@ class Art < ApplicationRecord
   validates :description,  presence: true
   # validates :photo, presence: true
   validates :title,  presence: true
-  validates :styles, presence: true
+  # validates :styles, presence: true
 
   monetize :price_cents
 
   include PgSearch::Model
   pg_search_scope :global_search,
-  against: [ :title, :description, :inspiration, :styles ],
+  against: [ :title, :description, :inspiration, :styles, :tags, :art_tags ],
   associated_against: {
   artist: [ :first_name, :last_name, :artist_name, :bio, :birth_place, :city, :country, :form ]
 },

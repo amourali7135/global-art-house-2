@@ -11,10 +11,11 @@
       <%= cl_image_tag artist.arts[2].photo, class:"cloudinary-artist-arts" if artist.arts[2] %>
       </div>
     <p> <%= artist.form %></p>
-
-    <%= flag_icon(params[:country][:country].to_sym.downcase) %>
+    <%= flag_icon(artist.country.to_sym.downcase) %>
     <%= link_to 'See more of this artist', artist_path(artist.id)  %>
+
     <% else %>
+
     <h2><%= artist.first_name %> <%= artist.last_name %></h2>
     <p><%= artist.bio %></p>
     <p> <%= artist.city %></p>
@@ -22,7 +23,7 @@
     <%= cl_image_tag artist.arts[0].photo %>
     <%= cl_image_tag artist.arts[1].photo if artist.arts[1] %>
     <%= cl_image_tag artist.arts[2].photo if artist.arts[2] %>
-    <%= flag_icon(params[:country][:country].to_sym.downcase) %>
+    <%= flag_icon(artist.country.to_sym.downcase) %>
     <%= link_to 'See more of this artist', artist_path(artist.id)  %>
     <% end %>
   </div>

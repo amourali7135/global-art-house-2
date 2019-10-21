@@ -12,15 +12,15 @@ class Artist < ApplicationRecord
   def mailboxer_email(object)
     email
   end
-  # acts_as_taggable_on :forms, :country, :city
 
-  #maybe a deletion problem.
+
+
   has_many :arts, dependent: :destroy
   has_many :languages
   has_many :orders
   has_one :photo, dependent: :destroy
-  has_many :artist_tags
-  has_many :tags, through: :artist_tags
+  has_many :artist_tags, dependent: :destroy
+  has_many :tags, through: :artist_tags, dependent: :destroy
 
   validates :age, presence: true
   validates :bio, presence: true
@@ -28,8 +28,7 @@ class Artist < ApplicationRecord
   validates :country, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :form, presence: true
-  # validates :photo, presence:true, presence: true, on: :update
+  # validates :tag_ids, presence: true
 
   def self.tagged_with(name)
     Tag.find_by!(name: name).artists
@@ -48,6 +47,16 @@ class Artist < ApplicationRecord
       Tag.where(name: n.strip).first_or_create!
     end
   end
+
+#     include PgSearch::Model
+#   pg_search_scope :global_search,
+#   against: [ :first_name, :last_name, :artist_name, :bio, :birth_place, :city, :country, :form ] #tags!
+#   art: [ :title, :description, :inspiration, :styles, :tags, :art_tags ], #tags!
+#   associated_against: {
+# },
+# using: {
+# tsearch: { prefix: true }
+# }
 end
 
 

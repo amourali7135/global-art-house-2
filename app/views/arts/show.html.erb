@@ -38,14 +38,13 @@
 </ul>
   </div>
 </div>
-
-
 <% if @art.available %>
  <%= form_tag orders_path do %>
   <%= hidden_field_tag 'art_id', @art.id %>
   <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
 <% end %>
 <% end %>
+
 
 
 <p>There are <%= @art.comments.count %> comments </p>
@@ -61,11 +60,7 @@
     <%= render partial: 'comments/comment', collection: @art.comments %>
   </div>
 </div>
-<div class="container">
-  <div class="row">
-<h1>COMMENTS TEST</h1>
-  </div>
-</div>
+
 
 
 

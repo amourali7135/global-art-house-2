@@ -2,7 +2,8 @@ Show how many people like + follow them.
 Not working though.
 Limit amount shown.
 
-<%#= link_to 'Country artist', artist_country_path(@artist.country) %>
+
+
  <div class="my-5">
       <% @artist.tags.each do |tag| %>
         <p class="mb-0">TAG: <%= tag.name %></p>
@@ -83,37 +84,24 @@ Limit amount shown.
 
 
 
-    Here is one example of their art.
+  <div class="container">
+     <div class="row">
+    Here is a small selection of their art.
     Click here to see more of their art!
-    <%= link_to 'See their art!', artist_arts_path(@artist.id)  %>
+     </div>
+  </div>
 
-    <% @artist.arts.each do |art| %>
-    Name: <%= art.title %>
-    <br>
-    <div class="container">
-      <div class="row">
-    <ul>
-        <% art.photos.each do |photo| %>
-        <li><%= cl_image_tag(photo.photo, width: 400, height: 300, crop: :fill) %></li>
-      <% end %>
-    </ul>
-      </div>
+
+   <div class="container">
+     <div class="row">
+        <%= link_to 'See all of their art!', artist_arts_path(@artist.id)  %>
+
+     </div>
+   </div>
+
+  
+    <% @artist.arts.sample(3).each do |art| %>
+    <div>
+    <%= render partial: 'shared/art_card', locals: {art: art} %>
     </div>
-    <br>
-    Art description: <%= art.description %>
-    <br>
-    Completed on: <%= art.completion_date %>
-    <br>
-    Inspiration: <%= art.inspiration %>
-    <br>
-    Available to buy? <%= art.available %>
-    <br>
-    <% if art.available?%>
-   Price: <%= art.price_cents %>
-   <% end %>
     <% end %>
-
-
-
-
-

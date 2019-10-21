@@ -1,45 +1,10 @@
-Card view with links to show pages.
-Or is there anything bigger than a card?  Hmm.
-Edit art if current user is the artist in question.
+Paginate/limit.  
 <br>
+ welcome to <%= @artist.first_name %>'s art!
+ <br>
 
-    welcome to <%= @artist.first_name %>'s art!
-    <br>
-    <%= @artist.first_name %>
-
-    <% @artist.arts.each do |art| %>
-    Name: <%= art.title %>
-    <br>
-    Art description: <%= art.description %>
-    <br>
-    Completed on: <%= art.completion_date %>
-    <br>
-    Inspiration: <%= art.inspiration %>
-    <br>
-    Available to buy? <%= art.available %>
-    <br>
-    <% if art.available?%>
-   Price: <%= art.price_cents %>
-
-    convert into artist tags
-    <div class="my-5">
-      <% art.tags.each do |tag| %>
-        <p class="mb-0">TAG: <%= tag.name %></p>
-      <% end %>
-    </div>
-
- <div class="container">
-  <div class="row">
-<ul>
-     <% art.photos.each do |photo| %>
-    <li><%= cl_image_tag(photo.photo, width: 400, height: 300, crop: :fill) %></li>
-  <% end %>
-
-</ul>
-  </div>
-</div>
-   <% end %>
-    <%= link_to 'See this!', artist_art_path(@artist.id, art)  %>
-    <% end %>
-  </div>
-</div>
+<% @artist.arts.each do |art| %>
+ <div>
+   <%= render partial: 'shared/art_card', locals: {art: art} %>
+ </div>
+<% end %>
