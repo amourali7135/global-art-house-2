@@ -2,7 +2,19 @@ class ArtistsController < ApplicationController
 
   def index
     # @user = User.find(params[:user_id])
+
     @artists = params[:tag] ? Artist.tagged_with(params[:tag]) : Artist.all
+
+    if params["search"]
+      @filter = params["search"]["tag_ids"].concat([params["search"]["city"]]).concat([params["search"]["country"]]).flatten.reject(&:blank?)
+      @artists = Artist.global_search(@filter)
+    else
+      @artists = Artist.all
+    end
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
   end
 
   def new

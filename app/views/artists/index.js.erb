@@ -1,0 +1,17 @@
+console.log("this shit working?")
+
+function replaceArtists (innerHTML) {
+  const artists = document.getElementById('artists');
+  artists.innerHTML = innerHTML;
+}
+
+
+if ('<%#= @filter %>' === "[]") {
+replaceArtists("<%= j render partial: 'shared/artist_card', locals: {artist: artist}, artists: Artist.all %>");
+          
+
+}
+else {
+replaceArtists("<%= j render partial: 'shared/artist_card', locals: {artist: artist}, artists: @artists %>");
+}
+

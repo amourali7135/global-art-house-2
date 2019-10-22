@@ -9,6 +9,15 @@ const initAutocomplete = () => {
   }
 };
 
+// const initAutocomplete = () => {
+//   const addressInput = document.getElementById('search_city');
+//   if (addressInput) {
+//     places({
+//       container: addressInput
+//     });
+//   }
+// };
+
 
 // const initAutocomplete = () => {
 //   const addressInput = document.getElementById('artist_birth_place');

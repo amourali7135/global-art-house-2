@@ -13,14 +13,15 @@ Your artist tags
     </div>
     <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small></p>
 
-<p>See your existing art  <%= link_to "Your art", artist_arts_path(@artist.id), class: 'btn btn-primary'  %>   </p>
+<p>See all of your existing art  <%= link_to "Your art", artist_arts_path(@artist.id), class: 'btn btn-primary'  %>   </p>
 
 <% @artist.arts.each do |art| %>
    <div>
     <%= render partial: 'shared/art_card', locals: {art: art} %>
   </div>
 <% end %>
-
+<div class="container">
+<div class="row">
 <p>You have  <%= @artist.followers_count  %>  followers.  </p>
 
 <p>See your followers:  <%= @user.following_users  %>   </p>
@@ -32,6 +33,9 @@ Your artist tags
 <p>Edit your artist profile  <%= link_to 'Edit', edit_artist_path(@artist.id)  %>   </p>
 
 <p>Change your username or password  <%= link_to 'Change', edit_user_registration_path(@current_user.id)  %>   </p>
+
+  </div>
+</div>
 
 <div class="container">
 <div class="row">

@@ -14,22 +14,23 @@ Limit amount shown.
 <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small></p>
 <div class="container">
 <div class="row">
-    <%= link_to 'like', artist_like_path(@artist) %>
-    <%= link_to 'unlike', artist_unlike_path(@artist) %>
-    <%= link_to 'follow', artist_follow_path(@artist) %>
-    <%= link_to 'unfollow', artist_unfollow_path(@artist) %>
+    <%= link_to 'like', artist_like_path(@artist), class: 'btn btn-primary' %>
+    <%= link_to 'unlike', artist_unlike_path(@artist), class: 'btn btn-primary' %>
+    <%= link_to 'follow', artist_follow_path(@artist), class: 'btn btn-primary' %>
+    <%= link_to 'unfollow', artist_unfollow_path(@artist), class: 'btn btn-primary' %>
   </div>
 </div>
 
 <div class="container">
 <div class="row">
 <% if @conversation %>
-  <p>Send a message (exist) <%= link_to 'Message', @conversation %></p>
+  <p>Send a message (exist) <%= link_to 'Message', @conversation, class: 'btn btn-primary' %></p>
+  <br>
 <% else %>
-  <p> Send this artist a message! <%= link_to 'New Message', new_conversation_path(receiver_id: params[:id]) %> </p>
+  <p> Send this artist a message! <%= link_to 'New Message', new_conversation_path(receiver_id: params[:id]), class: 'btn btn-primary' %> </p>
 <% end %>
 <br>
-    <%= @artist.artist_name %> | <%= link_to 'Send a message', new_message_path(receiver_id: @artist.user_id) %>
+    <%= @artist.artist_name %> | <%= link_to 'Send a message', new_message_path(receiver_id: @artist.user_id), class: 'btn btn-primary' %>
 
   </div>
 </div>

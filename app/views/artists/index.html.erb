@@ -1,9 +1,38 @@
 Sort by options.  Filtered too.
+
 <section class="clean-block clean-catalog dark">
   <div class="container">
     <div class="block-heading">
       <h2 class="text-info">Artists!</h2>
     </div>
+
+
+<%#= simple_form_for(:country, as: :select2, method: :get, url: '/artists_countries') do |f| %>
+  <%#= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort %>
+  <%#= f.submit %>
+<%# end %>
+
+  <%= simple_form_for :search, url: artists_path, method: "GET" do |f| %>
+    <%#= f.input :art, label: "Category",  collection: $categories, as: :check_boxes, onClick: "test"%>
+    <%#= f.input :tag, label: "Flavor", collection: $flavors, as: :check_boxes  %>
+    <%= f.input :tag_ids, as: :select2, collection: Tag.art_kinds, input_html: {multiple: true}, label: "What medium of art do you do want?", required: false %>
+    <%= f.input :tag_ids, as: :select2, collection: Tag.art_types, input_html: {multiple: true}, label: "What genre of art do you want?", required: false %>
+    <%= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort, required: false %>
+    <%= f.input :city, id:"artist_city", required: false %>
+    <%= link_to "Reset", root_path  %>
+    <%= f.submit 'Submit', class: 'btn btn-primary'%>
+  <% end %>
+
+
+    <% if params[:country] %>
+    <p>All of the artists of <%= params[:country][:country] %> ! </p>
+      <%= flag_icon(params[:country][:country].to_sym.downcase, class:"flag-size") %>
+      <% @artists.each do |artist| %>
+        <div>
+          <%= render partial: 'shared/artist_card', locals: {artist: artist} %>
+        </div>
+      <% end %>
+    <% end %>
 
     <div class="content">
       <div class="products pl-5 card-grid-3c">

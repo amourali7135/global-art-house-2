@@ -48,15 +48,19 @@ class Artist < ApplicationRecord
     end
   end
 
-#     include PgSearch::Model
-#   pg_search_scope :global_search,
-#   against: [ :first_name, :last_name, :artist_name, :bio, :birth_place, :city, :country, :form ] #tags!
-#   art: [ :title, :description, :inspiration, :styles, :tags, :art_tags ], #tags!
-#   associated_against: {
-# },
-# using: {
-# tsearch: { prefix: true }
-# }
+  include PgSearch::Model
+  pg_search_scope :global_search,
+  against: [ :first_name, :last_name, :artist_name, :bio, :birth_place, :city, :country], 
+  # associated_against: {
+    # art: [ :title, :description, :inspiration, :styles, :tags ], 
+    # tag: [ :name ], 
+    # country: [ :country ],
+    # city: [ :city ],
+    # tag_ids: [ :tag ],
+  # },
+  using: {
+    tsearch: { prefix: true }
+  }
 end
 
 

@@ -1,8 +1,8 @@
 <div class="container">
 <div class="row">
  <p><small>Tags: <%= raw @art.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small></p>
-<%= link_to 'Like', art_likes_path(@art) %>
-<%= link_to 'Unlike', art_unlikes_path(@art) %>
+<%= link_to 'Like', art_likes_path(@art), class: 'btn btn-primary' %>
+<%= link_to 'Unlike', art_unlikes_path(@art), class: 'btn btn-primary' %>
 
 <% if @art.available? %>
 <p>Price: <%= humanized_money_with_symbol(@art.price) %></p>

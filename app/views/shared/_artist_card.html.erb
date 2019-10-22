@@ -6,12 +6,19 @@
     <p><%= artist.bio %></p>
     <p> <%= artist.city %></p>
     <div class="flex-container">
-      <%= cl_image_tag artist.arts[0].photo, class:"cloudinary-artist-arts" %>
-      <%= cl_image_tag artist.arts[1].photo, class:"cloudinary-artist-arts" if artist.arts[1] %>
-      <%= cl_image_tag artist.arts[2].photo, class:"cloudinary-artist-arts" if artist.arts[2] %>
+      <% artist.arts.sample(3).each do |art| %>
+      <%= cl_image_tag art.photos[0], class:"cloudinary-artist-arts" %>
+      <%#= cl_image_tag artist.arts[0].photo, class:"cloudinary-artist-arts" %>
+      <%#= cl_image_tag artist.arts[1].photo, class:"cloudinary-artist-arts" if artist.arts[1] %>
+      <%#= cl_image_tag artist.arts[2].photo, class:"cloudinary-artist-arts" if artist.arts[2] %>
+  
+      <% end %>
       </div>
     <p> <%= artist.form %></p>
-    <%= flag_icon(artist.country.to_sym.downcase) %>
+    <% artist.tags.each do |tag| %>
+        <p class="mb-0">TAG: <%= tag.name %></p>
+      <% end %>
+    <%= flag_icon(artist.country.to_sym.downcase) %> <%#= artist.city %>
     <%= link_to 'See more of this artist', artist_path(artist.id)  %>
 
     <% else %>
@@ -20,6 +27,9 @@
     <p><%= artist.bio %></p>
     <p> <%= artist.city %></p>
     <p> <%= artist.form %></p>
+    <% artist.tags.each do |tag| %>
+     <p class="mb-0">TAG: <%= tag.name %></p>
+    <% end %>
     <%= cl_image_tag artist.arts[0].photo %>
     <%= cl_image_tag artist.arts[1].photo if artist.arts[1] %>
     <%= cl_image_tag artist.arts[2].photo if artist.arts[2] %>
@@ -28,4 +38,6 @@
     <% end %>
   </div>
 </div>
+
+
 

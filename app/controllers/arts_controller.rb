@@ -1,7 +1,7 @@
 class ArtsController < ApplicationController
   def index
     @artist = Artist.find(params[:artist_id])
-    # @arts = art.artists
+    # @arts = art.artist
     @arts = params[:tag] ? Art.tagged_with(params[:tag]) : Art.all
   end
 
