@@ -100,9 +100,12 @@ Limit amount shown.
      </div>
    </div>
 
-  
+     <div class="content">
+      <div class="products pl-5 card-grid-3c">
     <% @artist.arts.sample(3).each do |art| %>
     <div>
     <%= render partial: 'shared/art_card', locals: {art: art} %>
     </div>
     <% end %>
+    </div>
+    </div>

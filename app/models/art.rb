@@ -28,9 +28,10 @@ class Art < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :global_search,
-  against: [ :title, :description, :inspiration, :styles, :tags, :art_tags ],
+  against: [ :title, :description, :inspiration, :styles ],
   associated_against: {
-  artist: [ :first_name, :last_name, :artist_name, :bio, :birth_place, :city, :country, :form ]
+  artist: [  :city, :country ],
+  tags: [:name],
 },
 using: {
 tsearch: { prefix: true }

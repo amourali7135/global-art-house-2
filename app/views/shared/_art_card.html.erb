@@ -1,3 +1,4 @@
+Show likes + views too.  
 <div class="card-trip">
   <% art.photos.each do |photo| %>
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(photo.photo, width: 150, height: 120, crop: :fill) %>)">
@@ -12,18 +13,17 @@
     <% art.tags.each do |tag| %>
       <p class="mb-0">TAG: <%= tag.name %></p>
     <% end %>
-    <%= cl_image_tag @artist.photo, class: 'card-trip-user avatar-bordered' %>
-    <%= link_to 'See this!', artist_art_path(@artist.id, art)  %>
+    <% if @artist %>
+      <%= cl_image_tag @artist.photo, class: 'card-trip-user avatar-bordered' %>
+      <%= link_to 'See this!', artist_art_path(@artist.id, art)  %>
+    <% else %>
+      <%= cl_image_tag artist.photo, class: 'card-trip-user avatar-bordered' %>
+      <%= link_to 'See this!', artist_art_path(artist.id, art)  %>
+    <% end %>
   </div>
 
   <div class="d-flex justify-content-between w-100">
     <h2 class="card-trip-pricing">$<%= art.price_cents %></h2>
-    <% if current_user.id = @artist.user_id %>
-        <p>Edit this  <%= link_to 'Edit', edit_artist_art_path(@artist, art)  %>   </p>
-    <% end %>
-    <%#= raise %>
-  </div>
-</div>
 
    <%# end %> 
   </div>

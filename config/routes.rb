@@ -135,6 +135,8 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
   get 'country', to: 'pages#country', as: 'country'
   get 'city', to: 'pages#city', as: 'city'
+  get 'browse', to: 'pages#browse', as: 'browse'
+  get 'following', to: 'pages#following', as: 'following'
 
 
   get 'art/:id/likes', to: 'arts#likes', as: :art_likes

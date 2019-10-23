@@ -1,0 +1,22 @@
+Link from dashboard + nav bar + URL shit.  
+Render art card photo.  
+Wait, should I make a following art photo?
+
+<p>See who you are following: <% @user.all_following.each do |followee| %> </p>
+<%= followee.first_name %> <%= followee.last_name %> <%= followee.artist_name %>
+
+<p>Their recent activity: <%= followee.arts.last  %> Photo,showlink, date made, title,
+  <%#= cl_image_tag(@followee.artist.art.photo.last,
+    width: 200, height: 150, crop: :fill, class: "d-block w-100") %>
+  <% art.photos.each do |photo| %>
+    <%= cl_image_tag(photo.photo, width: 400, height: 300, crop: :fill) %></li>
+  <% end %>
+<% end %>
+
+
+<p>Examples of their art <% followee.arts.sample(3).each do |art| %> </p>
+    <div>
+    <%= render partial: 'shared/art_card', locals: {art: art} %>
+    </div>
+    <% end %>
+    <%= raise %>
