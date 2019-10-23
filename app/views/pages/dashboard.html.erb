@@ -31,28 +31,32 @@ Your artist tags
 
 <p>Your artist profile has  <%= @artist.get_likes.size  %>  likes.  </p>
 
-<p>Edit your artist profile  <%= link_to 'Edit', edit_artist_path(@artist.id)  %>   </p>
+<p>Edit your artist profile  <%= link_to 'Edit', edit_artist_path(@artist.id), class: 'btn btn-primary'  %>   </p>
 
-<p>Change your username or password  <%= link_to 'Change', edit_user_registration_path(@current_user.id)  %>   </p>
+<p>Change your username or password  <%= link_to 'Change', edit_user_registration_path(@current_user.id), class: 'btn btn-primary'  %>   </p>
 
   </div>
 </div>
 
 <div class="container">
 <div class="row">
-<p> See your conversations! <%= link_to 'Convos', conversation_path(@user) %> </p>
-<p> See your conversations! <%= link_to 'Convos', conversations_path %> </p>  right one!
+<p> See your conversations! <%= link_to 'Convos', conversation_path(@user), class: 'btn btn-primary' %> </p>
+<p> See your conversations! <%= link_to 'Convos', conversations_path, class: 'btn btn-primary' %> </p>  right one!
   </div>
 </div>
 
 DO TABS FOR THIS!
-<p>See who you are following: <% @user.all_following.each do |followee| %> </p>
-<%= followee.first_name %> <%= followee.last_name %> <%= followee.artist_name %>
 
-<p>Their recent activity: <%= followee.arts.last %> Photo,showlink, date made, title,
-  <%#= cl_image_tag(followee.artist.arts.photo.last,
-    width: 200, height: 150, crop: :fill, class: "d-block w-100") %>
-<% end %>
 
+<%# @user.all_following.each do |followed| %>
+  <%#= followed.first_name %> <%#= followed.last_name %> <%#= followed.artist_name %>
+
+
+  <%# followed.arts.sort_by { |art| art.created_at }.each do |art| %>
+    <div>
+      <%#= render partial: 'shared/art_card', locals: {art: art, artist: art.artist } %>
+    </div>
+  <%# end %>
+<%# end %>
 
 

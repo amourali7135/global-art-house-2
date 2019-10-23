@@ -7,12 +7,14 @@
     <p> <%= artist.city %></p>
     <div class="flex-container">
       <% artist.arts.sample(3).each do |art| %>
-      <%= cl_image_tag art.photos[0], class:"cloudinary-artist-arts" %>
+      <%= cl_image_tag art.photos.sample.photo, class:"cloudinary-artist-arts" %>
       <%#= cl_image_tag artist.arts[0].photo, class:"cloudinary-artist-arts" %>
       <%#= cl_image_tag artist.arts[1].photo, class:"cloudinary-artist-arts" if artist.arts[1] %>
       <%#= cl_image_tag artist.arts[2].photo, class:"cloudinary-artist-arts" if artist.arts[2] %>
-  
       <% end %>
+
+
+
       </div>
     <p> <%= artist.form %></p>
     <% artist.tags.each do |tag| %>
