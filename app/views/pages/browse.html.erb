@@ -1,5 +1,11 @@
-   <%= simple_form_for :search, url: browse_path, method: "GET" do |f| %>
+<section class="clean-block clean-catalog dark">
+  <div class="container">
+    <div class="block-heading">
+      <h2 class="text-info">Arts!</h2>
+          </div>
 
+
+   <%= simple_form_for :search, url: browse_path, method: "GET" do |f| %>
     <%= f.input :tag_ids, as: :select2, collection: Tag.art_kinds, input_html: {multiple: true}, label: "What kind of artist do you do want?", required: false %>
     <%= f.input :tag_ids, as: :select2, collection: Tag.art_types, input_html: {multiple: true}, label: "What genre of art do you want?", required: false %>
     <%= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort, required: false %>
@@ -9,6 +15,8 @@
   <% end %>
 
 
+   <div class="content">
+      <div class="products pl-5 card-grid-3c">
 <% @artists.each do |artist| %>
 <% end %>
 
@@ -17,3 +25,7 @@
    <%= render partial: 'shared/art_card', locals: {art: art, artist: art.artist} %>
  </div>
 <% end %>
+ </div>
+    </div>
+  </div>
+</section>

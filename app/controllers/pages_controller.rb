@@ -56,8 +56,8 @@ end
 
 def following
   @user = current_user
-  @artist = Artist.all
-  @arts = Art.all
+  # @artist = Artist.all
+  # @arts = Art.all
 end
 
 private
