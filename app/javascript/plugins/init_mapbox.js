@@ -41,11 +41,15 @@ const mapClicking = map => {
     }
 
     const feature = features[0];
-    const { adm0_a3, name } = feature.properties;
-    const country = adm0_a3[0] + adm0_a3[1];
+    // ES6
+    const { iso_a2, name } = feature.properties;
+    // ES6 or everything
+    // const iso_a2 = feature.properties.iso_a2;
+    // const name = feature.properties.name;
+
     new mapboxgl.Popup()
       .setLngLat(map.unproject(e.point))
-      .setHTML(`<a href="http://localhost:3000/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Bcountry%5D=${country}&search%5Bcity%5D=&commit=Submit">See the artists in ${name}</a>`)
+      .setHTML(`<a href="http://localhost:3000/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Bcountry%5D=${iso_a2}&search%5Bcity%5D=&commit=Submit">See the artists in ${name}</a>`)
       .addTo(map);
   });
 };

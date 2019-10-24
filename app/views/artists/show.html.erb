@@ -2,6 +2,7 @@
       <% @artist.tags.each do |tag| %>
         <p class="mb-0">TAG: <%= tag.name %></p>
       <% end %>
+      <%= social_share_button_tag(@artist.first_name,) %>
     </div>
     <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, browse_path(t) }.join(', ') %></small></p>
 
