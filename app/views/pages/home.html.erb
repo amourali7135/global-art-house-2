@@ -114,19 +114,32 @@ Bootstrap Artist Test II
 <% end %>
 
 
-<% @arts.each  %>
 
 
 
 Grid test.
-
+<%= @artists.each %>
+<% @arts.each  %>
   <div class="content">
       <div class="products pl-5 card-grid-3c">
-<%# @artists.each do |artist| %>
 <%# end %>
 
-<%# @arts.sorteach do |art| %>
  <div>
-   <%#= render partial: 'shared/art_card', locals: {art: art, artist: art.artist} %>
  </div>
-<%# end %>
+<#% @artists.each do |artist| %>
+<#% @arts.sample(3).each do |art| %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+
+    </div>
+    <div class="col-sm">
+
+    </div>
+    <div class="col-sm">
+
+    </div>
+<#% end %>
+  </div>
+</div>
+<#% end %>

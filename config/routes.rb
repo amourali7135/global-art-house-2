@@ -90,10 +90,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  # mount Attachinary::Engine => "/attachinary" #added for attachinary
-
-
-
   get '/artists_countries/', to: 'artists#countries', as: :artist_country #guido moved this to the top!
 
 

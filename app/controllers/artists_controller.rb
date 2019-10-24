@@ -26,7 +26,6 @@ class ArtistsController < ApplicationController
   def create
     @artist = Artist.new(artist_params)
     @artist.user_id = current_user.id
-    byebug
     create_tags(@artist)
     if @artist.save
       redirect_to dashboard_path

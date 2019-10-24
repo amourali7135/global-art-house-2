@@ -1,15 +1,15 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
-  
+
   def home
-    @arts = Art.all.sample(3)
+    @arts = Art.all
     if current_user
       @user = current_user
       @artist = Artist.find_by(user_id: @user.id) #user_id: refers to artist table one!
       # @artist = Artist.find(params[:id])
     end
     @artists = Artist.geocoded #returns flats with coordinates
-    
+
     @markers = @artists.map do |artist|
       {
       lat: artist.latitude,
@@ -24,23 +24,23 @@ def dashboard
 end
 
 def city
-  
+
 end
 
 def about
-  
+
 end
 
 def explore
-  
+
 end
 
 def help
-  
+
 end
 
 def contact
-  
+
 end
 
 def browse

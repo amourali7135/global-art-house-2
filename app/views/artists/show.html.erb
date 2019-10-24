@@ -1,12 +1,70 @@
+<div class="main main-raised">
+		<div class="profile-content">
+            <div class="container">
+                <div class="row">
+	                <div class="col-md-6 ml-auto mr-auto">
+        	           <div class="profile">
+	                        <div class="avatar">
+	                             <%= cl_image_tag @artist.photo,
+    width: 200, height: 150, crop: :fill, class: "img-raised rounded-circle img-fluid" %>
+	                        </div>
+	                        <div class="name">
+                          <% if @artist.artist_name %>
+	                            <h3 class="title"><%= @artist.first_name %><%= @artist.last_name %>, also known as <%= @artist.artist_name %></h3>
+                              <% else %>
+                              <h3 class="title"><%= @artist.first_name %><%= @artist.last_name %></h3>
+                              <% end %>
+                <h6> <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, artists_path(t) }.join(', ') %></small></p></h6>
+								<a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
+                                <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a>
+	                        </div>
+	                    </div>
+    	            </div>
+                </div>
+                <div class="description text-center">
+                    <p><%= @artist.bio %></p>
+                    <p><%= @artist.age %> Years old</p>
+                    <p><%= @artist.city %>, <%= @artist.country %> <%= flag_icon(@artist.country.to_sym.downcase) %></p>
+                </div>
+				<div class="row">
+					<div class="col-md-6 ml-auto mr-auto">
+                        <div class="profile-tabs">
+                          <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
+                                  <i class="material-icons"></i>
+                                  Studio
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#works" role="tab" data-toggle="tab">
+                                  <i class="material-icons"></i>
+                                    Work
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
+                                  <i class="material-icons"></i>
+                                    Favorite
+                                </a>
+                            </li>
+                          </ul>
+                        </div>
+    	    	</div>
+            </div>
+
+
+
 <div class="my-5">
       <% @artist.tags.each do |tag| %>
         <p class="mb-0">TAG: <%= tag.name %></p>
       <% end %>
-      <%= social_share_button_tag(@artist.first_name,) %>
     </div>
-    <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, browse_path(t) }.join(', ') %></small></p>
+    <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, artists_path(t) }.join(', ') %></small></p>
 
-<p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, browse_path(t) }.join(', ') %></small></p>
+<p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, artists_path(t) }.join(', ') %></small></p>
+      <p>Share: <%= social_share_button_tag(@artist.first_name,) %>
 <div class="container">
 <div class="row">
     <%= link_to 'like', artist_like_path(@artist), class: 'btn btn-primary' %>
@@ -54,37 +112,6 @@
 <p><%=link_to 'see followers', artist_followers_path(@artist) %>  </p>
   </div>
 </div>
-
-
-
-<h1>Artist<h1>
-<div class="container">
-  <div class="row">
-    First name: <%=@artist.first_name %>
-    <br>
-    Last name: <%=@artist.last_name %>
-    <br>
-    <%=@artist.artist_name %>
-    <br>
-    <%=@artist.birth_place %>
-    <br>
-     <%= cl_image_tag(@artist.photo,
-    width: 200, height: 150, crop: :fill) %>
-    <br>
-    <%=@artist.bio %>
-    <br>
-    <%=@artist.age %>
-    <br>
-    <%=@artist.city %>
-    <br>
-    <%=@artist.website %>
-    <br>
-    <%=@artist.instagram %>
-    <br>
-    <%=@artist.facebook %>
-    <br>
-
-
 
   <div class="container">
      <div class="row">

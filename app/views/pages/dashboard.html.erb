@@ -12,7 +12,7 @@ Your artist tags
         <p class="mb-0">TAG: <%= tag.name %></p>
       <% end %>
     </div>
-    <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, browse_path(t) }.join(', ') %></small></p>
+    <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, artists_path(t) }.join(', ') %></small></p>
 
 <p>See all of your existing art  <%= link_to "Your art", artist_arts_path(@artist.id), class: 'btn btn-primary'  %>   </p>
 
