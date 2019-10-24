@@ -1,14 +1,17 @@
 <div class="container">
 <div class="row">
- <p><small>Tags: <%= raw @art.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small></p>
+ <p><small>Tags: <%= raw @art.tags.map(&:name).map { |t| link_to t, browse_path(t) }.join(', ') %></small></p>
 <%= link_to 'Like', art_likes_path(@art), class: 'btn btn-primary' %>
 <%= link_to 'Unlike', art_unlikes_path(@art), class: 'btn btn-primary' %>
+<%= social_share_button_tag(@art.title) %>
+
 
 <% if @art.available? %>
 <p>Price: <%= humanized_money_with_symbol(@art.price) %></p>
 <% end %>
 <br>
 <p>Has <%=@art.get_likes.size %> likes! </p>
+<p> Viewed <%= @art.hits %> times </p>
   </div>
 </div>
 
@@ -32,6 +35,7 @@
 <div class="container">
   <div class="row">
 <ul>
+
   <% @art.photos.each do |photo| %>
     <li><%= cl_image_tag(photo.photo, width: 400, height: 300, crop: :fill) %></li>
   <% end %>

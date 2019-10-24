@@ -6,7 +6,7 @@ class ArtistsController < ApplicationController
     @artists = params[:tag] ? Artist.tagged_with(params[:tag]) : Artist.all
 
     if params["search"]
-      @filter = params["search"]["tag_ids"].concat([params["search"]["city"]]).concat([params["search"]["country"]]).flatten.reject(&:blank?)
+      @filter = params["search"]["tag_ids"].concat([params['country']]).concat([params["search"]["city"]]).concat([params["search"]["country"]]).flatten.reject(&:blank?)
       @artists = Artist.global_search(@filter)
     else
       @artists = Artist.all
@@ -41,6 +41,7 @@ class ArtistsController < ApplicationController
     # @user = User.find(params[:user_id])
     @artist = Artist.find(params[:id])
     @conversation = Conversation.find_by(author: @user, receiver: @artist)
+    @artist.punch(request)
   end
 
   def update

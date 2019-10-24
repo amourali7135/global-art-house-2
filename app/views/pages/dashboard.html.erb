@@ -12,7 +12,7 @@ Your artist tags
         <p class="mb-0">TAG: <%= tag.name %></p>
       <% end %>
     </div>
-    <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small></p>
+    <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, browse_path(t) }.join(', ') %></small></p>
 
 <p>See all of your existing art  <%= link_to "Your art", artist_arts_path(@artist.id), class: 'btn btn-primary'  %>   </p>
 
@@ -45,7 +45,14 @@ Your artist tags
   </div>
 </div>
 
-DO TABS FOR THIS!
+
+<div class="container">
+<div class="row">
+<p> Go to your following page <%= link_to 'Following', following_path, class: 'btn btn-primary' %> </p>
+  </div>
+</div>
+
+
 
 
 <%# @user.all_following.each do |followed| %>

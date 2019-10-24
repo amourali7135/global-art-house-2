@@ -15,7 +15,7 @@ map.addLayer({
 'fill-outline-color': 'rgba(200, 100, 240, 1)'
 }
 });
- 
+
 // When a click event occurs on a feature in the states layer, open a popup at the
 // location of the click, with description HTML from its properties.
 map.on('click', 'states-layer', function (e) {
@@ -24,12 +24,12 @@ new mapboxgl.Popup()
 .setHTML(e.features[0].properties.name)
 .addTo(map);
 });
- 
+
 // Change the cursor to a pointer when the mouse is over the states layer.
 map.on('mouseenter', 'states-layer', function () {
 map.getCanvas().style.cursor = 'pointer';
 });
- 
+
 // Change it back to a pointer when it leaves.
 map.on('mouseleave', 'states-layer', function () {
 map.getCanvas().style.cursor = '';

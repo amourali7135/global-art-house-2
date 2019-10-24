@@ -228,6 +228,9 @@ GEM
       pry (>= 0.10.4)
     puma (4.2.0)
       nio4r (~> 2.0)
+    punching_bag (0.6.1)
+      railties (>= 3.2)
+      voight_kampff (~> 0.2)
     rack (2.0.7)
     rack-proxy (0.6.5)
       rack
@@ -291,6 +294,8 @@ GEM
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     sixarm_ruby_unaccent (1.2.0)
+    social-share-button (1.2.1)
+      coffee-rails
     socialization (1.2.3)
       activerecord
     sort_alphabetical (1.1.0)
@@ -321,6 +326,9 @@ GEM
       unf_ext
     unf_ext (0.0.7.6)
     unicode_utils (1.4.0)
+    voight_kampff (0.2.2)
+      httpclient (~> 2.2)
+      nokogiri (~> 1.6)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -378,12 +386,14 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma
+  punching_bag
   rails (= 5.2.3)
   redis
   sassc-rails
   select2-rails
   select2_simple_form!
   simple_form
+  social-share-button
   socialization
   spring
   spring-watcher-listen (~> 2.0.0)

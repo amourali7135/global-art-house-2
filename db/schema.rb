@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_18_090542) do
+ActiveRecord::Schema.define(version: 2019_10_23_110343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -208,6 +208,17 @@ ActiveRecord::Schema.define(version: 2019_10_18_090542) do
     t.bigint "artist_id"
     t.index ["art_id"], name: "index_photos_on_art_id"
     t.index ["artist_id"], name: "index_photos_on_artist_id"
+  end
+
+  create_table "punches", id: :serial, force: :cascade do |t|
+    t.integer "punchable_id", null: false
+    t.string "punchable_type", limit: 20, null: false
+    t.datetime "starts_at", null: false
+    t.datetime "ends_at", null: false
+    t.datetime "average_time", null: false
+    t.integer "hits", default: 1, null: false
+    t.index ["average_time"], name: "index_punches_on_average_time"
+    t.index ["punchable_type", "punchable_id"], name: "punchable_index"
   end
 
   create_table "shopping_carts", force: :cascade do |t|

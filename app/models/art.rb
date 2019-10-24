@@ -18,13 +18,14 @@ class Art < ApplicationRecord
 
   # has_many :pictures, dependent: :destroy
 
-
   validates :description,  presence: true
   # validates :photo, presence: true
   validates :title,  presence: true
   # validates :styles, presence: true
 
   monetize :price_cents
+
+  acts_as_punchable
 
   include PgSearch::Model
   pg_search_scope :global_search,

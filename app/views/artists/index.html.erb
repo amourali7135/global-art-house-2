@@ -4,12 +4,6 @@
       <h2 class="text-info">Artists!</h2>
     </div>
 
-
-<%#= simple_form_for(:country, as: :select2, method: :get, url: '/artists_countries') do |f| %>
-  <%#= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort %>
-  <%#= f.submit %>
-<%# end %>
-
   <%= simple_form_for :search, url: artists_path, method: "GET" do |f| %>
     <%= f.input :tag_ids, as: :select2, collection: Tag.art_kinds, input_html: {multiple: true}, label: "What kind of artist do you do want?", required: false %>
     <%= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort, required: false %>
@@ -20,8 +14,13 @@
 
 
     <% if params[:country] %>
-    <p>All of the artists of <%= params[:country][:country] %> ! </p>
+      <% if params[:country].class != String %>
+        <p>All of the artists of <%= params[:country][:country] %> ! </p>
       <%= flag_icon(params[:country][:country].to_sym.downcase, class:"flag-size") %>
+      <% else %>
+        <p>All of the artists of <%= params[:country] %> ! </p>
+      <%= flag_icon(params[:country].to_sym.downcase, class:"flag-size") %>
+      <% end %>
       <% @artists.each do |artist| %>
         <div>
           <%= render partial: 'shared/artist_card', locals: {artist: artist} %>

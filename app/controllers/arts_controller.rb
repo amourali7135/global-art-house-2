@@ -31,6 +31,7 @@ class ArtsController < ApplicationController
     @art = Art.find(params[:id])
     @artist = @art.artist #nested, he changed it to make it work...OHHHH.
     # @photo = Photo.find(params[:id])
+    @art.punch(request)
   end
 
   def update

@@ -48,6 +48,9 @@ gem 'stripe'
 gem 'stripe_event'
 gem 'faker'
 gem "mailboxer"
+gem "punching_bag"
+gem 'social-share-button'
+
 
 
 

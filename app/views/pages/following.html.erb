@@ -1,10 +1,10 @@
-Link from dashboard + nav bar + URL shit.  
+Link from nav bar + URL shit.
 
 <p>The activity of who you are following</p>
 <% @user.all_following.each do |followed| %>
   <%= followed.first_name %> <%= followed.last_name %> <%= followed.artist_name %>
 
-  <p>Examples of their art</p>
+
   <% followed.arts.sort_by { |art| art.created_at }.each do |art| %>
     <div>
       <%= render partial: 'shared/art_card', locals: {art: art, artist: art.artist } %>

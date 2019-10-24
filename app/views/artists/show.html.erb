@@ -1,23 +1,23 @@
-Show how many people like + follow them.
-Not working though.
-Limit amount shown.
-
-
-
- <div class="my-5">
+<div class="my-5">
       <% @artist.tags.each do |tag| %>
         <p class="mb-0">TAG: <%= tag.name %></p>
       <% end %>
     </div>
-    <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small></p>
+    <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, browse_path(t) }.join(', ') %></small></p>
 
-<p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small></p>
+<p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, browse_path(t) }.join(', ') %></small></p>
 <div class="container">
 <div class="row">
     <%= link_to 'like', artist_like_path(@artist), class: 'btn btn-primary' %>
     <%= link_to 'unlike', artist_unlike_path(@artist), class: 'btn btn-primary' %>
     <%= link_to 'follow', artist_follow_path(@artist), class: 'btn btn-primary' %>
     <%= link_to 'unfollow', artist_unfollow_path(@artist), class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<div class="container">
+<div class="row">
+<p> Viewed <%= @artist.hits %> times </p>
   </div>
 </div>
 

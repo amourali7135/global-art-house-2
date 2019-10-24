@@ -30,6 +30,8 @@ class Artist < ApplicationRecord
   validates :last_name, presence: true
   # validates :tag_ids, presence: true
 
+  acts_as_punchable
+
   def self.tagged_with(name)
     Tag.find_by!(name: name).artists
   end
@@ -50,9 +52,9 @@ class Artist < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :global_search,
-  against: [ :first_name, :last_name, :artist_name, :bio, :birth_place, :city, :country], 
+  against: [ :first_name, :last_name, :artist_name, :bio, :birth_place, :city, :country],
   associated_against: {
-    tags: [:name], 
+    tags: [:name],
   },
   using: {
     tsearch: { prefix: true }
