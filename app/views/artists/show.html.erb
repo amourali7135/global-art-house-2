@@ -10,7 +10,7 @@
 	                        </div>
 	                        <div class="name">
                           <% if @artist.artist_name %>
-	                            <h3 class="title"><%= @artist.first_name %><%= @artist.last_name %>, also known as <%= @artist.artist_name %></h3>
+	                            <h3 class="title"><%= @artist.first_name %> <%= @artist.last_name %>, also known as <%= @artist.artist_name %></h3>
                               <% else %>
                               <h3 class="title"><%= @artist.first_name %><%= @artist.last_name %></h3>
                               <% end %>

@@ -1,0 +1,47 @@
+<div class="card-product">
+  <img src=<%= artist.photo %> />
+  <div class="card-product-infos">
+  <% if artist.artist_name? %>
+    <h2><%= artist.first_name %> <%= artist.last_name %>, also known as <%= artist.artist_name %></h2>
+    <p><%= artist.bio %></p>
+    <p> <%= artist.city %></p>
+    <div class="artist-card-arts">
+      <% artist.arts.sample(3).each do |art| %>
+      <%= cl_image_tag art.photos.sample.photo, class:"cloudinary-artist-arts" %>
+      <% end %>
+      </div>
+    <p> <%= artist.form %></p>
+    <% artist.tags.each do |tag| %>
+        <p class="mb-0">TAG: <%= tag.name %></p>
+      <% end %>
+    <%= link_to 'See more of this artist', artist_path(artist.id)  %>
+
+ <div class="d-flex justify-content-between w-100">
+    <%= flag_icon(artist.country.to_sym.downcase) %> <%#= artist.city %>
+    <p><%=artist.get_likes.size %> likes! </p>
+    <p> Viewed <%= artist.hits %> times </p>
+
+
+</div>
+
+
+    <% else %>
+
+    <h2><%= artist.first_name %> <%= artist.last_name %></h2>
+    <p><%= artist.bio %></p>
+    <p> <%= artist.city %></p>
+    <p> <%= artist.form %></p>
+    <% artist.tags.each do |tag| %>
+     <p class="mb-0">TAG: <%= tag.name %></p>
+    <% end %>
+    <%= cl_image_tag artist.arts[0].photo %>
+    <%= cl_image_tag artist.arts[1].photo if artist.arts[1] %>
+    <%= cl_image_tag artist.arts[2].photo if artist.arts[2] %>
+    <%= flag_icon(artist.country.to_sym.downcase) %>
+    <%= link_to 'See more of this artist', artist_path(artist.id)  %>
+    <% end %>
+  </div>
+</div>
+
+
+

@@ -15,3 +15,88 @@
     t.index ["artist_id"], name: "index_orders_on_artist_id"
     t.index ["shopping_cart_id"], name: "index_orders_on_shopping_cart_id"
   end
+
+
+Carousel home page test II
+
+
+Bootstrap Artist Test II
+<% @arts.each_with_index do |art, index| %>
+
+<div id="my-carousel_<%= index %>" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#my-carousel_<%= index %>" data-slide-to="0" class="active"></li>
+    <li data-target="#my-carousel_<%= index %>" data-slide-to="1"></li>
+    <li data-target="#my-carousel_<%= index %>" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <%= cl_image_tag(art.photos.first,
+    width: 200, height: 150, crop: :fill, class: "d-block w-100") %>
+      <div class="carousel-caption d-none d-md-block">
+    <h5><%= art.title %></h5>
+    <p><%= art.artist.first_name %> <%= art.artist.country %> </p>
+  </div>
+    </div>
+    <div class="carousel-item">
+      <%= cl_image_tag(art.photos.second,
+      width: 200, height: 150, crop: :fill, class: "d-block w-100") %>
+      <div class="carousel-caption d-none d-md-block">
+    <h5><%= art.title %></h5>
+    <p><%= art.artist.first_name %> <%= art.artist.country %> </p>
+  </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#my-carousel_<%= index %>" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#my-carousel_<%= index %>" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<% end %>
+
+
+
+Bootstrap test carousel I.  Front page
+<div id="my-carousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#my-carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#my-carousel" data-slide-to="1"></li>
+    <li data-target="#my-carousel" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="https://i.pinimg.com/originals/33/a8/7c/33a87c0b701bf36022b728564fbf6e6d.jpg" alt="Putin">
+      <div class="carousel-caption d-none d-md-block">
+    <h5>Raptor tamer</h5>
+    <p>KGB</p>
+  </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://pbs.twimg.com/media/D6txD2_XkAEZYhw.jpg" alt="Rick n Morty">
+      <div class="carousel-caption d-none d-md-block">
+    <h5>Thug life</h5>
+    <p>C137 represent</p>
+  </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://i.imgflip.com/1itqd.jpg" alt="Einstein">
+      <div class="carousel-caption d-none d-md-block">
+    <h5>Come at me bro</h5>
+    <p>It's all relative</p>
+  </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#my-carousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#my-carousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+

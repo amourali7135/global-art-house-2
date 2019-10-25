@@ -18,6 +18,9 @@
         <li class="nav-item active">
           <%= link_to "Browse Artists", artists_path, class: "nav-link" %>
         </li>
+        <li class="nav-item active">
+          <%= link_to "About Us", about_path, class: "nav-link" %>
+        </li>
       <% if user_signed_in? %>
         <li class="nav-item active">
           <%= link_to "Home", root_path, class: "nav-link" %>

@@ -28,7 +28,7 @@ class Artist < ApplicationRecord
   validates :country, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
-  # validates :tag_ids, presence: true
+
 
   acts_as_punchable
 
