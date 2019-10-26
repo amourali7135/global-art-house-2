@@ -12,7 +12,7 @@
     <% art.tags.each do |tag| %>
       <p class="mb-0">TAG: <%= tag.name %></p>
     <% end %>
-      <%= cl_image_tag @artist.photo, class: 'card-trip-user avatar-bordered' %>
+      <%= cl_image_tag art.artist.photo, class: 'card-trip-user avatar-bordered' %>
       <p><%= flag_icon(art.artist.country.to_sym.downcase) %> <%= art.artist.city %></p>
       <%= link_to 'See this art!', art_path(art)  %>
   </div>
