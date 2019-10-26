@@ -1,4 +1,4 @@
-Random artists from random countries and sorted by various categories to display.Grid cards by:  Liked, followers, comments, views, new/recents, country, random art, random artists
+Random artists from random countries and sorted by various categories to display.Grid cards by:  country
 3-4X in one row for each test.
 
 <%= render partial: 'shared/banner'  %>
@@ -32,20 +32,26 @@ Random artists from random countries and sorted by various categories to display
 
 ></div>
 
-
-Grid test I to generate random artists.
-
+<section class="clean-block clean-catalog dark">
 <div class="container">
+  <div class="block-heading">
+    <h2 class="text-info">Browse our artists</h2>
+  </div>
+
+
+A small selection of some of our artists!
+
+<div class="container", id="front-page-grid">
   <% @artists.sample(3).each do |artist| %>
     <div class="row">
-      <div class="col-sm-6">
+      <div class=" products pl-5 card-grid-3c">
         <%= render partial: 'shared/home_artist_card', locals: {artist: artist} %>
       </div>
     </div>
   <% end %>
 </div>
 
-Grid test II to generate random arts.  Why all Piter though?
+Grid test II to generate random arts.  Why all Piter/SM though?  Controller is cause.
 
 <div class="container">
   <% @arts.sample(3).each do |art| %>
@@ -57,11 +63,8 @@ Grid test II to generate random arts.  Why all Piter though?
   <% end %>
 </div>
 
-Grid test IIIA arts by likes top 3-5
-method = @art.get_likes.size
-
+Our most like arts!
 <div class="container">
-
     <% @arts.sort_by { |art| -art.get_likes.size }.first(3).each do |art|  %>
     <div class="row">
       <div class="col-sm-6">
@@ -72,12 +75,8 @@ method = @art.get_likes.size
   <% end %>
 </div>
 
-Grid test IIIB artists by likes.
-method = @artist.get_likes.size
-
-
+Our most liked artists.
 <div class="container">
-
     <% @artists.sort_by { |artist| -artist.get_likes.size }.first(3).each do |artist|  %>
     <div class="row">
       <div class="col-sm-6">
@@ -87,10 +86,7 @@ method = @artist.get_likes.size
   <% end %>
 </div>
 
-
-Grid test IV by most artist followers.
-method = @artist.followers_count
-
+Our most followed artists.
 <div class="container">
   <% @artists.sort_by { |artist| -artist.followers_count }.first(3).each do |artist|  %>
     <div class="row">
@@ -101,9 +97,7 @@ method = @artist.followers_count
   <% end %>
 </div>
 
-Grid test V by most art comments.
-method = @art.comments.count
-
+Our most commented on arts.
 <div class="container">
   <% @arts.sort_by { |art| -art.comments.count }.first(3).each do |art|  %>
     <div class="row">
@@ -114,9 +108,7 @@ method = @art.comments.count
   <% end %>
 </div>
 
-Grid test VIA art by most views.
-method = @art.hits
-
+Our most viewed arts.
 <div class="container">
   <% @arts.sort_by { |art| -art.hits }.first(3).each do |art|  %>
     <div class="row">
@@ -127,9 +119,7 @@ method = @art.hits
   <% end %>
 </div>
 
-Grid test VIB artist by most views.
-method = @artist.hits
-
+Our most viewed artists.
 <div class="container">
   <% @artists.sort_by { |artist| -artist.hits }.first(3).each do |artist|  %>
     <div class="row">
@@ -140,11 +130,11 @@ method = @artist.hits
   <% end %>
 </div>
 
-Grid test VII artists by most recent negative - won't work here, why?
-method = artist.created_at
+Grid test VII artists by most recent negative - won't work here, why?  Putin won't show when loggedin.
+method = artist.created_at  only one that own't work.
 
 <div class="container">
-  <% @artists.sort_by { |artist| artist.created_at }.first(3).each do |artist|  %>
+  <% @artists.sort_by { |artist| artist.created_at }.last(3).each do |artist|  %>
     <div class="row">
       <div class="col-sm-6">
         <%= render partial: 'shared/home_artist_card', locals: {artist: artist} %>
@@ -153,11 +143,10 @@ method = artist.created_at
   <% end %>
 </div>
 
-Grid test VIII arts by most recent negative - won't work here, why?
-method = art.created_at
 
+Most recently added art.
 <div class="container">
-  <% @arts.sort_by { |art| art.created_at }.first(3).each do |art|  %>
+  <% @arts.sort_by { |art| art.created_at }.last(3).each do |art|  %>
     <div class="row">
       <div class="col-sm-6">
         <%= render partial: 'shared/home_art_card', locals: {art: art} %>
@@ -165,3 +154,11 @@ method = art.created_at
     </div>
   <% end %>
 </div>
+
+Grid test IX Artists of a random country...
+
+
+ </div>
+  </div>
+</div>
+</section>
