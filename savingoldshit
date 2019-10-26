@@ -136,3 +136,15 @@ home_art_card for front page experimenting to get rid of the piter error + if/el
 
     </div>
 </div>
+
+
+Art show page photo original
+<div class="container">
+  <div class="row">
+<ul>
+  <% @art.photos.each do |photo| %>
+    <li><%= cl_image_tag(photo.photo, width: 400, height: 300, crop: :fill) %></li>
+  <% end %>
+</ul>
+  </div>
+</div>
