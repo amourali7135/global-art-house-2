@@ -53,10 +53,10 @@ A small selection of some of our artists!
 
 Grid test II to generate random arts.  Why all Piter/SM though?  Controller is cause.
 
-<div class="container">
+<div class="container", id="front-page-grid">
   <% @arts.sample(3).each do |art| %>
     <div class="row">
-      <div class="col-sm-6">
+      <div class=" products pl-5 card-grid-3c">
         <%= render partial: 'shared/home_art_card', locals: {art: art} %>
       </div>
     </div>
@@ -64,10 +64,10 @@ Grid test II to generate random arts.  Why all Piter/SM though?  Controller is c
 </div>
 
 Our most like arts!
-<div class="container">
+<div class="container", id="front-page-grid">
     <% @arts.sort_by { |art| -art.get_likes.size }.first(3).each do |art|  %>
     <div class="row">
-      <div class="col-sm-6">
+      <div class=" products pl-5 card-grid-3c">
         <%= render partial: 'shared/home_art_card', locals: {art: art} %>
       </div>
     </div>
@@ -76,10 +76,10 @@ Our most like arts!
 </div>
 
 Our most liked artists.
-<div class="container">
+<div class="container", id="front-page-grid">
     <% @artists.sort_by { |artist| -artist.get_likes.size }.first(3).each do |artist|  %>
     <div class="row">
-      <div class="col-sm-6">
+      <div class=" products pl-5 card-grid-3c">
         <%= render partial: 'shared/home_artist_card', locals: {artist: artist} %>
       </div>
     </div>
@@ -87,10 +87,10 @@ Our most liked artists.
 </div>
 
 Our most followed artists.
-<div class="container">
+<div class="container", id="front-page-grid">
   <% @artists.sort_by { |artist| -artist.followers_count }.first(3).each do |artist|  %>
     <div class="row">
-      <div class="col-sm-6">
+      <div class=" products pl-5 card-grid-3c">
         <%= render partial: 'shared/home_artist_card', locals: {artist: artist} %>
       </div>
     </div>
@@ -98,10 +98,10 @@ Our most followed artists.
 </div>
 
 Our most commented on arts.
-<div class="container">
+<div class="container", id="front-page-grid">
   <% @arts.sort_by { |art| -art.comments.count }.first(3).each do |art|  %>
     <div class="row">
-      <div class="col-sm-6">
+      <div class=" products pl-5 card-grid-3c">
         <%= render partial: 'shared/home_art_card', locals: {art: art} %>
       </div>
     </div>
@@ -109,10 +109,10 @@ Our most commented on arts.
 </div>
 
 Our most viewed arts.
-<div class="container">
+<div class="container", id="front-page-grid">
   <% @arts.sort_by { |art| -art.hits }.first(3).each do |art|  %>
     <div class="row">
-      <div class="col-sm-6">
+      <div class=" products pl-5 card-grid-3c">
         <%= render partial: 'shared/home_art_card', locals: {art: art} %>
       </div>
     </div>
@@ -120,10 +120,10 @@ Our most viewed arts.
 </div>
 
 Our most viewed artists.
-<div class="container">
+<div class="container", id="front-page-grid">
   <% @artists.sort_by { |artist| -artist.hits }.first(3).each do |artist|  %>
     <div class="row">
-      <div class="col-sm-6">
+      <div class=" products pl-5 card-grid-3c">
         <%= render partial: 'shared/home_artist_card', locals: {artist: artist} %>
       </div>
     </div>
@@ -133,10 +133,10 @@ Our most viewed artists.
 Grid test VII artists by most recent negative - won't work here, why?  Putin won't show when loggedin.
 method = artist.created_at  only one that own't work.
 
-<div class="container">
+<div class="container", id="front-page-grid">
   <% @artists.sort_by { |artist| artist.created_at }.last(3).each do |artist|  %>
     <div class="row">
-      <div class="col-sm-6">
+      <div class=" products pl-5 card-grid-3c">
         <%= render partial: 'shared/home_artist_card', locals: {artist: artist} %>
       </div>
     </div>
@@ -145,10 +145,10 @@ method = artist.created_at  only one that own't work.
 
 
 Most recently added art.
-<div class="container">
+<div class="container", id="front-page-grid">
   <% @arts.sort_by { |art| art.created_at }.last(3).each do |art|  %>
     <div class="row">
-      <div class="col-sm-6">
+      <div class=" products pl-5 card-grid-3c">
         <%= render partial: 'shared/home_art_card', locals: {art: art} %>
       </div>
     </div>

@@ -1,7 +1,7 @@
 #front-page-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
+  grid-row-gap: 16px;
 }
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
