@@ -100,3 +100,39 @@ Bootstrap test carousel I.  Front page
   </a>
 </div>
 
+home_art_card for front page experimenting to get rid of the piter error + if/else statement.
+
+<div class="card-trip">
+  <% art.photos.each do |photo| %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path(photo.photo, width: 150, height: 120, crop: :fill) %>)">
+    </div>
+  <% end %>
+
+  <div class="card-trip-infos">
+    <h2><%= art.title %></h2>
+    <p><%= art.description %></p>
+    <p><%= art.inspiration %></p>
+    <p>Available to buy? <%= art.available %></p>
+    <% art.tags.each do |tag| %>
+      <p class="mb-0">TAG: <%= tag.name %></p>
+    <% end %>
+    <% if @artist %>
+      <%= cl_image_tag @artist.photo, class: 'card-trip-user avatar-bordered' %>
+      <p><%= flag_icon(@artist.country.to_sym.downcase) %> <%= @artist.city %></p>
+      <%= link_to 'See this art!', artist_art_path(@artist.id, art)  %>
+    <% else %>
+      <%= cl_image_tag artist.photo, class: 'card-trip-user avatar-bordered' %>
+      <p><%= flag_icon(artist.country.to_sym.downcase) %> <%= artist.city %></p>
+      <%= link_to 'See this art!', artist_art_path(artist.id, art)  %>
+    <% end %>
+  </div>
+
+  <div class="d-flex justify-content-between w-100">
+    <h2 class="card-trip-pricing">$<%= art.price_cents %></h2>
+    <p><%=art.get_likes.size %> likes! </p>
+      <p> Viewed <%= art.hits %> times </p>
+  </div>
+</div>
+
+    </div>
+</div>

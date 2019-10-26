@@ -1,26 +1,39 @@
 Show art they have in tabs,add new art, edit existing art, see followed shit.  Tabs.
-EDIT/DELETE ART HERE ONLY!
-<h1> Hello <%= @artist.first_name %>! </h1>
-
+EDIT/DELETE ART HERE ONLY!  Make a new dashboard art card?
+<div class="container">
+  <div class="row">
+    <h1> Hello <%= @artist.first_name %>! </h1>
+    <br>
      <%= cl_image_tag(@artist.photo,
     width: 150, height: 100, crop: :fill) %>
-<p>Share new art <%= link_to "Add Art", new_artist_art_path(@artist.id), class: 'btn btn-primary' %> </p>
+  </div>
+</div>
 
-Your artist tags
+<div class="container">
+  <div class="row">
+    <p>Share new art <%= link_to "Add Art", new_artist_art_path(@artist.id), class: 'btn btn-primary' %> </p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <p>Edit your artist profile  <%= link_to 'Edit', edit_artist_path(@artist.id), class: 'btn btn-primary'  %>   </p>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
  <div class="my-5">
+  <p>Your artist tags</p>
       <% @artist.tags.each do |tag| %>
         <p class="mb-0">TAG: <%= tag.name %></p>
       <% end %>
-    </div>
     <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, artists_path(t) }.join(', ') %></small></p>
+    </div>
+    </div>
+</div>
 
-<p>See all of your existing art  <%= link_to "Your art", artist_arts_path(@artist.id), class: 'btn btn-primary'  %>   </p>
-
-<% @artist.arts.each do |art| %>
-   <div>
-    <%= render partial: 'shared/art_card', locals: {art: art} %>
-  </div>
-<% end %>
 <div class="container">
 <div class="row">
 <p>You have  <%= @artist.followers_count  %>  followers.  </p>
@@ -31,12 +44,11 @@ Your artist tags
 
 <p>Your artist profile has  <%= @artist.get_likes.size  %>  likes.  </p>
 
-<p>Edit your artist profile  <%= link_to 'Edit', edit_artist_path(@artist.id), class: 'btn btn-primary'  %>   </p>
-
 <p>Change your username or password  <%= link_to 'Change', edit_user_registration_path(@current_user.id), class: 'btn btn-primary'  %>   </p>
 
   </div>
 </div>
+
 
 <div class="container">
 <div class="row">
@@ -54,16 +66,16 @@ Your artist tags
 
 
 
+<div class="container">
+  <div class="row">
+<p>See all of your existing art and artist page <%= link_to "Your art", artist_arts_path(@artist.id), class: 'btn btn-primary'  %>   </p>
+  </div>
+</div>
 
-<%# @user.all_following.each do |followed| %>
-  <%#= followed.first_name %> <%#= followed.last_name %> <%#= followed.artist_name %>
 
-
-  <%# followed.arts.sort_by { |art| art.created_at }.each do |art| %>
-    <div>
-      <%#= render partial: 'shared/art_card', locals: {art: art, artist: art.artist } %>
-    </div>
-  <%# end %>
-<%# end %>
-
+<% @artist.arts.each do |art| %>
+   <div>
+    <%= render partial: 'shared/art_card', locals: {art: art} %>
+  </div>
+<% end %>
 

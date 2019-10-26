@@ -1,13 +1,9 @@
-Random artists from random countries and sorted by various categories to display.Grid cards by:  country
-3-4X in one row for each test.
-
 <%= render partial: 'shared/banner'  %>
 
 
 <div class="container">
   <div class="row">
-  <h3>Explore art all around the world</h3>
-  <h3>Click a country on the map or search</h3>
+  <h3>Explore art from all around the world</h3>
   </div>
 </div>
 
@@ -17,8 +13,27 @@ Random artists from random countries and sorted by various categories to display
   </div>
 </div>
 
+
+<div class="container">
+  <div class="row">
+  <h3>Discover undiscovered artists from all around the world</h3>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+   <%= link_to "See Artists", artists_path, class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+   <h3>Click a country on the map or search</h3>
+  </div>
+</div>
+
  <%= simple_form_for(:country, as: :select2, method: :get, url: '/artists_countries') do |f| %>
-  <%= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort %>
+  <%= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort, required: false %>
   <%= f.submit %>
 <% end %>
 
@@ -32,6 +47,7 @@ Random artists from random countries and sorted by various categories to display
 
 ></div>
 
+
 <section class="clean-block clean-catalog dark">
 <div class="container">
   <div class="block-heading">
@@ -39,8 +55,7 @@ Random artists from random countries and sorted by various categories to display
   </div>
 
 
-A small selection of some of our artists!
-
+<p class="grid-headers">A small selection of some of our artists!</p>
 <div class="container", id="front-page-grid">
   <% @artists.sample(3).each do |artist| %>
     <div class="row">
@@ -51,8 +66,7 @@ A small selection of some of our artists!
   <% end %>
 </div>
 
-Grid test II to generate random arts.  Why all Piter/SM though?  Controller is cause.
-
+<p class="grid-headers">Grid test II to generate random arts.  Why all Piter/SM though?  Controller is cause.</p>
 <div class="container", id="front-page-grid">
   <% @arts.sample(3).each do |art| %>
     <div class="row">
@@ -63,7 +77,7 @@ Grid test II to generate random arts.  Why all Piter/SM though?  Controller is c
   <% end %>
 </div>
 
-Our most like arts!
+<p class="grid-headers">Our most liked arts!</p>
 <div class="container", id="front-page-grid">
     <% @arts.sort_by { |art| -art.get_likes.size }.first(3).each do |art|  %>
     <div class="row">
@@ -71,11 +85,10 @@ Our most like arts!
         <%= render partial: 'shared/home_art_card', locals: {art: art} %>
       </div>
     </div>
-
   <% end %>
 </div>
 
-Our most liked artists.
+<p class="grid-headers">Our most liked artists.</p>
 <div class="container", id="front-page-grid">
     <% @artists.sort_by { |artist| -artist.get_likes.size }.first(3).each do |artist|  %>
     <div class="row">
@@ -86,7 +99,7 @@ Our most liked artists.
   <% end %>
 </div>
 
-Our most followed artists.
+<p class="grid-headers">Our most followed artists.</p>
 <div class="container", id="front-page-grid">
   <% @artists.sort_by { |artist| -artist.followers_count }.first(3).each do |artist|  %>
     <div class="row">
@@ -97,7 +110,7 @@ Our most followed artists.
   <% end %>
 </div>
 
-Our most commented on arts.
+<p class="grid-headers">Our most commented on arts.</p>
 <div class="container", id="front-page-grid">
   <% @arts.sort_by { |art| -art.comments.count }.first(3).each do |art|  %>
     <div class="row">
@@ -108,7 +121,7 @@ Our most commented on arts.
   <% end %>
 </div>
 
-Our most viewed arts.
+<p class="grid-headers">Our most viewed arts.</p>
 <div class="container", id="front-page-grid">
   <% @arts.sort_by { |art| -art.hits }.first(3).each do |art|  %>
     <div class="row">
@@ -119,7 +132,7 @@ Our most viewed arts.
   <% end %>
 </div>
 
-Our most viewed artists.
+<p class="grid-headers">Our most viewed artists.</p>
 <div class="container", id="front-page-grid">
   <% @artists.sort_by { |artist| -artist.hits }.first(3).each do |artist|  %>
     <div class="row">
@@ -130,8 +143,8 @@ Our most viewed artists.
   <% end %>
 </div>
 
-Grid test VII artists by most recent negative - won't work here, why?  Putin won't show when loggedin.
-method = artist.created_at  only one that own't work.
+<p class="grid-headers">Grid test VII artists by most recent negative - won't work here, why?  Putin won't show when loggedin.
+method = artist.created_at  only one that own't work.</p>
 
 <div class="container", id="front-page-grid">
   <% @artists.sort_by { |artist| artist.created_at }.last(3).each do |artist|  %>
@@ -144,7 +157,7 @@ method = artist.created_at  only one that own't work.
 </div>
 
 
-Most recently added art.
+<p class="grid-headers">Most recently added art.</p>
 <div class="container", id="front-page-grid">
   <% @arts.sort_by { |art| art.created_at }.last(3).each do |art|  %>
     <div class="row">
@@ -155,7 +168,7 @@ Most recently added art.
   <% end %>
 </div>
 
-Grid test IX Artists of a random country...
+<p class="grid-headers">Grid test IX Artists of a random country...</p>
 
 
  </div>
