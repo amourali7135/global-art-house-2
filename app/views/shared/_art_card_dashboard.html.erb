@@ -20,13 +20,14 @@
       <%= cl_image_tag artist.photo, class: 'card-trip-user avatar-bordered' %>
       <p><%= flag_icon(artist.country.to_sym.downcase) %> <%= artist.city %></p>
       <%= link_to 'See this art!', artist_art_path(artist.id, art)  %>
+      <%= link_to 'Edit this art!', artist_art_path(artist.id, art)  %>
+      <%= link_to 'Delete this art!', artist_art_path(artist.id, art)  %>
     <% end %>
   </div>
 
   <div class="d-flex justify-content-between w-100">
     <h2 class="card-trip-pricing">$<%= art.price_cents %></h2>
     <p><%=art.get_likes.size %> likes! </p>
-      <p>  <%= art.created_at.strftime("%m/%d/%y at %l:%M %p")%>  </p>
       <p> Viewed <%= art.hits %> times </p>
   </div>
 </div>
