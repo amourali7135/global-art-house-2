@@ -1,10 +1,17 @@
 <div class="card mb-3 col-sm-6 card align-items-center", id="art-card-show">
-<% art.photos.each do |photo| %>
+<% @art.photos.each do |photo| %>
   <%= cl_image_tag(photo.photo, width: 500, height: 400, crop: :fill) %>
   <div class="card-body">
-    <h3 class="card-title"><%= art.title %></h3>
-    <p class="card-text"><%= art.description %></p>
-    <p class="card-text"><small class="text-muted"><%= art.inspiration %></small></p>
+    <h3 class="card-title"><%= @art.title %></h3>
+    <p class="card-text"><%= @art.description %></p>
+    <p class="card-text"><small class="text-muted"><%= @art.inspiration %></small></p>
   </div>
+<div class="d-flex justify-content-between w-100">
+<p>Has <%=@art.get_likes.size %> likes! </p>
+<%= link_to 'Like', art_likes_path(@art), class: 'btn btn-primary' %>
+<%= link_to 'Unlike', art_unlikes_path(@art), class: 'btn btn-primary' %>
+<p> Viewed <%= @art.hits %> times </p>
+</div>
 </div>
 <% end %>
+

@@ -1,4 +1,10 @@
-Paginate/limit.  Design this too, shit.  Put a partial artist header on top.
+Paginate/limit.  Design this too, shit.
+
+ <div class="row align-items-center justify-content-center">
+<%= render partial: 'shared/artist_card_show', locals: {artist: @artist} %>
+</div>
+
+
 <br>
  welcome to <%= @artist.first_name %>'s art!
  <br>

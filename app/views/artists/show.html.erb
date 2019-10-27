@@ -1,11 +1,15 @@
-If statements for website/social media!
+If statements for website/social
+ <div class="row align-items-center justify-content-center">
+<%= render partial: 'shared/artist_card_show', locals: {artist: @artist} %>
+</div>
+
 <div class="main main-raised">
 		<div class="profile-content">
             <div class="container">
                 <div class="row">
 	                <div class="col-md-6 ml-auto mr-auto">
         	           <div class="profile">
-	                        <div class="avatar">
+	                        <div class="row align-items-center justify-content-center">
 	                             <%= cl_image_tag @artist.photo,
     width: 200, height: 150, crop: :fill, class: "img-raised rounded-circle img-fluid" %>
 	                        </div>
@@ -57,16 +61,20 @@ If statements for website/social media!
 
 
 
-<div class="my-5">
+<div class="my-5 row align-items-center justify-content-center">
       <% @artist.tags.each do |tag| %>
         <p class="mb-0">TAG: <%= tag.name %></p>
       <% end %>
     </div>
+    <div class="row align-items-center justify-content-center">
     <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, artists_path(t) }.join(', ') %></small></p>
 
 <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, artists_path(t) }.join(', ') %></small></p>
+</div>
+<div class="row align-items-center justify-content-center">
       <p>Share: <%= social_share_button_tag(@artist.first_name,) %>
-<div class="container">
+      </div>
+<div class="row align-items-center justify-content-center">
 <div class="row">
     <%= link_to 'like', artist_like_path(@artist), class: 'btn btn-primary' %>
     <%= link_to 'unlike', artist_unlike_path(@artist), class: 'btn btn-primary' %>
@@ -75,13 +83,13 @@ If statements for website/social media!
   </div>
 </div>
 
-<div class="container">
+<div class="row align-items-center justify-content-center">
 <div class="row">
 <p> Viewed <%= @artist.hits %> times </p>
   </div>
 </div>
 
-<div class="container">
+<div class="row align-items-center justify-content-center">
 <div class="row">
 <% if @conversation %>
   <p>Send a message (exist) <%= link_to 'Message', @conversation, class: 'btn btn-primary' %></p>
@@ -96,25 +104,25 @@ If statements for website/social media!
 </div>
 
 
-<div class="container">
+<div class="row align-items-center justify-content-center">
 <div class="row">
 <p><%=@artist.first_name %> has <%= @artist.followers_count %> followers! </p>
   </div>
 </div>
 
-<div class="container">
+<div class="row align-items-center justify-content-center">
 <div class="row">
 <p><%=@artist.get_likes.size %> likes! </p>
   </div>
 </div>
 
-<div class="container">
+<div class="row align-items-center justify-content-center">
 <div class="row">
-<p><%=link_to 'see followers', artist_followers_path(@artist) %>  </p>
+<p><%=link_to 'see followers', artist_followers_path(@artist), class: 'btn btn-primary' %>  </p>
   </div>
 </div>
 
-  <div class="container">
+  <div class="row align-items-center justify-content-center">
      <div class="row">
     Here is a small selection of their art.
     Click here to see more of their art!
@@ -122,9 +130,9 @@ If statements for website/social media!
   </div>
 
 
-   <div class="container">
+   <div class="row align-items-center justify-content-center">
      <div class="row">
-        <%= link_to 'See all of their art!', artist_arts_path(@artist.id)  %>
+        <%= link_to 'See all of their art!', artist_arts_path(@artist.id), class: 'btn btn-primary'  %>
 
      </div>
    </div>

@@ -1,0 +1,20 @@
+<div class="card mb-3 col-sm-6 card align-items-center", id="artist-card-show">
+  <%= cl_image_tag @artist.photo,
+    width: 300, height: 225, crop: :fill, class: "img-raised rounded-circle img-fluid" %>
+  <div class="card-body">
+  <% if @artist.artist_name %>
+	  <h3 class="title row align-items-center justify-content-center"><%= @artist.first_name %> <%= @artist.last_name %>, also known as <%= @artist.artist_name %></h3>
+  <% else %>
+    <h3 class="title"><%= @artist.first_name %><%= @artist.last_name %></h3>
+   <% end %>
+    <p class="card-text row align-items-center justify-content-center"><%= @artist.bio %></p>
+    <p class="card-text row align-items-center justify-content-center"><small class="text-muted"><%= @artist.artist_name %></small></p>
+  </div>
+<div class="d-flex justify-content-between w-100">
+<p>Has <%=@artist.get_likes.size %> likes! </p>
+<%= link_to 'Like', artist_like_path(@artist), class: 'btn btn-primary' %>
+<%= link_to 'Unlike', artist_unlike_path(@artist), class: 'btn btn-primary' %>
+<p> Viewed <%= @artist.hits %> times </p>
+</div>
+</div>
+
