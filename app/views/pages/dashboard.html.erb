@@ -1,6 +1,6 @@
 Show art they have in tabs,add new art, edit existing art, see followed shit.  Tabs.
 EDIT/DELETE ART HERE ONLY!  Make a new dashboard art card?
-<div class="container">
+<div class="row align-items-center justify-content-center">
   <div class="row">
     <h1> Hello <%= @artist.first_name %>! </h1>
     <br>
@@ -9,20 +9,20 @@ EDIT/DELETE ART HERE ONLY!  Make a new dashboard art card?
   </div>
 </div>
 
-<div class="container">
+<div class="row align-items-center justify-content-center">
   <div class="row">
     <p>Share new art <%= link_to "Add Art", new_artist_art_path(@artist.id), class: 'btn btn-primary' %> </p>
   </div>
 </div>
 
-<div class="container">
+<div class="row align-items-center justify-content-center">
   <div class="row">
-    <p>Edit your artist profile  <%= link_to 'Edit', edit_artist_path(@artist.id), class: 'btn btn-primary'  %>   </p>
+    <p>Edit your artist profile/photo  <%= link_to 'Edit', edit_artist_path(@artist.id), class: 'btn btn-primary'  %>   </p>
   </div>
 </div>
 
 
-<div class="container">
+<div class="row align-items-center justify-content-center">
   <div class="row">
  <div class="my-5">
   <p>Your artist tags</p>
@@ -34,8 +34,8 @@ EDIT/DELETE ART HERE ONLY!  Make a new dashboard art card?
     </div>
 </div>
 
-<div class="container">
-<div class="row">
+<div class="row align-items-center justify-content-center">
+<div class="row align-items-center justify-content-center">
 <p>You have  <%= @artist.followers_count  %>  followers.  </p>
 
 <p>See your followers:  <%= @user.following_users  %>   </p>
@@ -50,7 +50,7 @@ EDIT/DELETE ART HERE ONLY!  Make a new dashboard art card?
 </div>
 
 
-<div class="container">
+<div class="row align-items-center justify-content-center">
 <div class="row">
 <p> See your conversations! <%= link_to 'Convos', conversation_path(@user), class: 'btn btn-primary' %> </p>
 <p> See your conversations! <%= link_to 'Convos', conversations_path, class: 'btn btn-primary' %> </p>  right one!
@@ -58,7 +58,7 @@ EDIT/DELETE ART HERE ONLY!  Make a new dashboard art card?
 </div>
 
 
-<div class="container">
+<div class="row align-items-center justify-content-center">
 <div class="row">
 <p> Go to your following page <%= link_to 'Following', following_path, class: 'btn btn-primary' %> </p>
   </div>
@@ -66,16 +66,18 @@ EDIT/DELETE ART HERE ONLY!  Make a new dashboard art card?
 
 
 
-<div class="container">
+<div class="row align-items-center justify-content-center">
   <div class="row">
 <p>See all of your existing art and artist page <%= link_to "Your art", artist_arts_path(@artist.id), class: 'btn btn-primary'  %>   </p>
   </div>
 </div>
 
-
+<div class="row align-items-center justify-content-center">
+  <div class="row">
 <% @artist.arts.each do |art| %>
    <div>
     <%= render partial: 'shared/art_card', locals: {art: art} %>
   </div>
 <% end %>
-
+  </div>
+</div>

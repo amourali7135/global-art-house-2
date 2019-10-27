@@ -2,90 +2,12 @@ If statements for website/social
  <div class="row align-items-center justify-content-center">
 <%= render partial: 'shared/artist_card_show', locals: {artist: @artist} %>
 </div>
-
-<div class="main main-raised">
-		<div class="profile-content">
-            <div class="container">
-                <div class="row">
-	                <div class="col-md-6 ml-auto mr-auto">
-        	           <div class="profile">
-	                        <div class="row align-items-center justify-content-center">
-	                             <%= cl_image_tag @artist.photo,
-    width: 200, height: 150, crop: :fill, class: "img-raised rounded-circle img-fluid" %>
-	                        </div>
-	                        <div class="name">
-                          <% if @artist.artist_name %>
-	                            <h3 class="title"><%= @artist.first_name %> <%= @artist.last_name %>, also known as <%= @artist.artist_name %></h3>
-                              <% else %>
-                              <h3 class="title"><%= @artist.first_name %><%= @artist.last_name %></h3>
-                              <% end %>
-                <h6> <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, artists_path(t) }.join(', ') %></small></p></h6>
-								<a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a>
-	                        </div>
-	                    </div>
-    	            </div>
-                </div>
-                <div class="description text-center">
-                    <p><%= @artist.bio %></p>
-                    <p><%= @artist.age %> Years old</p>
-                    <p><%= @artist.city %>, <%= @artist.country %> <%= flag_icon(@artist.country.to_sym.downcase) %></p>
-                </div>
-				<div class="row">
-					<div class="col-md-6 ml-auto mr-auto">
-                        <div class="profile-tabs">
-                          <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
-                                  <i class="material-icons"></i>
-                                  Studio
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#works" role="tab" data-toggle="tab">
-                                  <i class="material-icons"></i>
-                                    Work
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
-                                  <i class="material-icons"></i>
-                                    Favorite
-                                </a>
-                            </li>
-                          </ul>
-                        </div>
-    	    	</div>
-            </div>
-
-
-
-<div class="my-5 row align-items-center justify-content-center">
-      <% @artist.tags.each do |tag| %>
-        <p class="mb-0">TAG: <%= tag.name %></p>
-      <% end %>
-    </div>
-    <div class="row align-items-center justify-content-center">
-    <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, artists_path(t) }.join(', ') %></small></p>
-
-<p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, artists_path(t) }.join(', ') %></small></p>
-</div>
-<div class="row align-items-center justify-content-center">
-      <p>Share: <%= social_share_button_tag(@artist.first_name,) %>
-      </div>
 <div class="row align-items-center justify-content-center">
 <div class="row">
     <%= link_to 'like', artist_like_path(@artist), class: 'btn btn-primary' %>
     <%= link_to 'unlike', artist_unlike_path(@artist), class: 'btn btn-primary' %>
     <%= link_to 'follow', artist_follow_path(@artist), class: 'btn btn-primary' %>
     <%= link_to 'unfollow', artist_unfollow_path(@artist), class: 'btn btn-primary' %>
-  </div>
-</div>
-
-<div class="row align-items-center justify-content-center">
-<div class="row">
-<p> Viewed <%= @artist.hits %> times </p>
   </div>
 </div>
 
@@ -98,47 +20,35 @@ If statements for website/social
   <p> Send this artist a message! <%= link_to 'New Message', new_conversation_path(receiver_id: params[:id]), class: 'btn btn-primary' %> </p>
 <% end %>
 <br>
-    <%= @artist.artist_name %> | <%= link_to 'Send a message', new_message_path(receiver_id: @artist.user_id), class: 'btn btn-primary' %>
+    <% @artist.artist_name %> | <%= link_to 'Send a message', new_message_path(receiver_id: @artist.user_id), class: 'btn btn-primary' %>
 
   </div>
 </div>
 
-
-<div class="row align-items-center justify-content-center">
-<div class="row">
-<p><%=@artist.first_name %> has <%= @artist.followers_count %> followers! </p>
+ <div class="row align-items-center justify-content-center">
+    <p><strong>Share: </strong><%= social_share_button_tag(@artist.first_name,) %>
   </div>
+
+<div class="my-5 row align-items-center justify-content-center">
+      <% @artist.tags.each do |tag| %>
+        <p class="mb-0">TAG: <%= tag.name %></p>
+      <% end %>
+    </div>
+    <div class="row align-items-center justify-content-center">
+    <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, artists_path(t) }.join(', ') %></small></p>
+
+<p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, artists_path(t) }.join(', ') %></small></p>
 </div>
 
-<div class="row align-items-center justify-content-center">
-<div class="row">
-<p><%=@artist.get_likes.size %> likes! </p>
-  </div>
-</div>
-
-<div class="row align-items-center justify-content-center">
-<div class="row">
-<p><%=link_to 'see followers', artist_followers_path(@artist), class: 'btn btn-primary' %>  </p>
-  </div>
-</div>
 
   <div class="row align-items-center justify-content-center">
      <div class="row">
-    Here is a small selection of their art.
-    Click here to see more of their art!
+    Here is a small selection of their art.  TURN INTO GRID AFTER ART FIX.
      </div>
   </div>
 
-
-   <div class="row align-items-center justify-content-center">
-     <div class="row">
-        <%= link_to 'See all of their art!', artist_arts_path(@artist.id), class: 'btn btn-primary'  %>
-
-     </div>
-   </div>
-
-     <div class="content">
-      <div class="products pl-5 card-grid-3c">
+     <div class="container col-sm-9">
+      <div class="row align-items-center justify-content-center">
     <% @artist.arts.sample(3).each do |art| %>
     <div>
     <%= render partial: 'shared/art_card', locals: {art: art} %>
@@ -146,3 +56,9 @@ If statements for website/social
     <% end %>
     </div>
     </div>
+<br>
+   <div class="row align-items-center justify-content-center">
+     <div class="row">
+        <%= link_to 'See all of their art!', artist_arts_path(@artist.id), class: 'btn btn-primary'  %>
+     </div>
+   </div>

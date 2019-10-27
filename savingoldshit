@@ -148,3 +148,10 @@ Art show page photo original
 </ul>
   </div>
 </div>
+
+See followers artists show page
+<div class="row align-items-center justify-content-center">
+<div class="row">
+<p><%=link_to 'see followers', artist_followers_path(@artist), class: 'btn btn-primary' %>  </p>
+  </div>
+</div>

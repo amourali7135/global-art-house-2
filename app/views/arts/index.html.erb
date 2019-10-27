@@ -9,8 +9,12 @@ Paginate/limit.  Design this too, shit.
  welcome to <%= @artist.first_name %>'s art!
  <br>
 
+     <div class="container ">
+      <div class="row align-items-center justify-content-center">
 <% @artist.arts.each do |art| %>
  <div>
    <%= render partial: 'shared/art_card', locals: {art: art} %>
  </div>
 <% end %>
+</div>
+</div>
