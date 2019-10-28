@@ -76,7 +76,7 @@ EDIT/DELETE ART HERE ONLY!  Make a new dashboard art card?
 
 Why won't new partial show?
 <div class="row align-items-center justify-content-center">
-      <div class="col-sm-4">
+      <div class="col-sm-4", id="front-page-grid">
 <% @artist.arts.each do |art| %>
    <div>
     <%= render partial: 'shared/art_card_dashboard', locals: {art: art} %>
