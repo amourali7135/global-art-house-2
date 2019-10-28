@@ -33,21 +33,23 @@
 
 <div class="row align-items-center justify-content-center">
   <div class="row">
-<p>There are <%= @art.comments.count %> comments </p>
-</div>
-</div>
-
-<div class="row align-items-center justify-content-center">
-  <div class="row">
     <%= render partial: 'comments/form', locals: {comment: @comment} %>
   </div>
 </div>
 
 <div class="row align-items-center justify-content-center">
   <div class="row">
+<p>There are <%= @art.comments.count %> comments </p>
+</div>
+</div>
+
+<div class="row align-items-center justify-content-center">
+  <div class="col-sm-6">
     <%= render partial: 'comments/comment', collection: @art.comments %>
+<% @art.comments.sort_by { |comment| comment.created_at }.each do |comment|  %>
   </div>
 </div>
+<% end %>
 
 
 

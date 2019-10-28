@@ -75,13 +75,11 @@ EDIT/DELETE ART HERE ONLY!  Make a new dashboard art card?
 </div>
 
 Why won't new partial show?
-<div class="row align-items-center justify-content-center">
+<div class="row align-items-center justify-content-center ">
       <div class="col-sm-4", id="front-page-grid">
 <% @artist.arts.each do |art| %>
    <div>
     <%= render partial: 'shared/art_card_dashboard', locals: {art: art} %>
-    <p><%= link_to 'Edit', edit_art_path(art), class: 'btn btn-primary'  %>   </p>
-    <%#= link_to 'Delete', delete_art_path(art), class: 'btn btn-primary' %>
   </div>
 <% end %>
   </div>

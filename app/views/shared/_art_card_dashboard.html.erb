@@ -12,18 +12,15 @@
     <% art.tags.each do |tag| %>
       <p class="mb-0">TAG: <%= tag.name %></p>
     <% end %>
-    <% if @artist %>
+
       <%= cl_image_tag @artist.photo, class: 'card-trip-user avatar-bordered' %>
       <p><%= flag_icon(@artist.country.to_sym.downcase) %> <%= @artist.city %></p>
-      <%= link_to 'See this art!', artist_art_path(@artist.id, art)  %>
-    <% else %>
-      <%= cl_image_tag artist.photo, class: 'card-trip-user avatar-bordered' %>
-      <p><%= flag_icon(artist.country.to_sym.downcase) %> <%= artist.city %></p>
-      <%= link_to 'See this art!', artist_art_path(artist.id, art)  %>
-      <%= link_to 'Edit this art!', artist_art_path(artist.id, art)  %>
-      <%= link_to 'Delete this art!', artist_art_path(artist.id, art)  %>
-    <% end %>
+      <div class="d-flex justify-content-between w-100">
+      <%= link_to 'See this art!', artist_art_path(@artist, art)  %>
+      <%= link_to 'Edit this art!', edit_artist_art_path(@artist, art)  %>
+      <%= link_to 'Delete this art!', artist_art_path(@artist, art), method: :delete, data: {confirm: "Are you sure?"}  %>
   </div>
+</div>
 
   <div class="d-flex justify-content-between w-100">
     <h2 class="card-trip-pricing">$<%= art.price_cents %></h2>

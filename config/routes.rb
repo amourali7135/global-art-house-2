@@ -98,7 +98,7 @@ Rails.application.routes.draw do
     resources :arts
   end
 
-  resources :arts do
+  resources :arts, only: [] do
     resources :comments, only: [:create, :destroy]
   end
 
