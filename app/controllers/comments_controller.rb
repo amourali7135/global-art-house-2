@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
       @comment = Comment.find(params[:id])
       @art = @comment.art
       @comment.destroy
-      redirect_to @art
+      redirect_to artist_art_path(@art.artist, @art)
     end
 
     private

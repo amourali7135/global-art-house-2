@@ -4,6 +4,9 @@
       <p> <%= comment.user.username %> commented <%= time_ago_in_words(comment.created_at) %> ago:  </p>
       <p>  <%= comment.content %> </p>
       <p>  <%= comment.created_at %> </p>
+      <% if comment.user == current_user %>
+        <%= link_to 'Delete', art_comment_path(@art, comment), class: 'btn btn-primary', method: :delete, data: {confirm: "Are you sure?"}  %>
+      <% end %>
     </div>
   </div>
 <% end %>
