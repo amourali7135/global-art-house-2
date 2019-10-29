@@ -1,4 +1,6 @@
 class ArtsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @artist = Artist.find(params[:artist_id])
     # @arts = art.artist

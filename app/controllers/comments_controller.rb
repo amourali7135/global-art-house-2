@@ -22,6 +22,7 @@ class CommentsController < ApplicationController
     end
 
     def destroy
+      @art = Art.find(params[:art_id])
       @comment = Comment.find(params[:id])
       @art = @comment.art
       @comment.destroy
