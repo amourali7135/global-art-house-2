@@ -4,7 +4,6 @@
       <h2 class="text-info">Browse art from around the world!</h2>
           </div>
 
-
    <%= simple_form_for :search, url: browse_path, method: "GET" do |f| %>
     <%= f.input :tag_ids, as: :select2, collection: Tag.art_kinds, input_html: {multiple: true}, label: "What kind of artist do you do want?", required: false %>
     <%= f.input :tag_ids, as: :select2, collection: Tag.art_types, input_html: {multiple: true}, label: "What genre of art do you want?", required: false %>
@@ -28,5 +27,8 @@ Created at!
 <% end %>
  </div>
     </div>
+  </div>
+  <div class="row align-items-center justify-content-center py-2">
+  <%= pagy_nav(@pagy).html_safe %>
   </div>
 </section>

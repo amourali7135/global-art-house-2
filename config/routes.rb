@@ -133,7 +133,7 @@ Rails.application.routes.draw do
   get 'city', to: 'pages#city', as: 'city'
   get 'browse', to: 'pages#browse', as: 'browse'
   get 'following', to: 'pages#following', as: 'following'
-
+  get 'followers', to: 'pages#followers', as: 'followers'
 
   get 'art/:id/likes', to: 'arts#likes', as: :art_likes
   get 'art/:id/unlike', to: 'arts#unlikes', as: :art_unlikes

@@ -1,0 +1,10 @@
+Message too!  Not working now.  
+<p>Your <%= @artist.followers.count %> followers</p>
+
+<% @artist.followers.each do |follower| %>
+<div class="container">
+   <div class="row align-items-center justify-content-center">
+   <%= follower.username %>
+<%= render partial: 'shared/user_follower_card', locals: { user: @user, artist: @artist} %>
+</div>
+  <% end %>

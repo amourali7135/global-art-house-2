@@ -1,0 +1,14 @@
+<% if !user.artist  %>
+  <div class="card">
+    <div class="card-body">
+      <p> <%= user.username %> </p>
+    </div>
+  </div>
+<% end %>
+
+<div class="card ">
+  <div class="card-body ">
+    <p> <%= cl_image_tag user.artist.photo, class: 'card-trip-user avatar-bordered' %><%= user.artist.first_name %> <%= user.artist.last_name %>, <%= link_to 'Artist Profile', artist_path(user.artist) %></p>
+  </div>
+</div>
+
