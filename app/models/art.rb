@@ -1,11 +1,7 @@
 class Art < ApplicationRecord
   belongs_to :artist
 
-  #acts_as_taggable_on :styles
   acts_as_votable
-
-
-  #Gutentag::ActiveRecord.call self
 
   mount_uploader :photo, PhotoUploader
 
@@ -16,7 +12,7 @@ class Art < ApplicationRecord
   has_many :art_tags, dependent: :destroy
   has_many :tags, through: :art_tags, dependent: :destroy
 
-  # has_many :pictures, dependent: :destroy
+
 
   validates :description,  presence: true
   # validates :photo, presence: true

@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :browse, :about, :help, :contact ]
+  include Pagy::Backend
 
   def home
     @artists = Artist.all
@@ -57,6 +58,7 @@ end
 
 def following
   @user = current_user
+  # @arts = Art.all.order("created_at DESC")
   # @artist = Artist.all
   # @arts = Art.all
 end

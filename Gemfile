@@ -17,7 +17,6 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
-
 gem 'jquery-fileupload-rails', git: 'git://github.com/ollnixon/jquery-fileupload-rails.git'
 gem 'coffee-rails'
 gem 'geocoder'
@@ -26,12 +25,9 @@ gem 'country_state_select'
 gem 'chosen-rails'
 gem 'city-state'
 gem "algoliasearch-rails"
-gem 'gutentag', '~> 2.5'
-gem 'acts-as-taggable-on', '~> 6.0'
 gem 'jquery-rails'
 gem 'acts_as_favoritor'
 gem 'commontator'
-gem 'socialization'
 gem 'pg_search'
 gem 'flag-icons-rails'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
@@ -42,7 +38,6 @@ gem 'select2_simple_form', github: 'lndl/select2_simple_form', tag: '0.7.3'
 #   gem 'rails-assets-select2', '~> 4.0.0'
 #   end
 gem 'filterrific'
-gem 'owlcarousel-rails'
 gem 'money-rails'
 gem 'stripe'
 gem 'stripe_event'
@@ -50,6 +45,8 @@ gem 'faker'
 gem "mailboxer"
 gem "punching_bag"
 gem 'social-share-button'
+gem 'pagy'
+
 
 
 

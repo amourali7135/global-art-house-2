@@ -1,5 +1,7 @@
 class ArtistsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :countries ]
+  include Pagy::Backend
+
 
   def index
     # @user = User.find(params[:user_id])
@@ -9,8 +11,10 @@ class ArtistsController < ApplicationController
     if params["search"]
       @filter = params["search"]["tag_ids"].concat([params['country']]).concat([params["search"]["city"]]).concat([params["search"]["country"]]).flatten.reject(&:blank?)
       @artists = Artist.global_search(@filter)
+      @pagy, @artists = pagy(Artist.global_search(@filter), page: params[:page], items: 20)
     else
       @artists = Artist.all
+      @pagy, @artists = pagy(Artist.all, page: params[:page], items: 20)
     end
     # respond_to do |format|
     #   format.html
