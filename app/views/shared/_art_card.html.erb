@@ -9,9 +9,7 @@
     <p><%= art.description %></p>
     <p><%= art.inspiration %></p>
     <p>Available to buy? <%= art.available %></p>
-    <% art.tags.each do |tag| %>
-      <p class="mb-0">TAG: <%= tag.name %></p>
-    <% end %>
+     <p><small>Tags: <%= raw art.tags.map(&:name).map { |t| link_to t, browse_path(t) }.join(', ') %></small></p>
     <% if @artist %>
       <%= cl_image_tag @artist.photo, class: 'card-trip-user avatar-bordered' %>
       <p><%= flag_icon(@artist.country.to_sym.downcase) %> <%= @artist.city %></p>

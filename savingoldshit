@@ -155,3 +155,8 @@ See followers artists show page
 <p><%=link_to 'see followers', artist_followers_path(@artist), class: 'btn btn-primary' %>  </p>
   </div>
 </div>
+
+One way to get tags in a weird format.  Copy and replace if needed the link_to ones with this again.
+  <% artist.tags.each do |tag| %>
+        <p class="mb-0">TAG: <%= tag.name %></p>
+      <% end %>

@@ -30,9 +30,7 @@ If statements for website/social
   </div>
 
 <div class="my-5 row align-items-center justify-content-center">
-      <% @artist.tags.each do |tag| %>
-        <p class="mb-0">TAG: <%= tag.name %></p>
-      <% end %>
+    <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, browse_path(t) }.join(', ') %></small></p>
     </div>
     <div class="row align-items-center justify-content-center">
     <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, artists_path(t) }.join(', ') %></small></p>

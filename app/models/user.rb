@@ -15,8 +15,6 @@ class User < ApplicationRecord
   acts_as_follower
   acts_as_voter
 
-
-
   attr_writer :login
 
   def login
@@ -49,6 +47,3 @@ class User < ApplicationRecord
       validates_format_of :username, with: /\w+/
     end
 
-    # gutentag_taggings
-    # gutentag_tags
-    # taggings

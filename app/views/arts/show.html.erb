@@ -5,7 +5,6 @@
 
 <div class="row align-items-center justify-content-center">
 <div class="row">
- <p><small>Tags: <%= raw @art.tags.map(&:name).map { |t| link_to t, browse_path(t) }.join(', ') %></small></p>
 <p>Share: <%= social_share_button_tag(@art.title,) %> </p>
 <br>
   </div>

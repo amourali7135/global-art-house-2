@@ -66,11 +66,11 @@ end
 
 def following
   @user = current_user
-  @user.all_following.each do |followed| 
-  followed.arts.sort_by { |art| art.created_at }.each do |art|
-  @pagy, @arts = pagy(arts.all_following, page: params[:page], items: 20)
-  end
-end
+  # @user.all_following.each do |followed| 
+  # followed.arts.sort_by { |art| art.created_at }.each do |art|
+  @pagy, @arts = pagy(Art.all, page: params[:page], items: 20)
+  # end
+# end
   # @arts = Art.all.order("created_at DESC")
   # @artist = Artist.all
   # @arts = Art.all

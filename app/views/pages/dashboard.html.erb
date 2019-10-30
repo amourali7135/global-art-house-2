@@ -27,9 +27,6 @@ Show art they have in tabs, see followed shit.  Tabs.
   <div class="row">
  <div class="my-5">
   <p>Your artist tags</p>
-      <% @artist.tags.each do |tag| %>
-        <p class="mb-0">TAG: <%= tag.name %></p>
-      <% end %>
     <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, artists_path(t) }.join(', ') %></small></p>
     </div>
     </div>
@@ -84,4 +81,3 @@ Show art they have in tabs, see followed shit.  Tabs.
   </div>
 </div>
 
-<%= raise %>

@@ -11,9 +11,7 @@
       <% end %>
       </div>
     <p> <%= artist.form %></p>
-    <% artist.tags.each do |tag| %>
-        <p class="mb-0">TAG: <%= tag.name %></p>
-      <% end %>
+    <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, browse_path(t) }.join(', ') %></small></p>
     <%= link_to 'See more of this artist', artist_path(artist.id)  %>
 
  <div class="d-flex justify-content-between w-100">
@@ -31,9 +29,7 @@
     <p><%= artist.bio %></p>
     <p> <%= artist.city %></p>
     <p> <%= artist.form %></p>
-    <% artist.tags.each do |tag| %>
-     <p class="mb-0">TAG: <%= tag.name %></p>
-    <% end %>
+    <p><small>Tags: <%= raw artist.tags.map(&:name).map { |t| link_to t, browse_path(t) }.join(', ') %></small></p>
     <%= cl_image_tag artist.arts[0].photo %>
     <%= cl_image_tag artist.arts[1].photo if artist.arts[1] %>
     <%= cl_image_tag artist.arts[2].photo if artist.arts[2] %>
