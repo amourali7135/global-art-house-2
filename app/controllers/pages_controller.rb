@@ -66,9 +66,11 @@ end
 
 def following
   @user = current_user
-  # @user.all_following.each do |followed| 
+  # @user.all_following.each do |followed|
   # followed.arts.sort_by { |art| art.created_at }.each do |art|
-  @pagy, @arts = pagy(Art.all, page: params[:page], items: 20)
+  pagy = Pagy.new(count: 5, items: 5)
+  @pagy, @arts = pagy(pagy_get_items(current_user.all_following, pagy), page: params[:page], items: 5)
+  # raise
   # end
 # end
   # @arts = Art.all.order("created_at DESC")
@@ -82,6 +84,10 @@ def followers
 end
 
 private
+
+  def pagy_get_items(array, pagy)
+    array[pagy.offset, pagy.items]
+  end
 
 
 end
