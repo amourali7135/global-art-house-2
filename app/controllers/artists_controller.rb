@@ -105,6 +105,7 @@ class ArtistsController < ApplicationController
   def countries
     if params[:country]
       @artists = Artist.where(country: params[:country][:country])
+      @pagy, @artists = pagy(Artist.where(country: params[:country][:country]), page: params[:page], items: 20)
     else
       @artists = Artist.where(country: "US")
     end

@@ -1,12 +1,11 @@
 Tabs for this like in IG.  Created at time wrong!
-Push into an array first?
 
 <p>The recent activity of those you are following</p>
 <% @user.all_following.each do |followed| %>
 <div class="container">
  <%= followed.first_name %> <%= followed.last_name %> <%= followed.artist_name %>
   <% followed.arts.sort_by { |art| art.created_at }.each do |art| %>
-  
+
     <div class="row align-items-center justify-content-center">
       <div class="col-sm-6">
         <%= render partial: 'shared/art_card', locals: {art: art, artist: art.artist } %>

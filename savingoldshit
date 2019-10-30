@@ -160,3 +160,6 @@ One way to get tags in a weird format.  Copy and replace if needed the link_to o
   <% artist.tags.each do |tag| %>
         <p class="mb-0">TAG: <%= tag.name %></p>
       <% end %>
+
+From the old artist form/cards pre-tags.
+      <p> <%= artist.form %></p>

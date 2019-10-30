@@ -29,31 +29,18 @@ If statements for website/social
     <p><strong>Share: </strong><%= social_share_button_tag(@artist.first_name,) %>
   </div>
 
-<div class="my-5 row align-items-center justify-content-center">
-    <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, browse_path(t) }.join(', ') %></small></p>
-    </div>
-    <div class="row align-items-center justify-content-center">
-    <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, artists_path(t) }.join(', ') %></small></p>
 
-<p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, artists_path(t) }.join(', ') %></small></p>
-</div>
-
-
-  <div class="row align-items-center justify-content-center">
+     <p class="grid-headers">  Here is a small selection of their art.</p>
+     <div class="container front-page-grid">
+     <% @artist.arts.sample(3).each do |art| %>
      <div class="row">
-    Here is a small selection of their art.  TURN INTO GRID AFTER ART FIX.
-     </div>
-  </div>
-
-     <div class="container col-sm-9">
-      <div class="row align-items-center justify-content-center">
-    <% @artist.arts.sample(3).each do |art| %>
-    <div>
-    <%= render partial: 'shared/art_card', locals: {art: art} %>
+      <div class="products pl-5 card-grid-3c">
+    <%= render partial: 'shared/home_art_card', locals: {art: art} %>
+    </div>
     </div>
     <% end %>
     </div>
-    </div>
+
 <br>
    <div class="row align-items-center justify-content-center">
      <div class="row">
