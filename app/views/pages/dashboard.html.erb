@@ -22,26 +22,17 @@ Show art they have in tabs, see followed shit.  Tabs.
   </div>
 </div>
 
-
 <div class="row align-items-center justify-content-center">
-  <div class="row">
- <div class="my-5">
-  <p>Your artist tags</p>
-    <p><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, artists_path(t) }.join(', ') %></small></p>
-    </div>
-    </div>
-</div>
-
-<div class="row align-items-center justify-content-center">
-<div class="row align-items-center justify-content-center">
+<div class="row">
 <p>You have  <%= @artist.followers_count  %>  followers.  </p>
 
-<p>See your followers:  <%= @user.following_users  %>   </p>
-
-<p>They are  <%= @artist.followers  %>   </p>
+<p>See your followers:  <%= link_to 'Followers', followers_path, class: 'btn btn-primary'  %>   </p>
 
 <p>Your artist profile has  <%= @artist.get_likes.size  %>  likes.  </p>
-
+  </div>
+</div>
+<div class="row align-items-center justify-content-center">
+<div class="row">
 <p>Change your username or password  <%= link_to 'Change', edit_user_registration_path(@current_user.id), class: 'btn btn-primary'  %>   </p>
 
   </div>

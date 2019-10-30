@@ -56,6 +56,12 @@ def browse
     @arts = Art.global_search(@filter)
     @pagy, @artists = pagy(Artist.global_search(@filter), page: params[:page], items: 20)
     @pagy, @arts = pagy(Art.global_search(@filter), page: params[:page], items: 20)
+  elsif params[:tag]
+    @filter = params[:tag]
+    @artists = Artist.global_search(@filter)
+    @arts = Art.global_search(@filter)
+    @pagy, @artists = pagy(Artist.global_search(@filter), page: params[:page], items: 20)
+    @pagy, @arts = pagy(Art.global_search(@filter), page: params[:page], items: 20)
   else
     @artists = Artist.all
     @arts = Art.all

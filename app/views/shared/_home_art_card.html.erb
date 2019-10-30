@@ -12,7 +12,7 @@
     <p><small>Tags: <%= raw art.tags.map(&:name).map { |t| link_to t, browse_path(t) }.join(', ') %></small></p>
       <%= cl_image_tag art.artist.photo, class: 'card-trip-user avatar-bordered' %>
       <p><%= flag_icon(art.artist.country.to_sym.downcase) %> <%= art.artist.city %></p>
-      <%= link_to 'See this art!', artist_art_path(art.artist, art), method: :show  %>
+      <%= link_to 'See this art!', artist_art_path(art.artist, art), method: :get  %>
   </div>
 
   <div class="d-flex justify-content-between w-100">
