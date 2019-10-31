@@ -1,14 +1,9 @@
 <% @user.find_liked_items.each do |liked|  %>
-<% if liked = art %>
-<div>
-  <%= render partial: 'shared/art_card', locals: {art: art} %>
-</div>
-<% else %>
-  <div>
-    <%= render partial: 'shared/artist_card', locals: {artist: artist} %>
-  </div>
-<% end %>
+<%= p liked %>
+<%= raise %>
 <% end %>
 
+The artists that you've liked.
 
 
+The arts that you've liked.
