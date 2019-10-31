@@ -134,6 +134,7 @@ Rails.application.routes.draw do
   get 'browse', to: 'pages#browse', as: 'browse'
   get 'following', to: 'pages#following', as: 'following'
   get 'followers', to: 'pages#followers', as: 'followers'
+  get 'liked', to: 'pages#liked', as: 'liked'
 
   get 'art/:id/likes', to: 'arts#likes', as: :art_likes
   get 'art/:id/unlike', to: 'arts#unlikes', as: :art_unlikes
@@ -142,7 +143,6 @@ Rails.application.routes.draw do
   get 'artist/:id/follow', to: 'artists#follow', as: :artist_follow
   get 'artist/:id/unfollow', to: 'artists#unfollow', as: :artist_unfollow
   get 'artist/:id/followers', to: 'artists#followers', as: :artist_followers
-
 
   get '/search' => 'search#index'
 

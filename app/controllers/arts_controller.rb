@@ -64,7 +64,7 @@ class ArtsController < ApplicationController
     @user = current_user # before_action :authenticate_user, only: [:likes]
     @art = Art.find(params[:id])
     @art.liked_by @user
-    redirect_to @art, notice: "Liked this art successfully!"
+    redirect_to @art.artist, notice: "Liked this art successfully!"
   end
 
   def unlikes

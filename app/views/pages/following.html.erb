@@ -1,19 +1,16 @@
 Tabs for this like in IG.  Created at time wrong!
 .Order() active record query.
+ID instead of created_at test.
+Last 3-5...what other option do I have?
+Works in the bottom sector after Vladimir is called.
 
 <p>The recent activity of those you are following</p>
-<% @user.all_following.sort_by { |followed1| followed1.created_at }.each do |followed| %>
-<div class="container">
- <%= followed.first_name %> <%= followed.last_name %> <%= followed.artist_name %>
-  <% followed.arts.sort_by { |art| art.created_at }.each do |art| %>
-
+  <% @art_array.sort_by { |art| -art.id}.each do |art| %>
     <div class="row align-items-center justify-content-center">
       <div class="col-sm-6">
         <%= render partial: 'shared/art_card', locals: {art: art, artist: art.artist } %>
       </div>
     </div>
-  <% end %>
-</div>
   <% end %>
 <div class="row align-items-center justify-content-center py-2">
   <%= pagy_nav(@pagy).html_safe %>

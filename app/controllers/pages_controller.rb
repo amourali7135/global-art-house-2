@@ -56,8 +56,8 @@ def browse
     @arts = Art.global_search(@filter)
     @pagy, @artists = pagy(Artist.global_search(@filter), page: params[:page], items: 20)
     @pagy, @arts = pagy(Art.global_search(@filter), page: params[:page], items: 20)
-  elsif params[:tag]
-    @filter = params[:tag]
+  elsif params[:tag_id]
+    @filter = params[:tag_id]
     @artists = Artist.global_search(@filter)
     @arts = Art.global_search(@filter)
     @pagy, @artists = pagy(Artist.global_search(@filter), page: params[:page], items: 20)
@@ -72,6 +72,10 @@ end
 
 def following
   @user = current_user
+  @art_array = []
+  @user.all_following.sort_by { |followed| followed }.each do |following|
+    following.arts.map { |art| @art_array << art }
+  end
   # @user.all_following.each do |followed|
   # followed.arts.sort_by { |art| art.created_at }.each do |art|
   pagy = Pagy.new(count: 5, items: 5)
@@ -87,6 +91,10 @@ end
 def followers
   @user = current_user
   @artist = Artist.find_by(user_id: @user.id)
+end
+
+def liked
+  @user = current_user
 end
 
 private

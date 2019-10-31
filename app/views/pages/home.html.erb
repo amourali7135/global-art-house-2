@@ -144,10 +144,10 @@
 </div>
 
 <p class="grid-headers">Grid test VII artists by most recent negative - won't work here, why?  Putin won't show when loggedin.
-method = artist.created_at  only one that own't work.</p>
+method = artist.created_at  only one that own't work.  Id test too.</p>
 
 <div class="container front-page-grid">
-  <% @artists.sort_by { |artist| artist.created_at }.last(3).each do |artist|  %>
+  <% @artists.sort_by { |artist| artist.id }.last(3).each do |artist|  %>
     <div class="row">
       <div class=" products pl-5 card-grid-3c">
         <%= render partial: 'shared/home_artist_card', locals: {artist: artist} %>
@@ -156,10 +156,9 @@ method = artist.created_at  only one that own't work.</p>
   <% end %>
 </div>
 
-
 <p class="grid-headers">Most recently added art.</p>
 <div class="container front-page-grid">
-  <% @arts.sort_by { |art| art.created_at }.last(3).each do |art|  %>
+  <% @arts.sort_by { |art| art.id }.last(3).each do |art|  #or created_at %>
     <div class="row">
       <div class=" products pl-5 card-grid-3c">
         <%= render partial: 'shared/home_art_card', locals: {art: art} %>

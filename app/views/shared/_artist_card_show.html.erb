@@ -11,7 +11,7 @@
     <p class="card-text row align-items-center justify-content-center"><small class="text-muted"><%=  %></small></p>
     <p class="card-text row align-items-center justify-content-center"><%= @artist.age %> Years old</p>
     <p class="card-text row align-items-center justify-content-center"><%= @artist.city %>, <%= @artist.country %> <%= flag_icon(@artist.country.to_sym.downcase) %></p>
-    <p class="card-text row align-items-center justify-content-center"><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, browse_path(t) }.join(', ') %></small></p>
+    <p class="card-text row align-items-center justify-content-center"><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, browse_path(tag: t) }.join(', ') %></small></p>
   </div>
 <div class="d-flex justify-content-between w-100">
 <p>Has <%=@artist.get_likes.size %> likes! </p>
