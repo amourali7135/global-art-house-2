@@ -98,6 +98,7 @@ def liked
   @user = current_user
   @artists = @user.find_liked_items.map { |item| item.is_a?(Artist) ? item : nil }.compact
   @arts = @user.find_liked_items.map { |item| item.is_a?(Art) ? item : nil }.compact
+  #compact is for
 
 end
 

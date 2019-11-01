@@ -148,8 +148,13 @@ Rails.application.routes.draw do
 
   resources :photos, only: :destroy
 
-  resources :messages, only: [:new, :create]
-  resources :conversations, only: [:index, :show, :new]
+  # resources :messages, only: [:new, :create]
+  # resources :conversations, only: [:index, :show, :new]
+
+  resources :conversations do
+    resources :messages
+  end
+
   get 'tags/:tag', to: 'arts#index', as: :tag
 
 

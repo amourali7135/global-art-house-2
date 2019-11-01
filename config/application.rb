@@ -2,7 +2,9 @@ require_relative 'boot'
 
 require 'rails/all'
 
-
+  def markdown_to_html(text)
+    Kramdown::Document.new(text, input: "GFM").to_html
+  end
 
 
 # Require the gems listed in Gemfile, including any gems
