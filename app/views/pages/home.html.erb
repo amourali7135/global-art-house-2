@@ -143,11 +143,15 @@
   <% end %>
 </div>
 
-<p class="grid-headers">Grid test VII artists by most recent negative - won't work here, why?  Putin won't show when loggedin.
-method = artist.created_at  only one that own't work.  Id test too.</p>
+<p class="grid-headers">Grid test VII artists by most recent negative - won't work here, why? Id test too.</p>
 
+<%# broken_grid = [] %>
 <div class="container front-page-grid">
+  <%# @artists.sort_by { |artist| artist }.each do |artist|  %>
+  <%# ( broken_grid << artist ) %>
+  <%# end %>
   <% @artists.sort_by { |artist| artist.id }.last(3).each do |artist|  %>
+  <%# broken_grid.sort_by { |artist| artist.id }.last(3).each do |artist| %>
     <div class="row">
       <div class=" products pl-5 card-grid-3c">
         <%= render partial: 'shared/home_artist_card', locals: {artist: artist} %>

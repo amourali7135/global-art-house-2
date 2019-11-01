@@ -1,9 +1,23 @@
+Tabs for artists + arts.
+Artists have user_id, arts have artist_id.
+Render partials by ID again.
+
 <% @user.find_liked_items.each do |liked|  %>
-<%= p liked %>
-<%= raise %>
+<% if liked.is_a? Artist %>
+
+<div class="col-sm-6 row align-items-center justify-content-center">
+<div class="row">
+  <%= render partial: 'shared/artist_card', locals: {artist: liked} %>
+</div>
+</div>
+
+<% else %>
+
+   <div class="col-sm-6 row align-items-center justify-content-center">
+   <div class="row">
+   <%= render partial: 'shared/art_card', locals: {art: liked, artist: liked.artist} %>
+ </div>
+ </div>
+<% end %>
 <% end %>
 
-The artists that you've liked.
-
-
-The arts that you've liked.
