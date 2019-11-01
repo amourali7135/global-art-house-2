@@ -79,8 +79,8 @@ def following
   # @user.all_following.each do |followed|
   # followed.arts.sort_by { |art| art.created_at }.each do |art|
   pagy = Pagy.new(count: 5, items: 5)
-  @pagy, @arts = pagy(pagy_get_items(@art_array, pagy), pagy, page: params[:page], items: 5)
-  # @pagy, @arts = pagy(pagy_get_items(current_user.all_following, pagy), page: params[:page], items: 5)
+  # @pagy, @arts = pagy(pagy_get_items(@art_array, pagy), pagy, page: params[:page], items: 5)
+  @pagy, @arts = pagy(pagy_get_items(current_user.all_following, pagy), page: params[:page], items: 5)
   # raise
   # end
 # end
@@ -96,6 +96,9 @@ end
 
 def liked
   @user = current_user
+  @artists = @user.find_liked_items.map { |item| item.is_a?(Artist) ? item : nil }.compact
+  @arts = @user.find_liked_items.map { |item| item.is_a?(Art) ? item : nil }.compact
+
 end
 
 private
