@@ -13,16 +13,13 @@ If statements for website/social
 
 <div class="row align-items-center justify-content-center">
 <div class="row">
-<% if @conversation %>
-  <p>Send a message (exist) <%= link_to 'Message', @conversation, class: 'btn btn-primary' %></p>
-  <br>
-<% else %>
-  <p> Send this artist a message! <%= link_to 'New Message', new_conversation_path(receiver_id: params[:id]), class: 'btn btn-primary' %> </p>
-<% end %>
-<br>
-    <% @artist.artist_name %> | <%= link_to 'Send a message', new_message_path(receiver_id: @artist.user_id), class: 'btn btn-primary' %>
-  </div>
+<% if @artist.artist_name %>
+  <%= link_to "Message #{@artist.artist_name}", conversations_path(author_id: current_user.id, receiver_id: @artist.user_id), method: "post", class: 'btn btn-primary' %>
+  <% else %>
+  <%= link_to "Message #{@artist.first_name + @artist.last_name}", conversations_path(author_id: current_user.id, receiver_id: @artist.user_id), method: "post", class: 'btn btn-primary' %>
 </div>
+</div>
+
 
  <div class="row align-items-center justify-content-center">
     <p><strong>Share: </strong><%= social_share_button_tag(@artist.first_name,) %>

@@ -78,15 +78,27 @@ def following
   end
   # @user.all_following.each do |followed|
   # followed.arts.sort_by { |art| art.created_at }.each do |art|
-  pagy = Pagy.new(count: 5, items: 5)
+  # pagy = Pagy.new(count: 5, items: 5)
   # @pagy, @arts = pagy(pagy_get_items(@art_array, pagy), pagy, page: params[:page], items: 5)
-  @pagy, @arts = pagy(pagy_get_items(current_user.all_following, pagy), page: params[:page], items: 5)
+  # @pagy, @arts = pagy(pagy_get_items(current_user.all_following, pagy), page: params[:page], items: 5)
   # raise
   # end
-# end
+  # end
   # @arts = Art.all.order("created_at DESC")
   # @artist = Artist.all
   # @arts = Art.all
+  if @art_array.length > 10
+    @many_following = true
+    @art_array[-10..-1]
+  end
+
+  if params[:m]
+    @many_following = false
+    @user.all_following.sort_by { |followed| followed }.each do |following|
+      following.arts.map { |art| @art_array << art }
+    end
+  end
+
 end
 
 def followers
@@ -104,9 +116,9 @@ end
 
 private
 
-  def pagy_get_items(array, pagy)
-    array[pagy.offset, pagy.items]
-  end
+def pagy_get_items(array, pagy)
+  array[pagy.offset, pagy.items]
+end
 
 
 end

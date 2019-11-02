@@ -1,12 +1,14 @@
-Edit to your own way + convert properly.
-<h1 class="title is-4">Message <%= @conversation.receiver.username %></h1>
+<h1 class="title is-4 row align-items-center justify-content-center">Message <%= @conversation.receiver.username %></h1>
 
-<%# if @over_ten %>
-  <%#= link_to "Show previous", '?m=all', class:'button is-link' %>
-<%# end %>
+<div class="row align-items-center justify-content-center">
+<% if @over_ten %>
+  <%= link_to "Show previous", '?m=all', class:'button is-link'%>
+<% end %>
+</div>
 
 <section id="messages" class="mb4">
   <% @messages.each do |message| %>
+  <div class="row align-items-center justify-content-center">
     <% if message.body %>
       <% user = User.find(message.user_id) %>
       <article class="message is-dark">
@@ -17,15 +19,18 @@ Edit to your own way + convert properly.
             <div class="f4"><%= sanitize markdown_to_html(message.body) %></div>
           </div>
         </div>
+        </div>
       </article>
     <% end %>
   <% end %>
 </section>
 
+<div class="row align-items-center justify-content-center">
 <%= form_for [@conversation, @message] do |f| %>
-  <%= f.text_area :body, class: "textarea", placeholder: "Inquire about a trade..." %>
+  <%= f.text_area :body, class: "textarea", placeholder: "Write message here" %>
   <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
   <div class="text-align-right">
     <%= f.submit "Send message", class: "button is-link is-large mt3" %>
   </div>
 <% end %>
+</div>

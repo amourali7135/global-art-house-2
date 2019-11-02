@@ -1,16 +1,8 @@
-<h1>Your conversations</h1>
+<h1 class="row align-items-center justify-content-center">Your conversations</h1>
 <div class="columns">
-  <div class="column is-3">
-    <h3 class="title is-3">All Users</h3>
-    <% @users.each do |user| %>
-      <% if user.id != current_user.id %>
-       <%= link_to "Message #{user.username}", conversations_path(author_id: current_user.id, receiver_id: user.id), method: "post" %>
-      <% end %>
-    <% end %>
-  </div>
 
   <div class="column is-7">
-    <h3 class="title is-3">Conversations</h3>
+    <h3 class="title is-3 row align-items-center justify-content-center">Conversations</h3>
     <% @conversations.each do |conversation| %>
       <% if conversation.author_id == current_user.id || conversation.receiver_id == current_user.id %>
         <% if conversation.author_id == current_user.id %>
@@ -21,8 +13,7 @@
         <% unless current_user.id == recipient %>
           <div class="columns">
             <div class="column">
-              <%# <div class="inline-block nudge-down-10">= gravatar_for recipient, size: 32</div> %>
-              <div class="inline-block"><%= link_to recipient.username, conversation_messages_path(conversation) %></div>
+              <div class="inline-block row align-items-center justify-content-center"><%= link_to recipient.username, conversation_messages_path(conversation) %></div>
             </div>
           </div>
         <% end %>
@@ -34,8 +25,9 @@
 
 
 
- <%# @conversations.each do |conversation| %>
+ <% @conversations.each do |conversation| %>
 
-          <%#= render partial: 'conversation', locals: {conversation: conversation} %>
+          <%= render partial: 'conversation', locals: {conversation: conversation} %>
 
- <%# end %>
+ <% end %>
+

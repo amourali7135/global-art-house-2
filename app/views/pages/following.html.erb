@@ -1,4 +1,9 @@
 <p>The recent activity of those you are following</p>
+
+<% if @many_following %>
+  <%= link_to "Show previous", '?m=all', class:'button is-link'%>
+<% end %>
+
   <% @art_array.sort_by { |art| -art.id}.last(30).each do |art| #20 is a placeholder for pagy%>
     <div class="row align-items-center justify-content-center">
       <div class="col-sm-6">
@@ -7,6 +12,6 @@
     </div>
   <% end %>
 <div class="row align-items-center justify-content-center py-2">
-  <%= pagy_nav(@pagy).html_safe %>
+  <%#= pagy_nav(@pagy).html_safe %>
   </div>
 

@@ -1,5 +1,5 @@
 <div>
-  Chatting with <%= conversation.with(current_user).username %>
+  Chatting with <%= recipient.username %>
   <br>
   <% unless conversation.messages.empty? %>
     <em><%= conversation.messages.last.body.truncate(50) %></em>
