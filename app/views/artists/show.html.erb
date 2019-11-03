@@ -2,7 +2,8 @@ If statements for website/social
  <div class="row align-items-center justify-content-center">
 <%= render partial: 'shared/artist_card_show', locals: {artist: @artist} %>
 </div>
-<div class="row align-items-center justify-content-center">
+
+<div class="row align-items-center justify-content-center py-2">
 <div class="row">
     <%= link_to 'like', artist_like_path(@artist), class: 'btn btn-primary' %>
     <%= link_to 'unlike', artist_unlike_path(@artist), class: 'btn btn-primary' %>
@@ -11,17 +12,18 @@ If statements for website/social
   </div>
 </div>
 
-<div class="row align-items-center justify-content-center">
+<div class="row align-items-center justify-content-center py-3">
 <div class="row">
 <% if @artist.artist_name %>
   <%= link_to "Message #{@artist.artist_name}", conversations_path(author_id: current_user.id, receiver_id: @artist.user_id), method: "post", class: 'btn btn-primary' %>
   <% else %>
   <%= link_to "Message #{@artist.first_name + @artist.last_name}", conversations_path(author_id: current_user.id, receiver_id: @artist.user_id), method: "post", class: 'btn btn-primary' %>
+  <% end %>
 </div>
 </div>
 
 
- <div class="row align-items-center justify-content-center">
+ <div class="row align-items-center justify-content-center py-1">
     <p><strong>Share: </strong><%= social_share_button_tag(@artist.first_name,) %>
   </div>
 
@@ -43,3 +45,7 @@ If statements for website/social
         <%= link_to 'See all of their art!', artist_arts_path(@artist.id), class: 'btn btn-primary'  %>
      </div>
    </div>
+
+
+
+
