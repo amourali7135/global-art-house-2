@@ -1,17 +1,20 @@
-<p>The recent activity of those you are following</p>
+<h3 class = "text-dark row align-items-center justify-content-center py-2">The recent activity of those you are following</h3>
 
+<div class="row align-items-center justify-content-center">
 <% if @many_following %>
-  <%= link_to "Show previous", '?m=all', class:'button is-link'%>
+  <h5><%= link_to "Show older activity", '?m=all', class:'button is-link'%></h5>
 <% end %>
+</div>
 
-  <% @art_array.sort_by { |art| -art.id}.last(30).each do |art| #20 is a placeholder for pagy%>
+  <% @art_array.sort_by { |art| -art.id}.each do |art| #20 is a placeholder till pagy works%>
+  <%# @art_array.sort_by { |art| -art.id}.last(40).each do |art| #20 is a placeholder till pagy works%>
     <div class="row align-items-center justify-content-center">
       <div class="col-sm-6">
         <%= render partial: 'shared/art_card', locals: {art: art, artist: art.artist } %>
       </div>
     </div>
   <% end %>
-<div class="row align-items-center justify-content-center py-2">
+<%# <div class="row align-items-center justify-content-center py-2"> %>
   <%#= pagy_nav(@pagy).html_safe %>
-  </div>
+
 

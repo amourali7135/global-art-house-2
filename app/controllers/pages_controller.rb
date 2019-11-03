@@ -87,9 +87,9 @@ def following
   # @arts = Art.all.order("created_at DESC")
   # @artist = Artist.all
   # @arts = Art.all
-  if @art_array.length > 10
+  if @art_array.length > 15
     @many_following = true
-    @art_array[-10..-1]
+    @art_array = @art_array[-15..-1]
   end
 
   if params[:m]
@@ -97,6 +97,7 @@ def following
     @user.all_following.sort_by { |followed| followed }.each do |following|
       following.arts.map { |art| @art_array << art }
     end
+    @art_array
   end
 
 end
@@ -110,7 +111,19 @@ def liked
   @user = current_user
   @artists = @user.find_liked_items.map { |item| item.is_a?(Artist) ? item : nil }.compact
   @arts = @user.find_liked_items.map { |item| item.is_a?(Art) ? item : nil }.compact
-  #compact is for
+
+  # if @user.find_liked_items.length > 20
+  #   @many_liked = true
+  #   @user.find_liked_items = @user.find_liked_items[-20..-1]
+  # end
+
+  # if params[:m]
+  #   @many_liked = false
+  #   @user.find_liked_items
+  #   end
+  #   @user.find_liked_items
+  # end
+
 
 end
 
@@ -122,3 +135,4 @@ end
 
 
 end
+

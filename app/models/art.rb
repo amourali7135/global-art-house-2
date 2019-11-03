@@ -25,7 +25,7 @@ class Art < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :global_search,
-  against: [ :description, :inspiration ],
+  against: [  ], #still iffy about :description, :inspiration
   # against: [ :title, :description, :inspiration, :styles ],
   associated_against: {
   artist: [  :city, :country ],

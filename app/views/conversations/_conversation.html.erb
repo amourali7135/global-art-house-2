@@ -1,10 +1,10 @@
 <div>
-  Chatting with <%= recipient.username %>
+  Chatting with <%= conversation.receiver.username %>
   <br>
   <% unless conversation.messages.empty? %>
     <em><%= conversation.messages.last.body.truncate(50) %></em>
   <% end %>
   <br>
-  <%= link_to 'View conversation', conversation_path(conversation) %>
+  <%= link_to 'View conversation', conversation_messages_path(conversation) %>
   <hr>
 </div>

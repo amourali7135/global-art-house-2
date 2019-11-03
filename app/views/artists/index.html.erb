@@ -1,7 +1,7 @@
 <section class="clean-block clean-catalog dark">
   <div class="container">
     <div class="block-heading">
-      <h2 class="text-info">Browse the artists of global art house!</h2>
+      <h2 class="text-dark row align-items-center justify-content-center py-2">Browse the artists of Global Art House!</h2>
     </div>
 
   <%= simple_form_for :search, url: artists_path, method: "GET" do |f| %>
@@ -28,8 +28,8 @@
       <% end %>
     <% end %>
 
-    <div class="content">
-      <div class="products pl-5 card-grid-3c">
+    <div class="content py-3">
+      <div class="products pl-5 card-grid-3c ">
       <% @artists.each do |artist| %>
         <div>
           <%= render partial: 'shared/artist_card', locals: {artist: artist} %>
