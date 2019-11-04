@@ -1,6 +1,7 @@
 <div>
   Chatting with <%= conversation.receiver.username %>
   <br>
+  <%#= conversation.messages.last.message_time %>
   <% unless conversation.messages.empty? %>
     <em><%= conversation.messages.last.body.truncate(50) %></em>
   <% end %>
