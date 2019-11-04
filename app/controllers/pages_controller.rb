@@ -11,12 +11,14 @@ class PagesController < ApplicationController
       # @artist = Artist.find(params[:id])
       # redirect_to dashboard_path
     end
+
     @artists = Artist.geocoded #returns flats with coordinates
 
     @markers = @artists.map do |artist|
       {
       lat: artist.latitude,
-      lng: artist.longitude
+      lng: artist.longitude,
+      infoWindow: render_to_string(partial: "artists/info_window", locals: { artist: artist })
     }
   end
 end
