@@ -20,8 +20,8 @@
       <%= f.input :city %>
       <%= f.input :birth_place, label: "Country of birth if different", collection: CountryStateSelect.countries_collection.sort %>
       <%= f.input :website, placeholder: 'www.' %>
-      <%= f.input :instagram, placeholder: 'www.instagram.com/' %>
-      <%= f.input :facebook, placeholder: 'www.facebook.com/' %>
+      <%= f.input :instagram, placeholder: 'www.instagram.com/', label: "Instagram Username" %>
+      <%= f.input :facebook, placeholder: 'www.facebook.com/', label: "Facebook Username" %>
       <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
       <% end %>
     </div>

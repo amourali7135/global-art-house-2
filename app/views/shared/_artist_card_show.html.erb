@@ -9,6 +9,15 @@
    <% end %>
     <p class="card-text row align-items-center justify-content-center"><%= @artist.bio %></p>
     <p class="card-text row align-items-center justify-content-center"><small class="text-muted"><%=  %></small></p>
+
+
+    <div class="d-flex justify-content-center" >
+    <p class="card-text row align-items-center justify-content-center align-items-center" >
+    <%= link_to_image('FB.svg', "https://www.facebook.com/#{@artist.facebook}", class: "logos")%>
+    <%= link_to_image('instagram.svg', "https://www.instagram.com/#{@artist.instagram}", class: "logos")%>
+    </div>
+
+
     <p class="card-text row align-items-center justify-content-center"><%= @artist.age %> Years old</p>
     <p class="card-text row align-items-center justify-content-center"><%= @artist.city %>, <%= @artist.country %> <%= flag_icon(@artist.country.to_sym.downcase) %></p>
     <p class="card-text row align-items-center justify-content-center">Originally from <%= @artist.birth_place %></p>
