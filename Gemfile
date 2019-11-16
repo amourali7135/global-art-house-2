@@ -47,6 +47,8 @@ gem "punching_bag"
 gem 'social-share-button'
 gem 'pagy'
 gem 'kramdown', '~> 1.17'
+gem 'serviceworker-rails'
+gem 'stripe_event'
 
 
 

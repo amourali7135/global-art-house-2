@@ -1,5 +1,7 @@
 class Tag < ApplicationRecord
   attr_reader :category, :kind, :type
+  has_many :art_tags #Added after strange error on 111519, check into it later.
+  has_many :artist_tags #Added after strange error on 111519, check into it later.
   has_many :artists, through: :artist_tags
   has_many :arts, through: :art_tags
 

@@ -8,12 +8,9 @@ class Artist < ApplicationRecord
   acts_as_followable
   acts_as_votable
 
-
   def mailboxer_email(object)
     email
   end
-
-
 
   has_many :arts, dependent: :destroy
   has_many :languages

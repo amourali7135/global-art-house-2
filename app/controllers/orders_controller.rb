@@ -7,14 +7,22 @@ class OrdersController < ApplicationController
 
   def create
     art = Art.find(params[:art_id])
-    order  = Order.create!(art: art, art_sku: art.sku, amount: art.price, state: 'pending', user: current_user)
+    # art_photos = []
+    # Art.find(params[:art_id]).photos.each do |pic|
+    # art_photos << pic
+    # end
+
+    order  = Order.create!(art: art, art_sku: art.sku, amount: art.price_cents, state: 'pending', user: current_user)
 
     session = Stripe::Checkout::Session.create(
     payment_method_types: ['card'],
     line_items: [{
-    name: art.sku,
-    images: [art.photo_url],
-    amount: art.price_cents,
+    name: art.title,
+    images: [art.photos.first],
+    # each do |photo|
+    # cl_image_tag(photo.photo, width: 500, height: 400, crop: :fill)
+    # end,
+    amount: art.price_cents * 100,
     currency: 'usd',
     quantity: 1
     }],

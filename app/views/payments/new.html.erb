@@ -1,11 +1,10 @@
 <div class="container">
   <div class="row py-4">
-    <div class="col-md-3"><%= image_tag @order.art.photo_url, width: '100%' %></div>
+    <div class="col-md-3"><%= image_tag @order.art.photos.first, width: '100%' %></div>
     <div class="col">
       <h1>Checkout summary</h1>
-      <p>Purchase of <strong><%= @order.art.name %></strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
+      <p>Purchase of <strong><%= @order.art.title %></strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
       <button id="pay" class="btn btn-primary">Pay</button>
-       Commented for the lecture, remove comments.
       <script src="https://js.stripe.com/v3/"></script>
       <script>
         const paymentButton = document.getElementById('pay');
@@ -19,3 +18,4 @@
     </div>
   </div>
 </div>
+

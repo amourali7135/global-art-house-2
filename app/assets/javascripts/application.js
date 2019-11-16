@@ -5,3 +5,4 @@
 //= require cloudinary/jquery.cloudinary
 //= require select2_simple_form
 //= require social-share-button
+//= require serviceworker-companion

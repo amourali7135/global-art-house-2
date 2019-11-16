@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_23_110343) do
+ActiveRecord::Schema.define(version: 2019_11_15_102915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2019_10_23_110343) do
     t.string "styles"
     t.integer "price_cents", default: 0, null: false
     t.string "kind"
+    t.string "sku"
     t.index ["artist_id"], name: "index_arts_on_artist_id"
   end
 
