@@ -4,3 +4,9 @@
   border-width: thin;
   border-color: black;
 }
+#artist-card-show img {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-style: solid;
+  border-width: thin;
+  border-color: black;
+}

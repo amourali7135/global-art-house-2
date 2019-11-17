@@ -15,6 +15,7 @@
     <p> <%= cl_image_tag user.artist.photo, class: 'card-trip-user avatar-bordered' %><%= user.artist.first_name %> <%= user.artist.last_name %></p>
     <p class="row align-items-center justify-content-center"><%= link_to 'Artist Profile', artist_path(user.artist) %></p>
   <% end %>
+
 <% if @artist.artist_name %>
   <p class="row align-items-center justify-content-center"><%= link_to "Message #{@artist.artist_name}", conversations_path(author_id: current_user.id, receiver_id: user.id), method: "post", class: 'btn btn-primary' %></p>
   <% else %>
