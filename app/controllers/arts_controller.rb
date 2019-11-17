@@ -37,8 +37,13 @@ class ArtsController < ApplicationController
   end
 
   def update
-    @photo = Photo.find(params[:id])
+    # @photo = Photo.find(params[:id])
     @art = Art.find(params[:id])
+    @art.art_tags.destroy_all
+    art_tags = params.require(:art).permit(tag_ids: [])[:tag_ids].reject { |tag| tag == '' }.map { |tag| Tag.find_by_name(tag) }
+    art_tags.each do |tag|
+      ArtTag.create!(art: @art, tag: tag)
+    end
     if @art.update(art_params)
       redirect_to dashboard_path
     else
@@ -53,7 +58,7 @@ class ArtsController < ApplicationController
   end
 
   def edit
-  @kind = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ].sort
+    @kind = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ].sort
     @type = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ].sort
     # @photo = Photo.find(params[:id])
     @artist = Artist.find(params[:artist_id])

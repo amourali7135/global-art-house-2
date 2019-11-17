@@ -50,6 +50,11 @@ class ArtistsController < ApplicationController
 
   def update
     @artist = Artist.find(params[:id])
+    @artist.artist_tags.destroy_all
+    artist_tags = params.require(:artist).permit(tag_ids: [])[:tag_ids].reject { |tag| tag == '' }.map { |tag| Tag.find_by_name(tag) }
+    artist_tags.each do |tag|
+      ArtistTag.create!(artist: @artist, tag: tag)
+    end
     if @artist.update(artist_params)
       redirect_to @artist
     else
