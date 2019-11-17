@@ -1,5 +1,5 @@
 <div>
-  Chatting with <%= conversation.receiver.username %>
+  Chatting with <%= conversation.author == current_user ? conversation.receiver.username : conversation.author.username %>
   <br>
   <%#= conversation.messages.last.message_time %>
   <% unless conversation.messages.empty? %>

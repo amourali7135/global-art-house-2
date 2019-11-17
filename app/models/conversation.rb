@@ -2,7 +2,7 @@ class Conversation < ApplicationRecord
   belongs_to :author, foreign_key: :author_id, class_name: "User"
   belongs_to :receiver, foreign_key: :receiver_id, class_name: "User"
 
-  has_many :messages #, -> { order(created_at: :asc) }, dependent: :destroy
+  has_many :messages, -> { order(created_at: :asc) }, dependent: :destroy
 
   validates_uniqueness_of :author_id, scope: :receiver_id
 
@@ -11,7 +11,29 @@ class Conversation < ApplicationRecord
   scope :between, -> (author_id, receiver_id) do
     where("(conversations.author_id = ? AND conversations.receiver_id = ?) OR (conversations.author_id = ? AND conversations.receiver_id = ?)", author_id, receiver_id, receiver_id, author_id)
   end
+
+  def self.whatever
+    array = []
+    # all.each do |conversation|
+    #   if !conversation.messages.empty? && !conversation.messages.last.read
+    #     array << conversation
+    #   end
+    # end
+
+    # rest = all.filter do |conversation|
+    #   if !conversation.messages.empty?
+    #     conversation.messages.last.read
+    #   end
+    # end
+    # array << all
+    all.sort_by { |c| c.messages.last.created_at }.reverse
+
+    # return array.flatten.uniq
+  end
+
 end
+
+
 
 
 #     belongs_to :author, class_name: 'User'

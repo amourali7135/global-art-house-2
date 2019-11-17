@@ -1,4 +1,4 @@
-<h1>Chatting with <%= @conversation.with(current_user).artist.first_name %></h1>
+<h1>Chatting with <%= @conversation.author == current_user ? @conversation.receiver.username : @conversation.author.username %></h1>
 
 <div id="conversation-main">
   <div id="conversation-body">

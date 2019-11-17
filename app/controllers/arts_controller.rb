@@ -40,7 +40,7 @@ class ArtsController < ApplicationController
     @photo = Photo.find(params[:id])
     @art = Art.find(params[:id])
     if @art.update(art_params)
-      redirect_to @art
+      redirect_to dashboard_path
     else
       render 'edit'
     end
@@ -49,7 +49,7 @@ class ArtsController < ApplicationController
   def destroy
     @art = Art.find(params[:id])
     @art.destroy
-    redirect_to arts_path
+    redirect_to dashboard_path
   end
 
   def edit

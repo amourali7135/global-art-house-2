@@ -1,5 +1,5 @@
 <%# no more rendering message card for now...  %>
-<h1 class="title is-4 row align-items-center justify-content-center">Message <%= @conversation.receiver.username %></h1>
+<h1 class="title is-4 row align-items-center justify-content-center">Message <%= @conversation.author == current_user ? @conversation.receiver.username : @conversation.author.username %></h1>
 
 <div class="row align-items-center justify-content-center">
 <p><%= link_to 'Back to conversations', conversations_path, class: "nav-link" %></p>

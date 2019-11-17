@@ -5,7 +5,7 @@ How to sort by updated at?  Message updated at!  So deep though.
   <div class="column is-7">
     <h3 class="title is-3 row align-items-center justify-content-center">Conversations</h3>
     <%# @conversations.each do |conversation| %>
-    <% @conversations.sort_by { |conversation| -conversation.id }.each do |conversation| %>
+    <% @conversations.each do |conversation| %>
       <% if conversation.author_id == current_user.id || conversation.receiver_id == current_user.id %>
         <% if conversation.author_id == current_user.id %>
           <% recipient = User.find(conversation.receiver_id) %>
@@ -32,7 +32,7 @@ How to sort by updated at?  Message updated at!  So deep though.
 </div>
 </div>
 
-
+<% Conversation.whatever %>
 
 
 
