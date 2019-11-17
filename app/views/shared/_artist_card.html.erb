@@ -10,7 +10,7 @@
       <%= cl_image_tag art.photos.sample.photo, class:"cloudinary-artist-arts" %>
       <% end %>
       </div>
-    <p><small>Tags: <%= raw artist.tags.map(&:name).map { |t| link_to t, browse_path(tag: t) }.join(', ') %></small></p>
+    <p><small>Tags: <%= raw artist.tags.map(&:name).map { |t| link_to t, "/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
     <%= link_to 'See more of this artist', artist_path(artist.id)  %>
 
  <div class="d-flex justify-content-between w-100">
@@ -27,7 +27,7 @@
     <h2><%= artist.first_name %> <%= artist.last_name %></h2>
     <p><%= artist.bio %></p>
     <p> <%= artist.city %></p>
-    <p><small>Tags: <%= raw artist.tags.map(&:name).map { |t| link_to t, browse_path(tag: t) }.join(', ') %></small></p>
+    <p><small>Tags: <%= raw artist.tags.map(&:name).map { |t| link_to t, "/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
     <%= cl_image_tag artist.arts[0].photo %>
     <%= cl_image_tag artist.arts[1].photo if artist.arts[1] %>
     <%= cl_image_tag artist.arts[2].photo if artist.arts[2] %>
