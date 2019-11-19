@@ -1,19 +1,19 @@
- <div class="row align-items-center justify-content-center">
+ <div class="row align-items-center justify-content-center pt-2">
    <%= render partial: 'shared/art_card_show', locals: {art: @art} %>
  </div>
 
 
 <div class="row align-items-center justify-content-center">
 <div class="row">
-<p>Share: <%= social_share_button_tag(@art.title,) %> </p>
+<p><strong>Share: </strong><%= social_share_button_tag(@art.title,) %> </p>
 <br>
   </div>
 </div>
 
-<div class="row align-items-center justify-content-center">
+<div class="row align-items-center justify-content-center py-2">
   <div class="row">
 <% if @art.available %>
-<p>Price: <%= humanized_money_with_symbol(@art.price) %></p>
+<p><strong>Price: </strong><%= humanized_money_with_symbol(@art.price) %></p>
  <%= form_tag orders_path do %>
   <%= hidden_field_tag 'art_id', @art.id %>
   <%= submit_tag 'Purchase', class: 'btn btn-primary' %>

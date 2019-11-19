@@ -22,6 +22,7 @@ class ArtsController < ApplicationController
     create_pictures(@art)
     if @art.save
       create_tags(@art)
+      flash[:notice] = "Your art was successfully created!"
       redirect_to @art.artist
     else
       render "new"
@@ -45,8 +46,10 @@ class ArtsController < ApplicationController
       ArtTag.create!(art: @art, tag: tag)
     end
     if @art.update(art_params)
+      flash[:notice] = "Your art was successfully updated!"
       redirect_to dashboard_path
     else
+      flash[:error] = "There was an error, please try again!"
       render 'edit'
     end
   end
@@ -54,6 +57,7 @@ class ArtsController < ApplicationController
   def destroy
     @art = Art.find(params[:id])
     @art.destroy
+    flash[:notice] = "Your art was successfully deleted!"
     redirect_to dashboard_path
   end
 

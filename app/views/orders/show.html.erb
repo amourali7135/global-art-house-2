@@ -6,10 +6,12 @@
       <ul class="list-unstyled">
         <li><strong>ISSUED ON</strong> <%= @order.created_at.to_date %></li>
         <li><strong>ART</strong> <%= @order.art.title %> [<%= @order.art_sku %>]</li>
+        <li><strong>ARTIST</strong> <%= @order.art.artist.first_name %> <%= @order.art.artist.last_name %><% if @order.art.artist.artist_name?%>, also known as <%= @order.art.artist.artist_name %></li>
+        <% end %>
         <li><strong>TOTAL</strong> <%= humanized_money_with_symbol @order.amount %></li>
         </li>
       </ul>
-      <p>Estimated delivery within <strong>2 weeks</strong></p>
+      <p>If your purchase is approved by the artist, the estimated delivery will be within <strong>2 weeks.</strong></p>
     </div>
   </div>
 </div>

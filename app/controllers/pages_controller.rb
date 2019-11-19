@@ -27,6 +27,7 @@ def dashboard
   @user = current_user
   @artist = Artist.find_by(user_id: @user.id) #user_id: refers to artist table one!
   if !@user.artist
+    flash[:notice] = "Only users with artist profiles have dashboards!"
     redirect_to root_path
   end
 end

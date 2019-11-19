@@ -33,6 +33,7 @@ class ArtistsController < ApplicationController
     @artist.user_id = current_user.id
     create_tags(@artist)
     if @artist.save
+      flash[:notice] = "Your artist profile was successfully created!"
       redirect_to dashboard_path
     else
       render "new"
@@ -50,14 +51,16 @@ class ArtistsController < ApplicationController
 
   def update
     @artist = Artist.find(params[:id])
-    @artist.artist_tags.destroy_all
+    # @artist.artist_tags.destroy_all   CONSIDER PUTTING THIS ONE BACK IN THOUGH!!!
     artist_tags = params.require(:artist).permit(tag_ids: [])[:tag_ids].reject { |tag| tag == '' }.map { |tag| Tag.find_by_name(tag) }
     artist_tags.each do |tag|
       ArtistTag.create!(artist: @artist, tag: tag)
     end
     if @artist.update(artist_params)
-      redirect_to @artist
+      flash[:notice] = "Your artist profile was successfully updated!"
+      redirect_to dashboard_path
     else
+      flash[:error] = "There was an error, please try again!"
       render 'edit'
     end
   end
@@ -65,6 +68,7 @@ class ArtistsController < ApplicationController
   def delete
     @artist = Artist.find(params[:id])
     @artist.destroy
+    flash[:notice] = "Your artist profile was successfully deleted!"
     redirect_to root_path
   end
 

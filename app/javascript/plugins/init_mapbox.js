@@ -52,7 +52,7 @@ const mapClicking = map => {
 
     new mapboxgl.Popup()
       .setLngLat(map.unproject(e.point))
-      .setHTML(`<a href="http://localhost:3000/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Bcountry%5D=${iso_a2}&search%5Bcity%5D=&commit=Submit">See the artists in ${name}!</a>`)
+      .setHTML(`<a href="http://localhost:3000/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Bcountry%5D=${iso_a2}&search%5Bcity%5D=&commit=Submit">See the artists of ${name}!</a>`)
       .addTo(map);
   });
 };

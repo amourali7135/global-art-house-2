@@ -15,6 +15,7 @@ class CommentsController < ApplicationController
       @comment = @art.comments.create(comment_params)
       @comment.user_id = current_user.id
       if @comment.save
+        flash[:notice] = "Your comment was successfully posted!"
         redirect_to artist_art_path(@art.artist, @art)
       else
         flash.now[:danger] = "error"
@@ -26,6 +27,7 @@ class CommentsController < ApplicationController
       @comment = Comment.find(params[:id])
       @art = @comment.art
       @comment.destroy
+      flash[:notice] = "Your comment was successfully deleted!"
       redirect_to artist_art_path(@art.artist, @art)
     end
 

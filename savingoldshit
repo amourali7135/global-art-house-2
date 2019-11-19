@@ -163,3 +163,6 @@ One way to get tags in a weird format.  Copy and replace if needed the link_to o
 
 From the old artist form/cards pre-tags.
       <p> <%= artist.form %></p>
+
+Alternative way to show artist show page tags for artist
+<p class="card-text row align-items-center justify-content-center"><small>Tags: <%= raw @artist.artist_tags.map(&:tag).map { |t| link_to t, "/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
