@@ -3,6 +3,8 @@ require_relative 'boot'
 require 'rails/all'
 
 # config.assets.initialize_on_precompile = false  #trying out heroku deployment advice by pasting it here.
+# config.assets.compile = false
+
 
 def markdown_to_html(text)
   Kramdown::Document.new(text, input: "GFM").to_html
