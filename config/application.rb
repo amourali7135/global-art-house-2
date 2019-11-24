@@ -26,7 +26,7 @@ module GlobalArtHouse2
     config.load_defaults 5.2
 
     config.action_view.embed_authenticity_token_in_remote_forms = true
-    config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = false # WAS SUPPOSED TO BE HERE IN APPLICATION!
 
 
     # Settings in config/environments/* take precedence over those specified here.
