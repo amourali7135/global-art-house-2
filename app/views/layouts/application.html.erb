@@ -20,7 +20,7 @@
     <%= yield %>
     <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
-    <%# <%= javascript_pack_tag 'application' %>  <%# 112419 commented out for heroku attempt to work
+    <%= javascript_pack_tag 'application' %>  <%# 112419 commented out for heroku attempt to work, DONT, it gets rid of the map!
   </body>
 </html>
 
