@@ -12,5 +12,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
-Rails.configuration.assets.precompile += %w[serviceworker.js manifest.json]
-Rails.application.config.assets.precompile += %w( application.css ) #Attempt for heroku online.
+Rails.configuration.assets.precompile += %w[serviceworker.js manifest.json application.css]
+# Rails.application.config.assets.precompile += %w( application.css ) #Attempt for heroku online.
