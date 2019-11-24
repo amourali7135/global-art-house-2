@@ -2,7 +2,7 @@ require_relative 'boot'
 
 require 'rails/all'
 
-# config.assets.initialize_on_precompile = false  #trying out heroku deployment advice by pasting it here.
+config.assets.initialize_on_precompile = false  #trying out heroku deployment advice by pasting it here.
 # config.assets.compile = false
 
 
