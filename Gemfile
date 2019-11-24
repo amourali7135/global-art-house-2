@@ -49,8 +49,7 @@ gem 'pagy'
 gem 'kramdown', '~> 1.17'
 gem 'serviceworker-rails'
 gem 'stripe_event'
-
-
+gem 'sprockets', '~> 3.7.2'
 
 
 

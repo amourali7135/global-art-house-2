@@ -57,6 +57,35 @@ class Artist < ApplicationRecord
   using: {
     tsearch: { prefix: true }
   }
+
+  #Sortable menu experiment for search sorts.
+
+  def self.followers
+    all.sort_by { |a| a.followers.count}
+  end
+
+  def self.recent
+    all.sort_by { |a| a.created_at}.reverse
+  end
+
+  def self.views
+    all.sort_by { |a| a.hits}
+  end
+
+  def self.likes
+    all.sort_by { |a| a.get_likes.size}
+  end
+
+  def self.sorted
+    [self.followers, self.recent, self.views, self.likes]
+  end
+
+
+
+  # def self.comments
+  #   all.sort_by { |a| a.arts.}
+  # end
+
 end
 
 

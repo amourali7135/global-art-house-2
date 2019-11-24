@@ -384,6 +384,7 @@ DEPENDENCIES
   social-share-button
   spring
   spring-watcher-listen (~> 2.0.0)
+  sprockets (~> 3.7.2)
   stripe
   stripe_event
   uglifier
