@@ -32,12 +32,16 @@
   </div>
 </div>
 
+<div class="row align-items-center justify-content-center">
+  <div class="row">
  <%#= simple_form_for(:country, as: :select2, method: :get, url: '/artists_countries') do |f| %>
   <%#= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort, required: false %>
   <%= simple_form_for(:country, method: :get, url: '/artists_countries', input_html: { id: "home_page_country_1"}) do |f| %>
   <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: { id: "home_page_country_2"} %>
   <%= f.submit %>
-<% end %>
+  <% end %>
+  </div>
+</div>
 
 <div
 
