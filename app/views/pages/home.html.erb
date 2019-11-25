@@ -3,7 +3,7 @@
 
 <div class="row align-items-center justify-content-center">
   <div class="row">
-  <h3>Explore art from all around the world</h3>
+  <h3>Explore brand new art from all around the world</h3>
   </div>
 </div>
 
@@ -16,7 +16,7 @@
 
 <div class="row align-items-center justify-content-center">
   <div class="row">
-  <h3>Discover undiscovered artists from all around the world</h3>
+  <h3>Discover brand new artists from all around the world</h3>
   </div>
 </div>
 
@@ -28,11 +28,11 @@
 
 <div class="row align-items-center justify-content-center">
   <div class="row">
-   <h3>Click a country on the map or search</h3>
+   <h3>Select a country on the map or search box</h3>
   </div>
 </div>
 
-<div class="row align-items-center justify-content-center">
+<div class="row align-items-center justify-content-center pb-3">
   <div class="row">
  <%#= simple_form_for(:country, as: :select2, method: :get, url: '/artists_countries') do |f| %>
   <%#= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort, required: false %>
@@ -61,7 +61,7 @@
   </div>
 
 
-<p class="grid-headers pt-2 pb-1">A small sample of some of our artists!</p>
+<p class="grid-headers pt-2 pb-1">A random sample of some of our artists!</p>
 <div class="container front-page-grid">
   <% @artists.sample(3).each do |artist| %>
     <div class="row">
@@ -72,7 +72,7 @@
   <% end %>
 </div>
 
-<p class="grid-headers pt-2 pb-1">A small sample of some our arts</p>
+<p class="grid-headers pt-2 pb-1">A random sample of some our arts</p>
 <div class="container front-page-grid">
   <% @arts.sample(3).each do |art| %>
     <div class="row">
@@ -149,7 +149,7 @@
   <% end %>
 </div>
 
-<p class="grid-headers pt-2 pb-1">Grid test VII artists by most recent negative - won't work here, why? Id test too.</p>
+<p class="grid-headers pt-2 pb-1">Our most recent artists.</p>
 
 <%# broken_grid = [] %>
 <div class="container front-page-grid">
@@ -166,7 +166,7 @@
   <% end %>
 </div>
 
-<p class="grid-headers pt-2 pb-1">Most recently added art.</p>
+<p class="grid-headers pt-2 pb-1">Our most recently added art.</p>
 <div class="container front-page-grid">
   <% @arts.sort_by { |art| art.id }.last(3).each do |art|  #or created_at %>
     <div class="row">

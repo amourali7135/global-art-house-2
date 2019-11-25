@@ -1,26 +1,21 @@
-Paginate/limit.  Design this too, shit.
+Paginate/limit.
 
  <div class="row align-items-center justify-content-center">
 <%= render partial: 'shared/artist_card_show', locals: {artist: @artist} %>
 </div>
 
 
-<br>
- welcome to <%= @artist.first_name %>'s art!
- <br>
-
-<div class="row align-items-center justify-content-center flex-column">
-<div class="clean-block clean-catalog dark">
- <div class="container front-page-grid">
+<p class="grid-headers pt-2 pb-1"><strong>welcome to <%= @artist.first_name %>'s art!</strong></p>
+<div class="container front-page-grid">
 <% @artist.arts.each do |art| %>
 <div class="row">
       <div class="products pl-5 card-grid-3c">
- <div>
    <%= render partial: 'shared/art_card', locals: {art: art} %>
+<div>
  </div>
+</div>
+</div>
 <% end %>
 </div>
-</div>
-</div>
-</div>
-</div>
+
+
