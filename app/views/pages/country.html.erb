@@ -6,7 +6,9 @@ Select your Country:
 
 <%= simple_form_for @country do |f| %>
 <%= f.input :country_field, collection: CountryStateSelect.countries_collection %>
-<%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+      <div style="text-align:center">  
+      <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+      </div>
 <% end %>
 
 

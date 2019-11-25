@@ -1,6 +1,8 @@
 <div class="row align-items-center justify-content-center ">
 <%= simple_form_for [@art, @comment] do |f|%>
        <%= f.input :content, label: "Leave your comments about this art!" %>
+       <div style="text-align:center">  
        <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+       </div>
        <% end %>
 </div>

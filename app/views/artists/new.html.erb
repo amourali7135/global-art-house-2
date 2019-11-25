@@ -1,13 +1,18 @@
+
 <div class="container">
-  <div class="row">
+  <div class="row ">
     <div class="col mt-4">
       <img src="" alt="" class="img-fluid">
     </div>
-    <div class="col card p-4 m-4 bg-light">
+    <div class="col card p-4 m-4 bg-light ">
+    <div class="row align-items-center justify-content-center">
       <h1>Are you an artist?</h1>
       <h2>Share your art with the world!</h2>
+      <h2>Let the world discover you directly!</h2>
+      <h2>No art dealers or galleries!</h2>
       <p>Easy and free to sign up!</p>
-
+    </div>
+     
       <%= simple_form_for @artist do |f|%>
       <%= f.input :first_name %>
       <%= f.input :last_name %>
@@ -24,8 +29,10 @@
       <%= f.input :website, placeholder: 'www.yourwebsite.com', label: "Full Website URL" %>
       <%= f.input :instagram, placeholder: 'www.instagram.com/', label: "Instagram Username" %>
       <%= f.input :facebook, placeholder: 'www.facebook.com/', label: "Facebook Username" %>
+      <div style="text-align:center">  
       <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+      </div>
       <% end %>
+      </div>
     </div>
   </div>
-</div>
