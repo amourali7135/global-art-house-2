@@ -7,8 +7,8 @@
   <%= simple_form_for :search, url: artists_path, method: "GET" do |f| %>
     <%#= f.input :tag_ids, as: :select2, collection: Tag.art_kinds, input_html: {multiple: true}, label: "What kind of artist do you do want?", required: false %>
     <%#= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort, required: false %>
-    <%= f.input :tag_ids, as: :select2, collection: Tag.art_kinds, input_html: {multiple: true}, label: "What kind of artist do you do want?", required: false %>
-    <%= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort, required: false %>
+    <%= f.input :tag_ids, collection: Tag.art_kinds, input_html: {multiple: true, id: "artist_kinds_search"}, label: "What kind of artist do you do want?", required: false %>
+    <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: {id: "artists_country_search"} %>
     <%= f.input :city, id:"artist_city", required: false %>
     <%= f.input :sorted, as: :select2, collection: Artist.sorted, required: false %>
     <%= link_to "Reset", artists_path  %>

@@ -13,9 +13,10 @@
       <%= f.input :photo, label: "Reupload original or pick a new photo" %>
       <%= f.input :age %>
       <%= f.input :bio, label: "Biography" %>
-      <%#= f.input :form, as: :select2, collection: @category, multiple: true, label: "What types of art do you do?"  %>
-      <%= f.input :tag_ids, as: :select2, collection: Tag.art_kinds, input_html: {multiple: true}, label: "What types of art do you do?" %>
-      <%= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort %>
+      <%#= f.input :tag_ids, as: :select2, collection: Tag.art_kinds, input_html: {multiple: true}, label: "What types of art do you do?" %>
+      <%#= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort %>
+      <%= f.input :tag_ids, collection: Tag.art_kinds, input_html: {multiple: true, id: "artist_edit_tags"}, label: "What types of art do you do?" %>
+      <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, input_html: {id: "search_country"} %>
       <%= f.input :city %>
       <%= f.input :birth_place, label: "Country of birth if different", collection: CountryStateSelect.countries_collection.sort %>
       <%= f.input :website, placeholder: 'www.yourwebsite.com', label: "Full Website URL" %>

@@ -3,8 +3,10 @@ Sorted/filtered by...
 
 Select your Country:
 
-<%= simple_form_for(:country, as: :select2, method: :get, url: '/artists_countries') do |f| %>
-  <%= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort %>
+<%#= simple_form_for(:country, as: :select2, method: :get, url: '/artists_countries') do |f| %>
+<%= simple_form_for(:country, method: :get, url: '/artists_countries', input_html: { id: "country_select_again"}) do |f| %>
+  <%#= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort %>
+  <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, input_html: { id: "country_select"} %>
   <%= f.submit %>
 <% end %>
 
