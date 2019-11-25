@@ -8,9 +8,9 @@
     <%# <%= f.input :tag_ids, as: :select2, collection: Tag.art_kinds, input_html: {multiple: true}, label: "What kind of artist do you do want?", required: false %>
     <%#<%= f.input :tag_ids, as: :select2, collection: Tag.art_types, input_html: {multiple: true}, label: "What genre of art do you want?", required: false %>
     <%#<%= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort, required: false %>
-    <%= f.input :tag_ids, as: :select2, collection: Tag.art_kinds, input_html: {multiple: true}, label: "What kind of artist do you do want?", required: false %>
-    <%= f.input :tag_ids, as: :select2, collection: Tag.art_types, input_html: {multiple: true}, label: "What genre of art do you want?", required: false %>
-    <%= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort, required: false %>
+    <%= f.input :tag_ids, collection: Tag.art_kinds, input_html: {multiple: true}, label: "What kind of artist do you do want?", required: false %>
+    <%= f.input :tag_ids, collection: Tag.art_types, input_html: {multiple: true}, label: "What genre of art do you want?", required: false %>
+    <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false %>
     <%= f.input :city, id:"artist_city2", required: false %>
     <%= link_to "Reset", browse_path  %>
     <%= f.submit 'Submit', class: 'btn btn-primary'%>

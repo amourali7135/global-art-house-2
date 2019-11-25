@@ -7,13 +7,14 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import $ from 'jquery';
 // import { initCarousel } from '../plugins/init_carousel';
-
+import { initSelect2 } from '../plugins/init_select2';
 
 
 initAutocomplete();
 initAutocomplete2();
 initAutocomplete3();
 initMapbox();
+initSelect2();
 // initCarousel();
 
 
