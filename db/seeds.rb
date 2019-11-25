@@ -41,7 +41,7 @@ puts 'Creating 20 fake users...'
   birth_place: CountryStateSelect.countries_collection.map { |country| country[1].to_s }.sample,
   city: Faker::Address.city,
   country: CountryStateSelect.countries_collection.map { |country| country[1].to_s }.sample,
-  form: artist_categories.sample(2),
+  # form: artist_categories.sample(2),
   )
   artist.user = user
   artist.save!
@@ -65,17 +65,23 @@ puts 'Creating 20 fake users...'
     completion_date: Faker::Date.between(from: 300.days.ago, to: Date.today),
     inspiration: Faker::Lorem.sentences(number: 1),
     available: Faker::Boolean.boolean,
-    styles: art_styles.sample(2),
-    kind: art_mediums.sample,
+    # styles: art_styles.sample(2),
+    # kind: art_mediums.sample,
     price_cents: Faker::Commerce.price,
     likees_count: Faker::Number.between(from: 0, to: 4000),
     artist: artist
     )
     art.save!
 
-    # Create Art Tags
-    puts 'Linking art to tags'
+    # Create Art Tags for kind too!  Tag IDS?
+    puts 'Linking art type via tags'
     Tag.art_types.sample(2).each do |tag|
+      t = Tag.create!(name: tag)
+      ArtTag.create!(art: art, tag: t)
+    end
+
+    puts 'Linking art kind via tags'
+    Tag.art_kinds.sample(2).each do |tag|
       t = Tag.create!(name: tag)
       ArtTag.create!(art: art, tag: t)
     end
