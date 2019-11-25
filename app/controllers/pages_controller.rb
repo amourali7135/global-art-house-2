@@ -12,7 +12,8 @@ class PagesController < ApplicationController
       # redirect_to dashboard_path
     end
 
-    @artists = Artist.geocoded #returns flats with coordinates
+    @artists = Artist.geocoded #returns artists with coordinates, BRO THIS LINE MAKES ARTISTS WITH GEO SHOW ONLY ON THE HOME PAGE!
+    #FUCK!
 
     @markers = @artists.map do |artist|
       {
