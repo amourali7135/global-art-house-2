@@ -5,6 +5,7 @@ import $ from 'jquery';
  const initSelect2 = () => {
    console.log('hello')
    $("#search_tag_ids").select2();
+   $("#search_tag_ids").select2();
    $("#search_country").select2();
  }
 
