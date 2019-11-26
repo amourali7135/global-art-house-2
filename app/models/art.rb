@@ -56,3 +56,12 @@ def self.tagged_with(name)
   end
 end
 
+# def comments_sort
+#   @arts.sort_by { |art| -art.comments.count }.each do |art|
+#     render partial: 'shared/art_card', locals: {art: art, artist: art.artist}
+#   end
+# end
+
+def sorted
+
+end
