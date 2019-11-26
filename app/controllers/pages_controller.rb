@@ -74,20 +74,23 @@ class PagesController < ApplicationController
     end
 
     if params[:most_comments]
-      @artists = Artist.global_search(@filter)
-      @arts = Art.global_search(@filter).sort_by { |art| art.comments.size }
+      @arts = Art.global_search(@filter).sort_by { |art| -art.comments.count }
+      # @arts = @arts.sort_by { |art| -art.comments.count }
       @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
       @pagy, @arts = pagy(@arts, page: params[:page], items: 20)
       elsif params[:most_likes]
-      @arts = Art.global_search(@filter).sort_by { |art| art.comments.size }
+      @arts = Art.global_search(@filter).sort_by { |art| -art.get_likes.size }
+      # @arts = @arts.sort_by { |art| -art.get_likes.size }
       @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
       @pagy, @arts = pagy(@arts, page: params[:page], items: 20)
       elsif params[:most_viewed]
-      @arts = Art.global_search(@filter).sort_by { |art| art.comments.size }
+      @arts = Art.global_search(@filter).sort_by { |art| -art.hits }
+      # @arts = @arts.sort_by { |art| -art.hits }
       @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
       @pagy, @arts = pagy(@arts, page: params[:page], items: 20)
       else params[:most_recent]
-      @arts = Art.global_search(@filter).sort_by { |art| art.comments.size }
+      @arts = Art.global_search(@filter).sort_by { |art| art.id }
+      # @arts = @arts.sort_by { |art| art.id }
       @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
       @pagy, @arts = pagy(@arts, page: params[:page], items: 20)
     end
