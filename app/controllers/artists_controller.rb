@@ -8,11 +8,15 @@ class ArtistsController < ApplicationController
 
     @artists = params[:tag] ? Artist.tagged_with(params[:tag]) : Artist.all
 
-    if params["search"]
-      @filter = params["search"]["tag_ids"].concat([params['country']]).concat([params["search"]["city"]]).concat([params["search"]["country"]]).flatten.reject(&:blank?)
+    if params["search"] #reject '' in middle added 112619
+      @filter = params["search"]["tag_ids"].reject { |tag| tag == '' }.concat([params['country']]).concat([params["search"]["city"]]).concat([params["search"]["country"]]).flatten.reject(&:blank?)
       @artists = Artist.global_search(@filter)
       @pagy, @artists = pagy(Artist.global_search(@filter), page: params[:page], items: 20)
-    else
+    elsif params[:tag_id] #112619 I added this while trying to get sort to work.
+      @filter = params[:tag_id] #112619 I added this while trying to get sort to work.
+      @artists = Artist.global_search(@filter) #112619 I added this while trying to get sort to work.
+      @pagy, @artists = pagy(Artist.global_search(@filter), page: params[:page], items: 20) #112619 I added this while trying to get sort to work.
+    else #112619 I added this while trying to get sort to work.
       @artists = Artist.all
       @pagy, @artists = pagy(Artist.all, page: params[:page], items: 20)
     end
@@ -21,26 +25,28 @@ class ArtistsController < ApplicationController
     #   format.js
     # end
 
-    if params[:search][:Sorted_by] === 'most_comments'
-      @artists = Art.global_search(@filter).sort_by { |artist| -artist.comments.count }
-      # @artists = @artists.sort_by { |artist| -artist.comments.count }
-      @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
-    elsif params[:search][:Sorted_by] === 'most_likes'
-      @artists = Art.global_search(@filter).sort_by { |artist| -artist.get_likes.size }
-      # @artists = @artists.sort_by { |artist| -artist.get_likes.size }
-      @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
-    elsif params[:search][:Sorted_by] === 'most_viewed'
-      # @artists = Art.global_search(@filter).sort_by { |artist| -artist.hits } #does not work with count or size, why?
-      @artists = @artists.sort_by { |artist| -artist.hits } #does not work with count or size, why?  Count bad in raise.
-      @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
-    else params[:search][:Sorted_by] === 'most_recent'
-      # @artists = Art.global_search(@filter).sort_by { |artist| -artist.id } #these first work...
-      @artists = @artists.sort_by { |artist| -artist.id } #these first work...
-      @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
+    if params[:search]
+      if params[:search][:sorted_by] === 'most_likes'
+        # @artists = Artist.global_search(@filter).sort_by { |artist| -artist.get_likes.size }
+        @artists = @artists.sort_by { |artist| -artist.get_likes.size }
+        @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
+      end
+      if params[:search][:sorted_by] === 'most_viewed'
+        # @artists = Artist.global_search(@filter).sort_by { |artist| -artist.hits }
+        @artists = @artists.sort_by { |artist| -artist.hits }
+        @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
+      end
+      if params[:search][:sorted_by] === 'most_recent'
+        # @artists = Artist.global_search(@filter).sort_by { |artist| -artist.id }
+        @artists = @artists.sort_by { |artist| -artist.id }
+        @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
+      end
+      if params[:search][:sorted_by] === 'most_followed'
+        # @artists = Artist.global_search(@filter).sort_by { |artist| -artist.id }
+        @artists = @artists.sort_by { |artist| -artist.followers_count }
+        @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
+      end
     end
-
-
-
 
   end
 

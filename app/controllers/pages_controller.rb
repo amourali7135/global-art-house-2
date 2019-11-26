@@ -87,19 +87,19 @@ class PagesController < ApplicationController
         @pagy, @arts = pagy(@arts, page: params[:page], items: 20)
       end
       if params[:search][:sorted_by] === 'most_viewed'
-        # @arts = Art.global_search(@filter).sort_by { |art| -art.hits } #does not work with count or size, why?
-        @arts = @arts.sort_by { |art| -art.hits } #does not work with count or size, why?  Count bad in raise.
+        # @arts = Art.global_search(@filter).sort_by { |art| -art.hits }
+        @arts = @arts.sort_by { |art| -art.hits }
         @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
         @pagy, @arts = pagy(@arts, page: params[:page], items: 20)
       end
       if params[:search][:sorted_by] === 'most_recent'
-        # @arts = Art.global_search(@filter).sort_by { |art| -art.id } #these first work...
-        @arts = @arts.sort_by { |art| -art.id } #these first work...
+        # @arts = Art.global_search(@filter).sort_by { |art| -art.id }
+        @arts = @arts.sort_by { |art| -art.id }
         @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
         @pagy, @arts = pagy(@arts, page: params[:page], items: 20)
       end
     end
-
+raise
   end
 
   def following
