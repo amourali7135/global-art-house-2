@@ -21,19 +21,19 @@ class ArtistsController < ApplicationController
     #   format.js
     # end
 
-    if params[:most_comments]
+    if params[:search][:Sorted_by] === 'most_comments'
       @artists = Art.global_search(@filter).sort_by { |artist| -artist.comments.count }
       # @artists = @artists.sort_by { |artist| -artist.comments.count }
       @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
-    elsif params[:most_likes]
+    elsif params[:search][:Sorted_by] === 'most_likes'
       @artists = Art.global_search(@filter).sort_by { |artist| -artist.get_likes.size }
       # @artists = @artists.sort_by { |artist| -artist.get_likes.size }
       @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
-    elsif params[:most_viewed]
+    elsif params[:search][:Sorted_by] === 'most_viewed'
       # @artists = Art.global_search(@filter).sort_by { |artist| -artist.hits } #does not work with count or size, why?
       @artists = @artists.sort_by { |artist| -artist.hits } #does not work with count or size, why?  Count bad in raise.
       @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
-    else params[:most_recent]
+    else params[:search][:Sorted_by] === 'most_recent'
       # @artists = Art.global_search(@filter).sort_by { |artist| -artist.id } #these first work...
       @artists = @artists.sort_by { |artist| -artist.id } #these first work...
       @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
