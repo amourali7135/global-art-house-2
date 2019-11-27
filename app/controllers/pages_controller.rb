@@ -73,7 +73,7 @@ class PagesController < ApplicationController
       @pagy, @arts = pagy(Art.all, page: params[:page], items: 20)
     end
 
-    if params[:search]
+    if params[:search][:sorted_by]
       if params[:search][:sorted_by] == 'most_comments' #Have to do it this way since it's nested in search!!!
         # @arts = Art.global_search(@filter).sort_by { |art| -art.comments.count }
         @arts = @arts.sort_by { |art| -art.comments.count }
