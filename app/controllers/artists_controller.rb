@@ -26,28 +26,29 @@ class ArtistsController < ApplicationController
     # end
 
     if params[:search]
-      if params[:search][:sorted_by] === 'most_likes'
+      if params[:search][:sorted_by] == 'most_likes'
         # @artists = Artist.global_search(@filter).sort_by { |artist| -artist.get_likes.size }
         @artists = @artists.sort_by { |artist| -artist.get_likes.size }
-        @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
+        # @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
       end
-      if params[:search][:sorted_by] === 'most_viewed'
+      if params[:search][:sorted_by] == 'most_viewed'
         # @artists = Artist.global_search(@filter).sort_by { |artist| -artist.hits }
         @artists = @artists.sort_by { |artist| -artist.hits }
-        @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
+        # @pagy, @artists = pagy(@artists, page: params[:page], items: 20) #works without this, why.
       end
-      if params[:search][:sorted_by] === 'most_recent'
+      if params[:search][:sorted_by] == 'most_recent'
         # @artists = Artist.global_search(@filter).sort_by { |artist| -artist.id }
         @artists = @artists.sort_by { |artist| -artist.id }
-        @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
+        # @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
       end
-      if params[:search][:sorted_by] === 'most_followed'
+      if params[:search][:sorted_by] == 'most_followed'
         # @artists = Artist.global_search(@filter).sort_by { |artist| -artist.id }
         @artists = @artists.sort_by { |artist| -artist.followers_count }
-        @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
+        # @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
       end
+      # @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
     end
-
+raise
   end
 
   def new

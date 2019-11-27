@@ -74,25 +74,25 @@ class PagesController < ApplicationController
     end
 
     if params[:search]
-      if params[:search][:sorted_by] === 'most_comments' #Have to do it this way since it's nested in search!!!
+      if params[:search][:sorted_by] == 'most_comments' #Have to do it this way since it's nested in search!!!
         # @arts = Art.global_search(@filter).sort_by { |art| -art.comments.count }
         @arts = @arts.sort_by { |art| -art.comments.count }
         @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
         @pagy, @arts = pagy(@arts, page: params[:page], items: 20)
       end
-      if params[:search][:sorted_by] === 'most_likes'
+      if params[:search][:sorted_by] == 'most_likes'
         # @arts = Art.global_search(@filter).sort_by { |art| -art.get_likes.size }
         @arts = @arts.sort_by { |art| -art.get_likes.size }
         @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
         @pagy, @arts = pagy(@arts, page: params[:page], items: 20)
       end
-      if params[:search][:sorted_by] === 'most_viewed'
+      if params[:search][:sorted_by] == 'most_viewed'
         # @arts = Art.global_search(@filter).sort_by { |art| -art.hits }
         @arts = @arts.sort_by { |art| -art.hits }
         @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
         @pagy, @arts = pagy(@arts, page: params[:page], items: 20)
       end
-      if params[:search][:sorted_by] === 'most_recent'
+      if params[:search][:sorted_by] == 'most_recent'
         # @arts = Art.global_search(@filter).sort_by { |art| -art.id }
         @arts = @arts.sort_by { |art| -art.id }
         @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
