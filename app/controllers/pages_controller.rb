@@ -99,7 +99,7 @@ class PagesController < ApplicationController
         @pagy, @arts = pagy(@arts, page: params[:page], items: 20)
       end
     end
-raise
+
   end
 
   def following

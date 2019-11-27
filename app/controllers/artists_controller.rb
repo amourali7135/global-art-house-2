@@ -11,24 +11,25 @@ class ArtistsController < ApplicationController
     if params["search"] #reject '' in middle added 112619
       @filter = params["search"]["tag_ids"].reject { |tag| tag == '' }.concat([params['country']]).concat([params["search"]["city"]]).concat([params["search"]["country"]]).flatten.reject(&:blank?)
       @artists = Artist.global_search(@filter)
-      @pagy, @artists = pagy(Artist.global_search(@filter), page: params[:page], items: 20)
-    elsif params[:tag_id] #112619 I added this while trying to get sort to work.
-      @filter = params[:tag_id] #112619 I added this while trying to get sort to work.
-      @artists = Artist.global_search(@filter) #112619 I added this while trying to get sort to work.
-      @pagy, @artists = pagy(Artist.global_search(@filter), page: params[:page], items: 20) #112619 I added this while trying to get sort to work.
+      @pagy, @artists = pagy(Artist.global_search(@filter), page: params[:page], items: 4)
+    # elsif params[:tag_id] #112619 I added this while trying to get sort to work.
+    #   @filter = params[:tag_id] #112619 I added this while trying to get sort to work.
+    #   @artists = Artist.global_search(@filter) #112619 I added this while trying to get sort to work.
+    #   @pagy, @artists = pagy(Artist.global_search(@filter), page: params[:page], items: 4) #112619 I added this while trying to get sort to work.
     else #112619 I added this while trying to get sort to work.
       @artists = Artist.all
-      @pagy, @artists = pagy(Artist.all, page: params[:page], items: 20)
+      @pagy, @artists = pagy(Artist.all, page: params[:page], items: 4)
     end
     # respond_to do |format|
     #   format.html
     #   format.js
     # end
-
+    #why do I not need the paginations here at all?
     if params[:search]
       if params[:search][:sorted_by] == 'most_likes'
         # @artists = Artist.global_search(@filter).sort_by { |artist| -artist.get_likes.size }
         @artists = @artists.sort_by { |artist| -artist.get_likes.size }
+        # @artists.order('get_likes.size DESC')
         # @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
       end
       if params[:search][:sorted_by] == 'most_viewed'
@@ -48,7 +49,7 @@ class ArtistsController < ApplicationController
       end
       # @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
     end
-raise
+
   end
 
   def new
