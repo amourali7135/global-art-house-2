@@ -11,14 +11,14 @@ class ArtistsController < ApplicationController
     if params["search"] #reject '' in middle added 112619
       @filter = params["search"]["tag_ids"].reject { |tag| tag == '' }.concat([params['country']]).concat([params["search"]["city"]]).concat([params["search"]["country"]]).flatten.reject(&:blank?)
       @artists = Artist.global_search(@filter)
-      @pagy, @artists = pagy(Artist.global_search(@filter), page: params[:page], items: 4)
+      @pagy, @artists = pagy(Artist.global_search(@filter), page: params[:page], items: 25)
     # elsif params[:tag_id] #112619 I added this while trying to get sort to work.
     #   @filter = params[:tag_id] #112619 I added this while trying to get sort to work.
     #   @artists = Artist.global_search(@filter) #112619 I added this while trying to get sort to work.
     #   @pagy, @artists = pagy(Artist.global_search(@filter), page: params[:page], items: 4) #112619 I added this while trying to get sort to work.
     else #112619 I added this while trying to get sort to work.
       @artists = Artist.all
-      @pagy, @artists = pagy(Artist.all, page: params[:page], items: 4)
+      @pagy, @artists = pagy(Artist.all, page: params[:page], items: 25)
     end
     # respond_to do |format|
     #   format.html
