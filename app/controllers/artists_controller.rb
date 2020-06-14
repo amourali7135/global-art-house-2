@@ -77,7 +77,7 @@ class ArtistsController < ApplicationController
   def show
     @user = current_user
     # @user = User.find(params[:user_id])
-    @artist = Artist.find(params[:id])
+    @artist = Artist.friendly.find(params[:id])
     @conversation = Conversation.find_by(author: @user, receiver: @artist)
     @artist.punch(request)
   end

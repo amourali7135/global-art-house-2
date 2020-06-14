@@ -31,7 +31,7 @@ class ArtsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @art = Art.find(params[:id])
+    @art = Art.friendly.find(params[:id])
     @artist = @art.artist #nested, he changed it to make it work...OHHHH.
     # @photo = Photo.find(params[:id])
     @art.punch(request)

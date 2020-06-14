@@ -24,7 +24,6 @@ gem 'coffee-rails'
 gem 'geocoder'
 gem 'country_select'
 gem 'country_state_select'
-gem 'chosen-rails'
 gem 'city-state'
 gem "algoliasearch-rails"
 gem 'jquery-rails'
@@ -39,7 +38,6 @@ gem 'select2_simple_form', github: 'lndl/select2_simple_form', tag: '0.7.3'
 # source 'https://rails-assets.org' do
 #   gem 'rails-assets-select2', '~> 4.0.0'
 #   end
-gem 'filterrific'
 gem 'money-rails'
 gem 'stripe'
 gem 'stripe_event'
@@ -50,11 +48,8 @@ gem 'social-share-button'
 gem 'pagy'
 gem 'kramdown', '~> 1.17'
 gem 'serviceworker-rails'
-gem 'stripe_event'
 gem 'sprockets', '~> 3.7.2'
-
-
-
+gem 'friendly_id', '~> 5.2.4'
 
 
 
@@ -62,6 +57,9 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   # gem "better_errors"
   gem "binding_of_caller"
+  gem 'letter_opener'
+  gem 'bullet'
+  gem 'rack-mini-profiler'
 end
 
 group :development, :test do

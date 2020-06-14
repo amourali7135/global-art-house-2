@@ -12,11 +12,11 @@
       <h2>No art dealers or galleries!</h2>
       <p>Easy and free to sign up!</p>
     </div>
-     
+
       <%= simple_form_for @artist do |f|%>
       <%= f.input :first_name %>
       <%= f.input :last_name %>
-      <%= f.input :artist_name, label: "Artist name if you have one?" %>
+      <%= f.input :artist_name, label: "Place your artist name if you have one, or repeat your full name again for your URL." %>
       <%= f.input :photo %>
       <%= f.input :age %>
       <%= f.input :bio, label: "Biography" %>
@@ -29,7 +29,7 @@
       <%= f.input :website, placeholder: 'www.yourwebsite.com', label: "Full Website URL" %>
       <%= f.input :instagram, placeholder: 'www.instagram.com/', label: "Instagram Username" %>
       <%= f.input :facebook, placeholder: 'www.facebook.com/', label: "Facebook Username" %>
-      <div style="text-align:center">  
+      <div style="text-align:center">
       <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
       </div>
       <% end %>

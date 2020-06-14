@@ -1,4 +1,7 @@
 class Art < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   belongs_to :artist
 
   acts_as_votable
@@ -28,15 +31,15 @@ class Art < ApplicationRecord
   against: [  ], #still iffy about :description, :inspiration
   # against: [ :title, :description, :inspiration, :styles ],
   associated_against: {
-  artist: [  :city, :country ],
-  tags: [:name],
-},
-using: {
-tsearch: { prefix: true }
-}
+    artist: [  :city, :country ],
+    tags: [:name],
+  },
+  using: {
+    tsearch: { prefix: true }
+  }
 
 
-def self.tagged_with(name)
+  def self.tagged_with(name)
     Tag.find_by!(name: name).arts
   end
 
