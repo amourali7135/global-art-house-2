@@ -20,12 +20,15 @@ class ArtistsController < ApplicationController
       @artists = Artist.all
       @pagy, @artists = pagy(Artist.all, page: params[:page], items: 25)
     end
+    # binding.pry
     # respond_to do |format|
     #   format.html
     #   format.js
     # end
     #why do I not need the paginations here at all?
-    if params[:search] && params[:search][:sorted_by]
+    #params[:search][:sorted_by] == "" by default...
+    # if params[:search] && params[:search][:sorted_by] #first part added experimental, not originally.
+    if params[:search] && params[:search][:sorted_by] && params[:search][:sorted_by] != ''
       if params[:search][:sorted_by] == 'most_likes'
         # @artists = Artist.global_search(@filter).sort_by { |artist| -artist.get_likes.size }
         @artists = @artists.sort_by { |artist| -artist.get_likes.size }
@@ -48,8 +51,8 @@ class ArtistsController < ApplicationController
         # @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
       end
       # @pagy, @artists = pagy(@artists, page: params[:page], items: 20)
+      # binding.pry
     end
-
   end
 
   def new
