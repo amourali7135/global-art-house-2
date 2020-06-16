@@ -6,10 +6,12 @@
 
   <div class="card-trip-infos">
     <h2><%= art.title %></h2>
-    <p><%= art.description %></p>
-    <p><%= art.inspiration %></p>
-    <p>Available to buy? <%= art.available %></p>
-    <p><small>Tags: <%= raw art.tags.map(&:name).map { |t| link_to t, "/browse?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
+    <p>Description:  <%= art.description %></p>
+    <p>Inspiration:  <%= art.inspiration %></p>
+    <p>Available to buy? / OPTIONS <%= art.available %></p>
+          <% art.tag_list.each do |tag| %>
+            <%= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
+    <% end %>
       <%= cl_image_tag art.artist.photo, class: 'card-trip-user avatar-bordered' %>
       <p><%= flag_icon(art.artist.country.to_sym.downcase) %> <%= art.artist.city %></p>
       <%= link_to 'See this art!', artist_art_path(art.artist, art), method: :get  %>

@@ -172,3 +172,34 @@ application.html.erb
 <%= stylesheet_pack_tag 'application' %> <%# 112419 commented out for heroku attempt to work
 <%= javascript_pack_tag 'application' %>  <%# 112419 commented out for heroku attempt to work, DONT, it gets rid of the map!  But now it wont work on heroku.
 <%# <link rel="manifest" href="/manifest.json" /> %>  Commented out a while ago.
+
+Old tagging links on cards
+<p><small>Tags: <%= raw artist.tags.map(&:name).map { |t| link_to t, "/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
+
+<p><small>Tags: <%= raw artist.tags.map(&:name).map { |t| link_to t, "/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
+
+Tags: <%= raw art.tags.map(&:name).map { |t| link_to t, "/browse?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
+
+<p class="card-text"><small>Tags: <%= raw @art.tags.map(&:name).map { |t| link_to t, "/browse?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
+
+<p><small>Tags: <%= raw art.tags.map(&:name).map { |t| link_to t, "/browse?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
+
+<p><small>Tags: <%= raw art.tags.map(&:name).map { |t| link_to t, "/browse?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
+
+<p><small>Tags: <%= raw art.tags.map(&:name).map { |t| link_to t, "/browse?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
+
+<p><small>Tags: <%= raw artist.tags.map(&:name).map { |t| link_to t, "/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
+
+<p><small>Tags: <%= raw artist.tags.map(&:name).map { |t| link_to t, "/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
+
+<p class="card-text row align-items-center justify-content-center"><small>Tags: <%= raw @artist.tags.map(&:name).map { |t| link_to t, "/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
+
+<p><small>Tags: <%= raw artist.tags.map(&:name).map { |t| link_to t, "/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
+<p><small>Tags: <%= raw artist.tags.map(&:name).map { |t| link_to t, "/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
+
+<p><small>Tags: <%= raw artist.tags.map(&:name).map { |t| link_to t, "/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
+<p><small>Tags: <%= raw artist.tags.map(&:name).map { |t| link_to t, "/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{t}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %></small></p>
+
+<% artist.tag_list.each do |tag| %>
+      <%= link_to tag, "/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %>
+    <% end %>

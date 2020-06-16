@@ -19,8 +19,8 @@ class Artist < ApplicationRecord
   has_many :languages
   has_many :orders
   has_one :photo, dependent: :destroy
-  has_many :artist_tags, dependent: :destroy
-  has_many :tags, through: :artist_tags, dependent: :destroy
+  # has_many :artist_tags, dependent: :destroy
+  # has_many :tags, through: :artist_tags, dependent: :destroy
 
   validates :age, presence: true
   validates :bio, presence: true
@@ -34,23 +34,25 @@ class Artist < ApplicationRecord
 
   acts_as_punchable
 
-  def self.tagged_with(name)
-    Tag.find_by!(name: name).artists
-  end
+  acts_as_taggable_on :tags
 
-  def self.tag_counts
-    self.tags.count
-  end
+  # def self.tagged_with(name)
+  #   Tag.find_by!(name: name).artists
+  # end
 
-  def tag_list
-    tags.map(&:name).join(', ')
-  end
+  # def self.tag_counts
+  #   self.tags.count
+  # end
 
-  def tag_list=(names)
-    self.tags = names.split(',').map do |n|
-      Tag.where(name: n.strip).first_or_create!
-    end
-  end
+  # def tag_list
+  #   tags.map(&:name).join(', ')
+  # end
+
+  # def tag_list=(names)
+  #   self.tags = names.split(',').map do |n|
+  #     Tag.where(name: n.strip).first_or_create!
+  #   end
+
 
   include PgSearch::Model
   pg_search_scope :global_search,
@@ -85,10 +87,24 @@ class Artist < ApplicationRecord
   #   [self.followers, self.recent, self.views, self.likes]
   # end
 
+  def self.media  #media
+    ['Painting', 'Drawing', 'Sculpture', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic Design', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', 'Tattoo', 'Furniture', 'Wood', 'Nature', 'Film', 'UX/UI', 'Acting', 'Theater', 'Costumes', 'Music', 'Video Games' ].sort
+  end
 
+  def self.styles
+    ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', 'Tattoo', 'Experimental', 'Portrait', 'Political', 'Earth', 'National/Nationalist', 'Propaganda', 'Advertising', 'Industrial', 'Agricultural', 'UX/UI' ].sort
+  end
 
+  #check this though.
+  def self.form_list
+    form_array = []
+    @artist.form each do |form|
+    form_array << form
+    end
+  end
 
 end
+
 
 
 

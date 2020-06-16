@@ -50,6 +50,7 @@ gem 'kramdown', '~> 1.17'
 gem 'serviceworker-rails'
 gem 'sprockets', '~> 3.7.2'
 gem 'friendly_id', '~> 5.2.4'
+gem 'acts-as-taggable-on', '~> 6.0'
 
 
 

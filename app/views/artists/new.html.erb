@@ -20,9 +20,8 @@
       <%= f.input :photo %>
       <%= f.input :age %>
       <%= f.input :bio, label: "Biography" %>
-      <%#= f.input :tag_ids, as: :select2, collection: Tag.art_kinds, input_html: {multiple: true}, label: "What types of art do you do?" %>
-      <%#= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort %>
-      <%= f.input :tag_ids, collection: Tag.art_kinds, input_html: {multiple: true, id: "artist_new_tags"}, label: "What types of art do you do?" %>
+      <%= f.input :tag_list, collection: Artist.media, input_html: {multiple: true, id: "artist_new_tags"}, label: "What media of art do you create?" %>
+      <%= f.input :tag_list, collection: Artist.styles, input_html: {multiple: true, id: "artist_new_styles"}, label: "What styles of art do you do?" %>
       <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, input_html: {id: "artist_search_country"} %>
       <%= f.input :city %>
       <%= f.input :birth_place, label: "Country of birth if different", collection: CountryStateSelect.countries_collection.sort %>
