@@ -2,16 +2,17 @@ class ArtistsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :countries ]
   include Pagy::Backend
 
-
+  # why do i have @artist with params id everywhere?
   def index
     # @user = User.find(params[:user_id])
     #possible problem on heroku with pagination not showing everyone...animation cheks.
-    @artists = params[:tag] ? Artist.tagged_with(params[:tag]) : Artist.all
+    # @artists = params[:tag] ? Artist.tagged_with(params[:tag]) : Artist.all
 
     if params["search"] #reject '' in middle added 112619
-      @filter = params["search"]["tag_ids"].reject { |tag| tag == '' }.concat([params['country']]).concat([params["search"]["city"]]).concat([params["search"]["country"]]).flatten.reject(&:blank?)
+      # @filter = params["search"]["tag_ids"].reject { |tag| tag == '' }.concat([params['country']]).concat([params["search"]["city"]]).concat([params["search"]["country"]]).flatten.reject(&:blank?)
+      @filter = params["search"]["tag_list"].concat([params['country']]).concat([params["search"]["city"]]).concat([params["search"]["country"]]).flatten.reject(&:blank?)
       @artists = Artist.global_search(@filter)
-      @pagy, @artists = pagy(Artist.global_search(@filter), page: params[:page], items: 25)
+      # @pagy, @artists = pagy(Artist.global_search(@filter), page: params[:page], items: 25)
       # elsif params[:tag_id] #112619 I added this while trying to get sort to work.
       #   @filter = params[:tag_id] #112619 I added this while trying to get sort to work.
       #   @artists = Artist.global_search(@filter) #112619 I added this while trying to get sort to work.
@@ -64,7 +65,7 @@ class ArtistsController < ApplicationController
   def create
     @artist = Artist.new(artist_params)
     @artist.user_id = current_user.id
-    create_tags(@artist)
+    # create_tags(@artist)
     if @artist.save
       flash[:notice] = "Your artist profile was successfully created!"
       redirect_to dashboard_path
@@ -76,19 +77,18 @@ class ArtistsController < ApplicationController
 
   def show
     @user = current_user
-    # @user = User.find(params[:user_id])
     @artist = Artist.friendly.find(params[:id])
     @conversation = Conversation.find_by(author: @user, receiver: @artist)
     @artist.punch(request)
   end
 
   def update
-    @artist = Artist.find(params[:id])
+    # @artist = Artist.find(params[:id])
     # @artist.artist_tags.destroy_all   CONSIDER PUTTING THIS ONE BACK IN THOUGH!!!
-    artist_tags = params.require(:artist).permit(tag_ids: [])[:tag_ids].reject { |tag| tag == '' }.map { |tag| Tag.find_by_name(tag) }
-    artist_tags.each do |tag|
-      ArtistTag.create!(artist: @artist, tag: tag)
-    end
+    # artist_tags = params.require(:artist).permit(tag_ids: [])[:tag_ids].reject { |tag| tag == '' }.map { |tag| Tag.find_by_name(tag) }
+    # artist_tags.each do |tag|
+    # ArtistTag.create!(artist: @artist, tag: tag)
+    # end
     if @artist.update(artist_params)
       flash[:notice] = "Your artist profile was successfully updated!"
       redirect_to dashboard_path
@@ -164,12 +164,13 @@ class ArtistsController < ApplicationController
     params.require(:country).permit( :country, params[:country], params[:country][:country] )
   end
 
-  def create_tags(artist)
-    tags = params.dig(:artist, :tag_ids) || []
-    tags.reject { |tag| tag == '' }.each do |tag|
-      tag_p = Tag.find_by(name: tag) || Tag.create(name: tag)
-      ArtistTag.create!(artist: artist, tag: tag_p)
-    end
-  end
-
+  # def create_tags(artist)
+  #   tags = params.dig(:artist, :tag_ids) || []
+  #   tags.reject { |tag| tag == '' }.each do |tag|
+  #     tag_p = Tag.find_by(name: tag) || Tag.create(name: tag)
+  #     ArtistTag.create!(artist: artist, tag: tag_p)
+  #   end
 end
+
+
+

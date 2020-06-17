@@ -21,6 +21,8 @@ import $ from 'jquery';
    $("#country_select_again").select2();
    $("#home_page_country_1").select2();
    $("#home_page_country_2").select2();
+   $("#artist_styles_search").select2();
+   $("#artist_new_styles").select2();
     // $("#search_tag_ids").select2({
     //   multiple: true
     // });

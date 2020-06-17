@@ -55,17 +55,18 @@ class PagesController < ApplicationController
 
   def browse
     if params["search"]
-      @filter = params["search"]["tag_ids"].reject { |tag| tag == '' }.concat([params["search"]["city"]]).concat([params["search"]["country"]]).flatten.reject(&:blank?)
+      # @filter = params["search"]["tag_ids"].reject { |tag| tag == '' }.concat([params["search"]["city"]]).concat([params["search"]["country"]]).flatten.reject(&:blank?)
+        @filter = params["search"]["tag_list"].concat([params["search"]["city"]]).concat([params["search"]["country"]]).flatten.reject(&:blank?)
       @artists = Artist.global_search(@filter)
       @arts = Art.global_search(@filter)
       @pagy, @artists = pagy(Artist.global_search(@filter), page: params[:page], items: 20)
       @pagy, @arts = pagy(Art.global_search(@filter), page: params[:page], items: 20)
-    elsif params[:tag_id]
-      @filter = params[:tag_id]
-      @artists = Artist.global_search(@filter)
-      @arts = Art.global_search(@filter)
-      @pagy, @artists = pagy(Artist.global_search(@filter), page: params[:page], items: 20)
-      @pagy, @arts = pagy(Art.global_search(@filter), page: params[:page], items: 20)
+    # elsif params[:tag_id]
+    #   @filter = params[:tag_id]
+    #   @artists = Artist.global_search(@filter)
+    #   @arts = Art.global_search(@filter)
+    #   @pagy, @artists = pagy(Artist.global_search(@filter), page: params[:page], items: 20)
+    #   @pagy, @arts = pagy(Art.global_search(@filter), page: params[:page], items: 20)
     else
       @artists = Artist.all
       @arts = Art.all

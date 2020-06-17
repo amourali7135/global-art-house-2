@@ -16,13 +16,13 @@
        <%#= f.input :styles, as: :select2, collection: @type, multiple: true, label: "Categorize..."  %>
        <%#= f.input :tag_ids, as: :select2, collection: Tag.art_kinds, input_html: {multiple: true}, label: "What type of art is this?" %>
        <%#= f.input :tag_ids, as: :select2, collection: Tag.art_types, input_html: {multiple: true}, label: "Ways to describe this art?" %>
-       <%= f.input :tag_ids, collection: Tag.art_kinds, input_html: {multiple: true, id: "art_new_kinds"}, label: "What type of art is this?" %>
-       <%= f.input :tag_ids, collection: Tag.art_types, input_html: {multiple: true, id: "art_new_types"}, label: "Ways to describe this art?" %>
+       <%= f.input :tag_list, collection: Art.media, input_html: {multiple: true, id: "art_new_kinds"}, label: "What medium of art is this?" %>
+       <%= f.input :tag_list, collection: Art.styles, input_html: {multiple: true, id: "art_new_types"}, label: "How would you describe this art?" %>
        <%= f.input :inspiration, label: "Inspiration for this art?" %>
        <%= f.input :completion_date %>
        <%= f.input :available, label: "Available for purchase?" %>
        <%= f.input :price_cents, label: "Price" %>
-       <div style="text-align:center">  
+       <div style="text-align:center">
        <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
        </div>
        <% end %>
