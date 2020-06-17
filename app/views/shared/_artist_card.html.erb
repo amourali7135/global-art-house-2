@@ -6,9 +6,8 @@
     <p><%= artist.bio %></p>
     <p> <%= artist.city %></p>
     <div class="artist-card-arts">
-      <% artist.arts.sample(3).each do |art| %>
-      <%= cl_image_tag art.photos.sample.photo, class:"cloudinary-artist-arts" %>
-      <% end %>
+
+      <%= cl_image_tag @art.photo, height: 300, width: 400, crop: :fill %>
       </div>
     <% artist.tag_list.each do |tag| %>
 

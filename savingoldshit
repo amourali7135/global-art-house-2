@@ -203,3 +203,9 @@ Tags: <%= raw art.tags.map(&:name).map { |t| link_to t, "/browse?utf8=✓&search
 <% artist.tag_list.each do |tag| %>
       <%= link_to tag, "/artists/?utf8=✓&search%5Btag_ids%5D%5B%5D=&search%5Btag_ids%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" }.join(', ') %>
     <% end %>
+
+
+<% artist.arts.sample(3).each do |art| %>
+      <%= cl_image_tag art.photos.sample.photo, class:"cloudinary-artist-arts" %>
+      <% end %>
+

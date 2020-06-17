@@ -1,6 +1,5 @@
 <div class="card mb-3 col-sm-6 card align-items-center", id="art-card-show">
-<% @art.photos.each do |photo| %>
-  <%= cl_image_tag(photo.photo, width: 500, height: 400, crop: :scale) %>
+<%= cl_image_tag @art.photo, height: 300, width: 400, crop: :fill %>
   <div class="card-body">
     <h3 class="card-title"><%= @art.title %></h3>
     <p class="card-text"><%= @art.description %></p>
