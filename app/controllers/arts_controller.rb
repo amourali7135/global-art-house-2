@@ -98,13 +98,13 @@ class ArtsController < ApplicationController
 
   private
 
-  def create_pictures(art)
-    images = params.dig(:art, :photos) || []
-    images.each do |image|
-      # @art.photos.create(image: image)
-      Photo.create!(photo: image, art: art)
-    end
-  end
+  # def create_pictures(art)
+  #   images = params.dig(:art, :photos) || []
+  #   images.each do |image|
+  #     # @art.photos.create(image: image)
+  #     Photo.create!(photo: image, art: art)
+  #   end
+  # end
 
   # def create_tags(art)
   #   tags = params.dig(:art, :tag_ids) || []

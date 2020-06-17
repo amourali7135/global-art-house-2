@@ -22,7 +22,6 @@ class Art < ApplicationRecord
   validates :title,  presence: true
   validates :description,  presence: true
   validates :photo,  presence: true
-  # validates :photo, presence: true
   # validates :styles, presence: true
 
 

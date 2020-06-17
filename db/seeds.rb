@@ -78,8 +78,7 @@ puts 'Creating 20 fake users...'
       # remote_photo_url: Faker::Avatar.image,
       # photo: File.open(Rails.root.join('images', 'bourdain.jpg')),
       remote_photo_url: Faker::Avatar.image,
-      artist: artist
-
+      artist: artist,
     )
     art.save!
 
