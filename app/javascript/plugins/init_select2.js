@@ -23,6 +23,7 @@ import $ from 'jquery';
    $("#home_page_country_2").select2();
    $("#artist_styles_search").select2();
    $("#artist_new_styles").select2();
+   $("#browse_art_media").select2();
     // $("#search_tag_ids").select2({
     //   multiple: true
     // });

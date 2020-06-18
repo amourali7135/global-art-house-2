@@ -4,9 +4,7 @@ class ArtsController < ApplicationController
   #WTF is going on up in here?  Take better notes from now on!  61420
   def index
     @artist = Artist.find(params[:artist_id]) #why is this here?
-    # @arts = art.artist
-    # @arts = params[:tag] ? Art.tagged_with(params[:tag]) : Art.all
-    @arts = Art.all
+    @arts = Art.paginate(page: params[:page], per_page: 15)
   end
 
 
@@ -27,7 +25,7 @@ class ArtsController < ApplicationController
     if @art.save
       # create_tags(@art)
       flash[:notice] = "Your art was successfully created!"
-      redirect_to @art
+      redirect_to dashboard_path
     else
       render "new"
     end

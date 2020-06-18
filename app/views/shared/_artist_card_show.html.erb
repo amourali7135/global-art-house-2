@@ -1,5 +1,5 @@
 <div class="card mb-3 col-sm-6 card align-items-center", id="artist-card-show">
-  <%= cl_image_tag @artist.photo,
+  <%= @artist.photo,
     width: 300, height: 225, crop: :scale, class: "img-raised rounded-circle img-fluid pt-2" %>
   <div class="card-body">
   <% if @artist.artist_name %>
