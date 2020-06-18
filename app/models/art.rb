@@ -15,7 +15,7 @@ class Art < ApplicationRecord
   # has_many :art_tags, dependent: :destroy
   # has_many :tags, through: :art_tags, dependent: :destroy
   # has_one_attached :photo
-  has_one :photo, dependent: :destroy
+  # has_one :photo, dependent: :destroy  #Cancels out the photo uploader!
 
 
 

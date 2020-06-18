@@ -23,7 +23,7 @@ class ArtsController < ApplicationController
     @artist = Artist.find_by(artist_name: params[:artist_id])
     # @artist = current_user.artist_id
     @art.artist = @artist
-    create_pictures(@art)
+    # create_pictures(@art)
     if @art.save
       # create_tags(@art)
       flash[:notice] = "Your art was successfully created!"
