@@ -13,6 +13,7 @@ end
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
+# ::ActiveRecord = 1
 Bundler.require(*Rails.groups)
 
 module GlobalArtHouse2

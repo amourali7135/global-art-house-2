@@ -23,7 +23,7 @@ class ArtsController < ApplicationController
     @artist = Artist.find_by(artist_name: params[:artist_id])
     # @artist = current_user.artist_id
     @art.artist = @artist
-    create_pictures(@art)
+    # create_pictures(@art)
     if @art.save
       # create_tags(@art)
       flash[:notice] = "Your art was successfully created!"
@@ -98,13 +98,13 @@ class ArtsController < ApplicationController
 
   private
 
-  def create_pictures(art)
-    images = params.dig(:art, :photos) || []
-    images.each do |image|
-      # @art.photos.create(image: image)
-      Photo.create!(photo: image, art: art)
-    end
-  end
+  # def create_pictures(art)
+  #   images = params.dig(:art, :photos) || []
+  #   images.each do |image|
+  #     # @art.photos.create(image: image)
+  #     Photo.create!(photo: image, art: art)
+  #   end
+  # end
 
   # def create_tags(art)
   #   tags = params.dig(:art, :tag_ids) || []

@@ -9,8 +9,10 @@
        <h2>Share your art with the world!</h2>
        <%= simple_form_for [@artist, @art] do |f|%>
        <%= f.input :title %>
-       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+       <%#= f.input :photos, as: :file, input_html: { multiple: true } %>
+       <%= f.input :photo %>
        <%= f.input :photo_cache, as: :hidden %>
+       <%#= f.input :photo, as: :file %>
        <%= f.input :description %>
        <%= f.input :tag_list, collection: Art.media, input_html: {multiple: true, id: "art_new_kinds"}, label: "What medium of art is this?" %>
        <%= f.input :tag_list, collection: Art.styles, input_html: {multiple: true, id: "art_new_types"}, label: "How would you describe this art?" %>

@@ -19,6 +19,8 @@ class Artist < ApplicationRecord
   has_many :languages
   has_many :orders
   has_one :photo, dependent: :destroy
+  # has_one_attached :photo
+
   # has_many :artist_tags, dependent: :destroy
   # has_many :tags, through: :artist_tags, dependent: :destroy
 
@@ -99,7 +101,7 @@ class Artist < ApplicationRecord
   def self.form_list
     form_array = []
     @artist.form each do |form|
-    form_array << form
+      form_array << form
     end
   end
 

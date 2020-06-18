@@ -146,7 +146,7 @@ Rails.application.routes.draw do
 
   get '/search' => 'search#index'
 
-  resources :photos, only: :destroy
+  # resources :photos, only: :destroy
 
   # resources :messages, only: [:new, :create]
   # resources :conversations, only: [:index, :show, :new]

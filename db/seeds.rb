@@ -75,8 +75,10 @@ puts 'Creating 20 fake users...'
       tag_list: Art.styles.sample(3),
       price_cents: Faker::Commerce.price,
       likees_count: Faker::Number.between(from: 0, to: 4000),
-      artist: artist
-
+      # remote_photo_url: Faker::Avatar.image,
+      # photo: File.open(Rails.root.join('images', 'bourdain.jpg')),
+      remote_photo_url: Faker::Avatar.image,
+      artist: artist,
     )
     art.save!
 
@@ -93,12 +95,13 @@ puts 'Creating 20 fake users...'
     #   ArtTag.create!(art: art, tag: t)
     # end
 
-    photo = Photo.new(
-      # remote_photo_url: Faker::LoremPixel.image,
-      photo: File.open(Rails.root.join('images', 'bourdain.jpg')),
-      art: art
-    )
-    photo.save!
+    #I had this for my original multi-upload photo set for arts, no more though.
+    # photo = Photo.new(
+    #   # remote_photo_url: Faker::LoremPixel.image,
+    #   photo: File.open(Rails.root.join('images', 'bourdain.jpg')),
+    #   art: art
+    # )
+    # photo.save!
   end
   puts 'Finished!'
 end

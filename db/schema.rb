@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_084110) do
+ActiveRecord::Schema.define(version: 2020_06_16_232829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "artists", force: :cascade do |t|
     t.string "first_name"
@@ -59,6 +80,7 @@ ActiveRecord::Schema.define(version: 2020_06_15_084110) do
     t.string "kind"
     t.string "sku"
     t.string "slug"
+    t.string "photo"
     t.index ["artist_id"], name: "index_arts_on_artist_id"
     t.index ["slug"], name: "index_arts_on_slug", unique: true
   end
@@ -199,16 +221,6 @@ ActiveRecord::Schema.define(version: 2020_06_15_084110) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "photos", force: :cascade do |t|
-    t.bigint "art_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "photo"
-    t.bigint "artist_id"
-    t.index ["art_id"], name: "index_photos_on_art_id"
-    t.index ["artist_id"], name: "index_photos_on_artist_id"
-  end
-
   create_table "punches", id: :serial, force: :cascade do |t|
     t.integer "punchable_id", null: false
     t.string "punchable_type", limit: 20, null: false
@@ -285,6 +297,7 @@ ActiveRecord::Schema.define(version: 2020_06_15_084110) do
     t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "artists", "users"
   add_foreign_key "arts", "artists"
   add_foreign_key "cart_products", "arts"
@@ -295,7 +308,6 @@ ActiveRecord::Schema.define(version: 2020_06_15_084110) do
   add_foreign_key "followers", "users"
   add_foreign_key "orders", "arts"
   add_foreign_key "orders", "users"
-  add_foreign_key "photos", "arts"
   add_foreign_key "shopping_carts", "users"
   add_foreign_key "taggings", "tags"
 end
