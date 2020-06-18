@@ -1,10 +1,8 @@
-<%# @arts.each do |art| %>
 <%= render partial: 'shared/banner'  %>
-
 
 <div class="row align-items-center justify-content-center">
   <div class="row">
-  <h3>Explore brand new art from all around the world</h3>
+    <h3>Explore brand new art from all around the world</h3>
   </div>
 </div>
 
@@ -17,7 +15,7 @@
 
 <div class="row align-items-center justify-content-center">
   <div class="row">
-  <h3>Discover brand new artists from all around the world</h3>
+    <h3>Discover brand new artists from all around the world</h3>
   </div>
 </div>
 
@@ -35,8 +33,6 @@
 
 <div class="row align-items-center justify-content-center pb-3">
   <div class="row">
- <%#= simple_form_for(:country, as: :select2, method: :get, url: '/artists_countries') do |f| %>
-  <%#= f.input :country, as: :select2, collection: CountryStateSelect.countries_collection.sort, required: false %>
   <%= simple_form_for(:country, method: :get, url: '/artists_countries', input_html: { id: "home_page_country_1"}) do |f| %>
   <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: { id: "home_page_country_2"} %>
   <%= f.submit %>
@@ -54,129 +50,123 @@
 
 ></div>
 
+
 <section class="clean-block clean-catalog dark">
-<div class="row align-items-center justify-content-center flex-column">
-  <div class="block-heading">
-    <h2 class="text-dark row align-items-center justify-content-center">Browse our artists</h2>
+  <div class="row align-items-center justify-content-center flex-column">
+    <div class="block-heading">
+      <h2 class="text-dark row align-items-center justify-content-center">Browse our artists</h2>
+    </div>
   </div>
 
-
 <p class="grid-headers pt-2 pb-1">A random sample of some of our artists!</p>
-<div class="container front-page-grid">
-  <% @artists.sample(3).each do |artist| %>
-    <div class="row">
-      <div class=" products pl-5 card-grid-3c">
-        <%= render partial: 'shared/home_artist_card', locals: {artist: artist} %>
+  <div class="container front-page-grid">
+    <% @artists.sample(3).each do |artist| %>
+      <div class="row">
+        <div class=" products pl-5 card-grid-3c">
+          <%= render partial: 'shared/home_artist_card', locals: {artist: artist} %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
 <p class="grid-headers pt-2 pb-1">A random sample of some our arts</p>
-<div class="container front-page-grid">
-  <% @arts.sample(3).each do |art| %>
-    <div class="row">
-      <div class="products pl-5 card-grid-3c">
-        <%= render partial: 'shared/home_art_card', locals: {art: art} %>
+  <div class="container front-page-grid">
+    <% @arts.sample(3).each do |art| %>
+      <div class="row">
+        <div class="products pl-5 card-grid-3c">
+          <%= render partial: 'shared/home_art_card', locals: {art: art} %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
 <p class="grid-headers pt-2 pb-1">Our most liked arts!</p>
-<div class="container front-page-grid">
+  <div class="container front-page-grid">
     <% @arts.sort_by { |art| -art.get_likes.size }.first(3).each do |art|  %>
-    <div class="row">
-      <div class=" products pl-5 card-grid-3c">
-        <%= render partial: 'shared/home_art_card', locals: {art: art} %>
+      <div class="row">
+        <div class=" products pl-5 card-grid-3c">
+          <%= render partial: 'shared/home_art_card', locals: {art: art} %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
 <p class="grid-headers pt-2 pb-1">Our most liked artists.</p>
-<div class="container front-page-grid">
-    <% @artists.sort_by { |artist| -artist.get_likes.size }.first(3).each do |artist|  %>
-    <div class="row">
-      <div class=" products pl-5 card-grid-3c">
-        <%= render partial: 'shared/home_artist_card', locals: {artist: artist} %>
+  <div class="container front-page-grid">
+      <% @artists.sort_by { |artist| -artist.get_likes.size }.first(3).each do |artist|  %>
+      <div class="row">
+        <div class=" products pl-5 card-grid-3c">
+          <%= render partial: 'shared/home_artist_card', locals: {artist: artist} %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
 <p class="grid-headers pt-2 pb-1">Our most followed artists.</p>
-<div class="container front-page-grid">
-  <% @artists.sort_by { |artist| -artist.followers_count }.first(3).each do |artist|  %>
-    <div class="row">
-      <div class=" products pl-5 card-grid-3c">
-        <%= render partial: 'shared/home_artist_card', locals: {artist: artist} %>
+  <div class="container front-page-grid">
+    <% @artists.sort_by { |artist| -artist.followers_count }.first(3).each do |artist|  %>
+      <div class="row">
+        <div class=" products pl-5 card-grid-3c">
+          <%= render partial: 'shared/home_artist_card', locals: {artist: artist} %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
 <p class="grid-headers pt-2 pb-1">Our most commented on arts.</p>
-<div class="container front-page-grid">
-  <% @arts.sort_by { |art| -art.comments.count }.first(3).each do |art|  %>
-    <div class="row">
-      <div class=" products pl-5 card-grid-3c">
-        <%= render partial: 'shared/home_art_card', locals: {art: art} %>
+  <div class="container front-page-grid">
+    <% @arts.sort_by { |art| -art.comments.count }.first(3).each do |art|  %>
+      <div class="row">
+        <div class=" products pl-5 card-grid-3c">
+          <%= render partial: 'shared/home_art_card', locals: {art: art} %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
 <p class="grid-headers pt-2 pb-1">Our most viewed arts.</p>
-<div class="container front-page-grid">
-  <% @arts.sort_by { |art| -art.hits }.first(3).each do |art|  %>
-    <div class="row">
-      <div class=" products pl-5 card-grid-3c">
-        <%= render partial: 'shared/home_art_card', locals: {art: art} %>
+  <div class="container front-page-grid">
+    <% @arts.sort_by { |art| -art.hits }.first(3).each do |art|  %>
+      <div class="row">
+        <div class=" products pl-5 card-grid-3c">
+          <%= render partial: 'shared/home_art_card', locals: {art: art} %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
 <p class="grid-headers pt-2 pb-1">Our most viewed artists.</p>
-<div class="container front-page-grid">
-  <% @artists.sort_by { |artist| -artist.hits }.first(3).each do |artist|  %>
-    <div class="row">
-      <div class=" products pl-5 card-grid-3c">
-        <%= render partial: 'shared/home_artist_card', locals: {artist: artist} %>
+  <div class="container front-page-grid">
+    <% @artists.sort_by { |artist| -artist.hits }.first(3).each do |artist|  %>
+      <div class="row">
+        <div class=" products pl-5 card-grid-3c">
+          <%= render partial: 'shared/home_artist_card', locals: {artist: artist} %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
 <p class="grid-headers pt-2 pb-1">Our most recent artists.</p>
-
-<%# broken_grid = [] %>
-<div class="container front-page-grid">
-  <%# @artists.sort_by { |artist| artist }.each do |artist|  %>
-  <%# ( broken_grid << artist ) %>
-  <%# end %>
-  <% @artists.sort_by { |artist| artist.id }.last(3).each do |artist|  %>
-  <%# broken_grid.sort_by { |artist| artist.id }.last(3).each do |artist| %>
-    <div class="row">
-      <div class=" products pl-5 card-grid-3c">
-        <%= render partial: 'shared/home_artist_card', locals: {artist: artist} %>
+  <div class="container front-page-grid">
+    <% @artists.sort_by { |artist| artist.id }.last(3).each do |artist|  %>
+      <div class="row">
+        <div class=" products pl-5 card-grid-3c">
+          <%= render partial: 'shared/home_artist_card', locals: {artist: artist} %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
 <p class="grid-headers pt-2 pb-1">Our most recently added art.</p>
-<div class="container front-page-grid">
-  <% @arts.sort_by { |art| art.id }.last(3).each do |art|  #or created_at %>
-    <div class="row">
-      <div class=" products pl-5 card-grid-3c">
-        <%= render partial: 'shared/home_art_card', locals: {art: art} %>
+  <div class="container front-page-grid">
+    <% @arts.sort_by { |art| art.id }.last(3).each do |art|  #or created_at %>
+      <div class="row">
+        <div class=" products pl-5 card-grid-3c">
+          <%= render partial: 'shared/home_art_card', locals: {art: art} %>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
 <%# <p class="grid-headers pt-2 pb-1">Grid test IX Artists of a random country...</p> %>
 </section>
-<%# end %>

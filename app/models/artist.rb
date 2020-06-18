@@ -16,13 +16,8 @@ class Artist < ApplicationRecord
   end
 
   has_many :arts, dependent: :destroy
-  has_many :languages
   has_many :orders
-  has_one :photo, dependent: :destroy
-  # has_one_attached :photo
-
-  # has_many :artist_tags, dependent: :destroy
-  # has_many :tags, through: :artist_tags, dependent: :destroy
+  # has_one :photo, dependent: :destroy  #Can break shit like in the art model!
 
   validates :age, presence: true
   validates :bio, presence: true
@@ -32,29 +27,11 @@ class Artist < ApplicationRecord
   validates :last_name, presence: true
   # validates :artist_name, uniqueness: true  Taken away for now because of seeding data repeats
   validates :artist_name, presence: true
-
+  validates :photo, presence: true
 
   acts_as_punchable
 
   acts_as_taggable_on :tags
-
-  # def self.tagged_with(name)
-  #   Tag.find_by!(name: name).artists
-  # end
-
-  # def self.tag_counts
-  #   self.tags.count
-  # end
-
-  # def tag_list
-  #   tags.map(&:name).join(', ')
-  # end
-
-  # def tag_list=(names)
-  #   self.tags = names.split(',').map do |n|
-  #     Tag.where(name: n.strip).first_or_create!
-  #   end
-
 
   include PgSearch::Model
   pg_search_scope :global_search,

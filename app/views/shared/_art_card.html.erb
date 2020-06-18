@@ -1,7 +1,5 @@
 <div class="card-trip">
-<%= cl_image_tag @art.photo, height: 300, width: 400, crop: :fill %>
-    </div>
-  <% end %>
+    <%= cl_image_tag art.photo, height: 300, width: 400, crop: :fill %>
 
   <div class="card-trip-infos">
     <h2><%= art.title %></h2>
@@ -9,8 +7,8 @@
     <p><%= art.inspiration %></p>
     <p>Available to buy? <%= art.available %></p>
 
-      <% art.tag_list.each do |tag| %>
-            <%= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
+    <% art.tag_list.each do |tag| %>
+      <%= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
     <% end %>
     <% if @artist %>
       <%= cl_image_tag @artist.photo, class: 'card-trip-user avatar-bordered' %>
@@ -25,7 +23,7 @@
 
   <div class="d-flex justify-content-between w-100">
     <h2 class="card-trip-pricing">$<%= art.price_cents %></h2>
-    <p><%=art.get_likes.size %> likes! </p>
+      <p><%=art.get_likes.size %> likes! </p>
       <p>  <%= art.created_at.strftime("%m/%d/%y at %l:%M %p")%>  </p>
       <p> Viewed <%= art.hits %> times </p>
   </div>

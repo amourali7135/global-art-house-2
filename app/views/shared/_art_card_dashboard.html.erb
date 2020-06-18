@@ -1,7 +1,5 @@
 <div class="card-trip">
-<%= cl_image_tag @art.photo, height: 300, width: 400, crop: :fill %>
-    </div>
-
+  <%= cl_image_tag @art.photo, height: 300, width: 400, crop: :fill %>
 
   <div class="card-trip-infos">
     <h2><%= art.title %></h2>
@@ -9,25 +7,23 @@
     <p><%= art.inspiration %></p>
     <p>Available to buy? <%= art.available %></p>
     <% art.tag_list.each do |tag| %>
-            <%= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
+      <%= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
     <% end %>
 
       <%= cl_image_tag @artist.photo, class: 'card-trip-user avatar-bordered' %>
       <p><%= flag_icon(@artist.country.to_sym.downcase) %> <%= @artist.city %></p>
-      <div class="d-flex justify-content-between w-100">
+    <div class="d-flex justify-content-between w-100">
       <%= link_to 'See this art!', artist_art_path(@artist, art), class: 'btn btn-primary'  %>
       <%= link_to 'Edit this art!', edit_artist_art_path(@artist, art), class: 'btn btn-primary'  %>
       <%= link_to 'Delete this art!', artist_art_path(@artist, art), class: 'btn btn-primary', method: :delete, data: {confirm: "Are you sure?"}  %>
+    </div>
   </div>
-</div>
 
   <div class="d-flex justify-content-between w-100">
     <h2 class="card-trip-pricing">$<%= art.price_cents %></h2>
     <p><%=art.get_likes.size %> likes! </p>
-      <p> Viewed <%= art.hits %> times </p>
+    <p> Viewed <%= art.hits %> times </p>
   </div>
 </div>
 
-    </div>
-</div>
 

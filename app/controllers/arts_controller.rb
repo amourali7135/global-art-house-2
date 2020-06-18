@@ -27,7 +27,7 @@ class ArtsController < ApplicationController
     if @art.save
       # create_tags(@art)
       flash[:notice] = "Your art was successfully created!"
-      redirect_to @art.artist
+      redirect_to @art
     else
       render "new"
     end
