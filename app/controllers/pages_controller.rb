@@ -3,8 +3,8 @@ class PagesController < ApplicationController
 
 
   def home
-    @artists = Artist.all
-    @arts = Art.all
+    # @artists = Artist.all
+    @arts = Art.includes([:artist]).includes([:taggings])
     if current_user
       @user = current_user
       @artist = Artist.find_by(user_id: @user.id) #user_id: refers to artist table one!
@@ -12,8 +12,10 @@ class PagesController < ApplicationController
       # redirect_to dashboard_path
     end
 
-    @artists = Artist.geocoded #returns artists with coordinates, BRO THIS LINE MAKES ARTISTS WITH GEO SHOW ONLY ON THE HOME PAGE!
+    #When you launch, limit this line so it doesn't query the whole fucking DB.
+    @artists = Artist.geocoded.includes([:taggings]) #.sample(15) #returns artists with coordinates, BRO THIS LINE MAKES ARTISTS WITH GEO SHOW ONLY ON THE HOME PAGE!
     #FUCK!
+
 
     @markers = @artists.map do |artist|
       {
