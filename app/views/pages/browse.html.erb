@@ -5,7 +5,7 @@
         </div>
 
   <%= simple_form_for :search, url: browse_path, method: "GET" do |f| %>
-    <%= f.input :tag_list, collection: Art.media, input_html: {multiple: true}, label: "What kind of artist do you do want?", required: false %>
+    <%= f.input :tag_list, collection: Art.media, input_html: {multiple: true, id: 'browse_art_media'}, label: "What kind of artist do you do want?", required: false %>
     <%= f.input :tag_list, collection: Art.styles, input_html: {multiple: true, id: 'browse_genre_tags'}, label: "What genre of art do you want?", required: false%>
     <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: { id: "browse_country"} %>
     <%= f.input :city, id:"artist_city2", required: false %>
@@ -15,21 +15,24 @@
   <% end %>
 
 
-   <div class="content">
+  <div class="content">
     <div class="products pl-5 card-grid-3c">
-    <% @arts.each do |art| %>
-   <div class="row align-items-center justify-content-center">
-      <div class="col-sm-6">
-   <%= render partial: 'shared/art_card', locals: {art: art, artist: art.artist} %>
- </div>
- </div>
-<% end %>
- </div>
+     <% @arts.each do |art| %>
+      <div class="row align-items-center justify-content-center">
+        <div class="col-sm-6">
+          <%= render partial: 'shared/art_card', locals: {art: art, artist: art.artist} %>
+        </div>
+      </div>
+    <% end %>
     </div>
   </div>
-  <div class="row align-items-center justify-content-center py-2">
-  <%= pagy_nav(@pagy).html_safe %>
+
   </div>
+
+  <div class="row align-items-center justify-content-center py-2">
+    <%= will_paginate @arts %>
+  </div>
+
 </section>
 
 
