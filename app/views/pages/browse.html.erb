@@ -15,11 +15,11 @@
   <% end %>
 
 
-  <div class="content">
-    <div class="products pl-5 card-grid-3c">
+  <div class="content front-page-grid pt-3">
+    <div class="container front-page-grid">
      <% @arts.each do |art| %>
-      <div class="row align-items-center justify-content-center">
-        <div class="col-sm-6">
+      <div class="row ">
+        <div class="products pl-5 card-grid-3c">
           <%= render partial: 'shared/art_card', locals: {art: art, artist: art.artist} %>
         </div>
       </div>

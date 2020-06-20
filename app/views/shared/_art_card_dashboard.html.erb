@@ -6,6 +6,7 @@
     <p><%= art.description %></p>
     <p><%= art.inspiration %></p>
     <p>Available to buy? <%= art.available %></p>
+
     <% art.tag_list.each do |tag| %>
       <%= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
     <% end %>

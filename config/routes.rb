@@ -98,6 +98,7 @@ Rails.application.routes.draw do
     resources :arts
   end
 
+  #Wtf is this array?  I dont' even remember.
   resources :arts, only: [] do
     resources :comments, only: [:create, :destroy]
   end
