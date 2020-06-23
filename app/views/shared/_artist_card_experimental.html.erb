@@ -1,0 +1,49 @@
+<div class="wrapper">
+<!--   <div class="header">Github Profile</div> -->
+  <a href="https://github.com/ajduke" target="_blank">
+    <div class="profile-pic"> <%= cl_image_tag artist.photo,
+    width: 300, height: 225, crop: :scale, class: "img-raised rounded-circle img-fluid pt-2" %>
+    </div>
+  </a>
+
+  <div class="name"><%= artist.first_name.capitalize %> <%= artist.last_name.capitalize %> also known as <%= artist.artist_name.capitalize %></div>
+  <div class="username"><%= artist.city %>, <%= artist.country %> <%= flag_icon(artist.country.to_sym.downcase) %></div>
+  <div>
+    <% artist.tag_list.each do |tag| %>
+      <%= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
+    <% end %>
+  </div>
+  <div class="about-me"><%= artist.bio %></div>
+
+
+  <div>
+    <p class="grid-headers pt-2 pb-1">A random sample of some their arts</p>
+      <%= cl_image_tag artist.arts.sample.photo, height: 99, width: 132, crop: :fill %>
+      <%= cl_image_tag artist.arts.sample.photo, height: 99, width: 132, crop: :fill %>
+      <%= cl_image_tag artist.arts.sample.photo, height: 99, width: 132, crop: :fill %>
+  </div>
+
+  <div class="pt-4">
+    <%= link_to 'See more of this artist', artist_path(artist.id), class: 'btn btn-primary' %>
+  </div>
+
+  <div class="stats">
+    <div class="item followers">
+      <span class="num"><%=artist.get_likes.size %></span>
+      <div class="text">Likes</div>
+    </div>
+    <div class="item stars">
+      <span class="num"><%= artist.followers_count %></span>
+      <div class="text">Followers</div>
+    </div>
+    <div class="item following">
+      <span class="num"><%= artist.arts.count %></span>
+      <div class="text">Creations</div>
+    </div>
+    <div class="item repos">
+      <span class="num"><%= artist.hits %></span>
+      <div class="text">Views</div>
+    </div>
+  </div>
+
+</div>

@@ -7,7 +7,7 @@ class ArtistsController < ApplicationController
       @artists = Artist.global_search(@filter).includes([:arts]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
 
     else #112619 I added this while trying to get sort to work.
-      @artists = Artist.includes([:arts]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
+      @artists = Artist.includes([:arts]).includes([:taggings]).paginate(page: params[:page], per_page: 16)
 
     end
     #params[:search][:sorted_by] == "" by default...

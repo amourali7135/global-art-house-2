@@ -3,9 +3,9 @@
     width: 300, height: 225, crop: :scale, class: "img-raised rounded-circle img-fluid pt-2" %>
   <div class="card-body">
   <% if @artist.artist_name %>
-	  <h3 class="title row align-items-center justify-content-center"><%= @artist.first_name %> <%= @artist.last_name %>, also known as <%= @artist.artist_name %></h3>
+	  <h3 class="title row align-items-center justify-content-center"><%= @artist.first_name.capitalize %> <%= @artist.last_name.capitalize %>, also known as <%= @artist.artist_name.capitalize %></h3>
   <% else %>
-    <h3 class="title"><%= @artist.first_name %><%= @artist.last_name %></h3>
+    <h3 class="title"><%= @artist.first_name.capitalize %><%= @artist.last_name.capitalize %></h3>
    <% end %>
     <p class="card-text row align-items-center justify-content-center"><%= @artist.bio %></p>
     <p class="card-text row align-items-center justify-content-center"><small class="text-muted"><%=  %></small></p>

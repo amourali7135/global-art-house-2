@@ -30,15 +30,19 @@
       <% end %>
     <% end %>
 
-    <div class="content py-3">
-      <div class="products pl-5 card-grid-3c ">
-      <% @artists.each do |artist| %>
-        <div>
-          <%= render partial: 'shared/artist_card', locals: {artist: artist} %>
+ <div class="content pt-3">
+    <div class="container artists-index-grid">
+     <% @artists.each do |artist| %>
+      <div class="row ">
+        <div class="products pl-5 card-grid-3c">
+          <%#= render partial: 'shared/artist_card', locals: {artist: artist} %>
+          <%= render partial: 'shared/artist_card_experimental', locals: {artist: artist} %>
         </div>
-      <% end %>
       </div>
+      <% end %>
     </div>
+    </div>
+
   </div>
 
   <div class="row align-items-center justify-content-center py-2">

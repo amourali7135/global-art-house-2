@@ -1,0 +1,107 @@
+@import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow:700,400|Titillium+Web:400,600,700,300);
+@import url(https://fonts.googleapis.com/css?family=Dosis:400,300,500);
+
+// $body-bg: #e5e5e5;
+// $green-bg: #2cd0c8;
+// // $primary: #731DD8;
+// $primary: #e1e1e1;
+
+
+
+@mixin trans($prop:all, $time:0.4s, $time_function:ease-in-out) {
+  transition: $prop $time $time_function;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-input-placeholder {
+  color: #e4e4e4;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: $body-bg;
+
+  font-family: 'Dosis', sans-serif;
+}
+
+.wrapper {
+  width: 500px;
+  margin: 50px auto 20px;
+  text-align: center;
+  padding: 10px;
+  color: #fff;
+  // background: linear-gradient(to top, $primary 60%, $body-bg);
+  // background: $primary;
+  box-shadow: 0 0 10px rgba(55, 55, 55, .5);
+  // color: #E4DFDA;
+  color: #232222;
+  border-radius: 4px;
+}
+
+.header {
+  font-size: 30px;
+  padding: 5px;
+  font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  margin: 10px auto;
+  margin-top: -30px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  @include trans($time: .3s);
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-10px) scale(1.3);
+  }
+}
+
+.name {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.username {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.about-me {
+  padding: 10px 60px;
+  letter-spacing: .6px;
+  font-weight: 300;
+  margin: 20px 0px;
+}
+
+.stats {
+  background: #fff;
+  // color: $primary;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  margin: 30px 20px 20px;
+  border-radius: 3px;
+
+  .num {
+    font-weight: 500;
+    font-size: 20px;
+  }
+
+  .item {
+    @include trans($time:.2s);
+
+    &:hover {
+      color: #999;
+    }
+  }
+
+}
