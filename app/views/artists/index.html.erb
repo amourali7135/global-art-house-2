@@ -1,10 +1,18 @@
 <section class="clean-block clean-catalog dark">
   <div class="container">
     <div class="block-heading">
-      <h2 class="text-dark row align-items-center justify-content-center py-2">Browse the artists of Global Art House!</h2>
+      <h2 class="text-dark row align-items-center justify-content-center py-2">Browse the creators of Global Art House!</h2>
     </div>
 
-  <%= simple_form_for :search, url: artists_path, method: "GET" do |f| %>
+<div class="container align-items-center">
+<p class="row">
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Use search parameters
+  </a>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+<%= simple_form_for :search, url: artists_path, method: "GET" do |f| %>
     <%= f.input :tag_list, collection: Artist.media, input_html: {multiple: true, id: "artist_kinds_search"}, label: "What medium of artist do you wish to find?", required: false %>
     <%= f.input :tag_list, collection: Artist.styles, input_html: {multiple: true, id: "artist_styles_search"}, label: "What style of artist do you do want?", required: false %>
     <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: {id: "artists_country_search"} %>
@@ -13,6 +21,11 @@
     <%= link_to "Reset", artists_path  %>
     <%= f.submit 'Submit', class: 'btn btn-primary'%>
   <% end %>
+  </div>
+</div>
+</div>
+
+
 
 
     <% if params[:country] %>

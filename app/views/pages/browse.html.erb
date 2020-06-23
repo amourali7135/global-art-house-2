@@ -4,7 +4,14 @@
       <h2 class="text-dark row align-items-center justify-content-center py-2">Browse art from around the world!</h2>
         </div>
 
-  <%= simple_form_for :search, url: browse_path, method: "GET" do |f| %>
+<p class="justify-content-center">
+  <a class="btn btn-primary justify-content-center" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Use search parameters
+  </a>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+<%= simple_form_for :search, url: browse_path, method: "GET" do |f| %>
     <%= f.input :tag_list, collection: Art.media, input_html: {multiple: true, id: 'browse_art_media'}, label: "What kind of artist do you do want?", required: false %>
     <%= f.input :tag_list, collection: Art.styles, input_html: {multiple: true, id: 'browse_genre_tags'}, label: "What genre of art do you want?", required: false%>
     <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: { id: "browse_country"} %>
@@ -13,6 +20,9 @@
     <%= link_to "Reset", browse_path  %>
     <%= f.submit 'Submit', class: 'btn btn-primary'%>
   <% end %>
+  </div>
+</div>
+
 
 
   <div class="content front-page-grid pt-3">
