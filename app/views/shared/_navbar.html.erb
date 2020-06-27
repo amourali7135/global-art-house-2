@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon ">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "https://image1.masterfile.com/getImage/700-00062344em-illustration-of-man-on-ladder-with-large.jpg", class: "avatar"%>
     <% end %>
@@ -7,7 +7,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <%= link_to 'Back', url_for(:back), class: 'btn btn-info mt-2' %>
+  <%#= link_to 'Back', url_for(:back), class: 'btn btn-primary mt-2' %>
 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -21,9 +21,21 @@
         <li class="nav-item active">
           <%= link_to "Browse Artists", artists_path, class: "nav-link" %>
         </li>
-        <li class="nav-item active">
-          <%= link_to "About Us", about_path, class: "nav-link" %>
-        </li>
+     <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <% @arts.media.each do |tag| %>
+<%#= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
+<%#= link_to tag, "/browse?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Btag_list%5D%5B%5D=&search%5Bcountry%5D=&search%5Bcity%5D=&search%5Bsorted_by%5D=&commit=Submit" %>
+          <a class="dropdown-item" href=><%= tag %></a>
+        <% end %>
+        </div>
+      </li>
+      <li class="nav-item active">
+        <%= link_to "About Us", about_path, class: "nav-link" %>
+      </li>
       <% if user_signed_in? %>
       <li class="nav-item active">
           <%= link_to "Liked", liked_path, class: "nav-link" %>
