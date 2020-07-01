@@ -26,10 +26,12 @@
           Dropdown
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <% @arts.media.each do |tag| %>
-<%#= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
-<%#= link_to tag, "/browse?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Btag_list%5D%5B%5D=&search%5Bcountry%5D=&search%5Bcity%5D=&search%5Bsorted_by%5D=&commit=Submit" %>
-          <a class="dropdown-item" href=><%= tag %></a>
+        <% def media  #media
+        ['Painting', 'Drawing', 'Sculpture', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic Design', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', 'Tattoo', 'Furniture', 'Wood', 'Nature', 'Film', 'UX/UI', 'Acting', 'Theater', 'Costumes', 'Music', 'Video Games' ].sort
+        end %>
+        <% media.each do |tag| %>
+          <%#= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
+          <a class="dropdown-item justify-content-center" href=><%= link_to tag, "/browse?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Btag_list%5D%5B%5D=&search%5Bcountry%5D=&search%5Bcity%5D=&search%5Bsorted_by%5D=&commit=Submit" %></a>
         <% end %>
         </div>
       </li>

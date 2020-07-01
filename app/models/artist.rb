@@ -16,7 +16,7 @@ class Artist < ApplicationRecord
   end
 
   has_many :arts, dependent: :destroy
-  has_many :orders
+  # has_many :orders
   # has_one :photo, dependent: :destroy  #Can break shit like in the art model!
 
   validates :age, presence: true
@@ -80,6 +80,10 @@ class Artist < ApplicationRecord
     @artist.form each do |form|
       form_array << form
     end
+  end
+
+  def self.newbie
+
   end
 
 end

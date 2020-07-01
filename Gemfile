@@ -73,4 +73,17 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'better_errors' #Don't use with RSPEC.  Wait, why not?
   gem 'binding_of_caller' #REPL for better errors.
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+end
+
+#I added this from app academy tutorial on 63020 for rspec testing
+group :test do
+  # gem 'faker'
+  gem 'capybara'
+  gem 'spring-commands-rspec'
+  gem 'guard-rspec'
+  gem 'launchy'
+  gem 'shoulda-matchers'
 end
