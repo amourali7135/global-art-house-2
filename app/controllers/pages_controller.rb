@@ -130,10 +130,8 @@ class PagesController < ApplicationController
 
   def liked
     @user = current_user
-    @artists = @user.find_liked_items.map { |item| item.is_a?(Artist) ? item : nil }.compact
-    @arts = @user.find_liked_items.map { |item| item.is_a?(Art) ? item : nil }.compact
-
-
+    @artists = @user.find_liked_items.map { |item| item.is_a?(Artist) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
+    @arts = @user.find_liked_items.map { |item| item.is_a?(Art) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
 
   end
 

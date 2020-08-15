@@ -1,11 +1,9 @@
-Paginate/limit.
-
- <div class="row align-items-center justify-content-center">
+<div class="row align-items-center justify-content-center">
 <%= render partial: 'shared/artist_card_show', locals: {artist: @artist} %>
 </div>
 
 
-<p class="grid-headers pt-2 pb-1"><strong>welcome to <%= @artist.first_name %>'s art!</strong></p>
+<p class="grid-headers pt-2 pb-1"><strong>Welcome to <%= @artist.first_name %>'s art!</strong></p>
 <div class="container front-page-grid">
 <% @artist.arts.each do |art| %>
 <div class="row">

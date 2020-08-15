@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  require 'will_paginate/array' #Added 71220 for liked page pagination attempt array fixing.
 
   protected
 

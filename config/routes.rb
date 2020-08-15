@@ -158,6 +158,11 @@ Rails.application.routes.draw do
 
   get 'tags/:tag', to: 'arts#index', as: :tag
 
+# kinds = %w|IPA brown_ale pilsner lager lambic hefweizen|
+# get 'beers/:kind' => 'beers#kind', constraints: {kind: Regexp.new(kinds.join('|'))}
+
+# Figure out the country/name
+# get 'country', to: 'pages#country', as: 'country'
 
 
 end

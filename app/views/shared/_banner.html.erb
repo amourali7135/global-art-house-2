@@ -1,14 +1,15 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.artranked.com/images/ba/ba36d9da66b4df7ba69a49c846c0383d.jpeg);">
-  <div class="container">
-    <h1>Welcome to Something Creator Something!</h1>
+  <div class="container ">
+    <h1>Welcome to Creaze!</h1>
 
       <% if current_user && current_user.artist   %>
-         <h1> Share your creations with the world! <h1>
-         <%= link_to "Add Your Creations", new_artist_art_path(@artist, @art), class: 'btn btn-primary' %>
-         <%= link_to "Go to your dashboard", dashboard_path, class: 'btn btn-primary' %>
-         <% else %>
-      <h1>Artist? Register here to share your art with the world!</h1>
-      <%= link_to "new", new_artist_path, class: 'btn btn-primary' %>
+          <h1> Are you a struggling artist?  Struggle no more! <h1>
+          <h1> Share your creations with the world! <h1>
+          <%= link_to "Add Your Creations", new_artist_art_path(@artist, @art), class: 'btn btn-primary' %>
+          <%= link_to "Go to your dashboard", dashboard_path, class: 'btn btn-primary' %>
+        <% else %>
+          <h1>Are you an artist or creator? Register here to get discovered and make a living easier!</h1>
+          <%= link_to "new", new_artist_path, class: 'btn btn-primary justify-content-center' %>
       <% end %>
   </div>
 </div>

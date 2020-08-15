@@ -121,8 +121,6 @@ class ArtistsController < ApplicationController
   def countries
     if params[:country]
       @artists = Artist.where(country: params[:country][:country]).paginate(page: params[:page], per_page: 16)
-      # @pagy, @artists = pagy(Artist.where(country: params[:country][:country]), page: params[:page], items: 20)
-      # @artists = Artist.includes([:arts]).includes([:taggings]).paginate(page: params[:page], per_page: 16)
     else
       @artists = Artist.where(country: "US")
     end

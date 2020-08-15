@@ -60,9 +60,13 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  #For bullet to work properly.
   config.after_initialize do
     Bullet.enable = true
     Bullet.rails_logger = true
   end
+
+  #Now the rendered HTML will contain comment indicating the begining and end of each template...when 6.1 is a thing!  8320
+  # config.action_view.annotate_rendered_view_with_filenames = true
 
 end
