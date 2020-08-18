@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :browse, :about, :help, :contact ]
+  skip_before_action :authenticate_user!, only: [:home, :browse, :about, :help, :contact, :career, :team ]
 
 
   def home
@@ -17,7 +17,7 @@ class PagesController < ApplicationController
     #FUCK!
 
 
-    @markers = @artists.map do |artist|
+    @markers = @artists.includes([:arts]).map do |artist|
       {
         lat: artist.latitude,
         lng: artist.longitude,
@@ -54,6 +54,14 @@ class PagesController < ApplicationController
   end
 
   def contact
+
+  end
+
+  def career
+
+  end
+
+  def team
 
   end
 

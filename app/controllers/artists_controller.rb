@@ -63,6 +63,7 @@ class ArtistsController < ApplicationController
   end
 
   def update
+    @artist = Artist.friendly.find(params[:id])
     if @artist.update(artist_params)
       flash[:notice] = "Your artist profile was successfully updated!"
       redirect_to dashboard_path

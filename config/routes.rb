@@ -136,6 +136,9 @@ Rails.application.routes.draw do
   get 'following', to: 'pages#following', as: 'following'
   get 'followers', to: 'pages#followers', as: 'followers'
   get 'liked', to: 'pages#liked', as: 'liked'
+  get 'team', to: 'pages#team', as: 'team'
+  get 'career', to: 'pages#career', as: 'career'
+
 
   get 'art/:id/likes', to: 'arts#likes', as: :art_likes
   get 'art/:id/unlike', to: 'arts#unlikes', as: :art_unlikes

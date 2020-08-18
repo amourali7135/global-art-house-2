@@ -1,5 +1,5 @@
 Paginate / M-ALL.
-<h4 class="text-dark row align-items-center justify-content-center py-2">Your <%= @artist.followers.count %> followers</h4>
+<h4 class="text-dark row align-items-center justify-content-center py-2">Your <%= @artist.followers.size %> followers</h4>
 
 <% @artist.followers.each do |follower| %>
    <div class="row align-items-center justify-content-center py-1">

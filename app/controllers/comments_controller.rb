@@ -11,7 +11,9 @@ class CommentsController < ApplicationController
 
 
   def create
-    @art = Art.find(params[:art_id])
+    # @art = Art.find(params[:art_id])
+    @art = Art.friendly.find(params[:art_id])
+      # @art = Art.find(params[:comment][:id])
     @comment = @art.comments.create(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
@@ -23,7 +25,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @art = Art.find(params[:art_id])
+    # @art = Art.find(params[:art_id])
+    @art = Art.friendly.find(params[:art_id])
+      # @art = Art.find(params[:comment][:id])
     @comment = Comment.find(params[:id])
     @art = @comment.art
     @comment.destroy

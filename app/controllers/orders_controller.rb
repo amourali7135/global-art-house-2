@@ -6,7 +6,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-    art = Art.find(params[:art_id])
+    # art = Art.find(params[:art_id])
+    art = Art.find(params[:id])
     # art_photos = []
     # Art.find(params[:art_id]).photos.each do |pic|
     # art_photos << pic

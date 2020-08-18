@@ -220,7 +220,7 @@
     <% end %>
   </div>
 
-<p class="grid-headers pt-2 pb-1">Our most followed artists.</p>
+<p class="grid-headers pt-2 pb-1">Our most popular creators.</p>
   <div class="container front-page-grid">
     <% @artists.sort_by { |artist| -artist.followers_count }.first(3).each do |artist|  %>
       <div class="row">
@@ -231,9 +231,9 @@
     <% end %>
   </div>
 
-<p class="grid-headers pt-2 pb-1">Our most commented on arts.</p>
+<p class="grid-headers pt-2 pb-1">Our most commented on creations.</p>
   <div class="container front-page-grid">
-    <% @arts.sort_by { |art| -art.comments.count }.first(3).each do |art|  %>
+    <% @arts.sort_by { |art| -art.comments.size }.first(3).each do |art|  %>
       <div class="row">
         <div class=" products pl-5 card-grid-3c">
           <%= render partial: 'shared/home_art_card', locals: {art: art} %>
@@ -242,7 +242,7 @@
     <% end %>
   </div>
 
-<p class="grid-headers pt-2 pb-1">Our most viewed arts.</p>
+<p class="grid-headers pt-2 pb-1">Our most seen creations.</p>
   <div class="container front-page-grid">
     <% @arts.sort_by { |art| -art.hits }.first(3).each do |art|  %>
       <div class="row">
@@ -253,7 +253,7 @@
     <% end %>
   </div>
 
-<p class="grid-headers pt-2 pb-1">Our most viewed artists.</p>
+<p class="grid-headers pt-2 pb-1">Our most seen creators.</p>
   <div class="container front-page-grid">
     <% @artists.sort_by { |artist| -artist.hits }.first(3).each do |artist|  %>
       <div class="row">
@@ -264,7 +264,7 @@
     <% end %>
   </div>
 
-<p class="grid-headers pt-2 pb-1">Our most recent artists.</p>
+<p class="grid-headers pt-2 pb-1">Our most recent creators.</p>
   <div class="container front-page-grid">
     <% @artists.sort_by { |artist| artist.id }.last(3).each do |artist|  %>
       <div class="row">
@@ -275,7 +275,7 @@
     <% end %>
   </div>
 
-<p class="grid-headers pt-2 pb-1">Our most recently added art.</p>
+<p class="grid-headers pt-2 pb-1">Our most recently added creations.</p>
   <div class="container front-page-grid">
     <% @arts.sort_by { |art| art.id }.last(3).each do |art|  #or created_at %>
       <div class="row">
@@ -286,6 +286,15 @@
     <% end %>
   </div>
 
-<%# <p class="grid-headers pt-2 pb-1">Grid test IX Artists of a random country...</p> %>
-<%#  @artists.where(country: "")  %>
+<p class="grid-headers pt-2 pb-1">See the creators of <%= CountryStateSelect.countries_collection.sample %>.</p>
+  <div class="container front-page-grid">
+  <% @artists.where(country: CountryStateSelect.countries_collection.sample).each do |artist| %>
+      <div class="row">
+        <div class=" products pl-5 card-grid-3c">
+          <%= render partial: 'shared/home_artist_card', locals: {artist: artist} %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
 </section>
