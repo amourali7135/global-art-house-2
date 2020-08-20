@@ -90,12 +90,14 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  #how the fuck can I do this the right way?
   get '/artists_countries/', to: 'artists#countries', as: :artist_country #guido moved this to the top!
 
 
 
   resources :artists do
     resources :arts
+    resources :articles
   end
 
   #Wtf is this array?  I dont' even remember.
@@ -138,6 +140,8 @@ Rails.application.routes.draw do
   get 'liked', to: 'pages#liked', as: 'liked'
   get 'team', to: 'pages#team', as: 'team'
   get 'career', to: 'pages#career', as: 'career'
+  get 'updates', to: 'pages#updates', as: 'updates'
+  get 'blog', to: 'pages#blog', as: 'blog'
 
 
   get 'art/:id/likes', to: 'arts#likes', as: :art_likes

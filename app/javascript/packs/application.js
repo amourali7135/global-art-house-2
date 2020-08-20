@@ -18,3 +18,6 @@ initSelect2();
 // initCarousel();
 
 
+
+require("trix")
+require("@rails/actiontext")

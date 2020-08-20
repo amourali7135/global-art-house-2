@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :received_conversations, class_name: 'Conversation', foreign_key: 'receiver_id'
   has_many :messages, dependent: :destroy
   has_many :arts, through: :artist
+  has_many :articles, through: :artist
 
 
   acts_as_follower

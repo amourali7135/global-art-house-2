@@ -1,3 +1,5 @@
+<section class="">
+
 <div class="row align-items-center justify-content-center">
   <div class="row">
     <h1> Hello <%= @artist.first_name.capitalize %>!</h1>
@@ -6,7 +8,7 @@
 </div>
 
  <div class="row align-items-center justify-content-center">
-<%= render partial: 'shared/artist_card_show', locals: {artist: @artist} %>
+  <%= render partial: 'shared/artist_card_show', locals: {artist: @artist} %>
 </div>
 
 
@@ -19,7 +21,6 @@
 </div>
 
 
-
 <div class="row align-items-center justify-content-center">
   <div class="row">
     <p>Edit your artist profile/photo  <%= link_to 'Edit', edit_artist_path(@artist.id), class: 'btn btn-primary'  %>   </p>
@@ -27,41 +28,41 @@
 </div>
 
 <div class="row align-items-center justify-content-center">
-<div class="row">
-<p>You have  <%= @artist.followers_count  %>  followers.  </p>
-</div>
-</div>
-
-<div class="row align-items-center justify-content-center">
-<div class="row">
-<p>See your followers:  <%= link_to 'Followers', followers_path, class: 'btn btn-primary'  %>   </p>
-</div>
-</div>
-
-<div class="row align-items-center justify-content-center">
-<div class="row">
-<p>Your artist profile has  <%= @artist.get_likes.size  %>  likes.  </p>
+  <div class="row">
+    <p>You have  <%= @artist.followers_count  %>  followers.  </p>
   </div>
 </div>
 
 <div class="row align-items-center justify-content-center">
-<div class="row">
-<p>Change your username or password  <%= link_to 'Change', edit_user_registration_path(@current_user.id), class: 'btn btn-primary'  %>   </p>
+  <div class="row">
+    <p>See your followers:  <%= link_to 'Followers', followers_path, class: 'btn btn-primary'  %>   </p>
+  </div>
+</div>
+
+<div class="row align-items-center justify-content-center">
+  <div class="row">
+    <p>Your artist profile has  <%= @artist.get_likes.size  %>  likes.  </p>
+  </div>
+</div>
+
+<div class="row align-items-center justify-content-center">
+  <div class="row">
+    <p>Change your username or password  <%= link_to 'Change', edit_user_registration_path(@current_user.id), class: 'btn btn-primary'  %>   </p>
   </div>
 </div>
 
 
 <div class="row align-items-center justify-content-center">
-<div class="row">
+  <div class="row">
 <%# <p> See your conversations! <%= link_to 'Convos', conversation_path(@user), class: 'btn btn-primary' %>
-<p> See your conversations! <%= link_to 'Convos', conversations_path, class: 'btn btn-primary' %> </p>
+    <p> See your conversations! <%= link_to 'Convos', conversations_path, class: 'btn btn-primary' %> </p>
   </div>
 </div>
 
 
 <div class="row align-items-center justify-content-center">
-<div class="row">
-<p> See the activity of who you are following: <%= link_to 'Following', following_path, class: 'btn btn-primary' %> </p>
+  <div class="row">
+    <p> See the activity of who you are following: <%= link_to 'Following', following_path, class: 'btn btn-primary' %> </p>
   </div>
 </div>
 
@@ -69,24 +70,44 @@
 
   <div class="row align-items-center justify-content-center">
     <div class="row">
-  <p>See all of your existing art and artist page <%= link_to "Your art", artist_arts_path(@artist.id), class: 'btn btn-primary'  %>   </p>
+      <p>See all of your existing art and artist page <%= link_to "Your art", artist_arts_path(@artist.id), class: 'btn btn-primary'  %>   </p>
     </div>
   </div>
+
 </div>
 
 <div class="dashboard_container mt-4">
-<p class="grid-headers">Edit and delete your art below</p>
-<div class="row align-items-center justify-content-center ">
+  <p class="grid-headers">Edit and delete your art below</p>
+    <div class="row align-items-center justify-content-center ">
       <div class="container front-page-grid">
-<% @artist.arts.each do |art| %>
-    <div class="row">
-    <div class=" products pl-5 card-grid-3c">
-   <div>
-    <%= render partial: 'shared/art_card_dashboard', locals: {art: art} %>
-  </div>
-<% end %>
-  </div>
-</div>
-</div>
-</div>
-</div>
+        <% @artist.arts.each do |art| %>
+          <div class="row">
+            <div class=" products pl-5 card-grid-3c">
+              <div>
+                <%= render partial: 'shared/art_card_dashboard', locals: {art: art} %>
+              </div>
+                <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="dashboard_container mt-4">
+  <p class="grid-headers">Edit and delete your articles below</p>
+    <div class="row align-items-center justify-content-center ">
+      <div class="container front-page-grid">
+        <% @artist.articles.each do |article| %>
+          <div class="row">
+            <div class=" products pl-5 card-grid-3c">
+              <div>
+                <%= render partial: 'shared/article_card_dashboard', locals: {article: article} %>
+              </div>
+                <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</section>

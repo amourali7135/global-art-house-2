@@ -43,11 +43,6 @@ class ArtsController < ApplicationController
     # @photo = Photo.find(params[:id])
     # @art = Art.find(params[:id])
     @art = Art.friendly.find(params[:id])
-    # @art.art_tags.destroy_all
-    # art_tags = params.require(:art).permit(tag_ids: [])[:tag_ids].reject { |tag| tag == '' }.map { |tag| Tag.find_by_name(tag) }
-    # art_tags.each do |tag|
-      # ArtTag.create!(art: @art, tag: tag)
-    # end
     if @art.update(art_params)
       flash[:notice] = "Your art was successfully updated!"
       redirect_to dashboard_path
@@ -95,22 +90,6 @@ class ArtsController < ApplicationController
   end
 
   private
-
-  # def create_pictures(art)
-  #   images = params.dig(:art, :photos) || []
-  #   images.each do |image|
-  #     # @art.photos.create(image: image)
-  #     Photo.create!(photo: image, art: art)
-  #   end
-  # end
-
-  # def create_tags(art)
-  #   tags = params.dig(:art, :tag_ids) || []
-  #   tags.reject { |tag| tag == '' }.each do |tag|
-  #     tag_p = Tag.find_by(name: tag) || Tag.create(name: tag)
-  #     ArtTag.create!(art: art, tag: tag_p)
-  #   end
-  # end
 
   def art_params
     params.require(:art).permit(:title, :description, :completion_date, :inspiration, :available, :price_cents, :tag_list, :photo, :photos, styles: [], tag_list: [])
