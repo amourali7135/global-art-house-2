@@ -51,6 +51,7 @@ gem 'sprockets', '~> 3.7.2'
 gem 'friendly_id', '~> 5.2.4'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'will_paginate', '~> 3.1.0'
+# gem 'image_processing', '~> 1.2' #For active text blog to work/display right...or not.
 
 
 

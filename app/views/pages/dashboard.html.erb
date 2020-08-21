@@ -74,13 +74,20 @@
     </div>
   </div>
 
+  <div class="row align-items-center justify-content-center pt-2">
+  <div class="row">
+    <p>Write a new blog article <%= link_to "Create article", new_artist_article_path(@artist.id), class: 'btn btn-primary' %> </p>
+  </div>
+</div>
+
+
 </div>
 
 <div class="dashboard_container mt-4">
-  <p class="grid-headers">Edit and delete your art below</p>
+  <p class="grid-headers">See or modify your creations below</p>
     <div class="row align-items-center justify-content-center ">
       <div class="container front-page-grid">
-        <% @artist.arts.each do |art| %>
+        <% @artist.arts.includes([:taggings]).each do |art| %>
           <div class="row">
             <div class=" products pl-5 card-grid-3c">
               <div>
@@ -93,21 +100,42 @@
       </div>
     </div>
 
+</section>
+
 <div class="dashboard_container mt-4">
-  <p class="grid-headers">Edit and delete your articles below</p>
+  <p class="grid-headers">See or modify your articles below</p>
     <div class="row align-items-center justify-content-center ">
       <div class="container front-page-grid">
-        <% @artist.articles.each do |article| %>
+        <%# @artist.articles.each do |article| %>
           <div class="row">
             <div class=" products pl-5 card-grid-3c">
               <div>
-                <%= render partial: 'shared/article_card_dashboard', locals: {article: article} %>
+                <%#= render partial: 'shared/article_card_dashboard', locals: {article: article} %>
               </div>
-                <% end %>
+                <%# end %>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-</section>
+
+<div class="dashboard_container mt-4">
+  <p class="grid-headers">See or modify your services below</p>
+    <div class="row align-items-center justify-content-center ">
+      <div class="container front-page-grid">
+        <%# @artist.services.each do |service| %>
+          <div class="row">
+            <div class=" products pl-5 card-grid-3c">
+              <div>
+                <%#= render partial: 'shared/service_card_dashboard', locals: {service: service} %>
+              </div>
+                <%# end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+

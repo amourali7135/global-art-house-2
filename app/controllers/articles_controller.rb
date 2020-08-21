@@ -21,12 +21,11 @@ class ArticlesController < ApplicationController
     @artist = Artist.find_by(artist_name: params[:artist_id])
     # @artist = current_user.artist_id
     @article.artist = @artist
-    # create_pictures(@art)
     if @article.save
-      # create_tags(@art)
       flash[:notice] = "Your article was successfully created!"
       redirect_to dashboard_path
     else
+      flash[:notice] = "There was an error, please try again!"
       render "new"
     end
   end
@@ -95,6 +94,6 @@ class ArticlesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def article_params
-    params.require(:article).permit(:title, :content, :photo, )
+    params.require(:article).permit(:title, :content, :photo, :rich_body, )
   end
 end

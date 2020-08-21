@@ -1,0 +1,19 @@
+<div class="container">
+   <div class="row">
+     <div class="col mt-4">
+       <img src="" alt="" class="img-fluid">
+     </div>
+     <div class="col card p-4 m-4 bg-light">
+       <h2>Write an article and mesmerize the world!</h2>
+       <%= simple_form_for [@artist, @article] do |f|%>
+       <%= f.input :title %>
+       <%= f.rich_text_area :content %>
+       <%#= f.input :photo %>
+       <%#= f.input :photo_cache, as: :hidden %>
+       <%= f.input :photo, as: :file %>
+       <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+       </div>
+       <% end %>
+     </div>
+   </div>
+ </div>
