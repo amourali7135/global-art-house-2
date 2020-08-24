@@ -397,6 +397,8 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.10)
+    trix-rails (2.2.0)
+      rails (> 4.1, < 6.1)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
@@ -492,6 +494,7 @@ DEPENDENCIES
   sprockets (~> 3.7.2)
   stripe
   stripe_event
+  trix-rails
   uglifier
   web-console (>= 3.3.0)
   webpacker

@@ -52,7 +52,9 @@ gem 'friendly_id', '~> 5.2.4'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'will_paginate', '~> 3.1.0'
 # gem 'image_processing', '~> 1.2' #For active text blog to work/display right...or not.
-# gem 'activestorage-cloudinary-service' #82120  added this to get rich text to work, testing it.
+# gem 'activestorage-cloudinary-service' #82120  added this to get rich text to work, testing it.  NVM
+gem 'trix-rails', require: 'trix'
+
 
 
 
