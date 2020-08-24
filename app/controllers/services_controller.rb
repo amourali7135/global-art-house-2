@@ -1,28 +1,28 @@
-class ArticlesController < ApplicationController
+class ServicesController < ApplicationController
   # before_action :set_article, only: [:show, :edit, :update, :destroy]
   # before_action :set_artist, only: [:index, :show, :new, :edit, :create, ]
 
-  # GET /articles
+  # GET /services
   def index
     @artist = Artist.find(params[:artist_id]) #why is this here?
-    @articles = Article.paginate(page: params[:page], per_page: 8)
+    @services = Service.paginate(page: params[:page], per_page: 8)
   end
 
-  # GET /articles/new
+  # GET /services/new
   def new
     @artist = Artist.find(params[:artist_id])
-    @article = Article.new
+    @service = Service.new
   end
 
-  # POST /articles
+  # POST /services
   def create
-    @article = Article.new(article_params)
+    @service = Service.new(service_params)
     # @artist = Artist.find(params[:artist_id])
     @artist = Artist.find_by(artist_name: params[:artist_id])
     # @artist = current_user.artist_id
-    @article.artist = @artist
-    if @article.save
-      flash[:notice] = "Your article was successfully created!"
+    @service.artist = @artist
+    if @service.save
+      flash[:notice] = "Your service was successfully created!"
       redirect_to dashboard_path
     else
       flash[:notice] = "There was an error, please try again!"
@@ -30,21 +30,21 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # GET /articles/1
+  # GET /services/1
   def show
     # @comment = Comment.new
-    # @article = Article.friendly.find(params[:id])
-    @article = Article.find(params[:id])
-    @artist = @article.artist #nested, he changed it to make it work...OHHHH.
+    # @service = Service.friendly.find(params[:id])
+    @service = Service.find(params[:id])
+    @artist = @service.artist #nested, he changed it to make it work...OHHHH.
     # @photo = Photo.find(params[:id])
-    # @article.punch(request)
+    # @service.punch(request)
   end
 
-  # PATCH/PUT /articles/1
+  # PATCH/PUT /services/1
   def update
-    @article = Article.find(params[:id])
-    if @article.update(article_params)
-      flash[:notice] = "Your article was successfully updated!"
+    @service = Service.find(params[:id])
+    if @service.update(service_params)
+      flash[:notice] = "Your service was successfully updated!"
       redirect_to dashboard_path
     else
       flash[:error] = "There was an error, please try again!"
@@ -52,39 +52,39 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # DELETE /articles/1
+  # DELETE /services/1
   def destroy
-    @article = Article.find(params[:id])
-    @article.destroy
-    flash[:notice] = "Your article was successfully deleted!"
+    @service = Service.find(params[:id])
+    @service.destroy
+    flash[:notice] = "Your service was successfully deleted!"
     redirect_to dashboard_path
   end
 
 
-  # GET /articles/1/edit
+  # GET /services/1/edit
   def edit
     @artist = Artist.find_by(artist_name: params[:artist_id])
-    @article = Article.find(params[:id])
+    @service = Service.find(params[:id])
   end
 
   def likes
     @user = current_user # before_action :authenticate_user, only: [:likes]
-    @article = Article.find(params[:id])
-    @article.liked_by @user
-    redirect_to @article.artist, notice: "Liked this article successfully!"
+    @service = Service.find(params[:id])
+    @service.liked_by @user
+    redirect_to @service.artist, notice: "Liked this service successfully!"
   end
 
   def unlikes
     @user = current_user # before_action :authenticate_user, only: [:likes]
-    @article = Article.find(params[:id])
-    @article.unliked_by @user
-    redirect_to @article, notice: "Unliked this article successfully!"
+    @service = Service.find(params[:id])
+    @service.unliked_by @user
+    redirect_to @service, notice: "Unliked this service successfully!"
   end
 
   private
   # Use callbacks to share common setup or constraints between actions.
   # def set_article
-  #   @article = Article.find(params[:id])
+  #   @service = Service.find(params[:id])
   # end
 
   def set_artist
@@ -93,7 +93,7 @@ class ArticlesController < ApplicationController
   end
 
   # Only allow a trusted parameter "white list" through.
-  def article_params
-    params.require(:article).permit(:title, :content, :photo)
+  def service_params
+    params.require(:service).permit(:title, :description, :length, :photo, :price_cents )
   end
 end

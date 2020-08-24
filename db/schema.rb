@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_084817) do
+ActiveRecord::Schema.define(version: 2020_08_24_111417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -213,6 +213,18 @@ ActiveRecord::Schema.define(version: 2020_08_24_084817) do
     t.index ["punchable_type", "punchable_id"], name: "punchable_index"
   end
 
+  create_table "services", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "price_cents"
+    t.string "length"
+    t.string "photo"
+    t.bigint "artist_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["artist_id"], name: "index_services_on_artist_id"
+  end
+
   create_table "shopping_carts", force: :cascade do |t|
     t.integer "total_price_cents"
     t.integer "count"
@@ -289,6 +301,7 @@ ActiveRecord::Schema.define(version: 2020_08_24_084817) do
   add_foreign_key "followers", "users"
   add_foreign_key "orders", "arts"
   add_foreign_key "orders", "users"
+  add_foreign_key "services", "artists"
   add_foreign_key "shopping_carts", "users"
   add_foreign_key "taggings", "tags"
 end

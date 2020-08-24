@@ -35,6 +35,7 @@ class PagesController < ApplicationController
     @artist = Artist.find_by(user_id: @user.id) #user_id: refers to artist table one!
     @art = Art.find_by(artist_id: @artist.id)
     @article = Article.find_by(artist_id: @artist.id)
+    @service = Service.find_by(artist_id: @artist.id)
     # @art = Art.where(artist_id: @artist.id)
 
   end

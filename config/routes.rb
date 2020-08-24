@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :artists do
     resources :arts
     resources :articles
+    resources :services
   end
 
   #Wtf is this array?  I dont' even remember.

@@ -17,6 +17,7 @@ class Artist < ApplicationRecord
 
   has_many :arts, dependent: :destroy
   has_many :articles, dependent: :destroy
+  has_many :services, dependent: :destroy
   # has_many :orders
   # has_one :photo, dependent: :destroy  #Can break shit like in the art model!
 

@@ -1,0 +1,21 @@
+<div class="container">
+   <div class="row">
+     <div class="col mt-4">
+       <img src="" alt="" class="img-fluid">
+     </div>
+     <div class="col card p-4 m-4 bg-light">
+       <h2>Offer a new service to reach the world!</h2>
+       <%= simple_form_for [@artist, @service] do |f|%>
+       <%= f.input :title %>
+       <%= f.input :description, as: :trix_editor %>
+       <%= f.input :length, label: "How long on average will it take you to complete this service for a client?" %>
+       <%= f.input :price_cents, label: "Price you want to charge for this service?" %>
+       <%= f.input :photo_cache, as: :hidden %>
+       <%= f.input :photo, as: :file %>
+       <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+       </div>
+       <% end %>
+     </div>
+   </div>
+ </div>
+

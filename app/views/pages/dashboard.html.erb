@@ -75,8 +75,14 @@
   </div>
 
   <div class="row align-items-center justify-content-center pt-2">
+    <div class="row">
+      <p>Write a new blog article <%= link_to "Write article", new_artist_article_path(@artist.id), class: 'btn btn-primary' %> </p>
+    </div>
+  </div>
+
+   <div class="row align-items-center justify-content-center pt-2">
   <div class="row">
-    <p>Write a new blog article <%= link_to "Create article", new_artist_article_path(@artist.id), class: 'btn btn-primary' %> </p>
+    <p>Add a new creative service <%= link_to "Add service", new_artist_service_path(@artist.id), class: 'btn btn-primary' %> </p>
   </div>
 </div>
 
@@ -124,13 +130,13 @@
   <p class="grid-headers">See or modify your services below</p>
     <div class="row align-items-center justify-content-center ">
       <div class="container front-page-grid">
-        <%# @artist.services.each do |service| %>
+        <% @artist.services.each do |service| %>
           <div class="row">
             <div class=" products pl-5 card-grid-3c">
               <div>
-                <%#= render partial: 'shared/service_card_dashboard', locals: {service: service} %>
+                <%= render partial: 'shared/service_card_dashboard', locals: {service: service} %>
               </div>
-                <%# end %>
+                <% end %>
             </div>
           </div>
         </div>
