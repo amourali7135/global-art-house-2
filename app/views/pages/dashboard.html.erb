@@ -106,13 +106,13 @@
   <p class="grid-headers">See or modify your articles below</p>
     <div class="row align-items-center justify-content-center ">
       <div class="container front-page-grid">
-        <%# @artist.articles.each do |article| %>
+        <% @artist.articles.each do |article| %>
           <div class="row">
             <div class=" products pl-5 card-grid-3c">
               <div>
-                <%#= render partial: 'shared/article_card_dashboard', locals: {article: article} %>
+                <%= render partial: 'shared/article_card_dashboard', locals: {article: article} %>
               </div>
-                <%# end %>
+                <% end %>
             </div>
           </div>
         </div>

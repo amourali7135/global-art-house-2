@@ -6,8 +6,10 @@
     <p><%= artist.bio %></p>
     <p> <%= artist.city %></p>
     <div class="artist-card-arts">
+    <% if artist.arts.present? %>
 <%= cl_image_tag artist.arts.sample.photo, height: 99, width: 132, crop: :fill %>
 <%= cl_image_tag artist.arts.sample.photo, height: 99, width: 132, crop: :fill %>
+    <% end %>
       </div>
      <% artist.tag_list.each do |tag| %>
             <%= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
