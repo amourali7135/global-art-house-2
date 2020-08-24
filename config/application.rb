@@ -2,6 +2,7 @@ require_relative 'boot'
 
 require 'rails/all'
 
+# require 'carrierwave'
 
 # config.assets.compile = false
 

@@ -7,9 +7,10 @@
        <h2>Write an article and mesmerize the world!</h2>
        <%= simple_form_for [@artist, @article] do |f|%>
        <%= f.input :title %>
-       <%= f.rich_text_area :rich_body %>
-       <%= f.input :photo %>
+       <%= f.rich_text_area :content %>
+       <%#= f.input :photo %>
        <%= f.input :photo_cache, as: :hidden %>
+       <%= f.input :photo, as: :file %>
        <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
        </div>
        <% end %>

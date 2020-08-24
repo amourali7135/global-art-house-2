@@ -9,7 +9,7 @@
        <%= f.input :title %>
        <%= f.rich_text_area :content %>
        <%#= f.input :photo %>
-       <%#= f.input :photo_cache, as: :hidden %>
+       <%= f.input :photo_cache, as: :hidden %>
        <%= f.input :photo, as: :file %>
        <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
        </div>
