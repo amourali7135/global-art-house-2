@@ -37,7 +37,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @artist = @article.artist #nested, he changed it to make it work...OHHHH.
     # @photo = Photo.find(params[:id])
-    # @article.punch(request)
+    @article.punch(request)
   end
 
   # PATCH/PUT /articles/1
@@ -71,7 +71,7 @@ class ArticlesController < ApplicationController
     @user = current_user # before_action :authenticate_user, only: [:likes]
     @article = Article.find(params[:id])
     @article.liked_by @user
-    redirect_to @article.artist, notice: "Liked this article successfully!"
+    redirect_to @article, notice: "Liked this article successfully!"
   end
 
   def unlikes
@@ -94,6 +94,6 @@ class ArticlesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def article_params
-    params.require(:article).permit(:title, :content, :photo)
+    params.require(:article).permit(:title, :content, :photo, :body, :photo_cache)
   end
 end

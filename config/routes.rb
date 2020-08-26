@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
 
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -57,6 +57,7 @@ Rails.application.routes.draw do
   get 'career', to: 'pages#career', as: 'career'
   get 'updates', to: 'pages#updates', as: 'updates'
   get 'blog', to: 'pages#blog', as: 'blog'
+  get 'articles', to: 'pages#articles', as: 'articles'
 
 
   get 'art/:id/likes', to: 'arts#likes', as: :art_likes
@@ -66,6 +67,10 @@ Rails.application.routes.draw do
   get 'artist/:id/follow', to: 'artists#follow', as: :artist_follow
   get 'artist/:id/unfollow', to: 'artists#unfollow', as: :artist_unfollow
   get 'artist/:id/followers', to: 'artists#followers', as: :artist_followers
+  get 'article/:id/likes', to: 'articles#likes', as: :article_likes
+  get 'article/:id/unlike', to: 'articles#unlikes', as: :article_unlikes
+  get 'service/:id/like', to: 'services#like', as: :service_like
+  get 'service/:id/unlike', to: 'services#unlike', as: :service_unlike
 
   get '/search' => 'search#index'
 

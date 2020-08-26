@@ -9,4 +9,8 @@ class Service < ApplicationRecord
   validates :description, presence: true
   validates :price_cents, presence: true
 
+  acts_as_punchable
+  acts_as_votable
+
+
 end

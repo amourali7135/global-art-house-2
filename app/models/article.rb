@@ -11,4 +11,7 @@ class Article < ApplicationRecord
   # validates :photo, presence: true
   validates :body, presence: true
 
+  acts_as_punchable
+  acts_as_votable
+
 end

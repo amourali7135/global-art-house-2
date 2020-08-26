@@ -76,6 +76,11 @@ class PagesController < ApplicationController
 
   end
 
+  def articles
+    @articles = Article.includes([:artist]).paginate(page: params[:page], per_page: 15)
+
+  end
+
   def browse
     if params["search"]
       @filter = params["search"]["tag_list"].concat([params["search"]["city"]]).concat([params["search"]["country"]]).flatten.reject(&:blank?)

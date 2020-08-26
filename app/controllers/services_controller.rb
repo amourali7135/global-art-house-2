@@ -36,8 +36,8 @@ class ServicesController < ApplicationController
     # @service = Service.friendly.find(params[:id])
     @service = Service.find(params[:id])
     @artist = @service.artist #nested, he changed it to make it work...OHHHH.
-    # @photo = Photo.find(params[:id])
-    # @service.punch(request)
+
+    @service.punch(request)
   end
 
   # PATCH/PUT /services/1

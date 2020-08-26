@@ -1,7 +1,3 @@
-
-
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Title:</strong>
   <%= @article.title %>
@@ -13,4 +9,5 @@
 </p>
 
 <%= link_to 'Delete this article!', artist_article_path(@artist, @article), class: 'btn btn-primary', method: :delete, data: {confirm: "Are you sure?"}  %>
+<%= link_to 'View this article!', artist_article_path(@artist, @article), class: 'btn btn-primary', method: :get %>
 

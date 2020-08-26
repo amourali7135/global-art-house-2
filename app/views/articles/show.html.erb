@@ -1,0 +1,52 @@
+comments
+<div class="section">
+  <div class="container">
+
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p><%= cl_image_tag @article.photo, height: 300, width: 400, crop: :fill %></p>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <h2 class=""><strong><%= @article.title %></strong></h2>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p class="">Written on <%= @article.created_at.strftime("%b %d, %Y") %> by <%= @article.artist.artist_name %> </p> <img class="avatar-bordered" alt="avatar-bordered" <% cl_image_tag @article.artist.photo %> />
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p> Viewed <%= @article.hits %> times  </p>
+          <p>Liked <%= @article.get_likes.size %> times! </p>
+        </div>
+      </div>
+
+
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p><strong>Share: </strong><%= social_share_button_tag(@article.title,) %> </p>
+          <br>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center py-2">
+        <div class="row">
+          <%= link_to 'like', article_likes_path(@article), class: 'btn btn-primary' %>
+          <%= link_to 'unlike', article_unlikes_path(@article), class: 'btn btn-primary' %>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p class=""><%= @article.body.html_safe %></p>
+        </div>
+      </div>
+
+  </div>
+</div>
