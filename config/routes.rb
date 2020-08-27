@@ -69,8 +69,8 @@ Rails.application.routes.draw do
   get 'artist/:id/followers', to: 'artists#followers', as: :artist_followers
   get 'article/:id/likes', to: 'articles#likes', as: :article_likes
   get 'article/:id/unlike', to: 'articles#unlikes', as: :article_unlikes
-  get 'service/:id/like', to: 'services#like', as: :service_like
-  get 'service/:id/unlike', to: 'services#unlike', as: :service_unlike
+  get 'service/:id/like', to: 'services#likes', as: :service_likes
+  get 'service/:id/unlike', to: 'services#unlikes', as: :service_unlikes
 
   get '/search' => 'search#index'
 

@@ -1,0 +1,52 @@
+comments
+<div class="section">
+  <div class="container">
+
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p><%= cl_image_tag @service.photo, height: 300, width: 400, crop: :fill %></p>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <h2 class=""><strong><%= @service.title %></strong></h2>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p class="">Written on <%= @service.created_at.strftime("%b %d, %Y") %> by <%= @service.artist.artist_name %> </p> <img class="avatar-bordered" alt="avatar-bordered" <% cl_image_tag @service.artist.photo %> />
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p> Viewed <%= @service.hits %> times  </p>
+          <p>Liked <%= @service.get_likes.size %> times! </p>
+        </div>
+      </div>
+
+
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p><strong>Share: </strong><%= social_share_button_tag(@service.title,) %> </p>
+          <br>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center py-2">
+        <div class="row">
+          <%= link_to 'like', service_likes_path(@service), class: 'btn btn-primary' %>
+          <%= link_to 'unlike', service_unlikes_path(@service), class: 'btn btn-primary' %>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p class=""><%= @service.description.html_safe %></p>
+        </div>
+      </div>
+
+  </div>
+</div>

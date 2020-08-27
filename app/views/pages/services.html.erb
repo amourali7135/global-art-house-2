@@ -1,0 +1,45 @@
+<section class="clean-block clean-catalog dark">
+  <div class="container">
+    <div class="block-heading">
+      <h2 class="text-dark row align-items-center justify-content-center py-2">Browse through our service database!</h2>
+        </div>
+
+<div class="container">
+<p class="row justify-content-center">
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Show search and filtering options
+  </a>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+<%= simple_form_for :search, url: articles_path, method: "GET" do |f| %>
+
+    <%= link_to "Reset", browse_path  %>
+    <%= f.submit 'Submit', class: 'btn btn-primary'%>
+  <% end %>
+  </div>
+</div>
+
+
+
+  <div class="content front-page-grid pt-3">
+    <div class="container front-page-grid">
+     <%# @services.each do |service| %>
+      <div class="row ">
+        <div class="products pl-5 card-grid-3c">
+          <%#= render partial: 'shared/article_card', locals: {service: service, artist: service.artist} %>
+        </div>
+      </div>
+    <%# end %>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="row align-items-center justify-content-center py-2">
+    <%= will_paginate @services %>
+  </div>
+
+</section>
+
+

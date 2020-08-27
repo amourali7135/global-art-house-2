@@ -1,3 +1,6 @@
+//Wrap the entire CSS in an ID and call it to not let it affect rest of app!  Brilliant!
+#article-card-css {
+
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 // Variables
 // $regal-blue: #034378;
@@ -52,7 +55,7 @@ h1 {
 .card {
   float: left;
   padding: 0 1.7rem;
-  width: 50%;
+  // width: 50%;
 
   .menu-content {
     @include cf;
@@ -211,4 +214,5 @@ h1 {
       }
     }
   }
+}
 }
