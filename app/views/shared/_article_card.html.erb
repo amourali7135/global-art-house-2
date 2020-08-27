@@ -1,6 +1,5 @@
   <div class="example-2 card">
-    <div class="wrapper">
-    <background style="color:red;">This is a paragraph.</background>
+    <div class="wrapper" style="background: url('<%= cl_image_path article.photo, height: 300, width: 400, crop: :fill %>')">
       <div class="header">
         <div class="date">
           <span class="day">12</span>
@@ -17,7 +16,7 @@
       </div>
       <div class="data">
         <div class="content">
-          <span class="author">Jane Doe</span>
+          <span class="author"><%= article.artist.artist_name %></span>
           <h1 class="title"><a href="<%= artist_article_path(artist.id, article) %>"><%= article.title %></a></h1>
           <p class="text"><%= truncate( article.body.html_safe, length: 50) %></p>
           <a href="<%= artist_article_path(artist.id, article) %>" class="button">Read more</a>
