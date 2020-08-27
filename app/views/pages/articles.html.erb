@@ -13,6 +13,7 @@
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
 <%= simple_form_for :search, url: articles_path, method: "GET" do |f| %>
+
     <%= link_to "Reset", browse_path  %>
     <%= f.submit 'Submit', class: 'btn btn-primary'%>
   <% end %>
