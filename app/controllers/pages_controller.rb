@@ -29,15 +29,15 @@ class PagesController < ApplicationController
   def dashboard
     @user = current_user
     if !@user.artist
-      flash[:notice] = "Only users with artist profiles have dashboards!"
+      flash[:notice] = "Only users with creator profiles have dashboards!"
       redirect_to root_path
     end
     @artist = Artist.find_by(user_id: @user.id) #user_id: refers to artist table one!
-    @art = Art.find_by(artist_id: @artist.id)
-    @article = Article.find_by(artist_id: @artist.id)
-    @service = Service.find_by(artist_id: @artist.id)
+    @art = Art.find_by(artist_id: @artist.id) #Do I even need these?
+    @article = Article.find_by(artist_id: @artist.id) #Do I even need these?
+    @service = Service.find_by(artist_id: @artist.id) #Do I even need these?
+    @collaboration = Collaboration.find_by(artist_id: @artist.id) #Do I even need these?
     # @art = Art.where(artist_id: @artist.id)
-
   end
 
   def city
@@ -78,7 +78,14 @@ class PagesController < ApplicationController
 
   def articles
     @articles = Article.includes([:artist]).paginate(page: params[:page], per_page: 15)
+  end
 
+  def services
+    @services = Service.includes([:artist]).paginate(page: params[:page], per_page: 15)
+  end
+
+  def collaborations
+    @collaborations = Collaboration.includes([:artist]).paginate(page: params[:page], per_page: 15)
   end
 
   def browse

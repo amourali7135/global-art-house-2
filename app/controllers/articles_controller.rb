@@ -33,16 +33,16 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   def show
     # @comment = Comment.new
-    # @article = Article.friendly.find(params[:id])
-    @article = Article.find(params[:id])
+    @article = Article.friendly.find(params[:id])
+    # @article = Article.find(params[:id])
     @artist = @article.artist #nested, he changed it to make it work...OHHHH.
-    # @photo = Photo.find(params[:id])
     @article.punch(request)
   end
 
   # PATCH/PUT /articles/1
   def update
-    @article = Article.find(params[:id])
+    # @article = Article.find(params[:id])
+    @article = Article.friendly.find(params[:id])
     if @article.update(article_params)
       flash[:notice] = "Your article was successfully updated!"
       redirect_to dashboard_path
@@ -54,7 +54,8 @@ class ArticlesController < ApplicationController
 
   # DELETE /articles/1
   def destroy
-    @article = Article.find(params[:id])
+    @article = Article.friendly.find(params[:id])
+    # @article = Article.find(params[:id])
     @article.destroy
     flash[:notice] = "Your article was successfully deleted!"
     redirect_to dashboard_path
@@ -64,7 +65,8 @@ class ArticlesController < ApplicationController
   # GET /articles/1/edit
   def edit
     @artist = Artist.find_by(artist_name: params[:artist_id])
-    @article = Article.find(params[:id])
+    @article = Article.friendly.find(params[:id])
+    # @article = Article.find(params[:id])
   end
 
   def likes

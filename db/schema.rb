@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_111417) do
+ActiveRecord::Schema.define(version: 2020_08_28_084553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,9 @@ ActiveRecord::Schema.define(version: 2020_08_24_111417) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "body"
+    t.string "slug"
     t.index ["artist_id"], name: "index_articles_on_artist_id"
+    t.index ["slug"], name: "index_articles_on_slug", unique: true
   end
 
   create_table "artists", force: :cascade do |t|
@@ -86,6 +88,19 @@ ActiveRecord::Schema.define(version: 2020_08_24_111417) do
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "collaborations", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.text "goal"
+    t.string "photo"
+    t.bigint "artist_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["artist_id"], name: "index_collaborations_on_artist_id"
+    t.index ["slug"], name: "index_collaborations_on_slug", unique: true
   end
 
   create_table "comments", force: :cascade do |t|
@@ -222,7 +237,9 @@ ActiveRecord::Schema.define(version: 2020_08_24_111417) do
     t.bigint "artist_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
     t.index ["artist_id"], name: "index_services_on_artist_id"
+    t.index ["slug"], name: "index_services_on_slug", unique: true
   end
 
   create_table "shopping_carts", force: :cascade do |t|
@@ -295,6 +312,7 @@ ActiveRecord::Schema.define(version: 2020_08_24_111417) do
   add_foreign_key "arts", "artists"
   add_foreign_key "cart_products", "arts"
   add_foreign_key "cart_products", "shopping_carts"
+  add_foreign_key "collaborations", "artists"
   add_foreign_key "comments", "arts"
   add_foreign_key "comments", "users"
   add_foreign_key "followers", "artists"

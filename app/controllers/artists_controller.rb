@@ -73,8 +73,9 @@ class ArtistsController < ApplicationController
     end
   end
 
-  def delete
-    @artist = Artist.find(params[:id])
+  def delete  #delete or destroy...
+    # @artist = Artist.find(params[:id])
+    @artist = Artist.friendly.find(params[:id])
     @artist.destroy
     flash[:notice] = "Your artist profile was successfully deleted!"
     redirect_to root_path

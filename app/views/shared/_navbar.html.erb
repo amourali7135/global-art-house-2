@@ -56,6 +56,12 @@
         <%= link_to "Articles", articles_path, class: "nav-link" %>
       </li>
       <li class="nav-item active">
+        <%= link_to "Services", services_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to "Collaborations", collaborations_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item active">
         <%= link_to "About Us", about_path, class: "nav-link" %>
       </li>
       <% if user_signed_in? %>

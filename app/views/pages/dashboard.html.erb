@@ -80,9 +80,15 @@
     </div>
   </div>
 
-   <div class="row align-items-center justify-content-center pt-2">
+<div class="row align-items-center justify-content-center pt-2">
   <div class="row">
     <p>Add a new creative service <%= link_to "Add service", new_artist_service_path(@artist.id), class: 'btn btn-primary' %> </p>
+  </div>
+</div>
+
+<div class="row align-items-center justify-content-center pt-2">
+  <div class="row">
+    <p>Seek out new creative collaborations <%= link_to "Seek collaboration", new_artist_collaboration_path(@artist.id), class: 'btn btn-primary' %> </p>
   </div>
 </div>
 
@@ -143,5 +149,21 @@
       </div>
     </div>
 
+<div class="dashboard_container mt-4">
+  <p class="grid-headers">See or modify your collaborations below</p>
+    <div class="row align-items-center justify-content-center ">
+      <div class="container front-page-grid">
+        <% @artist.collaborations.each do |collaboration| %>
+          <div class="row">
+            <div class=" products pl-5 card-grid-3c">
+              <div>
+                <%= render partial: 'shared/collaboration_card', locals: {collaboration: collaboration} %>
+              </div>
+                <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 

@@ -33,8 +33,8 @@ class ServicesController < ApplicationController
   # GET /services/1
   def show
     # @comment = Comment.new
-    # @service = Service.friendly.find(params[:id])
-    @service = Service.find(params[:id])
+    @service = Service.friendly.find(params[:id])
+    # @service = Service.find(params[:id])
     @artist = @service.artist #nested, he changed it to make it work...OHHHH.
 
     @service.punch(request)
@@ -42,7 +42,8 @@ class ServicesController < ApplicationController
 
   # PATCH/PUT /services/1
   def update
-    @service = Service.find(params[:id])
+    # @service = Service.find(params[:id])
+    @service = Service.friendly.find(params[:id])
     if @service.update(service_params)
       flash[:notice] = "Your service was successfully updated!"
       redirect_to dashboard_path
@@ -54,7 +55,8 @@ class ServicesController < ApplicationController
 
   # DELETE /services/1
   def destroy
-    @service = Service.find(params[:id])
+    # @service = Service.find(params[:id])
+    @service = Service.friendly.find(params[:id])
     @service.destroy
     flash[:notice] = "Your service was successfully deleted!"
     redirect_to dashboard_path
@@ -64,7 +66,8 @@ class ServicesController < ApplicationController
   # GET /services/1/edit
   def edit
     @artist = Artist.find_by(artist_name: params[:artist_id])
-    @service = Service.find(params[:id])
+    # @service = Service.find(params[:id])
+    @service = Service.friendly.find(params[:id])
   end
 
   def likes

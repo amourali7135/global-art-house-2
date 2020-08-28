@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :arts
     resources :articles
     resources :services
+    resources :collaborations
   end
 
   #Wtf is this array?  I dont' even remember.
@@ -58,6 +59,8 @@ Rails.application.routes.draw do
   get 'updates', to: 'pages#updates', as: 'updates'
   get 'blog', to: 'pages#blog', as: 'blog'
   get 'articles', to: 'pages#articles', as: 'articles'
+  get 'collaborations', to: 'pages#collaborations', as: 'collaborations'
+  get 'services', to: 'pages#services', as: 'services'
 
 
   get 'art/:id/likes', to: 'arts#likes', as: :art_likes
@@ -67,10 +70,10 @@ Rails.application.routes.draw do
   get 'artist/:id/follow', to: 'artists#follow', as: :artist_follow
   get 'artist/:id/unfollow', to: 'artists#unfollow', as: :artist_unfollow
   get 'artist/:id/followers', to: 'artists#followers', as: :artist_followers
-  get 'article/:id/likes', to: 'articles#likes', as: :article_likes
-  get 'article/:id/unlike', to: 'articles#unlikes', as: :article_unlikes
-  get 'service/:id/like', to: 'services#likes', as: :service_likes
-  get 'service/:id/unlike', to: 'services#unlikes', as: :service_unlikes
+  get 'articles/:id/likes', to: 'articles#likes', as: :articles_likes
+  get 'articles/:id/unlike', to: 'articles#unlikes', as: :articles_unlikes
+  get 'services/:id/like', to: 'services#likes', as: :services_likes
+  get 'services/:id/unlike', to: 'services#unlikes', as: :services_unlikes
 
   get '/search' => 'search#index'
 

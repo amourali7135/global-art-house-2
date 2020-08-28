@@ -1,4 +1,5 @@
-class Article < ApplicationRecord
+class Collaboration < ApplicationRecord
+
   extend FriendlyId
   friendly_id :title, use: :slugged
 
@@ -9,9 +10,10 @@ class Article < ApplicationRecord
 
   validates :title, presence: true
   # validates :photo, presence: true
-  validates :body, presence: true
+  validates :description, presence: true
+  validates :goal, presence: true
 
   acts_as_punchable
   acts_as_votable
-
 end
+

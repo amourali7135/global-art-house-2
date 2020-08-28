@@ -19,11 +19,8 @@ class ArtsController < ApplicationController
     @art = Art.new(art_params)
     # @artist = Artist.find(params[:artist_id])
     @artist = Artist.find_by(artist_name: params[:artist_id])
-    # @artist = current_user.artist_id
     @art.artist = @artist
-    # create_pictures(@art)
     if @art.save
-      # create_tags(@art)
       flash[:notice] = "Your art was successfully created!"
       redirect_to dashboard_path
     else
@@ -35,12 +32,10 @@ class ArtsController < ApplicationController
     @comment = Comment.new
     @art = Art.friendly.find(params[:id])
     @artist = @art.artist #nested, he changed it to make it work...OHHHH.
-    # @photo = Photo.find(params[:id])
     @art.punch(request)
   end
 
   def update
-    # @photo = Photo.find(params[:id])
     # @art = Art.find(params[:id])
     @art = Art.friendly.find(params[:id])
     if @art.update(art_params)
@@ -63,16 +58,9 @@ class ArtsController < ApplicationController
   def edit
     @kind = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ].sort
     @type = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ].sort
-    # @photo = Photo.find(params[:id])
     @artist = Artist.find_by(artist_name: params[:artist_id])
-    # @artist = Artist.friendly.find(params[:id])
-    # @art = Art.find_by(title: params[:art_id])
-    # @art = Art.find_by(params[:title])
-    # @art = Art.find_by(title: params[:title])
-    # @art = Art.find_by(art_id: params[:art_id])
     # @art = Art.find(params[:id])
     @art = Art.friendly.find(params[:id])
-    # raise
   end
 
   def likes

@@ -1,0 +1,20 @@
+<div class="container">
+   <div class="row">
+     <div class="col mt-4">
+       <img src="" alt="" class="img-fluid">
+     </div>
+     <div class="col card p-4 m-4 bg-light">
+       <h2>Post a request for a collaboration.  You never know who will respond!</h2>
+       <%= simple_form_for [@artist, @collaboration] do |f|%>
+       <%= f.input :title %>
+       <%= f.input :description, label: "Describe the type of collaboration that you're seeking out." %>
+       <%= f.input :goal, label: "What do you hope to obtain from the collaboration if anything?" %>
+       <%= f.input :photo_cache, as: :hidden %>
+       <%= f.input :photo, as: :file %>
+       <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+       </div>
+       <% end %>
+     </div>
+   </div>
+ </div>
+
