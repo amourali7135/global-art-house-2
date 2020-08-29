@@ -4,7 +4,12 @@ comments, add a messaging option here!  Or something in between them!
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
-          <p><%= cl_image_tag @collaboration.photo, height: 300, width: 400, crop: :fill %></p>
+          <% if @collaboration.photo.present? %>
+           <%= cl_image_tag @collaboration.photo, height: 300, width: 400, crop: :fill %>
+          <% else %>
+            <%= image_tag "https://image.shutterstock.com/image-vector/ui-image-placeholder-wireframes-apps-260nw-1037719204.jpg" %>
+            <%#= cl_image_tag @artist.photo, height: 300, width: 400, crop: :fill %>
+          <% end %>
         </div>
       </div>
 
@@ -16,7 +21,7 @@ comments, add a messaging option here!  Or something in between them!
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
-          <p class="">Written on <%= @collaboration.created_at.strftime("%b %d, %Y") %> by <%= @collaboration.artist.artist_name %> </p> <img class="avatar-bordered" alt="avatar-bordered" <% cl_image_tag @collaboration.artist.photo %> />
+          <p class="">Collaboration requested on <%= @collaboration.created_at.strftime("%b %d, %Y") %> by <%= link_to @collaboration.artist.artist_name, artist_path(@collaboration.artist), method: :get %> </p> <img class="avatar-bordered" alt="avatar-bordered" <% cl_image_tag @collaboration.artist.photo %> />
         </div>
       </div>
 
@@ -35,10 +40,22 @@ comments, add a messaging option here!  Or something in between them!
         </div>
       </div>
 
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p class="">Are you interested in collaborating with <%= @collaboration.artist.artist_name %>? </p>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p class="">Then get in contact with them!  <%=  %></p>
+        </div>
+      </div>
+
       <div class="row align-items-center justify-content-center py-2">
         <div class="row">
-          <%= link_to 'like', article_likes_path(@collaboration), class: 'btn btn-primary' %>
-          <%= link_to 'unlike', article_unlikes_path(@collaboration), class: 'btn btn-primary' %>
+          <%= link_to 'like', collaborations_likes_path(@collaboration), class: 'btn btn-primary' %>
+          <%= link_to 'unlike', collaborations_unlikes_path(@collaboration), class: 'btn btn-primary' %>
         </div>
       </div>
 
@@ -50,7 +67,7 @@ comments, add a messaging option here!  Or something in between them!
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
-          <p class=""><%= @collaboration.body %></p>
+          <p class=""><%= @collaboration.goal %></p>
         </div>
       </div>
 

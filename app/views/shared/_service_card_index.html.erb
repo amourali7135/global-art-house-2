@@ -1,0 +1,29 @@
+add delivery method
+<div class="card-trip">
+  <%= cl_image_tag service.photo, height: 300, width: 400, crop: :fill %>
+
+  <div class="card-trip-infos">
+    <h2><%= service.title %></h2>
+    <p><%= service.description.html_safe %></p>
+    <p>Length of time that's needed to complete?  <%= service.length %></p>
+    <p>Available to buy? <%= service.price_cents %></p>
+
+    <%# art.tag_list.each do |tag| %>
+      <%#= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
+    <%# end %>
+
+      <%= cl_image_tag service.artist.photo, class: 'card-trip-user avatar-bordered' %>
+      <p><%= flag_icon(service.artist.country.to_sym.downcase) %> <%= service.artist.city %></p>
+    <div class="d-flex justify-content-between w-100">
+      <%= link_to 'See this service!', artist_service_path(service.artist, service), class: 'btn btn-primary btn-sm', method: :get  %>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between w-100">
+    <h2 class="card-trip-pricing">$<%= service.price_cents %></h2>
+    <p><%=service.get_likes.size %> likes! </p>
+    <p> Viewed <%= service.hits %> times </p>
+  </div>
+</div>
+
+

@@ -74,6 +74,8 @@ Rails.application.routes.draw do
   get 'articles/:id/unlike', to: 'articles#unlikes', as: :articles_unlikes
   get 'services/:id/like', to: 'services#likes', as: :services_likes
   get 'services/:id/unlike', to: 'services#unlikes', as: :services_unlikes
+  get 'collaborations/:id/like', to: 'collaborations#likes', as: :collaborations_likes
+  get 'collaborations/:id/unlike', to: 'collaborations#unlikes', as: :collaborations_unlikes
 
   get '/search' => 'search#index'
 

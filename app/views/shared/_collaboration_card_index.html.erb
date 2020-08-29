@@ -1,0 +1,33 @@
+add delivery method
+<div class="card-trip">
+<% if collaboration.photo.present? %>
+  <%= cl_image_tag collaboration.photo, height: 300, width: 400, crop: :fill %>
+<% else %>
+  <%= image_tag "https://image.shutterstock.com/image-vector/ui-image-placeholder-wireframes-apps-260nw-1037719204.jpg" %>
+  <%#= cl_image_tag collaboration.artist.photo, height: 300, width: 400, crop: :fill %>
+<% end %>
+
+  <div class="card-trip-infos">
+    <h2><%= collaboration.title %></h2>
+    <p><%= collaboration.description %></p>
+    <p><%= collaboration.goal %></p>
+
+    <%# art.tag_list.each do |tag| %>
+      <%#= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
+    <%# end %>
+
+      <%= cl_image_tag collaboration.artist.photo, class: 'card-trip-user avatar-bordered' %>
+      <p><%= flag_icon(collaboration.artist.country.to_sym.downcase) %> <%= collaboration.artist.city %></p>
+    <div class="d-flex justify-content-between w-100">
+      <%= link_to 'See this collaboration!', artist_collaboration_path(collaboration.artist, collaboration), class: 'btn btn-primary btn-sm', method: :get  %>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between w-100">
+    <h2 class="card-trip-pricing"><%= %></h2>
+    <p><%=collaboration.get_likes.size %> likes! </p>
+    <p> Viewed <%= collaboration.hits %> times </p>
+  </div>
+</div>
+
+

@@ -12,38 +12,71 @@
 </div>
 
 <div class="row align-items-center justify-content-center py-3">
-<div class="row">
+  <div class="row">
 <% if !user_signed_in? %>
-<p><strong>Create an account to send this artist a message!</strong></p>
+  <p><strong>Create an account to send this artist a message!</strong></p>
 <% end %>
 <% if @artist.artist_name && current_user%>
   <%= link_to "Message #{@artist.artist_name.capitalize}", conversations_path(author_id: current_user.id, receiver_id: @artist.user_id), method: "post", class: 'btn btn-primary' %>
-  <% elsif current_user%>
+<% elsif current_user%>
   <%= link_to "Message #{@artist.first_name.capitalize + @artist.last_name.capitalize}", conversations_path(author_id: current_user.id, receiver_id: @artist.user_id), method: "post", class: 'btn btn-primary' %>
-  <% end %>
-</div>
+<% end %>
+  </div>
 </div>
 
 
- <div class="row align-items-center justify-content-center py-1">
+  <div class="row align-items-center justify-content-center py-1">
     <p><strong>Share: </strong><%= social_share_button_tag(@artist.first_name.capitalize,) %>
   </div>
 
-
-     <p class="grid-headers">  Here is a small selection of their art.</p>
-     <div class="container front-page-grid">
-     <% @artist.arts.sample(3).each do |art| %>
-     <div class="row">
-      <div class="products pl-5 card-grid-3c">
+  <p class="grid-headers">  Here is a small selection of their art.</p>
+  <div class="container front-page-grid">
+    <% @artist.arts.sample(3).each do |art| %>
+  <div class="row">
+  <div class="products pl-5 card-grid-3c">
     <%= render partial: 'shared/home_art_card', locals: {art: art} %>
-    </div>
-    </div>
+  </div>
+  </div>
     <% end %>
+  </div>
+
+  <br>
+
+    <div class="row align-items-center justify-content-center">
+      <div class="row">
+        <%= link_to 'See all of their art!', artist_arts_path(@artist.id), class: 'btn btn-primary'  %>
+      </div>
     </div>
 
-<br>
-   <div class="row align-items-center justify-content-center">
-     <div class="row">
-        <%= link_to 'See all of their art!', artist_arts_path(@artist.id), class: 'btn btn-primary'  %>
-     </div>
-   </div>
+<p class="grid-headers">  Here is a small selection of their services.</p>
+  <div class="container front-page-grid">
+    <% @artist.services.sample(3).each do |service| %>
+  <div class="row">
+  <div class="products pl-5 card-grid-3c">
+    <%= render partial: 'shared/service_card_index', locals: {service: service} %>
+  </div>
+  </div>
+    <% end %>
+  </div>
+
+  <p class="grid-headers">  Here is a small selection of their articles.</p>
+  <div class="container front-page-grid">
+    <% @artist.articles.sample(3).each do |article| %>
+  <div class="row">
+  <div class="products pl-5 card-grid-3c">
+    <%= render partial: 'shared/article_card_dashboard', locals: {article: article} %>
+  </div>
+  </div>
+    <% end %>
+  </div>
+
+  <p class="grid-headers">  Here is a small selection of their collaboration requests.</p>
+  <div class="container front-page-grid">
+    <% @artist.collaborations.sample(3).each do |collaboration| %>
+  <div class="row">
+  <div class="products pl-5 card-grid-3c">
+    <%= render partial: 'shared/collaboration_card', locals: {collaboration: collaboration} %>
+  </div>
+  </div>
+    <% end %>
+  </div>

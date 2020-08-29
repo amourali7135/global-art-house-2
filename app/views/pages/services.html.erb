@@ -1,7 +1,7 @@
 <section class="clean-block clean-catalog dark">
   <div class="container">
     <div class="block-heading">
-      <h2 class="text-dark row align-items-center justify-content-center py-2">Browse through our service database!</h2>
+      <h2 class="text-dark row align-items-center justify-content-center py-2">Browse through the services our creators have to offer!</h2>
         </div>
 
 <div class="container">
@@ -24,13 +24,13 @@
 
   <div class="content front-page-grid pt-3">
     <div class="container front-page-grid">
-     <%# @services.each do |service| %>
+     <% @services.each do |service| %>
       <div class="row ">
         <div class="products pl-5 card-grid-3c">
-          <%#= render partial: 'shared/article_card', locals: {service: service, artist: service.artist} %>
+          <%= render partial: 'shared/service_card_index', locals: {service: service, artist: service.artist} %>
         </div>
       </div>
-    <%# end %>
+    <% end %>
     </div>
   </div>
 
