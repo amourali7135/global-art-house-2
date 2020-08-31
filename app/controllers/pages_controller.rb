@@ -166,7 +166,6 @@ class PagesController < ApplicationController
     @collaborations = @user.find_liked_items.map { |item| item.is_a?(Collaboration) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
     @services = @user.find_liked_items.map { |item| item.is_a?(Service) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
     @articles = @user.find_liked_items.map { |item| item.is_a?(Article) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
-
   end
 
   private

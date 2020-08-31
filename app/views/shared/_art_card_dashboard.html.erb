@@ -14,9 +14,9 @@
       <%= cl_image_tag @artist.photo, class: 'card-trip-user avatar-bordered' %>
       <p><%= flag_icon(@artist.country.to_sym.downcase) %> <%= @artist.city %></p>
     <div class="d-flex justify-content-between w-100">
-      <%= link_to 'See this art!', artist_art_path(@artist, art), class: 'btn btn-primary'  %>
-      <%= link_to 'Edit this art!', edit_artist_art_path(@artist, art), class: 'btn btn-primary'  %>
-      <%= link_to 'Delete this art!', artist_art_path(@artist, art), class: 'btn btn-primary', method: :delete, data: {confirm: "Are you sure?  This cannot be undone."}  %>
+      <%= link_to 'See this art!', artist_art_path(@artist, art), class: 'btn btn-primary btn-sm'  %>
+      <%= link_to 'Edit this art!', edit_artist_art_path(@artist, art), class: 'btn btn-primary btn-sm'  %>
+      <%= link_to 'Delete this art!', artist_art_path(@artist, art), class: 'btn btn-primary btn-sm', method: :delete, data: {confirm: "Are you sure?  This cannot be undone."}  %>
     </div>
   </div>
 

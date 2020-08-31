@@ -15,9 +15,9 @@ add delivery method
       <%= cl_image_tag @artist.photo, class: 'card-trip-user avatar-bordered' %>
       <p><%= flag_icon(@artist.country.to_sym.downcase) %> <%= @artist.city %></p>
     <div class="d-flex justify-content-between w-100">
-      <%= link_to 'See this service!', artist_service_path(@artist, @service), class: 'btn btn-primary', method: :get  %>
-      <%= link_to 'Edit this service!', edit_artist_service_path(@artist, @service), class: 'btn btn-primary'  %>
-      <%= link_to 'Remove this service!', artist_service_path(@artist, @service), class: 'btn btn-primary', method: :delete, data: {confirm: "Are you sure?  This cannot be undone."}  %>
+      <%= link_to 'See this service!', artist_service_path(@artist, @service), class: 'btn btn-primary btn-sm', method: :get  %>
+      <%= link_to 'Edit this service!', edit_artist_service_path(@artist, @service), class: 'btn btn-primary btn-sm'  %>
+      <%= link_to 'Remove this service!', artist_service_path(@artist, @service), class: 'btn btn-primary btn-sm', method: :delete, data: {confirm: "Are you sure?  This cannot be undone."}  %>
     </div>
   </div>
 

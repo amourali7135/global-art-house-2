@@ -2,7 +2,7 @@
 
 <div class="row align-items-center justify-content-center">
   <div class="row">
-    <h1> Hello <%= @artist.first_name.capitalize %>!</h1>
+    <h1> Welcome back <%= @artist.first_name.capitalize %>!</h1>
     <br>
   </div>
 </div>
@@ -12,91 +12,108 @@
 </div>
 
 
-<div class="dashboard_container">
-
-<div class="row align-items-center justify-content-center pt-2">
-  <div class="row">
-    <p>Share new art <%= link_to "Add Art", new_artist_art_path(@artist.id), class: 'btn btn-primary' %> </p>
-  </div>
+<div class="row align-items-center justify-content-center py-2">
+  <ul class="nav nav-pills " id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-creation-tab" data-toggle="pill" href="#pills-creation" role="tab" aria-controls="pills-profile" aria-selected="false">Creations</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-article-tab" data-toggle="pill" href="#pills-article" role="tab" aria-controls="pills-article" aria-selected="false">Articles</a>
+    </li>
+     <li class="nav-item">
+      <a class="nav-link" id="pills-service-tab" data-toggle="pill" href="#pills-service" role="tab" aria-controls="pills-service" aria-selected="false">Services</a>
+    </li>
+     <li class="nav-item">
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-collaboration" role="tab" aria-controls="pills-collaboration" aria-selected="false">Collaborations</a>
+    </li>
+  </ul>
 </div>
 
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+    <div class="dashboard_container">
+      <div class="row align-items-center justify-content-center pt-2">
+        <div class="row">
+          <p>Make a new creation <%= link_to "New Creation", new_artist_art_path(@artist.id), class: 'btn btn-primary' %> </p>
+        </div>
+      </div>
 
-<div class="row align-items-center justify-content-center">
-  <div class="row">
-    <p>Edit your artist profile/photo  <%= link_to 'Edit', edit_artist_path(@artist.id), class: 'btn btn-primary'  %>   </p>
-  </div>
-</div>
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p>Update your creator profile  <%= link_to 'Edit Profile', edit_artist_path(@artist.id), class: 'btn btn-primary'  %>   </p>
+        </div>
+      </div>
 
-<div class="row align-items-center justify-content-center">
-  <div class="row">
-    <p>You have  <%= @artist.followers_count  %>  followers.  </p>
-  </div>
-</div>
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p>You have  <%= @artist.followers_count  %>  followers.  </p>
+        </div>
+      </div>
 
-<div class="row align-items-center justify-content-center">
-  <div class="row">
-    <p>See your followers:  <%= link_to 'Followers', followers_path, class: 'btn btn-primary'  %>   </p>
-  </div>
-</div>
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p>Your creator profile has  <%= @artist.get_likes.size  %>  likes.  </p>
+        </div>
+      </div>
 
-<div class="row align-items-center justify-content-center">
-  <div class="row">
-    <p>Your artist profile has  <%= @artist.get_likes.size  %>  likes.  </p>
-  </div>
-</div>
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p>See your followers  <%= link_to 'Followers', followers_path, class: 'btn btn-primary'  %>   </p>
+        </div>
+      </div>
 
-<div class="row align-items-center justify-content-center">
-  <div class="row">
-    <p>Change your username or password  <%= link_to 'Change', edit_user_registration_path(@current_user.id), class: 'btn btn-primary'  %>   </p>
-  </div>
-</div>
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p>Change your username or password  <%= link_to 'Change', edit_user_registration_path(@current_user.id), class: 'btn btn-primary'  %>   </p>
+        </div>
+      </div>
 
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+      <%# <p> See your conversations! <%= link_to 'Convos', conversation_path(@user), class: 'btn btn-primary' %>
+          <p> See your conversations! <%= link_to 'Convos', conversations_path, class: 'btn btn-primary' %> </p>
+        </div>
+      </div>
 
-<div class="row align-items-center justify-content-center">
-  <div class="row">
-<%# <p> See your conversations! <%= link_to 'Convos', conversation_path(@user), class: 'btn btn-primary' %>
-    <p> See your conversations! <%= link_to 'Convos', conversations_path, class: 'btn btn-primary' %> </p>
-  </div>
-</div>
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p> See the activity of who you are following: <%= link_to 'Following', following_path, class: 'btn btn-primary' %> </p>
+        </div>
+      </div>
 
+        <div class="row align-items-center justify-content-center">
+          <div class="row">
+            <p>See all of your existing art and artist page <%= link_to "Your art", artist_arts_path(@artist.id), class: 'btn btn-primary'  %>   </p>
+          </div>
+        </div>
 
-<div class="row align-items-center justify-content-center">
-  <div class="row">
-    <p> See the activity of who you are following: <%= link_to 'Following', following_path, class: 'btn btn-primary' %> </p>
-  </div>
-</div>
+        <div class="row align-items-center justify-content-center pt-2">
+          <div class="row">
+            <p>Write a new blog article <%= link_to "Write article", new_artist_article_path(@artist.id), class: 'btn btn-primary' %> </p>
+          </div>
+        </div>
 
+      <div class="row align-items-center justify-content-center pt-2">
+        <div class="row">
+          <p>Add a new creative service <%= link_to "Add service", new_artist_service_path(@artist.id), class: 'btn btn-primary' %> </p>
+        </div>
+      </div>
 
-
-  <div class="row align-items-center justify-content-center">
-    <div class="row">
-      <p>See all of your existing art and artist page <%= link_to "Your art", artist_arts_path(@artist.id), class: 'btn btn-primary'  %>   </p>
+      <div class="row align-items-center justify-content-center pt-2">
+        <div class="row">
+          <p>Seek out new creative collaborations <%= link_to "Seek collaboration", new_artist_collaboration_path(@artist.id), class: 'btn btn-primary' %> </p>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="row align-items-center justify-content-center pt-2">
-    <div class="row">
-      <p>Write a new blog article <%= link_to "Write article", new_artist_article_path(@artist.id), class: 'btn btn-primary' %> </p>
-    </div>
-  </div>
 
-<div class="row align-items-center justify-content-center pt-2">
-  <div class="row">
-    <p>Add a new creative service <%= link_to "Add service", new_artist_service_path(@artist.id), class: 'btn btn-primary' %> </p>
-  </div>
-</div>
-
-<div class="row align-items-center justify-content-center pt-2">
-  <div class="row">
-    <p>Seek out new creative collaborations <%= link_to "Seek collaboration", new_artist_collaboration_path(@artist.id), class: 'btn btn-primary' %> </p>
-  </div>
-</div>
-
-
-</div>
-
-<div class="dashboard_container mt-4">
-  <p class="grid-headers">See or modify your creations below</p>
+  <div class="tab-pane fade" id="pills-creation" role="tabpanel" aria-labelledby="pills-creation-tab">
+    <div class="dashboard_container mt-4">
+      <p class="grid-headers">See or modify your creations below</p>
     <div class="row align-items-center justify-content-center ">
       <div class="container front-page-grid">
         <% @artist.arts.includes([:taggings]).each do |art| %>
@@ -111,10 +128,10 @@
         </div>
       </div>
     </div>
+  </div>
 
-</section>
-
-<div class="dashboard_container mt-4">
+  <div class="tab-pane fade" id="pills-article" role="tabpanel" aria-labelledby="pills-article-tab">
+    <div class="dashboard_container mt-4">
   <p class="grid-headers">See or modify your articles below</p>
     <div class="row align-items-center justify-content-center ">
       <div class="container front-page-grid">
@@ -130,9 +147,10 @@
         </div>
       </div>
     </div>
+  </div>
 
-
-<div class="dashboard_container mt-4">
+  <div class="tab-pane fade" id="pills-service" role="tabpanel" aria-labelledby="pills-service-tab">
+    <div class="dashboard_container mt-4">
   <p class="grid-headers">See or modify your services below</p>
     <div class="row align-items-center justify-content-center ">
       <div class="container front-page-grid">
@@ -148,8 +166,10 @@
         </div>
       </div>
     </div>
+  </div>
 
-<div class="dashboard_container mt-4">
+  <div class="tab-pane fade" id="pills-collaboration" role="tabpanel" aria-labelledby="pills-collaboration-tab">
+    <div class="dashboard_container mt-4">
   <p class="grid-headers">See or modify your collaborations below</p>
     <div class="row align-items-center justify-content-center ">
       <div class="container front-page-grid">
@@ -165,5 +185,18 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+
+  </div>
+
+</div>
+
+
+</section>
+
+
+
 
 
