@@ -83,40 +83,46 @@ class ArtistsController < ApplicationController
 
   def edit
     @category = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramics', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ].sort
-    @artist = Artist.find(params[:id])
+    # @artist = Artist.find(params[:id])
+    @artist = Artist.friendly.find(params[:id])
   end
 
   def like
     @user = current_user # before_action :authenticate_user, only: [:likes]
-    @artist = Artist.find(params[:id])
+    # @artist = Artist.find(params[:id])
+    @artist = Artist.friendly.find(params[:id])
     @artist.liked_by @user
     redirect_to @artist, notice: "Liked this artist successfully!"
   end
 
   def unlike
     @user = current_user # before_action :authenticate_user, only: [:likes]
-    @artist = Artist.find(params[:id])
+    # @artist = Artist.find(params[:id])
+    @artist = Artist.friendly.find(params[:id])
     @artist.unliked_by @user
     redirect_to @artist, notice: "Unliked this artist successfully!"
   end
 
   def follow
     @user = current_user # before_action :authenticate_user, only: [:likes]
-    @artist = Artist.find(params[:id])
+    # @artist = Artist.find(params[:id])
+    @artist = Artist.friendly.find(params[:id])
     @user.follow(@artist)
     redirect_to @artist, notice: "Followed this artist successfully!"
   end
 
   def unfollow
     @user = current_user # before_action :authenticate_user, only: [:likes]
-    @artist = Artist.find(params[:id])
+    # @artist = Artist.find(params[:id])
+    @artist = Artist.friendly.find(params[:id])
     @user.stop_following(@artist)
     redirect_to @artist, notice: "Unfollowed this artist successfully!"
   end
 
   def followers  #Do conditional to show artist name if is an artist.
     @user = current_user # before_action :authenticate_user, only: [:likes]
-    @artist = Artist.find(params[:id])
+    # @artist = Artist.find(params[:id])
+    @artist = Artist.friendly.find(params[:id])
     @artist.followers(User)
   end
 

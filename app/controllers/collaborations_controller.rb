@@ -96,7 +96,7 @@ class CollaborationsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def collaboration_params
-    params.require(:collaboration).permit(:title, :description, :photo, :goal, :photo_cache)
+    params.require(:collaboration).permit(:title, :description, :photo, :goal, :photo_cache, tag_list: [])
   end
 end
 

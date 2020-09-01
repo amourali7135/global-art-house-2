@@ -9,6 +9,8 @@
        <%= f.input :title %>
        <%= f.input :description, as: :trix_editor %>
        <%= f.input :length, label: "How long on average will it take you to complete this service for a client?" %>
+       <%= f.input :tag_list, collection: Service.media, input_html: {multiple: true, id: "service_new_tags"}, label: "What medium of creation is this service associated with?" %>
+       <%= f.input :tag_list, collection: Service.styles, input_html: {multiple: true, id: "service_new_styles"}, label: "What style of creation is this service associated with?" %>
        <%= f.input :price_cents, label: "Price you want to charge for this service?" %>
        <%= f.input :photo_cache, as: :hidden %>
        <%= f.input :photo, as: :file %>

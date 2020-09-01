@@ -12,9 +12,9 @@ add delivery method
     <p><%= collaboration.description %></p>
     <p><%= collaboration.goal %></p>
 
-    <%# art.tag_list.each do |tag| %>
-      <%#= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
-    <%# end %>
+    <% collaboration.tag_list.each do |tag| %>
+      <%= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
+    <% end %>
 
       <%= cl_image_tag @artist.photo, class: 'card-trip-user avatar-bordered' %>
       <p><%= flag_icon(@artist.country.to_sym.downcase) %> <%= @artist.city %></p>

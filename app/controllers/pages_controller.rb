@@ -157,6 +157,7 @@ class PagesController < ApplicationController
   def followers
     @user = current_user
     @artist = Artist.find_by(user_id: @user.id)
+    @followers = @artist.followers.paginate(page: params[:page], per_page: 15)
   end
 
   def liked  #HOW THE FUCK DID HE DO THIS?

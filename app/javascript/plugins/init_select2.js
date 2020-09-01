@@ -24,6 +24,17 @@ import $ from 'jquery';
    $("#artist_styles_search").select2();
    $("#artist_new_styles").select2();
    $("#browse_art_media").select2();
+   $("#service_new_tags").select2();
+   $("#service_new_styles").select2();
+   $("#article_new_tags").select2();
+   $("#article_new_styles").select2();
+   $("#collaboration_new_tags").select2();
+   $("#collaboration_new_styles").select2();
+
+
+
+
+
     // $("#search_tag_ids").select2({
     //   multiple: true
     // });

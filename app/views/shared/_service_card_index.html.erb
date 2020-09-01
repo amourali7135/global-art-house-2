@@ -8,9 +8,9 @@ add delivery method
     <p>Length of time that's needed to complete?  <%= service.length %></p>
     <p>Available to buy? <%= service.price_cents %></p>
 
-    <%# art.tag_list.each do |tag| %>
-      <%#= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
-    <%# end %>
+    <% service.tag_list.each do |tag| %>
+      <%= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
+    <% end %>
 
       <%= cl_image_tag service.artist.photo, class: 'card-trip-user avatar-bordered' %>
       <p><%= flag_icon(service.artist.country.to_sym.downcase) %> <%= service.artist.city %></p>

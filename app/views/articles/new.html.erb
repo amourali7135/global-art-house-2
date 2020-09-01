@@ -8,6 +8,8 @@
        <%= simple_form_for [@artist, @article] do |f|%>
        <%= f.input :title %>
        <%= f.input :body, as: :trix_editor %>
+       <%= f.input :tag_list, collection: Article.media, input_html: {multiple: true, id: "article_new_tags"}, label: "Does this article have anything to do with a medium of creation?  If so, tag it." %>
+       <%= f.input :tag_list, collection: Article.styles, input_html: {multiple: true, id: "article_new_styles"}, label: "What about a style of it?" %>
        <%= f.input :photo_cache, as: :hidden %>
        <%= f.input :photo, as: :file %>
        <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>

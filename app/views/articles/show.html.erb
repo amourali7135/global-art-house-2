@@ -16,6 +16,14 @@ comments
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
+          <% @article.tag_list.each do |tag| %>
+            <%= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
           <p class="">Written on <%= @article.created_at.strftime("%b %d, %Y") %> by <%= @article.artist.artist_name %> </p> <img class="avatar-bordered" alt="avatar-bordered" <% cl_image_tag @article.artist.photo %> />
         </div>
       </div>
