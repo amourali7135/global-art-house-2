@@ -33,8 +33,8 @@ class Artist < ApplicationRecord
   validates :photo, presence: true
 
   acts_as_punchable
-
   acts_as_taggable_on :tags
+  acts_as_commontator
 
 
   include PgSearch::Model
