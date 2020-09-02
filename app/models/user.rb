@@ -5,7 +5,7 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :validatable
 
   has_one :artist
-  has_many :comments
+  # has_many :comments
   has_many :orders
   has_many :sent_conversations, class_name: 'Conversation', foreign_key: 'author_id'
   has_many :received_conversations, class_name: 'Conversation', foreign_key: 'receiver_id'
@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   acts_as_follower
   acts_as_voter
+  acts_as_commontator
 
   attr_writer :login
 

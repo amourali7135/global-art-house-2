@@ -9,8 +9,8 @@ class Art < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   has_many :cart_products
-  has_many :comments, -> {order(:created_at => :desc)}
-  has_many :comments, dependent: :destroy
+  # has_many :comments, -> {order(:created_at => :desc)}
+  # has_many :comments, dependent: :destroy
   # has_one :photo, dependent: :destroy  #Cancels out the photo uploader!
 
   validates :title,  presence: true
@@ -22,8 +22,10 @@ class Art < ApplicationRecord
   monetize :price_cents
 
   acts_as_punchable
-
   acts_as_taggable_on :tags
+  acts_as_commontable dependent: :destroy
+
+
 
   include PgSearch::Model
   pg_search_scope :global_search,

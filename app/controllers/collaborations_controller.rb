@@ -1,6 +1,7 @@
 class CollaborationsController < ApplicationController
   # before_action :set_article, only: [:show, :edit, :update, :destroy]
   # before_action :set_artist, only: [:index, :show, :new, :edit, :create, ]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   # GET /collaborations
   def index

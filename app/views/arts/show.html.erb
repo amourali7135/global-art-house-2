@@ -32,19 +32,20 @@
 
 <div class="row align-items-center justify-content-center pt-3">
   <div class="">
-    <%= render partial: 'comments/form', locals: {comment: @comment} %>
+    <%#= render partial: 'comments/form', locals: {comment: @comment} %>
   </div>
 </div>
 
 <div class="row align-items-center justify-content-center pt-1">
   <div class="row">
-    <p>There are <%= @art.comments.size %> comments </p>
+    <p>There are <%#= @art.comments.size %> comments </p>
   </div>
 </div>
 
 <div class="row align-items-center justify-content-center ">
   <div class="col-sm-6">
-    <%= render partial: 'comments/comment', collection: @art.comments %>
+    <%#= render partial: 'comments/comment', collection: @art.comments %>
+    <%= commontator_thread(@art) %>
   </div>
 </div>
 

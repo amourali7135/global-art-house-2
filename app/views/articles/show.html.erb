@@ -45,8 +45,8 @@ comments
 
       <div class="row align-items-center justify-content-center py-2">
         <div class="row">
-          <%= link_to 'like', article_likes_path(@article), class: 'btn btn-primary' %>
-          <%= link_to 'unlike', article_unlikes_path(@article), class: 'btn btn-primary' %>
+          <%= link_to 'like', articles_likes_path(@article), class: 'btn btn-primary' %>
+          <%= link_to 'unlike', articles_unlikes_path(@article), class: 'btn btn-primary' %>
         </div>
       </div>
 
@@ -55,6 +55,13 @@ comments
           <p class=""><%= @article.body.html_safe %></p>
         </div>
       </div>
+
+     <div class="row align-items-center justify-content-center ">
+       <div class="col-sm-6">
+         <%#= render partial: 'comments/comment', collection: @art.comments %>
+         <%= commontator_thread(@article) %>
+       </div>
+     </div>
 
   </div>
 </div>

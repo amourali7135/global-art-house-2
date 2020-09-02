@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   #Wtf is this array?  I dont' even remember.
   resources :arts, only: [] do
-    resources :comments, only: [:create, :destroy]
+    # resources :comments, only: [:create, :destroy]
   end
 
 
@@ -90,11 +90,14 @@ Rails.application.routes.draw do
 
   get 'tags/:tag', to: 'arts#index', as: :tag
 
-# kinds = %w|IPA brown_ale pilsner lager lambic hefweizen|
-# get 'beers/:kind' => 'beers#kind', constraints: {kind: Regexp.new(kinds.join('|'))}
+  mount Commontator::Engine => '/commontator'
 
-# Figure out the country/name
-# get 'country', to: 'pages#country', as: 'country'
+
+  # kinds = %w|IPA brown_ale pilsner lager lambic hefweizen|
+  # get 'beers/:kind' => 'beers#kind', constraints: {kind: Regexp.new(kinds.join('|'))}
+
+  # Figure out the country/name
+  # get 'country', to: 'pages#country', as: 'country'
 
 
 end

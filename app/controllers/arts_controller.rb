@@ -29,10 +29,11 @@ class ArtsController < ApplicationController
   end
 
   def show
-    @comment = Comment.new
+    # @comment = Comment.new
     @art = Art.friendly.find(params[:id])
     @artist = @art.artist #nested, he changed it to make it work...OHHHH.
     @art.punch(request)
+    # commontator_thread_show(@art)
   end
 
   def update

@@ -28,13 +28,14 @@ class Artist < ApplicationRecord
   validates :country, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
-  # validates :artist_name, uniqueness: true  Taken away for now because of seeding data repeats
+  validates :artist_name, uniqueness: true  #Taken away for now because of seeding data repeats
   validates :artist_name, presence: true #Do custom validation for the slug
   validates :photo, presence: true
 
   acts_as_punchable
 
   acts_as_taggable_on :tags
+
 
   include PgSearch::Model
   pg_search_scope :global_search,

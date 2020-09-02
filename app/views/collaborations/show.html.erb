@@ -79,5 +79,12 @@ comments, add a messaging option here!  Or something in between them!
         </div>
       </div>
 
+      <div class="row align-items-center justify-content-center ">
+       <div class="col-sm-6">
+         <%#= render partial: 'comments/comment', collection: @art.comments %>
+         <%= commontator_thread(@collaboration) %>
+       </div>
+     </div>
+
   </div>
 </div>
