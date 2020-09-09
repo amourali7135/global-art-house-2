@@ -162,11 +162,35 @@
         </div>
       </div>
     </div>
-
-
   </section>
 
+  <!-- Call to Action II for new subscription model-->
+  <section class="call-to-action text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+          <h2 class="mb-4">Interested in getting onto a pre-launch list or in being a beta user? Sign up now!</h2>
+        </div>
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+          <form>
+            <div class="form-row">
+              <div class="col-12 col-md-9 mb-2 mb-md-0">
+                  <%# binding.pry %>
+                  <%= simple_form_for @subscription, url: subscriptions_path, method: :post, html: { action: subscriptions_path } do |f| %>
+                  <%= f.input :email, placeholder: 'Enter your email please...', required: false, label: false %>
+                  <%= f.button :submit, 'Submit', class: 'btn btn-primary' %>
+                  <% end %>
 
+              <div class="col-12 col-md-3">
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
 <section class="clean-block clean-catalog dark">

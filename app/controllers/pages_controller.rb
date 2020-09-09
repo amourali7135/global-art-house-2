@@ -24,6 +24,19 @@ class PagesController < ApplicationController
         infoWindow: render_to_string(partial: "artists/info_window", locals: { artist: artist })
       }
     end
+
+    # def create_subscription
+    #   @subscription = Subscription.new(subscription_params)
+    #   if @subscription.save
+    #     flash[:notice] = "You've been successfully added to our subscription list'!"
+    #     redirect_to root_path
+    #   else
+    #     flash[:notice] = "There was an error, please try again!"
+    #     redirect_to root_path
+    #   end
+    # end
+
+    @subscription = Subscription.new  #(subscription_params)
   end
 
   def dashboard
@@ -175,6 +188,9 @@ class PagesController < ApplicationController
   #   array[pagy.offset, pagy.items]
   # end
 
-
+#   def subscription_params
+#     params.require(:subscription).permit(:email)
+#   end
+# #
 end
 

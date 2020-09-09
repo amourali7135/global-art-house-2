@@ -67,7 +67,24 @@ Rails.application.configure do
     Bullet.rails_logger = true
   end
 
-  #Now the rendered HTML will contain comment indicating the begining and end of each template...when 6.1 is a thing!  8320
-  # config.action_view.annotate_rendered_view_with_filenames = true
 
-end
+  # config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_options = {from: 'amourali7135@gmail.com'}
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'example.com',
+    user_name:            'amourali7135',
+    password:             'Sublime07one',
+    authentication:       'plain',
+    enable_starttls_auto: true  }
+
+    #Now the rendered HTML will contain comment indicating the begining and end of each template...when 6.1 is a thing!  8320
+    # config.action_view.annotate_rendered_view_with_filenames = true
+
+  end

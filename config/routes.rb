@@ -92,6 +92,9 @@ Rails.application.routes.draw do
 
   mount Commontator::Engine => '/commontator'
 
+  resources :subscriptions, only: [:new, :create, :destroy]
+
+
 
   # kinds = %w|IPA brown_ale pilsner lager lambic hefweizen|
   # get 'beers/:kind' => 'beers#kind', constraints: {kind: Regexp.new(kinds.join('|'))}
