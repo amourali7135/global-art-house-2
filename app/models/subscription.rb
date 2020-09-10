@@ -1,6 +1,6 @@
 class Subscription < ApplicationRecord
   # after_create :send_email_to_new_subscribers
-  skip_before_action :authenticate_user!, only: [:new, :create, :destroy ]
+  # skip_before_action :authenticate_user!, only: [:new, :create, :destroy ]
 
   validates :email, presence: true
   validates :email, uniqueness: true

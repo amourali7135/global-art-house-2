@@ -59,6 +59,10 @@ class ArtistsController < ApplicationController
     @user = current_user
     @artist = Artist.friendly.find(params[:id])
     @conversation = Conversation.find_by(author: @user, receiver: @artist)
+    @art = Art.find_by(artist_id: @artist.id) #Do I even need these?
+    @article = Article.find_by(artist_id: @artist.id) #Do I even need these?
+    @service = Service.find_by(artist_id: @artist.id) #Do I even need these?
+    @collaboration = Collaboration.find_by(artist_id: @artist.id) #Do I even need these?
     @artist.punch(request)
   end
 

@@ -29,54 +29,107 @@
     <p><strong>Share: </strong><%= social_share_button_tag(@artist.first_name.capitalize,) %>
   </div>
 
-  <p class="grid-headers">  Here is a small selection of their art.</p>
-  <div class="container front-page-grid">
-    <% @artist.arts.sample(3).each do |art| %>
-  <div class="row">
-  <div class="products pl-5 card-grid-3c">
-    <%= render partial: 'shared/home_art_card', locals: {art: art} %>
-  </div>
-  </div>
-    <% end %>
-  </div>
 
-  <br>
 
-    <div class="row align-items-center justify-content-center">
-      <div class="row">
-        <%= link_to 'See all of their art!', artist_arts_path(@artist.friendly_id), class: 'btn btn-primary'  %>
+<div class="row align-items-center justify-content-center py-2">
+  <ul class="nav nav-pills " id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Creations</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-article-tab" data-toggle="pill" href="#pills-article" role="tab" aria-controls="pills-article" aria-selected="false">Articles</a>
+    </li>
+     <li class="nav-item">
+      <a class="nav-link" id="pills-service-tab" data-toggle="pill" href="#pills-service" role="tab" aria-controls="pills-service" aria-selected="false">Services</a>
+    </li>
+     <li class="nav-item">
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-collaboration" role="tab" aria-controls="pills-collaboration" aria-selected="false">Collaborations</a>
+    </li>
+  </ul>
+</div>
+
+<div class="tab-content pb-4" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+    <div class="dashboard_container mt-4">
+      <p class="grid-headers">See or modify your creations below</p>
+    <div class="row align-items-center justify-content-center ">
+      <div class="container front-page-grid">
+        <% @artist.arts.includes([:taggings]).each do |art| %>
+          <div class="row">
+            <div class=" products pl-5 card-grid-3c">
+              <div>
+                <%= render partial: 'shared/art_card', locals: {art: art} %>
+              </div>
+                <% end %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-<p class="grid-headers">  Here is a small selection of their services.</p>
-  <div class="container front-page-grid">
-    <% @artist.services.sample(3).each do |service| %>
-  <div class="row">
-  <div class="products pl-5 card-grid-3c">
-    <%= render partial: 'shared/service_card_index', locals: {service: service} %>
-  </div>
-  </div>
-    <% end %>
   </div>
 
-  <p class="grid-headers">  Here is a small selection of their articles.</p>
-  <div class="container front-page-grid">
-    <% @artist.articles.sample(3).each do |article| %>
-  <div class="row">
-  <div class="products pl-5 card-grid-3c">
-    <%= render partial: 'shared/article_card_dashboard', locals: {article: article} %>
-  </div>
-  </div>
-    <% end %>
+  <div class="tab-pane fade" id="pills-article" role="tabpanel" aria-labelledby="pills-article-tab">
+    <div class="dashboard_container mt-4">
+  <p class="grid-headers">See or modify your articles below</p>
+    <div class="row align-items-center justify-content-center ">
+      <div class="container front-page-grid">
+        <% @artist.articles.each do |article| %>
+          <div class="row">
+            <div class=" products pl-5 card-grid-3c">
+              <div>
+                <%= render partial: 'shared/article_card_show', locals: {article: article} %>
+              </div>
+                <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <p class="grid-headers">  Here is a small selection of their collaboration requests.</p>
-  <div class="container front-page-grid">
-    <% @artist.collaborations.sample(3).each do |collaboration| %>
-  <div class="row">
-  <div class="products pl-5 card-grid-3c">
-    <%= render partial: 'shared/collaboration_card', locals: {collaboration: collaboration} %>
+  <div class="tab-pane fade" id="pills-service" role="tabpanel" aria-labelledby="pills-service-tab">
+    <div class="dashboard_container mt-4">
+  <p class="grid-headers">See or modify your services below</p>
+    <div class="row align-items-center justify-content-center ">
+      <div class="container front-page-grid">
+        <% @artist.services.each do |service| %>
+          <div class="row">
+            <div class=" products pl-5 card-grid-3c">
+              <div>
+                <%= render partial: 'shared/service_card', locals: {service: service} %>
+              </div>
+                <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <div class="tab-pane fade" id="pills-collaboration" role="tabpanel" aria-labelledby="pills-collaboration-tab">
+    <div class="dashboard_container mt-4">
+  <p class="grid-headers">See or modify your collaborations below</p>
+    <div class="row align-items-center justify-content-center ">
+      <div class="container front-page-grid">
+        <% @artist.collaborations.each do |collaboration| %>
+          <div class="row">
+            <div class=" products pl-5 card-grid-3c">
+              <div>
+                <%= render partial: 'shared/collaboration_card', locals: {collaboration: collaboration} %>
+              </div>
+                <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-    <% end %>
+
+  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+
   </div>
+
+</div>
+
+        <%#= link_to 'See all of their art!', artist_arts_path(@artist.friendly_id), class: 'btn btn-primary'  %>
+

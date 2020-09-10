@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   #how the fuck can I do this the right way?
   get '/artists_countries/', to: 'artists#countries', as: :artist_country #guido moved this to the top!
 
-
-  resources :artists do
-    resources :arts
+  #9820 I added the two paths for the pivot.  Get rid of them if they become problematic.
+  resources :artists, :path => 'creator' do
+    resources :arts, :path => 'creation'
     resources :articles
     resources :services
     resources :collaborations

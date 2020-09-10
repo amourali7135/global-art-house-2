@@ -17,15 +17,15 @@
       </div>
       <div class="data">
         <div class="content">
-          <span class="author"><%= article.artist.artist_name %></span>
-          <h1 class="title"><a href="<%= artist_article_path(artist.id, article) %>"><%= article.title %></a></h1>
+          <span class="author"><%= article.@.artist_name %></span>
+          <h1 class="title"><a href="<%= artist_article_path(@artist.id, article) %>"><%= article.title %></a></h1>
           <p class="text">
-          <%=  article.tag_list.each do |tag| %> <%# Check this again after seeding to see if it looks ok with tags! %>
+          <%= article.tag_list.each do |tag| %> <%# Check this again after seeding to see if it looks ok with tags! %>
           <%= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
           <% end %>
           </p>
           <p class="text"><%= truncate( article.body.html_safe, length: 50) %></p>
-          <a href="<%= artist_article_path(artist.id, article) %>" class="button">Read more</a>
+          <a href="<%= artist_article_path(@artist.id, article) %>" class="button">Read more</a>
         </div>
       </div>
     </div>
