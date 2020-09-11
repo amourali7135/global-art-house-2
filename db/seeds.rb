@@ -82,18 +82,10 @@ puts 'Creating 20 fake users...'
     )
     art.save!
 
-    # Create Art Tags for kind too!  Tag IDS?
-    # puts 'Linking art type via tags'
-    # Tag.art_types.sample(2).each do |tag|
-    #   t = Tag.create!(name: tag)
-    #   ArtTag.create!(art: art, tag: t)
-    # end
+    # puts 'Creating 40 fake articles...'
+    # puts 'Creating 40 fake services...'
+    # puts 'Creating 40 fake collaborations...'
 
-    # puts 'Linking art kind via tags'
-    # Tag.art_kinds.sample(2).each do |tag|
-    #   t = Tag.create!(name: tag)
-    #   ArtTag.create!(art: art, tag: t)
-    # end
 
     #I had this for my original multi-upload photo set for arts, no more though.
     # photo = Photo.new(

@@ -3,21 +3,19 @@
     <div class="wrapper" style="background: url('<%= cl_image_path article.photo, height: 400, width: 350, crop: :fill %>')">
       <div class="header">
         <div class="date">
-          <span class="day">12</span>
-          <span class="month">Aug</span>
-          <span class="year">2016</span>
+          <span class="day"><%= article.created_at.strftime("%b %d, %Y") %></span>
         </div>
         <ul class="menu-content">
           <li>
             <a href="#" class="fa fa-bookmark-o"></a>
           </li>
-          <li><a href="#" class="fa fa-heart-o"><span>article.get_likes.size</span></a></li>
+          <li><a href="#" class="fa fa-heart-o"><span><%= article.get_likes.size %></span></a></li>
           <li><a href="#" class="fa fa-comment-o"><span>3</span></a></li>
         </ul>
       </div>
       <div class="data">
         <div class="content">
-          <span class="author"><%= article.@.artist_name %></span>
+          <span class="author"><%= article.artist.artist_name %></span>
           <h1 class="title"><a href="<%= artist_article_path(@artist.id, article) %>"><%= article.title %></a></h1>
           <p class="text">
           <%= article.tag_list.each do |tag| %> <%# Check this again after seeding to see if it looks ok with tags! %>
@@ -31,7 +29,4 @@
     </div>
   </div>
 </div>
-
-.created_at.strftime("%b %d, %Y")
-
 

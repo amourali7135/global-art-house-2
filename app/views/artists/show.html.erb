@@ -1,4 +1,4 @@
-<div class="row align-items-center justify-content-center pt-2">
+<div class="row align-items-center justify-content-center pt-3">
   <%= render partial: 'shared/artist_card_show', locals: {artist: @artist} %>
 </div>
 
@@ -51,12 +51,12 @@
 <div class="tab-content pb-4" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
     <div class="dashboard_container mt-4">
-      <p class="grid-headers">See or modify your creations below</p>
+      <p class="grid-headers">Here are all of their creations</p>
     <div class="row align-items-center justify-content-center ">
       <div class="container front-page-grid">
         <% @artist.arts.includes([:taggings]).each do |art| %>
           <div class="row">
-            <div class=" products pl-5 card-grid-3c">
+            <div class=" products pl-5 card-grid-3c mb-3">
               <div>
                 <%= render partial: 'shared/art_card', locals: {art: art} %>
               </div>
@@ -70,12 +70,12 @@
 
   <div class="tab-pane fade" id="pills-article" role="tabpanel" aria-labelledby="pills-article-tab">
     <div class="dashboard_container mt-4">
-  <p class="grid-headers">See or modify your articles below</p>
+  <p class="grid-headers">Here are all of their written blog articles</p>
     <div class="row align-items-center justify-content-center ">
       <div class="container front-page-grid">
         <% @artist.articles.each do |article| %>
           <div class="row">
-            <div class=" products pl-5 card-grid-3c">
+            <div class=" products pl-5 card-grid-3c mb-3">
               <div>
                 <%= render partial: 'shared/article_card_show', locals: {article: article} %>
               </div>
@@ -89,14 +89,14 @@
 
   <div class="tab-pane fade" id="pills-service" role="tabpanel" aria-labelledby="pills-service-tab">
     <div class="dashboard_container mt-4">
-  <p class="grid-headers">See or modify your services below</p>
+  <p class="grid-headers">These are all of the services that they have to offer to you</p>
     <div class="row align-items-center justify-content-center ">
       <div class="container front-page-grid">
         <% @artist.services.each do |service| %>
           <div class="row">
-            <div class=" products pl-5 card-grid-3c">
+            <div class=" products pl-5 card-grid-3c mb-3">
               <div>
-                <%= render partial: 'shared/service_card', locals: {service: service} %>
+                <%= render partial: 'shared/service_card_index', locals: {service: service} %>
               </div>
                 <% end %>
             </div>
@@ -108,14 +108,14 @@
 
   <div class="tab-pane fade" id="pills-collaboration" role="tabpanel" aria-labelledby="pills-collaboration-tab">
     <div class="dashboard_container mt-4">
-  <p class="grid-headers">See or modify your collaborations below</p>
+  <p class="grid-headers">Here are all of the collaborations that they're currently seeking out</p>
     <div class="row align-items-center justify-content-center ">
       <div class="container front-page-grid">
         <% @artist.collaborations.each do |collaboration| %>
           <div class="row">
-            <div class=" products pl-5 card-grid-3c">
+            <div class=" products pl-5 card-grid-3c mb-3">
               <div>
-                <%= render partial: 'shared/collaboration_card', locals: {collaboration: collaboration} %>
+                <%= render partial: 'shared/collaboration_card_index', locals: {collaboration: collaboration} %>
               </div>
                 <% end %>
             </div>

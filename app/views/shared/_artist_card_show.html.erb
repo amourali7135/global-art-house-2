@@ -1,6 +1,6 @@
 <div class="card mb-3 col-sm-6 card align-items-center", id="artist-card-show">
   <%= cl_image_tag @artist.photo,
-    width: 300, height: 225, crop: :scale, class: "img-raised rounded-circle img-fluid pt-2" %>
+    width: 300, height: 225, crop: :scale, class: "img-raised rounded-circle img-fluid mt-3" %>
   <div class="card-body">
   <% if @artist.artist_name %>
 	  <h3 class="title row align-items-center justify-content-center"><%= @artist.first_name.capitalize %> <%= @artist.last_name.capitalize %>, also known as <%= @artist.artist_name.capitalize %></h3>
