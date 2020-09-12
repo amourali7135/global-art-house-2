@@ -82,20 +82,65 @@ puts 'Creating 20 fake users...'
     )
     art.save!
 
-    # puts 'Creating 40 fake articles...'
-    # puts 'Creating 40 fake services...'
-    # puts 'Creating 40 fake collaborations...'
+    puts 'Creating 40 fake articles...'
+    article_mediums = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ]
+    article_styles = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ]
+    4.times do
+      article = Article.new(
+        title: Faker::FunnyName.name,
+        body: Faker::Lorem.sentences(number: 7),
+        completion_date: Faker::Date.between(from: 300.days.ago, to: Date.today),
+        tag_list: Article.media.sample(3),
+        tag_list: Article.styles.sample(3),
+        likees_count: Faker::Number.between(from: 0, to: 4000),
+        remote_photo_url: Faker::Avatar.image,
+        artist: artist,
+      )
+      article.save!
+
+      puts 'Creating 40 fake services...'
+      service_mediums = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ]
+      service_styles = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ]
+      4.times do
+        service = Service.new(
+          title: Faker::FunnyName.name,
+          text: Faker::Lorem.sentences(number: 4),
+          length: Faker::Lorem.sentences(number: 1),
+          tag_list: Service.media.sample(3),
+          tag_list: Service.styles.sample(3),
+          likees_count: Faker::Number.between(from: 0, to: 4000),
+          remote_photo_url: Faker::Avatar.image,
+          price_cents: Faker::Commerce.price,
+          artist: artist,
+        )
+        Service.save!
+
+        puts 'Creating 40 fake collaborations...'
+        collaboration_mediums = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ]
+        collaboration_styles = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ]
+        4.times do
+          collaboration = Collaboration.new(
+            title: Faker::FunnyName.name,
+            description: Faker::Lorem.sentences(number: 5),
+            goal: Faker::Lorem.sentences(number: 3),
+            tag_list: Collaboration.media.sample(3),
+            tag_list: Collaboration.styles.sample(3),
+            likees_count: Faker::Number.between(from: 0, to: 4000),
+            remote_photo_url: Faker::Avatar.image,
+            artist: artist,
+          )
+          Collaboration.save!
 
 
-    #I had this for my original multi-upload photo set for arts, no more though.
-    # photo = Photo.new(
-    #   # remote_photo_url: Faker::LoremPixel.image,
-    #   photo: File.open(Rails.root.join('images', 'bourdain.jpg')),
-    #   art: art
-    # )
-    # photo.save!
-  end
-  puts 'Finished!'
-end
-puts 'Finished!'
+          #I had this for my original multi-upload photo set for arts, no more though.
+          # photo = Photo.new(
+          #   # remote_photo_url: Faker::LoremPixel.image,
+          #   photo: File.open(Rails.root.join('images', 'bourdain.jpg')),
+          #   art: art
+          # )
+          # photo.save!
+        end
+        puts 'Finished!'
+      end
+      puts 'Finished!'
 

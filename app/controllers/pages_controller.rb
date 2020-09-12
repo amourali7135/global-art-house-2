@@ -40,11 +40,11 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    if !curren_user.artist
+    if !current_user.artist
       flash[:notice] = "Only users with creator profiles have access to dashboards!"
       redirect_to root_path
     end
-    @artist = Artist.find_by(user_id: @user.id) #user_id: refers to artist table one!
+    @artist = Artist.find_by(user_id: current_user.id) #user_id: refers to artist table one!
     @art = Art.find_by(artist_id: @artist.id) #Do I even need these?
     @article = Article.find_by(artist_id: @artist.id) #Do I even need these?
     @service = Service.find_by(artist_id: @artist.id) #Do I even need these?
