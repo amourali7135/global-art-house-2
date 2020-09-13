@@ -100,6 +100,11 @@ class PagesController < ApplicationController
     @collaborations = Collaboration.includes([:artist]).paginate(page: params[:page], per_page: 15)
   end
 
+  def lessons
+    @lessons = Lesson.includes([:artist]).paginate(page: params[:page], per_page: 15)
+  end
+
+
   def browse
     if params["search"]
       @filter = params["search"]["tag_list"].concat([params["search"]["city"]]).concat([params["search"]["country"]]).flatten.reject(&:blank?)
@@ -179,6 +184,7 @@ class PagesController < ApplicationController
     @collaborations = @user.find_liked_items.map { |item| item.is_a?(Collaboration) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
     @services = @user.find_liked_items.map { |item| item.is_a?(Service) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
     @articles = @user.find_liked_items.map { |item| item.is_a?(Article) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
+    @lessons = @user.find_liked_items.map { |item| item.is_a?(Lesson) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
   end
 
   private

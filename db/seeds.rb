@@ -131,16 +131,35 @@ puts 'Creating 20 fake users...'
           )
           Collaboration.save!
 
+          puts 'Creating 40 fake lessons...'
+          lesson_mediums = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ]
+          lesson_styles = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ]
+          4.times do
+            lesson = Lesson.new(
+              title: Faker::FunnyName.name,
+              description: Faker::Lorem.sentences(number: 4),
+              subdescription: Faker::Quote.most_interesting_man_in_the_world,
+              learnings: Faker::Lorem.sentences(number: 3),
+              prerequisites: Faker::Lorem.sentences(number: 3),
+              free: Faker::Boolean.boolean,
+              price_cents: Faker::Commerce.price,
+              tag_list: Lesson.media.sample(3),
+              tag_list: Lesson.styles.sample(3),
+              likees_count: Faker::Number.between(from: 0, to: 4000),
+              artist: artist,
+            )
+            Lesson.save!
 
-          #I had this for my original multi-upload photo set for arts, no more though.
-          # photo = Photo.new(
-          #   # remote_photo_url: Faker::LoremPixel.image,
-          #   photo: File.open(Rails.root.join('images', 'bourdain.jpg')),
-          #   art: art
-          # )
-          # photo.save!
+
+            #I had this for my original multi-upload photo set for arts, no more though.
+            # photo = Photo.new(
+            #   # remote_photo_url: Faker::LoremPixel.image,
+            #   photo: File.open(Rails.root.join('images', 'bourdain.jpg')),
+            #   art: art
+            # )
+            # photo.save!
+          end
+          puts 'Finished!'
         end
         puts 'Finished!'
-      end
-      puts 'Finished!'
 

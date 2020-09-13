@@ -1,11 +1,12 @@
-comments, add a messaging option here!  Or something in between them!
+Free versus price displayed
+
 <div class="section">
   <div class="container">
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
-          <% if @collaboration.photo.present? %>
-           <%= cl_image_tag @collaboration.photo, height: 300, width: 400, crop: :fill %>
+          <% if @lesson.photo.present? %>
+           <%= cl_image_tag @lesson.photo, height: 300, width: 400, crop: :fill %>
           <% else %>
             <%= image_tag "https://image.shutterstock.com/image-vector/ui-image-placeholder-wireframes-apps-260nw-1037719204.jpg" %>
             <%#= cl_image_tag @artist.photo, height: 300, width: 400, crop: :fill %>
@@ -15,13 +16,13 @@ comments, add a messaging option here!  Or something in between them!
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
-          <h2 class=""><strong><%= @collaboration.title %></strong></h2>
+          <h2 class=""><strong><%= @lesson.title %></strong></h2>
         </div>
       </div>
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
-          <% @collaboration.tag_list.each do |tag| %>
+          <% @lesson.tag_list.each do |tag| %>
             <%= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
           <% end %>
         </div>
@@ -29,28 +30,28 @@ comments, add a messaging option here!  Or something in between them!
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
-          <p class="">Collaboration requested on <%= @collaboration.created_at.strftime("%b %d, %Y") %> by <%= link_to @collaboration.artist.artist_name, artist_path(@collaboration.artist), method: :get %> </p> <img class="avatar-bordered" alt="avatar-bordered" <% cl_image_tag @collaboration.artist.photo %> />
+          <p class="">Collaboration requested on <%= @lesson.created_at.strftime("%b %d, %Y") %> by <%= link_to @lesson.artist.artist_name, artist_path(@lesson.artist), method: :get %> </p> <img class="avatar-bordered" alt="avatar-bordered" <% cl_image_tag @lesson.artist.photo %> />
         </div>
       </div>
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
-          <p> Viewed <%= @collaboration.hits %> times  </p>
-          <p>Liked <%= @collaboration.get_likes.size %> times! </p>
+          <p> Viewed <%= @lesson.hits %> times  </p>
+          <p>Liked <%= @lesson.get_likes.size %> times! </p>
         </div>
       </div>
 
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
-          <p><strong>Share: </strong><%= social_share_button_tag(@collaboration.title,) %> </p>
+          <p><strong>Share: </strong><%= social_share_button_tag(@lesson.title,) %> </p>
           <br>
         </div>
       </div>
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
-          <p class="">Are you interested in collaborating with <%= @collaboration.artist.artist_name %>? </p>
+          <p class="">Are you interested in collaborating with <%= @lesson.artist.artist_name %>? </p>
         </div>
       </div>
 
@@ -62,39 +63,38 @@ comments, add a messaging option here!  Or something in between them!
 
       <div class="row align-items-center justify-content-center py-2">
         <div class="row">
-          <%= link_to 'like', collaborations_likes_path(@collaboration), class: 'btn btn-primary' %>
-          <%= link_to 'unlike', collaborations_unlikes_path(@collaboration), class: 'btn btn-primary' %>
+          <%= link_to 'like', lessons_likes_path(@lesson), class: 'btn btn-primary' %>
+          <%= link_to 'unlike', lessons_unlikes_path(@lesson), class: 'btn btn-primary' %>
         </div>
       </div>
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
-          <p class=""><%= @collaboration.description %></p>
+          <p class=""><%= @lesson.description %></p>
         </div>
       </div>
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
-          <p class=""><%= @collaboration.subdescription %></p>
+          <p class=""><%= @lesson.subdescription %></p>
         </div>
       </div>
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
-          <p class=""><%= @collaboration.learnings %></p>
+          <p class=""><%= @lesson.learnings %></p>
         </div>
       </div>
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
-          <p class=""><%= @collaboration.prerequisites %></p>
+          <p class=""><%= @lesson.prerequisites %></p>
         </div>
       </div>
 
       <div class="row align-items-center justify-content-center ">
        <div class="col-sm-6">
-         <%#= render partial: 'comments/comment', collection: @art.comments %>
-         <%= commontator_thread(@collaboration) %>
+         <%= commontator_thread(@lesson) %>
        </div>
      </div>
 

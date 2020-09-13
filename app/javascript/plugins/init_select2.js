@@ -30,9 +30,8 @@ import $ from 'jquery';
    $("#article_new_styles").select2();
    $("#collaboration_new_tags").select2();
    $("#collaboration_new_styles").select2();
-
-
-
+   $("#lesson_new_tags").select2();
+   $("#lesson_new_styles").select2();
 
 
     // $("#search_tag_ids").select2({

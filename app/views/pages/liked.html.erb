@@ -15,6 +15,9 @@
   <li class="nav-item">
     <a class="nav-link " id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Collaborations you've liked</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link " id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Lessons/classes you've liked</a>
+  </li>
 </ul>
 </div>
 
@@ -67,6 +70,17 @@
       <div class="row align-items-center justify-content-center">
         <div class="col-sm-6">
           <%= render partial: 'shared/collaboration_card', locals: {collaboration: collaboration, artist: collaboration.artist} %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+ <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <% @lessons.each do |lesson| %>
+      <div class="row align-items-center justify-content-center">
+        <div class="col-sm-6">
+          <%= render partial: 'shared/lesson_card', locals: {lesson: lesson, artist: lesson.artist} %>
         </div>
       </div>
     <% end %>

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :articles
     resources :services
     resources :collaborations
+    resources :lessons
   end
 
   #Wtf is this array?  I dont' even remember.
@@ -61,6 +62,7 @@ Rails.application.routes.draw do
   get 'articles', to: 'pages#articles', as: 'articles'
   get 'collaborations', to: 'pages#collaborations', as: 'collaborations'
   get 'services', to: 'pages#services', as: 'services'
+  get 'lessons', to: 'pages#lessons', as: 'lessons'
 
 
   get 'art/:id/likes', to: 'arts#likes', as: :art_likes
@@ -76,6 +78,8 @@ Rails.application.routes.draw do
   get 'services/:id/unlike', to: 'services#unlikes', as: :services_unlikes
   get 'collaborations/:id/like', to: 'collaborations#likes', as: :collaborations_likes
   get 'collaborations/:id/unlike', to: 'collaborations#unlikes', as: :collaborations_unlikes
+  get 'lessons/:id/like', to: 'lessons#likes', as: :lessons_likes
+  get 'lessons/:id/unlike', to: 'lessons#unlikes', as: :lessons_unlikes
 
   get '/search' => 'search#index'
 

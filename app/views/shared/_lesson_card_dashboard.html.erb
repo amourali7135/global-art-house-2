@@ -1,0 +1,35 @@
+<div class="card-trip">
+<% if lesson.photo.present? %>
+  <%= cl_image_tag lesson.photo, height: 300, width: 400, crop: :fill %>
+<% else %>
+  <%= image_tag "https://image.shutterstock.com/image-vector/ui-image-placeholder-wireframes-apps-260nw-1037719204.jpg" %>
+  <%#= cl_image_tag @artist.photo, height: 300, width: 400, crop: :fill %>
+<% end %>
+
+  <div class="card-trip-infos">
+    <h2><%= lesson.title %></h2>
+    <p><%= lesson.description.truncate(75) %></p>
+    <p><%= lesson.subdescription.truncate(75) %></p>
+    <p><%= lesson.learnings.truncate(75) %></p>
+    <p><%= lesson.prerequisites.truncate(75) %></p>
+
+    <% lesson.tag_list.each do |tag| %>
+      <%= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
+    <% end %>
+
+
+    <div class="d-flex justify-content-between w-100">
+      <%= link_to 'See this lesson!', artist_lesson_path(@artist, lesson), class: 'btn btn-primary btn-sm', method: :get  %>
+      <%= link_to 'Edit this lesson!', edit_artist_lesson_path(@artist, lesson), class: 'btn btn-primary btn-sm'  %>
+      <%= link_to 'Remove this lesson!', artist_lesson_path(@artist, lesson), class: 'btn btn-primary btn-sm', method: :delete, data: {confirm: "Are you sure?  This cannot be undone."}  %>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between w-100">
+    <h2 class="card-trip-pricing"><%= %></h2>
+    <p><%=lesson.get_likes.size %> likes! </p>
+    <p> Viewed <%= lesson.hits %> times </p>
+  </div>
+</div>
+
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_07_065721) do
+ActiveRecord::Schema.define(version: 2020_09_13_101710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -214,6 +214,24 @@ ActiveRecord::Schema.define(version: 2020_09_07_065721) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "lessons", force: :cascade do |t|
+    t.string "title"
+    t.string "subdescription"
+    t.text "description"
+    t.text "learnings"
+    t.integer "rating"
+    t.integer "students"
+    t.text "prerequisites"
+    t.boolean "free"
+    t.integer "price_cents"
+    t.bigint "artist_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["artist_id"], name: "index_lessons_on_artist_id"
+    t.index ["slug"], name: "index_lessons_on_slug", unique: true
+  end
+
   create_table "likes", force: :cascade do |t|
     t.string "liker_type"
     t.integer "liker_id"
@@ -369,6 +387,7 @@ ActiveRecord::Schema.define(version: 2020_09_07_065721) do
   add_foreign_key "commontator_subscriptions", "commontator_threads", column: "thread_id", on_update: :cascade, on_delete: :cascade
   add_foreign_key "followers", "artists"
   add_foreign_key "followers", "users"
+  add_foreign_key "lessons", "artists"
   add_foreign_key "orders", "arts"
   add_foreign_key "orders", "users"
   add_foreign_key "services", "artists"

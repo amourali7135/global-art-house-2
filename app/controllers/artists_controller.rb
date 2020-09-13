@@ -63,6 +63,7 @@ class ArtistsController < ApplicationController
     @article = Article.find_by(artist_id: @artist.id) #Do I even need these?
     @service = Service.find_by(artist_id: @artist.id) #Do I even need these?
     @collaboration = Collaboration.find_by(artist_id: @artist.id) #Do I even need these?
+    @lesson = Lesson.find_by(artist_id: @artist.id) #Do I even need these?
     @artist.punch(request)
   end
 
