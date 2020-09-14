@@ -72,14 +72,14 @@ class ArticlesController < ApplicationController
 
   def likes
     @user = current_user # before_action :authenticate_user, only: [:likes]
-    @article = Article.find(params[:id])
+    @article = Article.friendly.find(params[:id])
     @article.liked_by @user
-    redirect_to @article, notice: "Liked this article successfully!"
+    redirect_to @article.artist, notice: "Liked this article successfully!"  #Fix this redirect later, it's a strange error.
   end
 
   def unlikes
     @user = current_user # before_action :authenticate_user, only: [:likes]
-    @article = Article.find(params[:id])
+    @article = Article.friendly.find(params[:id])
     @article.unliked_by @user
     redirect_to @article, notice: "Unliked this article successfully!"
   end

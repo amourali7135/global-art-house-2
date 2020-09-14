@@ -1,19 +1,125 @@
+<section>
+SHOW CREATORS THAT YOU HAVE FOLLOWED HERE AND GRID IT!!!
 <h3 class = "text-dark row align-items-center justify-content-center py-2">The recent activity of those you are following</h3>
 
-<div class="row align-items-center justify-content-center">
-<% if @many_following %>
-  <h5><%= link_to "Show older activity", '?m=all', class:'button is-link'%></h5>
-<% end %>
+<%# <div class="row align-items-center justify-content-center"> %>
+<%# <% if @many_following %>
+  <%# <h5><%= link_to "Show older activity", '?m=all', class:'button is-link'%>
+<%# <% end %>
+<%# </div> %>
+
+  <%# <% @art_array.sort_by { |art| -art.id}.each do |art| #20 is a placeholder till pagy works%>
+  <%# @art_array.sort_by { |art| -art.id}.last(40).each do |art| #20 is a placeholder till pagy works%>
+    <%# <div class="row align-items-center justify-content-center"> %>
+      <%# <div class="col-sm-6"> %>
+        <%# <%= render partial: 'shared/art_card', locals: {art: art, artist: art.artist } %>
+      <%# </div> %>
+    <%# </div> %>
+  <%# <% end %>
+
+<div class="row align-items-center justify-content-center py-2">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Creations of your followed</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="creation-tab" data-toggle="tab" href="#creation" role="tab" aria-controls="creation" aria-selected="false">Followed creators</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " id="service-tab" data-toggle="tab" href="#service" role="tab" aria-controls="service" aria-selected="true">Services of your followed</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " id="article-tab" data-toggle="tab" href="#article" role="tab" aria-controls="article" aria-selected="true">Articles of your followed</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " id="collaboration-tab" data-toggle="tab" href="#collaboration" role="tab" aria-controls="collaboration" aria-selected="true">Collaborations of your followed</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " id="lesson-tab" data-toggle="tab" href="#lesson" role="tab" aria-controls="lesson" aria-selected="true">Classes/lessons of your followed</a>
+  </li>
+</ul>
 </div>
 
-  <% @art_array.sort_by { |art| -art.id}.each do |art| #20 is a placeholder till pagy works%>
-  <%# @art_array.sort_by { |art| -art.id}.last(40).each do |art| #20 is a placeholder till pagy works%>
+
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <% @art_array.sort_by { |art| -art.id}.each do |art| #20 is a placeholder till pagy works%>
+     <%# @art_array.sort_by { |art| -art.id}.last(40).each do |art| #20 is a placeholder till pagy works%>
     <div class="row align-items-center justify-content-center">
       <div class="col-sm-6">
         <%= render partial: 'shared/art_card', locals: {art: art, artist: art.artist } %>
       </div>
     </div>
-  <% end %>
+        <% end %>
+  </div>
+
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <% @artist_array.sort_by { |artist| -artist.id}.each do |artist| #20 is a placeholder till pagy works%>
+     <%# @art_array.sort_by { |art| -art.id}.last(40).each do |art| #20 is a placeholder till pagy works%>
+    <div class="row align-items-center justify-content-center">
+      <div class="col-sm-6">
+        <%= render partial: 'shared/artist_card_liked', locals: {artist: artist } %>
+      </div>
+    </div>
+        <% end %>
+  </div>
 
 
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <% @article_array.sort_by { |article| -article.id}.each do |article| #20 is a placeholder till pagy works%>
+     <%# @art_array.sort_by { |art| -art.id}.last(40).each do |art| #20 is a placeholder till pagy works%>
+    <div class="row align-items-center justify-content-center">
+      <div class="col-sm-6">
+        <%= render partial: 'shared/article_card', locals: {article: article, artist: article.artist } %>
+      </div>
+    </div>
+        <% end %>
+  </div>
+</div>
 
+ <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <% @service_array.sort_by { |service| -service.id}.each do |service| #20 is a placeholder till pagy works%>
+      <div class="row align-items-center justify-content-center">
+        <div class="col-sm-6">
+          <%= render partial: 'shared/service_card_index', locals: {service: service, artist: service.artist} %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+ <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <% @article_array.sort_by { |article| -article.id}.each do |article| #20 is a placeholder till pagy works%>
+      <div class="row align-items-center justify-content-center">
+        <div class="col-sm-6">
+          <%= render partial: 'shared/article_card', locals: {article: article, artist: article.artist} %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+ <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <% @collaboration_array.sort_by { |collaboration| -collaboration.id}.each do |collaboration| #20 is a placeholder till pagy works%>
+      <div class="row align-items-center justify-content-center">
+        <div class="col-sm-6">
+          <%= render partial: 'shared/collaboration_card_index', locals: {collaboration: collaboration, artist: collaboration.artist} %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+ <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <% @lesson_array.sort_by { |lesson| -lesson.id}.each do |lesson| #20 is a placeholder till pagy works%>
+      <div class="row align-items-center justify-content-center">
+        <div class="col-sm-6">
+          <%= render partial: 'shared/lesson_card', locals: {lesson: lesson, artist: lesson.artist} %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+</section>

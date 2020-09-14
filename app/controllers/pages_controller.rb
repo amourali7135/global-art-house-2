@@ -152,8 +152,20 @@ class PagesController < ApplicationController
   def following
     @user = current_user
     @art_array = []
+    @article_array = []
+    @collaboration_array = []
+    @service_array = []
+    @lesson_array = []
+    @artist_array = []
+
     @user.all_following.sort_by { |followed| followed }.each do |following|
       following.arts.map { |art| @art_array << art }
+      following.articles.map { |article| @article_array << article }
+      following.collaborations.map { |collaboration| @collaboration_array << collaboration }
+      following.services.map { |service| @service_array << service }
+      following.lessons.map { |lesson| @lesson_array << lesson }
+      @artist_array << following
+      # raise
     end
 
     if @art_array.length > 15

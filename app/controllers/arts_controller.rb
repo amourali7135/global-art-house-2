@@ -66,14 +66,14 @@ class ArtsController < ApplicationController
 
   def likes
     @user = current_user # before_action :authenticate_user, only: [:likes]
-    @art = Art.find(params[:id])
+    @art = Art.friendly.find(params[:id])
     @art.liked_by @user
     redirect_to @art.artist, notice: "Liked this art successfully!"
   end
 
   def unlikes
     @user = current_user # before_action :authenticate_user, only: [:likes]
-    @art = Art.find(params[:id])
+    @art = Art.friendly.find(params[:id])
     @art.unliked_by @user
     redirect_to @art, notice: "Unliked this art successfully!"
   end

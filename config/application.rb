@@ -7,9 +7,9 @@ require 'rails/all'
 # config.assets.compile = false
 
 
-def markdown_to_html(text)
-  Kramdown::Document.new(text, input: "GFM").to_html
-end
+# def markdown_to_html(text)
+#   Kramdown::Document.new(text, input: "GFM").to_html
+# end
 
 
 # Require the gems listed in Gemfile, including any gems

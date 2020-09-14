@@ -65,14 +65,14 @@ class LessonsController < ApplicationController
 
   def likes
     @user = current_user # before_action :authenticate_user, only: [:likes]
-    @lesson = Lesson.find(params[:id])
+    @lesson = Lesson.friendly.find(params[:id])
     @lesson.liked_by @user
     redirect_to @lesson, notice: "Liked this lesson successfully!"
   end
 
   def unlikes
     @user = current_user # before_action :authenticate_user, only: [:likes]
-    @lesson = Lesson.find(params[:id])
+    @lesson = Lesson.friendly.find(params[:id])
     @lesson.unliked_by @user
     redirect_to @lesson, notice: "Unliked this lesson successfully!"
   end

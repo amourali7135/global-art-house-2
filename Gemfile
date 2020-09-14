@@ -45,7 +45,6 @@ gem 'faker'
 gem "mailboxer"
 gem "punching_bag"
 gem 'social-share-button'
-gem 'kramdown', '~> 1.17'
 gem 'serviceworker-rails'
 gem 'sprockets', '~> 3.7.2'
 gem 'friendly_id', '~> 5.2.4'

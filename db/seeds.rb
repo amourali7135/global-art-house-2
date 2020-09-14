@@ -161,5 +161,5 @@ puts 'Creating 20 fake users...'
           end
           puts 'Finished!'
         end
-        puts 'Finished!'
-
+        # puts 'Finished!'
+#liked/followed/etc.

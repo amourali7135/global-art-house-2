@@ -73,14 +73,14 @@ class ServicesController < ApplicationController
 
   def likes
     @user = current_user # before_action :authenticate_user, only: [:likes]
-    @service = Service.find(params[:id])
+    @service = Service.friendly.find(params[:id])
     @service.liked_by @user
     redirect_to @service.artist, notice: "Liked this service successfully!"
   end
 
   def unlikes
     @user = current_user # before_action :authenticate_user, only: [:likes]
-    @service = Service.find(params[:id])
+    @service = Service.friendly.find(params[:id])
     @service.unliked_by @user
     redirect_to @service, notice: "Unliked this service successfully!"
   end

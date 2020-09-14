@@ -72,14 +72,14 @@ class CollaborationsController < ApplicationController
 
   def likes
     @user = current_user # before_action :authenticate_user, only: [:likes]
-    @collaboration = Collaboration.find(params[:id])
+    @collaboration = Collaboration.friendly.find(params[:id])
     @collaboration.liked_by @user
     redirect_to @collaboration, notice: "Liked this collaboration successfully!"
   end
 
   def unlikes
     @user = current_user # before_action :authenticate_user, only: [:likes]
-    @collaboration = Collaboration.find(params[:id])
+    @collaboration = Collaboration.friendly.find(params[:id])
     @collaboration.unliked_by @user
     redirect_to @collaboration, notice: "Unliked this collaboration successfully!"
   end
