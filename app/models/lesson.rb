@@ -16,7 +16,7 @@ class Lesson < ApplicationRecord
   validates :description, presence: true
   validates :learnings, presence: true
   validates :prerequisites, presence: true
-  validates :free, presence: true
+  # validates :free, presence: true
   validates :subdescription, presence: true
 
 
