@@ -54,7 +54,7 @@ SHOW CREATORS THAT YOU HAVE FOLLOWED HERE AND GRID IT!!!
         <% end %>
   </div>
 
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  <div class="tab-pane fade show active" id="creation" role="tabpanel" aria-labelledby="creation-tab">
     <% @artist_array.sort_by { |artist| -artist.id}.each do |artist| #20 is a placeholder till pagy works%>
      <%# @art_array.sort_by { |art| -art.id}.last(40).each do |art| #20 is a placeholder till pagy works%>
     <div class="row align-items-center justify-content-center">
@@ -66,7 +66,7 @@ SHOW CREATORS THAT YOU HAVE FOLLOWED HERE AND GRID IT!!!
   </div>
 
 
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  <div class="tab-pane fade" id="article" role="tabpanel" aria-labelledby="article-tab">
     <% @article_array.sort_by { |article| -article.id}.each do |article| #20 is a placeholder till pagy works%>
      <%# @art_array.sort_by { |art| -art.id}.last(40).each do |art| #20 is a placeholder till pagy works%>
     <div class="row align-items-center justify-content-center">
@@ -78,7 +78,7 @@ SHOW CREATORS THAT YOU HAVE FOLLOWED HERE AND GRID IT!!!
   </div>
 </div>
 
- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+ <div class="tab-pane fade" id="service" role="tabpanel" aria-labelledby="service-tab">
     <% @service_array.sort_by { |service| -service.id}.each do |service| #20 is a placeholder till pagy works%>
       <div class="row align-items-center justify-content-center">
         <div class="col-sm-6">
@@ -89,7 +89,7 @@ SHOW CREATORS THAT YOU HAVE FOLLOWED HERE AND GRID IT!!!
   </div>
 </div>
 
- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+ <div class="tab-pane fade" id="article" role="tabpanel" aria-labelledby="article-tab">
     <% @article_array.sort_by { |article| -article.id}.each do |article| #20 is a placeholder till pagy works%>
       <div class="row align-items-center justify-content-center">
         <div class="col-sm-6">
@@ -100,7 +100,7 @@ SHOW CREATORS THAT YOU HAVE FOLLOWED HERE AND GRID IT!!!
   </div>
 </div>
 
- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+ <div class="tab-pane fade" id="collaboration" role="tabpanel" aria-labelledby="collaboration-tab">
     <% @collaboration_array.sort_by { |collaboration| -collaboration.id}.each do |collaboration| #20 is a placeholder till pagy works%>
       <div class="row align-items-center justify-content-center">
         <div class="col-sm-6">
@@ -111,7 +111,7 @@ SHOW CREATORS THAT YOU HAVE FOLLOWED HERE AND GRID IT!!!
   </div>
 </div>
 
- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+ <div class="tab-pane fade" id="lesson" role="tabpanel" aria-labelledby="lesson-tab">
     <% @lesson_array.sort_by { |lesson| -lesson.id}.each do |lesson| #20 is a placeholder till pagy works%>
       <div class="row align-items-center justify-content-center">
         <div class="col-sm-6">

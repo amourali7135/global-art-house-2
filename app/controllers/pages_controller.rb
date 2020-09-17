@@ -4,6 +4,7 @@ class PagesController < ApplicationController
 
   def home
     # @artists = Artist.all
+    #Heroku is giving me issues here.
     @arts = Art.includes([:artist]).includes([:taggings])
     if current_user
       @user = current_user
@@ -158,6 +159,7 @@ class PagesController < ApplicationController
     @lesson_array = []
     @artist_array = []
 
+    #91520:  check the bullet gem here, I don't get what it's saying.
     @user.all_following.sort_by { |followed| followed }.each do |following|
       following.arts.map { |art| @art_array << art }
       following.articles.map { |article| @article_array << article }
