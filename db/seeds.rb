@@ -50,7 +50,6 @@ puts 'Creating 20 fake users...'
   artist.user = user
   artist.save!
 
-
 end
 puts 'Finished!'
 
@@ -73,7 +72,7 @@ puts 'Creating 50 fake arts...'
     # remote_photo_url: Faker::Avatar.image,
     # photo: File.open(Rails.root.join('images', 'bourdain.jpg')),
     remote_photo_url: Faker::Avatar.image,
-    artist: artist,
+    artist_id: artist_ids.sample,
   )
   art.save!
 
@@ -92,7 +91,7 @@ article_styles = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nou
     tag_list: Article.styles.sample(3),
     likees_count: Faker::Number.between(from: 0, to: 4000),
     remote_photo_url: Faker::Avatar.image,
-    artist: artist,
+    artist_id: artist_ids.sample,
   )
   article.save!
 
@@ -112,7 +111,7 @@ service_styles = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nou
     likees_count: Faker::Number.between(from: 0, to: 4000),
     remote_photo_url: Faker::Avatar.image,
     price_cents: Faker::Commerce.price,
-    artist: artist,
+    artist_id: artist_ids.sample,
   )
   Service.save!
 
@@ -131,7 +130,7 @@ collaboration_styles = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco"
     tag_list: Collaboration.styles.sample(3),
     likees_count: Faker::Number.between(from: 0, to: 4000),
     remote_photo_url: Faker::Avatar.image,
-    artist: artist,
+    artist_id: artist_ids.sample,
   )
   Collaboration.save!
   puts 'Finished!'
@@ -152,7 +151,7 @@ lesson_styles = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouv
     tag_list: Lesson.media.sample(3),
     tag_list: Lesson.styles.sample(3),
     likees_count: Faker::Number.between(from: 0, to: 4000),
-    artist: artist,
+    artist_id: artist_ids.sample,
   )
   Lesson.save!
 
