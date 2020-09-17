@@ -103,7 +103,7 @@ artist_ids = Artist.ids
 4.times do
   service = Service.new(
     title: Faker::FunnyName.name,
-    text: Faker::Lorem.sentences(number: 4),
+    description: Faker::Lorem.sentences(number: 4),
     length: Faker::Lorem.sentences(number: 1),
     tag_list: Service.media.sample(3),
     tag_list: Service.styles.sample(3),
