@@ -112,7 +112,7 @@ artist_ids = Artist.ids
     price_cents: Faker::Commerce.price,
     artist_id: artist_ids.sample,
   )
-  Service.save!
+  service.save!
 
   puts 'Finished!'
 end
@@ -132,7 +132,7 @@ artist_ids = Artist.ids
     remote_photo_url: Faker::Avatar.image,
     artist_id: artist_ids.sample,
   )
-  Collaboration.save!
+  collaboration.save!
   puts 'Finished!'
 end
 
@@ -154,7 +154,7 @@ artist_ids = Artist.ids
     # likees_count: Faker::Number.between(from: 0, to: 4000),
     artist_id: artist_ids.sample,
   )
-  Lesson.save!
+  lesson.save!
 
   puts 'Finished!'
 end
