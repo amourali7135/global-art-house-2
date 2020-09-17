@@ -38,6 +38,7 @@ class PagesController < ApplicationController
     # end
 
     @subscription = Subscription.new  #(subscription_params)
+    # raise
   end
 
   def dashboard
