@@ -18,9 +18,9 @@
       <div class="data">
         <div class="content">
           <span class="author"><%= article.artist.artist_name %></span>
-          <h1 class="title"><a href=<%= artist_article_path(@artist.id, article) %>><%= article.title %></a></h1>
+          <h1 class="title"><a href=<%= artist_article_path(@artist, article) %>><%= article.title %></a></h1>
           <p class="text"><%= truncate( article.body.html_safe, length: 50) %></p>
-          <a href=<%= artist_article_path(@artist.id, article) %> class="button">Read more</a>
+          <a href=<%= artist_article_path(@artist, article) %> class="button">Read more</a>
         </div>
       </div>
     </div>

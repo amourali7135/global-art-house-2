@@ -16,11 +16,11 @@
     <% if @artist %>
       <%= cl_image_tag @artist.photo, class: 'card-trip-user avatar-bordered' %>
       <p><%= flag_icon(@artist.country.to_sym.downcase) %> <%= @artist.city %></p>
-      <%= link_to 'See this art!', artist_art_path(@artist.id, art), class: 'btn btn-primary', method: :get %>
+      <%= link_to 'See this art!', artist_art_path(@artist, art), class: 'btn btn-primary', method: :get %>
     <% else %>
       <%= cl_image_tag artist.photo, class: 'card-trip-user avatar-bordered' %>
       <p><%= flag_icon(artist.country.to_sym.downcase) %> <%= artist.city %></p>
-      <%= link_to 'See this art!', artist_art_path(artist.id, art), method: :get  %>
+      <%= link_to 'See this art!', artist_art_path(artist, art), method: :get  %>
     <% end %>
   </div>
 
