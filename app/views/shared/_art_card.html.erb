@@ -3,8 +3,8 @@
 
   <div class="card-trip-infos">
     <h2><%= art.title %></h2>
-    <p><%= art.description %></p>
-    <p><%= art.inspiration %></p>
+    <p><%= art.description.gsub(/"|\[|\]/, '') %></p>
+    <p><%= art.inspiration.gsub(/"|\[|\]/, '') %></p>
     <p>Available to buy? <%= art.available %></p>
 
   <div>

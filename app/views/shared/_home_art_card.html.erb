@@ -3,8 +3,8 @@
 
   <div class="card-trip-infos">
     <h2><%= art.title %></h2>
-    <p>Description:  <%= art.description %></p>
-    <p>Inspiration:  <%= art.inspiration %></p>
+    <p>Description:  <%= art.description.gsub(/"|\[|\]/, '') %></p>
+    <p>Inspiration:  <%= art.inspiration.gsub(/"|\[|\]/, '') %></p>
     <p>Available to buy? / OPTIONS <%= art.available %></p>
           <% art.tag_list.each do |tag| %>
             <%= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
