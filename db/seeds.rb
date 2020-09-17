@@ -88,7 +88,7 @@ artist_ids = Artist.ids
   article = Article.new(
     title: Faker::FunnyName.name,
     body: Faker::Lorem.sentences(number: 7),
-    completion_date: Faker::Date.between(from: 300.days.ago, to: Date.today),
+    created_at: Faker::Date.between(from: 365.days.ago, to: Date.today),
     tag_list: Article.media.sample(3),
     tag_list: Article.styles.sample(3),
     likees_count: Faker::Number.between(from: 0, to: 4000),
