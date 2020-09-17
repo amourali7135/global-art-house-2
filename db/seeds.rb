@@ -30,8 +30,6 @@ puts 'Creating 20 fake users...'
   user.save!
   artist_categories = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramics', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance']
   artist_cities = ['Chicago', 'Taipei', 'Moscow', 'Helsinki', 'Quito', 'New York', 'Rio De Janeiro', 'Melbourne', 'Geneva', 'Zurich', 'Almaty', 'Jakarta', 'Canggu', 'Singapore', 'Tunis', 'Copenhagen', 'Milan', 'Sydney', 'Cape Town', 'Vladivostok', 'Berlin', 'London', 'Paris', 'Stockholm', 'Algiers', 'Istanbul', 'Athens', 'Izmir', 'Osaka', 'Tokyo', 'Seoul', 'Beijing', 'Hanoi', 'Goa', 'Karachi', 'Kabul', 'Tehran', 'Tashkent', 'Dushanbe', 'Casablanca', 'Cairo', 'Beirut', 'Auckland', 'Santa Monica', 'Vancouver', 'Tijuana', 'Mexico', 'Khartoum', 'Kazan', 'Shiraz', 'Baghdad', 'Dhaka', 'Lisbon', 'Barcelona', 'Warsaw', 'Oslo', 'Havana', 'Salvador', 'Santiago', 'Lima', 'Manila', 'Bangkok', 'Lagos', 'Nairobi', 'Accra', 'Kinhasa', 'Toronto', 'Perth', 'Mexico City', 'Minsk', 'Kiev', 'Jerusalem', 'Riyadh', 'Dubai', 'Muscat']
-  # puts 'Creating 200 fake artists...'
-  # 200.times do
   artist = Artist.new(
     first_name:    Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -64,8 +62,6 @@ puts 'Creating 50 fake arts...'
     completion_date: Faker::Date.between(from: 300.days.ago, to: Date.today),
     inspiration: Faker::Lorem.sentences(number: 1),
     available: Faker::Boolean.boolean,
-    # styles: art_styles.sample(2),
-    # kind: art_mediums.sample,
     tag_list: Art.media.sample(3),
     tag_list: Art.styles.sample(3),
     price_cents: Faker::Commerce.price,
@@ -91,7 +87,7 @@ artist_ids = Artist.ids
     created_at: Faker::Date.between(from: 365.days.ago, to: Date.today),
     tag_list: Article.media.sample(3),
     tag_list: Article.styles.sample(3),
-    likees_count: Faker::Number.between(from: 0, to: 4000),
+    # likees_count: Faker::Number.between(from: 0, to: 4000),
     remote_photo_url: Faker::Avatar.image,
     artist_id: artist_ids.sample,
   )
@@ -111,7 +107,7 @@ artist_ids = Artist.ids
     length: Faker::Lorem.sentences(number: 1),
     tag_list: Service.media.sample(3),
     tag_list: Service.styles.sample(3),
-    likees_count: Faker::Number.between(from: 0, to: 4000),
+    # likees_count: Faker::Number.between(from: 0, to: 4000),
     remote_photo_url: Faker::Avatar.image,
     price_cents: Faker::Commerce.price,
     artist_id: artist_ids.sample,
@@ -132,7 +128,7 @@ artist_ids = Artist.ids
     goal: Faker::Lorem.sentences(number: 3),
     tag_list: Collaboration.media.sample(3),
     tag_list: Collaboration.styles.sample(3),
-    likees_count: Faker::Number.between(from: 0, to: 4000),
+    # likees_count: Faker::Number.between(from: 0, to: 4000),
     remote_photo_url: Faker::Avatar.image,
     artist_id: artist_ids.sample,
   )
@@ -155,7 +151,7 @@ artist_ids = Artist.ids
     price_cents: Faker::Commerce.price,
     tag_list: Lesson.media.sample(3),
     tag_list: Lesson.styles.sample(3),
-    likees_count: Faker::Number.between(from: 0, to: 4000),
+    # likees_count: Faker::Number.between(from: 0, to: 4000),
     artist_id: artist_ids.sample,
   )
   Lesson.save!
