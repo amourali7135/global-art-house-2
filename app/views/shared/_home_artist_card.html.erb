@@ -12,7 +12,7 @@
     <% artist.tag_list.each do |tag| %>
             <%= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
     <% end %>
-    <%= link_to 'See more of this creator', artist_path(artist.id = artist.friendly_id)  %>
+    <%= link_to 'See more of this creator', artist_path(artist.id )  %>
 
  <div class="d-flex justify-content-between w-100">
     <%= flag_icon(artist.country.to_sym.downcase) %> <%#= artist.city %>
@@ -34,7 +34,7 @@
     <%= cl_image_tag artist.arts[1].photo if artist.arts[1] %>
     <%= cl_image_tag artist.arts[2].photo if artist.arts[2] %>
     <%= flag_icon(artist.country.to_sym.downcase) %>
-    <%= link_to 'See more of this creator', artist_path(artist.id = artist.friendly_id)  %>
+    <%= link_to 'See more of this creator', artist_path(artist.id )  %>
     <% end %>
   </div>
 </div>
