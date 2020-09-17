@@ -151,6 +151,7 @@ artist_ids = Artist.ids
     price_cents: Faker::Commerce.price,
     tag_list: Lesson.media.sample(3),
     tag_list: Lesson.styles.sample(3),
+    remote_photo_url: Faker::Avatar.image,
     # likees_count: Faker::Number.between(from: 0, to: 4000),
     artist_id: artist_ids.sample,
   )
