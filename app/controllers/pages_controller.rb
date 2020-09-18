@@ -91,7 +91,14 @@ class PagesController < ApplicationController
   end
 
   def articles
-    @articles = Article.includes([:artist]).paginate(page: params[:page], per_page: 15)
+    if params["search"]
+      @filter = params["search"]["tag_list"].concat([params["search"]["city"]]).concat([params["search"]["country"]]).concat([params["search"]["title"]]).concat([params["search"]["body"]]).concat([params["search"]["artist_name"]]).concat([params["search"]["first_name"]]).concat([params["search"]["last_name"]]).concat([params["search"]["bio"]]).concat([params["search"]["birth_place"]]).flatten.reject(&:blank?)
+      @artists = Artist.global_search(@filter)
+      @articles = Article.global_search(@filter).includes([:artist]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
+    else
+      @articles = Article.includes([:artist]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
+      @articles = Article.includes([:artist]).paginate(page: params[:page], per_page: 15)
+    end
   end
 
   def services

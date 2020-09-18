@@ -19,10 +19,10 @@ class Article < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :global_search,
-  against: [  ], #still iffy about :description, :inspiration
-  # against: [ :title, :description, :inspiration, :styles ],
+  # against: [  ],
+  against: [ :title, :body ],
   associated_against: {
-    artist: [  :city, :country ],
+    artist: [  :artist_name, :first_name, :last_name, :city, :country, :bio, :birth_place ],
     tags: [:name],
   },
   using: {

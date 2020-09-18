@@ -51,115 +51,118 @@ puts 'Creating 20 fake users...'
   artist.user = user
   artist.save!
 
+  puts 'Finished!'
+end
 
-  art_mediums = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ]
-  art_styles = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ]
-  artist_ids = Artist.ids
-  puts 'Creating 50 fake arts...'
-  5.times do
-    art = Art.new(
-      title: Faker::FunnyName.name,
-      description: Faker::Lorem.sentences(number: 1),
-      completion_date: Faker::Date.between(from: 300.days.ago, to: Date.today),
-      inspiration: Faker::Lorem.sentences(number: 1),
-      available: Faker::Boolean.boolean,
-      tag_list: Art.media.sample(3),
-      tag_list: Art.styles.sample(3),
-      price_cents: Faker::Commerce.price,
-      likees_count: Faker::Number.between(from: 0, to: 4000),
-      # remote_photo_url: Faker::Avatar.image,
-      # photo: File.open(Rails.root.join('images', 'bourdain.jpg')),
-      remote_photo_url: Faker::Avatar.image,
-      artist_id: artist_ids.sample,
-    )
-    art.save!
+art_mediums = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ]
+art_styles = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ]
+artist_ids = Artist.ids
+puts 'Creating 40 fake arts...'
+40.times do
+  art = Art.new(
+    title: Faker::FunnyName.name,
+    description: Faker::Lorem.sentences(number: 1),
+    completion_date: Faker::Date.between(from: 300.days.ago, to: Date.today),
+    inspiration: Faker::Lorem.sentences(number: 1),
+    available: Faker::Boolean.boolean,
+    tag_list: Art.media.sample(3),
+    tag_list: Art.styles.sample(3),
+    price_cents: Faker::Commerce.price,
+    likees_count: Faker::Number.between(from: 0, to: 4000),
+    # remote_photo_url: Faker::Avatar.image,
+    # photo: File.open(Rails.root.join('images', 'bourdain.jpg')),
+    remote_photo_url: Faker::Avatar.image,
+    artist_id: Artist.pluck(:id).sample
+  )
+  art.save!
 
-    puts 'Finished!'
-    # end
+  puts 'Finished!'
+end
 
-    puts 'Creating 40 fake articles...'
-    article_mediums = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ]
-    article_styles = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ]
-    artist_ids = Artist.ids
-    4.times do
-      article = Article.new(
-        title: Faker::FunnyName.name,
-        body: Faker::Lorem.sentences(number: 7),
-        created_at: Faker::Date.between(from: 365.days.ago, to: Date.today),
-        tag_list: Article.media.sample(3),
-        tag_list: Article.styles.sample(3),
-        # likees_count: Faker::Number.between(from: 0, to: 4000),
-        remote_photo_url: Faker::Avatar.image,
-        artist_id: artist_ids.sample,
-      )
-      article.save!
+puts 'Creating 40 fake articles...'
+article_mediums = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ]
+article_styles = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ]
+artist_ids = Artist.ids
+40.times do
+  article = Article.new(
+    title: Faker::FunnyName.name,
+    body: Faker::Lorem.sentences(number: 7),
+    created_at: Faker::Date.between(from: 365.days.ago, to: Date.today),
+    tag_list: Article.media.sample(3),
+    tag_list: Article.styles.sample(3),
+    # likees_count: Faker::Number.between(from: 0, to: 4000),
+    remote_photo_url: Faker::Avatar.image,
+    artist_id: Artist.pluck(:id).sample
+  )
+  article.save!
 
-      puts 'Finished!'
-      # end
+  puts 'Finished!'
+end
 
-      puts 'Creating 40 fake services...'
-      service_mediums = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ]
-      service_styles = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ]
-      artist_ids = Artist.ids
-      4.times do
-        service = Service.new(
-          title: Faker::FunnyName.name,
-          description: Faker::Lorem.sentences(number: 4),
-          length: Faker::Lorem.sentences(number: 1),
-          tag_list: Service.media.sample(3),
-          tag_list: Service.styles.sample(3),
-          # likees_count: Faker::Number.between(from: 0, to: 4000),
-          remote_photo_url: Faker::Avatar.image,
-          price_cents: Faker::Commerce.price,
-          artist_id: artist_ids.sample,
-        )
-        service.save!
+puts 'Creating 40 fake services...'
+service_mediums = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ]
+service_styles = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ]
+artist_ids = Artist.ids
+40.times do
+  service = Service.new(
+    title: Faker::FunnyName.name,
+    description: Faker::Lorem.sentences(number: 4),
+    length: Faker::Lorem.sentences(number: 1),
+    tag_list: Service.media.sample(3),
+    tag_list: Service.styles.sample(3),
+    # likees_count: Faker::Number.between(from: 0, to: 4000),
+    remote_photo_url: Faker::Avatar.image,
+    price_cents: Faker::Commerce.price,
+    artist_id: Artist.pluck(:id).sample
+  )
+  service.save!
 
-        puts 'Finished!'
-        # end
+  puts 'Finished!'
+end
 
-        puts 'Creating 40 fake collaborations...'
-        collaboration_mediums = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ]
-        collaboration_styles = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ]
-        artist_ids = Artist.ids
-        4.times do
-          collaboration = Collaboration.new(
-            title: Faker::FunnyName.name,
-            description: Faker::Lorem.sentences(number: 5),
-            goal: Faker::Lorem.sentences(number: 3),
-            tag_list: Collaboration.media.sample(3),
-            tag_list: Collaboration.styles.sample(3),
-            # likees_count: Faker::Number.between(from: 0, to: 4000),
-            remote_photo_url: Faker::Avatar.image,
-            artist_id: artist_ids.sample,
-          )
-          collaboration.save!
-          puts 'Finished!'
-          # end
+puts 'Creating 40 fake collaborations...'
+collaboration_mediums = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ]
+collaboration_styles = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ]
+artist_ids = Artist.ids
+40.times do
+  collaboration = Collaboration.new(
+    title: Faker::FunnyName.name,
+    description: Faker::Lorem.sentences(number: 5),
+    goal: Faker::Lorem.sentences(number: 3),
+    tag_list: Collaboration.media.sample(3),
+    tag_list: Collaboration.styles.sample(3),
+    # likees_count: Faker::Number.between(from: 0, to: 4000),
+    remote_photo_url: Faker::Avatar.image,
+    artist_id: Artist.pluck(:id).sample
+  )
+  collaboration.save!
+  puts 'Finished!'
+end
 
-          puts 'Creating 40 fake lessons...'
-          lesson_mediums = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ]
-          lesson_styles = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ]
-          artist_ids = Artist.ids
-          4.times do
-            lesson = Lesson.new(
-              title: Faker::FunnyName.name,
-              description: Faker::Lorem.sentences(number: 4),
-              subdescription: Faker::Quote.most_interesting_man_in_the_world,
-              learnings: Faker::Lorem.sentences(number: 3),
-              prerequisites: Faker::Lorem.sentences(number: 3),
-              free: Faker::Boolean.boolean,
-              price_cents: Faker::Commerce.price,
-              tag_list: Lesson.media.sample(3),
-              tag_list: Lesson.styles.sample(3),
-              remote_photo_url: Faker::Avatar.image,
-              # likees_count: Faker::Number.between(from: 0, to: 4000),
-              artist_id: artist_ids.sample,
-            )
-            lesson.save!
-            puts 'Finished!'
+puts 'Creating 40 fake lessons...'
+lesson_mediums = ['Painting', 'Drawing', 'Sculpting', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', '' ]
+lesson_styles = ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', ]
+artist_ids = Artist.ids
+40.times do
+  lesson = Lesson.new(
+    title: Faker::FunnyName.name,
+    description: Faker::Lorem.sentences(number: 4),
+    subdescription: Faker::Quote.most_interesting_man_in_the_world,
+    learnings: Faker::Lorem.sentences(number: 3),
+    prerequisites: Faker::Lorem.sentences(number: 3),
+    free: Faker::Boolean.boolean,
+    price_cents: Faker::Commerce.price,
+    tag_list: Lesson.media.sample(3),
+    tag_list: Lesson.styles.sample(3),
+    remote_photo_url: Faker::Avatar.image,
+    # likees_count: Faker::Number.between(from: 0, to: 4000),
+    artist_id: Artist.pluck(:id).sample
+  )
+  lesson.save!
+  puts 'Finished!'
 
-          end
+end
+
 
 
 
