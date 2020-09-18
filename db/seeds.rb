@@ -1,12 +1,15 @@
 require 'faker'
 #I had to nest it according to Rayhan because of ID issues.
 puts "Destroy everything"
-# ArtistTag.destroy_all
-# ArtTag.destroy_all
-# Tag.destroy_all
+
 Art.destroy_all
+Lesson.destroy_all
+Collaboration.destroy_all
+Service.destroy_all
+Article.destroy_all
 Artist.destroy_all
 User.destroy_all
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -154,9 +157,10 @@ puts 'Creating 20 fake users...'
               artist_id: artist_ids.sample,
             )
             lesson.save!
-
             puts 'Finished!'
-          end
-        end
 
-        #liked/followed/etc.
+          end
+
+
+
+#liked/followed/etc.
