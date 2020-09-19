@@ -18,6 +18,19 @@ class Collaboration < ApplicationRecord
   acts_as_taggable_on :tags
   acts_as_commontable dependent: :destroy
 
+  include PgSearch::Model
+  pg_search_scope :global_search,
+  # against: [  ],
+  against: [ :title, :description, :goal ],
+  associated_against: {
+    artist: [  :artist_name, :first_name, :last_name, :city, :country ],
+    tags: [:name],
+  },
+  using: {
+    tsearch: { prefix: true }
+  }
+
+
 
 
   def self.media  #media

@@ -12,7 +12,7 @@
 </p>
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
-<%= simple_form_for :search, url: browse_path, method: "GET" do |f| %>
+  <%= simple_form_for :search, url: browse_path, method: "GET" do |f| %>
     <%= f.input :tag_list, collection: Art.media, input_html: {multiple: true, id: 'browse_art_media'}, label: "What kind of artist do you do want?", required: false %>
     <%= f.input :tag_list, collection: Art.styles, input_html: {multiple: true, id: 'browse_genre_tags'}, label: "What genre of art do you want?", required: false%>
     <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: { id: "browse_country"} %>

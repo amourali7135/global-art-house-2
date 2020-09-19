@@ -1,4 +1,3 @@
-comments
 <div class="section">
   <div class="container">
 
@@ -46,19 +45,19 @@ comments
 
       <div class="row align-items-center justify-content-center py-2">
         <div class="row">
-          <%= link_to 'like', service_likes_path(@service), class: 'btn btn-primary' %>
-          <%= link_to 'unlike', service_unlikes_path(@service), class: 'btn btn-primary' %>
+          <%= link_to 'like', services_likes_path(@service), class: 'btn btn-primary' %>
+          <%= link_to 'unlike', services_unlikes_path(@service), class: 'btn btn-primary' %>
         </div>
       </div>
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
-          <p class=""><%= @service.description.html_safe %></p>
+          <p class=""><%= @service.description.html_safe.gsub(/"|\[|\]/, '') %></p>
         </div>
       </div>
 
       <div class="row align-items-center justify-content-center ">
-       <div class="col-sm-6">
+       <div class="row">
          <%#= render partial: 'comments/comment', collection: @art.comments %>
          <%= commontator_thread(@service) %>
        </div>

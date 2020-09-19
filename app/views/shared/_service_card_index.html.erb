@@ -4,8 +4,8 @@ add delivery method
 
   <div class="card-trip-infos">
     <h2><%= service.title %></h2>
-    <p><%= service.description.html_safe %></p>
-    <p>Length of time that's needed to complete?  <%= service.length %></p>
+    <p><%= service.description.html_safe.gsub(/"|\[|\]/, '') %></p>
+    <p>Length of time that's needed to complete?  <%= service.length.gsub(/"|\[|\]/, '') %></p>
     <p>Available to buy? <%= service.price_cents %></p>
 
     <% service.tag_list.each do |tag| %>

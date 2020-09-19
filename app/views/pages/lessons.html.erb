@@ -13,13 +13,21 @@
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
   <%= simple_form_for :search, url: lessons_path, method: "GET" do |f| %>
-
-    <%= link_to "Reset", browse_path  %>
+    <%= f.input :title, required: false, label: "Search for keywords in lesson titles" %>
+    <%# I am combining description and learnings for now...lazy me. %>
+    <%= f.input :description, required: false, label: "Search for keywords you'd like to learn about within the lesson description" %>
+    <%= f.input :tag_list, collection: Article.media, input_html: {multiple: true, id: 'browse_art_media'}, label: "What kind of creator do you do want to see lessons from?", required: false %>
+    <%= f.input :tag_list, collection: Article.styles, input_html: {multiple: true, id: 'browse_genre_tags'}, label: "What type of creation do you see lessons for?", required: false %>
+    <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: { id: "browse_country"}, label: "Which country do you want to see lessons from?" %>
+    <%= f.input :city, id:"artist_city2", required: false, label: "What city do you want to see lessons from?" %>
+    <%#= f.input :sorted_by, :collection => %w[most_comments most_likes most_viewed most_recent], required: false %>
+    <%= link_to "Reset", lessons_path  %>
     <%= f.submit 'Submit', class: 'btn btn-primary'%>
   <% end %>
   </div>
 </div>
 
+<%= p params["search"].to_s.gsub(/"|\[|\]/, '') if params["search"] %>
 
 
   <div class="content front-page-grid pt-3">

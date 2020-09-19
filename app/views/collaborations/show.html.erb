@@ -1,4 +1,4 @@
-comments, add a messaging option here!  Or something in between them!
+add a messaging option here!  Or something in between them!
 <div class="section">
   <div class="container">
 
@@ -69,25 +69,25 @@ comments, add a messaging option here!  Or something in between them!
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
-          <p class=""><%= @collaboration.description %></p>
+          <p class=""><%= @collaboration.description.gsub(/"|\[|\]/, '') %></p>
         </div>
       </div>
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
-          <p class=""><%= @collaboration.subdescription %></p>
+          <p class=""><%#= @collaboration.subdescription %></p>
         </div>
       </div>
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
-          <p class=""><%= @collaboration.learnings %></p>
+          <p class=""><%#= @collaboration.learnings %></p>
         </div>
       </div>
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
-          <p class=""><%= @collaboration.prerequisites %></p>
+          <p class=""><%#= @collaboration.prerequisites %></p>
         </div>
       </div>
 

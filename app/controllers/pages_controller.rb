@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :browse, :about, :help, :contact, :career, :team, :updates, :articles, :services, :collaborations, :blog ]
+  skip_before_action :authenticate_user!, only: [:home, :browse, :about, :help, :contact, :career, :team, :updates, :articles, :services, :collaborations, :blog, :explore, :lessons,  ]
 
 
   def home
@@ -92,25 +92,49 @@ class PagesController < ApplicationController
 
   def articles
     if params["search"]
-      @filter = params["search"]["tag_list"].concat([params["search"]["city"]]).concat([params["search"]["country"]]).concat([params["search"]["title"]]).concat([params["search"]["body"]]).concat([params["search"]["artist_name"]]).concat([params["search"]["first_name"]]).concat([params["search"]["last_name"]]).concat([params["search"]["bio"]]).concat([params["search"]["birth_place"]]).flatten.reject(&:blank?)
+      @filter = params["search"]["tag_list"].concat([params["search"]["city"]]).concat([params["search"]["country"]]).concat([params["search"]["title"]]).concat([params["search"]["body"]]).concat([params["search"]["artist_name"]]).concat([params["search"]["first_name"]]).concat([params["search"]["last_name"]]).flatten.reject(&:blank?)
       @artists = Artist.global_search(@filter)
       @articles = Article.global_search(@filter).includes([:artist]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
     else
       @articles = Article.includes([:artist]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
-      @articles = Article.includes([:artist]).paginate(page: params[:page], per_page: 15)
+      # @articles = Article.includes([:artist]).paginate(page: params[:page], per_page: 15)
     end
   end
 
   def services
-    @services = Service.includes([:artist]).paginate(page: params[:page], per_page: 15)
+    if params["search"]
+      @filter = params["search"]["tag_list"].concat([params["search"]["city"]]).concat([params["search"]["country"]]).concat([params["search"]["title"]]).concat([params["search"]["description"]]).concat([params["search"]["artist_name"]]).concat([params["search"]["first_name"]]).concat([params["search"]["last_name"]]).flatten.reject(&:blank?)
+      @artists = Artist.global_search(@filter)
+      @services = Service.global_search(@filter).includes([:artist]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
+    else
+      @services = Service.includes([:artist]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
+      # @articles = Article.includes([:artist]).paginate(page: params[:page], per_page: 15)
+    end
+    # @services = Service.includes([:artist]).paginate(page: params[:page], per_page: 15)
   end
 
   def collaborations
-    @collaborations = Collaboration.includes([:artist]).paginate(page: params[:page], per_page: 15)
+    if params["search"]
+      @filter = params["search"]["tag_list"].concat([params["search"]["city"]]).concat([params["search"]["country"]]).concat([params["search"]["title"]]).concat([params["search"]["description"]]).concat([params["search"]["artist_name"]]).concat([params["search"]["first_name"]]).concat([params["search"]["last_name"]]).concat([params["search"]["goal"]]).flatten.reject(&:blank?)
+      @artists = Artist.global_search(@filter)
+      @collaborations = Collaboration.global_search(@filter).includes([:artist]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
+    else
+      @collaborations = Collaboration.includes([:artist]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
+      # @articles = Article.includes([:artist]).paginate(page: params[:page], per_page: 15)
+    end
+    # @collaborations = Collaboration.includes([:artist]).paginate(page: params[:page], per_page: 15)
   end
 
   def lessons
-    @lessons = Lesson.includes([:artist]).paginate(page: params[:page], per_page: 15)
+    if params["search"]
+      @filter = params["search"]["tag_list"].concat([params["search"]["city"]]).concat([params["search"]["country"]]).concat([params["search"]["title"]]).concat([params["search"]["description"]]).concat([params["search"]["artist_name"]]).concat([params["search"]["first_name"]]).concat([params["search"]["last_name"]]).concat([params["search"]["learnings"]]).flatten.reject(&:blank?)
+      @artists = Artist.global_search(@filter)
+      @lessons = Lesson.global_search(@filter).includes([:artist]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
+    else
+      @lessons = Lesson.includes([:artist]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
+      # @articles = Article.includes([:artist]).paginate(page: params[:page], per_page: 15)
+    end
+    # @lessons = Lesson.includes([:artist]).paginate(page: params[:page], per_page: 15)
   end
 
 
@@ -215,9 +239,9 @@ class PagesController < ApplicationController
   #   array[pagy.offset, pagy.items]
   # end
 
-#   def subscription_params
-#     params.require(:subscription).permit(:email)
-#   end
-# #
+  #   def subscription_params
+  #     params.require(:subscription).permit(:email)
+  #   end
+  # #
 end
 

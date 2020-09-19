@@ -13,8 +13,15 @@
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
 <%= simple_form_for :search, url: collaborations_path, method: "GET" do |f| %>
-
-    <%= link_to "Reset", browse_path  %>
+    <%= f.input :title, required: false, label: "Search for keywords in collaboration titles" %>
+    <%= f.input :body, required: false, label: "Search for keywords within the collaboration description" %>
+    <%= f.input :goal, required: false, label: "Search for keywords within the goal of the collaboration" %>
+    <%= f.input :tag_list, collection: Article.media, input_html: {multiple: true, id: 'browse_art_media'}, label: "What kind of creator do you do want to see articles from?", required: false %>
+    <%= f.input :tag_list, collection: Article.styles, input_html: {multiple: true, id: 'browse_genre_tags'}, label: "What type of creation do you want to read about?", required: false %>
+    <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: { id: "browse_country"}, label: "What country do you want to see articles from?" %>
+    <%= f.input :city, id:"artist_city2", required: false, label: "What city do you want to see articles from?" %>
+    <%#= f.input :sorted_by, :collection => %w[most_comments most_likes most_viewed most_recent], required: false %>
+    <%= link_to "Reset", collaborations_path  %>
     <%= f.submit 'Submit', class: 'btn btn-primary'%>
   <% end %>
   </div>

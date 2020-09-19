@@ -52,7 +52,7 @@ comments
 
       <div class="row align-items-center justify-content-center">
         <div class="row">
-          <p class=""><%= @article.body.html_safe %></p>
+          <p class=""><%= @article.body.html_safe.gsub(/"|\[|\]/, '') %></p>
         </div>
       </div>
 

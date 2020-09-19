@@ -18,6 +18,20 @@ class Service < ApplicationRecord
   acts_as_commontable dependent: :destroy
 
 
+  include PgSearch::Model
+  pg_search_scope :global_search,
+  # against: [  ],
+  against: [ :title, :description ],
+  associated_against: {
+    artist: [  :artist_name, :first_name, :last_name, :city, :country ],
+    tags: [:name],
+  },
+  using: {
+    tsearch: { prefix: true }
+  }
+
+
+
 
   def self.media  #media
     ['Painting', 'Drawing', 'Sculpture', 'Architecture', 'Ceramic', 'Electronic', 'Light', 'Graphic Design', 'Photography', 'Textile', 'Performance', 'Poetry', 'Literature', 'Collage', 'Digital', 'Animation', 'Body', 'Street', 'Graffiti', 'Glass', 'Tapestry', 'Installation', 'Calligraphy', 'Dance', 'Tattoo', 'Furniture', 'Wood', 'Nature', 'Film', 'UX/UI', 'Acting', 'Theater', 'Costumes', 'Music', 'Video Games', 'Music' ].sort

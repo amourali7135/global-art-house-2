@@ -13,14 +13,14 @@
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
   <%= simple_form_for :search, url: articles_path, method: "GET" do |f| %>
-    <%= f.input :tag_list, collection: Article.media, input_html: {multiple: true, id: 'browse_art_media'}, label: "What kind of artist do you do want?", required: false %>
-    <%= f.input :tag_list, collection: Article.styles, input_html: {multiple: true, id: 'browse_genre_tags'}, label: "What genre of art do you want?", required: false%>
-    <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: { id: "browse_country"} %>
-    <%= f.input :city, id:"artist_city2", required: false %>
-    <%= f.input :title,  required: false %>
-    <%= f.input :body,  required: false %>
+    <%= f.input :title, required: false, label: "Search for keywords in article titles" %>
+    <%= f.input :body, required: false, label: "Search for keywords within the articles writing" %>
+    <%= f.input :tag_list, collection: Article.media, input_html: {multiple: true, id: 'browse_art_media'}, label: "What kind of creator do you do want to see articles from?", required: false %>
+    <%= f.input :tag_list, collection: Article.styles, input_html: {multiple: true, id: 'browse_genre_tags'}, label: "What type of creation do you want to read about?", required: false %>
+    <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: { id: "browse_country"}, label: "What country do you want to see articles from?" %>
+    <%= f.input :city, id:"artist_city2", required: false, label: "What city do you want to see articles from?" %>
     <%#= f.input :sorted_by, :collection => %w[most_comments most_likes most_viewed most_recent], required: false %>
-    <%= link_to "Reset", browse_path  %>
+    <%= link_to "Reset", articles_path  %>
     <%= f.submit 'Submit', class: 'btn btn-primary'%>
   <% end %>
   </div>
@@ -32,7 +32,7 @@
     <div class="container front-page-grid">
      <% @articles.each do |article| %>
       <div class="row ">
-        <div class="products pl-5 card-grid-3c">
+        <div class="products card-grid-3c">
           <%= render partial: 'shared/article_card', locals: {article: article, artist: article.artist} %>
         </div>
       </div>

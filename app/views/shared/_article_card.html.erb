@@ -3,9 +3,7 @@
     <div class="wrapper" style="background: url('<%= cl_image_path article.photo, height: 400, width: 350, crop: :fill %>')">
       <div class="header">
         <div class="date">
-          <span class="day">12</span>
-          <span class="month">Aug</span>
-          <span class="year">2016</span>
+          <span class="day"><%= article.created_at.strftime("%b %d, %Y") %></span>
         </div>
         <ul class="menu-content">
           <li>
@@ -24,7 +22,7 @@
           <%= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
           <% end %>
           </p>
-          <p class="text"><%= truncate( article.body.html_safe, length: 50) %></p>
+          <p class="text"><%= truncate( article.body.html_safe.gsub(/"|\[|\]/, ''), length: 50) %></p>
           <a href="<%= artist_article_path(artist, article) %>" class="button">Read more</a>
         </div>
       </div>
@@ -32,6 +30,5 @@
   </div>
 </div>
 
-.created_at.strftime("%b %d, %Y")
 
 

@@ -18,9 +18,9 @@
 
   <div>
     <p class="grid-headers pt-2 pb-1">A random sample of some their arts</p>
-      <%= cl_image_tag artist.arts.sample.photo, height: 99, width: 132, crop: :fill %>
-      <%= cl_image_tag artist.arts.sample.photo, height: 99, width: 132, crop: :fill %>
-      <%= cl_image_tag artist.arts.sample.photo, height: 99, width: 132, crop: :fill %>
+      <%= cl_image_tag artist.arts.sample.photo, height: 99, width: 132, crop: :fill if artist.arts.present? %>
+      <%= cl_image_tag artist.arts.sample.photo, height: 99, width: 132, crop: :fill if artist.arts.present? %>
+      <%= cl_image_tag artist.arts.sample.photo, height: 99, width: 132, crop: :fill if artist.arts.present? %>
   </div>
 
   <div class="pt-4">

@@ -22,7 +22,7 @@ class Article < ApplicationRecord
   # against: [  ],
   against: [ :title, :body ],
   associated_against: {
-    artist: [  :artist_name, :first_name, :last_name, :city, :country, :bio, :birth_place ],
+    artist: [  :artist_name, :first_name, :last_name, :city, :country ],
     tags: [:name],
   },
   using: {

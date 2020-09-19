@@ -12,9 +12,15 @@
 </p>
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
-<%= simple_form_for :search, url: articles_path, method: "GET" do |f| %>
-
-    <%= link_to "Reset", browse_path  %>
+<%= simple_form_for :search, url: services_path, method: "GET" do |f| %>
+    <%= f.input :title, required: false, label: "Search for keywords in service titles" %>
+    <%= f.input :body, required: false, label: "Search for keywords within the service description" %>
+    <%= f.input :tag_list, collection: Article.media, input_html: {multiple: true, id: 'browse_art_media'}, label: "What kind of creator do you do want to see services from?", required: false %>
+    <%= f.input :tag_list, collection: Article.styles, input_html: {multiple: true, id: 'browse_genre_tags'}, label: "What type of creation do you see services for?", required: false %>
+    <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: { id: "browse_country"}, label: "Which country do you want to see services from?" %>
+    <%= f.input :city, id:"artist_city2", required: false, label: "What city do you want to see services from?" %>
+    <%#= f.input :sorted_by, :collection => %w[most_comments most_likes most_viewed most_recent], required: false %>
+    <%= link_to "Reset", services_path  %>
     <%= f.submit 'Submit', class: 'btn btn-primary'%>
   <% end %>
   </div>

@@ -13,10 +13,10 @@
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
 <%= simple_form_for :search, url: artists_path, method: "GET" do |f| %>
-    <%= f.input :tag_list, collection: Artist.media, input_html: {multiple: true, id: "artist_kinds_search"}, label: "What medium of artist do you wish to find?", required: false %>
-    <%= f.input :tag_list, collection: Artist.styles, input_html: {multiple: true, id: "artist_styles_search"}, label: "What style of artist do you do want?", required: false %>
-    <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: {id: "artists_country_search"} %>
-    <%= f.input :city, id:"artist_city", required: false %>
+    <%= f.input :tag_list, collection: Artist.media, input_html: {multiple: true, id: "artist_kinds_search"}, label: "What kind of creator do you wish to find?", required: false %>
+    <%= f.input :tag_list, collection: Artist.styles, input_html: {multiple: true, id: "artist_styles_search"}, label: "What style do you do want this creator to have?", required: false %>
+    <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: {id: "artists_country_search"}, label: "Would you like to see creators from a certain country?" %>
+    <%= f.input :city, id:"artist_city", required: false, label: "Would you like to see creators from a certain city?" %>
     <%= f.input :sorted_by, :collection => %w[most_likes most_viewed most_recent most_followed], required: false %>
     <%= link_to "Reset", artists_path  %>
     <%= f.submit 'Submit', class: 'btn btn-primary'%>

@@ -8,8 +8,8 @@
 
   <div class="card-trip-infos">
     <h2><%= collaboration.title %></h2>
-    <p><%= collaboration.description %></p>
-    <p><%= collaboration.goal %></p>
+    <p><%= collaboration.description.gsub(/"|\[|\]/, '') %></p>
+    <p><%= collaboration.goal.gsub(/"|\[|\]/, '') %></p>
 
     <% collaboration.tag_list.each do |tag| %>
       <%= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
