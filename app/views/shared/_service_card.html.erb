@@ -1,6 +1,10 @@
 add delivery method
 <div class="card-trip">
-  <%= cl_image_tag @service.photo, height: 300, width: 400, crop: :fill %>
+  <% if @service.photo.present? %>
+    <%= cl_image_tag @service.photo, height: 300, width: 400, crop: :fill %>
+  <% else %>
+    <%= image_tag "https://image.shutterstock.com/image-vector/ui-image-placeholder-wireframes-apps-260nw-1037719204.jpg" %>
+  <% end %>
 
   <div class="card-trip-infos">
     <h2><%= @service.title %></h2>

@@ -17,8 +17,8 @@ class ArtsController < ApplicationController
 
   def create
     @art = Art.new(art_params)
-    # @artist = Artist.find(params[:artist_id])
-    @artist = Artist.find_by(artist_name: params[:artist_id].gsub('-', ' '))
+    @artist = Artist.friendly.find(params[:artist_id])  #Seriously, THIS worked?  SMFH.
+    # @artist = Artist.find_by(artist_name: params[:artist_id].gsub('-', ' '))
     # @artist = Artist.find_by(artist_name: params[:artist_id].gsub('-', ' '))
     #Ohhhhh, it's seeing amir-mourali rather than Amir Mourali, fuck.
     # @artist = Artist.find_by(artist_id: params[:artist_id])

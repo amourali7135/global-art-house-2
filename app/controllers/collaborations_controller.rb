@@ -34,7 +34,7 @@ class CollaborationsController < ApplicationController
   # GET /collaborations/1
   def show
     # @comment = Comment.new
-    @collaboration = Collaboration.friendly.find(params[:id])
+    # @collaboration = Collaboration.friendly.find(params[:id])
     # @collaboration = Collaboration.find(params[:id])
     @artist = @collaboration.artist #nested, he changed it to make it work...OHHHH.
     @collaboration.punch(request)
@@ -74,7 +74,7 @@ class CollaborationsController < ApplicationController
     @user = current_user # before_action :authenticate_user, only: [:likes]
     @collaboration = Collaboration.friendly.find(params[:id])
     @collaboration.liked_by @user
-    redirect_to @collaboration, notice: "Liked this collaboration successfully!"
+    redirect_to artist_collaboration_path(@collaboration.artist, @collaboration), notice: "Liked this collaboration successfully!"
   end
 
   def unlikes

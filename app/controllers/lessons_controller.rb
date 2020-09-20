@@ -67,7 +67,8 @@ class LessonsController < ApplicationController
     @user = current_user # before_action :authenticate_user, only: [:likes]
     @lesson = Lesson.friendly.find(params[:id])
     @lesson.liked_by @user
-    redirect_to @lesson, notice: "Liked this lesson successfully!"
+    # redirect_to @lesson, notice: "Liked this lesson successfully!"
+    redirect_to artist_lesson_path(@lesson.artist, @lesson), notice: "Liked this lesson successfully!"
   end
 
   def unlikes
