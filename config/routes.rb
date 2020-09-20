@@ -10,11 +10,11 @@ Rails.application.routes.draw do
 
   #9820 I added the two paths for the pivot.  Get rid of them if they become problematic.
   resources :artists, :path => 'creators' do
-    resources :arts, :path => 'creation'
-    resources :articles
-    resources :services
-    resources :collaborations
-    resources :lessons
+    resources :arts, except: :index, :path => 'creation'
+    resources :articles, except: :index
+    resources :services, except: :index
+    resources :collaborations, except: :index
+    resources :lessons, except: :index
   end
 
   #Wtf is this array?  I dont' even remember.

@@ -3,7 +3,7 @@ class ArtistsController < ApplicationController
 
   def index
     if params["search"] #reject '' in middle added 112619
-      @filter = params["search"]["tag_list"].concat([params['country']]).concat([params["search"]["city"]]).concat([params["search"]["country"]]).flatten.reject(&:blank?)
+      @filter = params["search"]["tag_list"].concat([params['country']]).concat([params["search"]["city"]]).concat([params["search"]["bio"]]).concat([params["search"]["birth_place"]]).concat([params["search"]["first_name"]]).concat([params["search"]["last_name"]]).concat([params["search"]["artist_name"]]).flatten.reject(&:blank?)
       @artists = Artist.global_search(@filter).includes([:arts]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
 
     else #112619 I added this while trying to get sort to work.

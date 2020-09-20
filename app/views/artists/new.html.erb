@@ -1,4 +1,3 @@
-
 <div class="row align-items-center justify-content-center">
    <div class="col-sm-8">
      <div class="">
@@ -6,7 +5,7 @@
     </div>
     <div class="col card p-4 m-4 bg-light ">
     <div class="row align-items-center justify-content-center">
-      <h1>Are you an creator?</h1>
+      <h1>Are you a creator?</h1>
       <h2>Share your creation with the world!</h2>
       <h2>Let the world discover you directly!</h2>
       <h2>No shady art dealers or galleries!</h2>
@@ -16,13 +15,13 @@
       <%= simple_form_for @artist do |f|%>
       <%= f.input :first_name %>
       <%= f.input :last_name %>
-      <%= f.input :artist_name, label: "Place your artist name if you have one, or repeat your full name again for your URL." %>
+      <%= f.input :artist_name, label: "Place your artist name if you have one, or write in your full name again." %>
       <%= f.input :photo %>
       <%= f.input :photo_cache, as: :hidden %>
       <%= f.input :age %>
       <%= f.input :bio, label: "Biography" %>
-      <%= f.input :tag_list, collection: Artist.media, input_html: {multiple: true, id: "artist_new_tags"}, label: "What media of art do you create?" %>
-      <%= f.input :tag_list, collection: Artist.styles, input_html: {multiple: true, id: "artist_new_styles"}, label: "What styles of art do you do?" %>
+      <%= f.input :tag_list, collection: Artist.media, input_html: {multiple: true, id: "artist_new_tags"}, label: "What kinds of creations do you create?" %>
+      <%= f.input :tag_list, collection: Artist.styles, input_html: {multiple: true, id: "artist_new_styles"}, label: "What types of styles are they?" %>
       <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, input_html: {id: "artist_search_country"} %>
       <%= f.input :city %>
       <%= f.input :birth_place, label: "Country of birth if different", collection: CountryStateSelect.countries_collection.sort %>

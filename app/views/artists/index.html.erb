@@ -13,6 +13,8 @@
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
 <%= simple_form_for :search, url: artists_path, method: "GET" do |f| %>
+    <%# Trying the hack for combining the names in the first_name parameter below...  %>
+    <%= f.input :first_name, required: false, label: "Do you know any parts of the name of the creator you're looking for?" %>
     <%= f.input :tag_list, collection: Artist.media, input_html: {multiple: true, id: "artist_kinds_search"}, label: "What kind of creator do you wish to find?", required: false %>
     <%= f.input :tag_list, collection: Artist.styles, input_html: {multiple: true, id: "artist_styles_search"}, label: "What style do you do want this creator to have?", required: false %>
     <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: {id: "artists_country_search"}, label: "Would you like to see creators from a certain country?" %>
