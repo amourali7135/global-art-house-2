@@ -228,9 +228,17 @@ class PagesController < ApplicationController
     @artists = @user.find_liked_items.map { |item| item.is_a?(Artist) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
     @arts = @user.find_liked_items.map { |item| item.is_a?(Art) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
     @collaborations = @user.find_liked_items.map { |item| item.is_a?(Collaboration) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
-    @services = @user.find_liked_items.map { |item| item.is_a?(Service) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
     @articles = @user.find_liked_items.map { |item| item.is_a?(Article) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
     @lessons = @user.find_liked_items.map { |item| item.is_a?(Lesson) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
+    @services = @user.find_liked_items.map { |item| item.is_a?(Service) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
+
+    # @artists = @user.find_liked_items.map { |item| item.kind_of?(Artist) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
+    # @arts = @user.find_liked_items.map { |item| item.kind_of?(Art) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
+    # @collaborations = @user.find_liked_items.map { |item| item.kind_of?(Collaboration) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
+    # @articles = @user.find_liked_items.map { |item| item.kind_of?(Article) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
+    # @lessons = @user.find_liked_items.map { |item| item.kind_of?(Lesson) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
+    # @services = @user.find_liked_items.map { |item| item.kind_of?(Service) ? item : nil }.compact.paginate(page: params[:page], per_page: 15)
+    # raise
   end
 
   private

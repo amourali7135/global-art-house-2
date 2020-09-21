@@ -15,8 +15,8 @@
       <%= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
     <% end %>
 
-      <%= cl_image_tag @artist.photo, class: 'card-trip-user avatar-bordered' %>
-      <p><%= flag_icon(@artist.country.to_sym.downcase) %> <%= @artist.city %></p>
+      <%= cl_image_tag collaboration.artist.photo, class: 'card-trip-user avatar-bordered' %>
+      <p><%= flag_icon(collaboration.artist.country.to_sym.downcase) %> <%= collaboration.artist.city %></p>
     <div class="d-flex justify-content-between w-100">
       <%= link_to 'See this collaboration!', artist_collaboration_path(@artist, collaboration), class: 'btn btn-primary btn-sm', method: :get  %>
       <%= link_to 'Edit this collaboration!', edit_artist_collaboration_path(@artist, collaboration), class: 'btn btn-primary btn-sm'  %>

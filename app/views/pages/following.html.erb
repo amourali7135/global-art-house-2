@@ -44,82 +44,93 @@ SHOW CREATORS THAT YOU HAVE FOLLOWED HERE AND GRID IT!!!
 
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <div class="container front-page-grid pt-3">
     <% @art_array.sort_by { |art| -art.id}.each do |art| #20 is a placeholder till pagy works%>
      <%# @art_array.sort_by { |art| -art.id}.last(40).each do |art| #20 is a placeholder till pagy works%>
-    <div class="row align-items-center justify-content-center">
-      <div class="col-sm-6">
-        <%= render partial: 'shared/art_card', locals: {art: art, artist: art.artist } %>
+      <div class="row">
+        <div class=" products pl-5 card-grid-3c mb-3">
+          <%= render partial: 'shared/art_card', locals: {art: art, artist: art.artist } %>
+        </div>
       </div>
+      <% end %>
     </div>
-        <% end %>
   </div>
 
   <div class="tab-pane fade show active" id="creation" role="tabpanel" aria-labelledby="creation-tab">
+    <div class="container artists-index-grid">
     <% @artist_array.sort_by { |artist| -artist.id}.each do |artist| #20 is a placeholder till pagy works%>
      <%# @art_array.sort_by { |art| -art.id}.last(40).each do |art| #20 is a placeholder till pagy works%>
-    <div class="row align-items-center justify-content-center">
-      <div class="col-sm-6">
-        <%= render partial: 'shared/artist_card_liked', locals: {artist: artist } %>
+      <div class="row">
+        <div class=" products pl-5 card-grid-3c mb-3">
+          <%= render partial: 'shared/artist_card_experimental', locals: {artist: artist } %>
+        </div>
       </div>
+    <% end %>
     </div>
-        <% end %>
   </div>
 
 
   <div class="tab-pane fade" id="article" role="tabpanel" aria-labelledby="article-tab">
-    <% @article_array.sort_by { |article| -article.id}.each do |article| #20 is a placeholder till pagy works%>
-     <%# @art_array.sort_by { |art| -art.id}.last(40).each do |art| #20 is a placeholder till pagy works%>
-    <div class="row align-items-center justify-content-center">
-      <div class="col-sm-6">
-        <%= render partial: 'shared/article_card', locals: {article: article, artist: article.artist } %>
+    <div class="container front-page-grid pt-3">
+      <% @article_array.sort_by { |article| -article.id}.each do |article| #20 is a placeholder till pagy works%>
+      <%# @art_array.sort_by { |art| -art.id}.last(40).each do |art| #20 is a placeholder till pagy works%>
+      <div class="row">
+        <div class=" products  card-grid-3c mb-3">
+          <%= render partial: 'shared/article_card', locals: {article: article, artist: article.artist } %>
+        </div>
       </div>
+      <% end %>
     </div>
-        <% end %>
   </div>
-</div>
 
- <div class="tab-pane fade" id="service" role="tabpanel" aria-labelledby="service-tab">
-    <% @service_array.sort_by { |service| -service.id}.each do |service| #20 is a placeholder till pagy works%>
-      <div class="row align-items-center justify-content-center">
-        <div class="col-sm-6">
+  <div class="tab-pane fade" id="service" role="tabpanel" aria-labelledby="service-tab">
+    <div class="container front-page-grid pt-3">
+      <% @service_array.sort_by { |service| -service.id}.each do |service| #20 is a placeholder till pagy works%>
+      <div class="row">
+        <div class=" products pl-5 card-grid-3c mb-3">
           <%= render partial: 'shared/service_card_index', locals: {service: service, artist: service.artist} %>
         </div>
       </div>
     <% end %>
+    </div>
   </div>
-</div>
 
- <div class="tab-pane fade" id="article" role="tabpanel" aria-labelledby="article-tab">
+  <div class="tab-pane fade" id="article" role="tabpanel" aria-labelledby="article-tab">
+    <div class="container front-page-grid pt-3">
     <% @article_array.sort_by { |article| -article.id}.each do |article| #20 is a placeholder till pagy works%>
-      <div class="row align-items-center justify-content-center">
-        <div class="col-sm-6">
+      <div class="row">
+        <div class=" products pl-5 card-grid-3c mb-3">
           <%= render partial: 'shared/article_card', locals: {article: article, artist: article.artist} %>
         </div>
       </div>
     <% end %>
+    </div>
   </div>
-</div>
 
- <div class="tab-pane fade" id="collaboration" role="tabpanel" aria-labelledby="collaboration-tab">
+  <div class="tab-pane fade" id="collaboration" role="tabpanel" aria-labelledby="collaboration-tab">
+    <div class="container front-page-grid pt-3">
     <% @collaboration_array.sort_by { |collaboration| -collaboration.id}.each do |collaboration| #20 is a placeholder till pagy works%>
-      <div class="row align-items-center justify-content-center">
-        <div class="col-sm-6">
+      <div class="row">
+        <div class=" products pl-5 card-grid-3c mb-3">
           <%= render partial: 'shared/collaboration_card_index', locals: {collaboration: collaboration, artist: collaboration.artist} %>
         </div>
       </div>
     <% end %>
+    </div>
   </div>
-</div>
 
- <div class="tab-pane fade" id="lesson" role="tabpanel" aria-labelledby="lesson-tab">
+  <div class="tab-pane fade" id="lesson" role="tabpanel" aria-labelledby="lesson-tab">
+    <div class="container front-page-grid pt-3">
     <% @lesson_array.sort_by { |lesson| -lesson.id}.each do |lesson| #20 is a placeholder till pagy works%>
-      <div class="row align-items-center justify-content-center">
-        <div class="col-sm-6">
+      <div class="row">
+        <div class=" products pl-5 card-grid-3c mb-3">
           <%= render partial: 'shared/lesson_card', locals: {lesson: lesson, artist: lesson.artist} %>
         </div>
       </div>
     <% end %>
+    </div>
   </div>
-</div>
+
+  </div>
 
 </section>

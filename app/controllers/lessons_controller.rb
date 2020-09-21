@@ -5,20 +5,21 @@ class LessonsController < ApplicationController
 
   # GET /lessons
   def index
-    @artist = Artist.find(params[:artist_id]) #why is this here?
+    @artist = Artist.friendly.find(params[:artist_id]) #why is this here?
     @lessons = Lesson.paginate(page: params[:page], per_page: 10)
   end
 
   # GET /lessons/new
   def new
-    @artist = Artist.find(params[:artist_id])
+    @artist = Artist.friendly.find(params[:artist_id])
     @lesson = Lesson.new
   end
 
   # POST /lessons
   def create
     @lesson = Lesson.new(lesson_params)
-    @artist = Artist.find_by(artist_name: params[:artist_id])
+    # @artist = Artist.find_by(artist_name: params[:artist_id])
+    @artist = Artist.friendly.find(params[:artist_id]) #why is this here?
     @lesson.artist = @artist
     if @lesson.save
       flash[:notice] = "Your lesson was successfully created!"
@@ -59,7 +60,8 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1/edit
   def edit
-    @artist = Artist.find_by(artist_name: params[:artist_id])
+    # @artist = Artist.find_by(artist_name: params[:artist_id])
+    @artist = Artist.friendly.find(params[:artist_id]) #why is this here?
     @lesson = Lesson.friendly.find(params[:id])
   end
 
@@ -75,7 +77,7 @@ class LessonsController < ApplicationController
     @user = current_user # before_action :authenticate_user, only: [:likes]
     @lesson = Lesson.friendly.find(params[:id])
     @lesson.unliked_by @user
-    redirect_to @lesson, notice: "Unliked this lesson successfully!"
+    redirect_to artist_lesson_path(@lesson.artist, @lesson), notice: "Unliked this lesson successfully!"
   end
 
   private

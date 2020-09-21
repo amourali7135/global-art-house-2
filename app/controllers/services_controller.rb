@@ -5,21 +5,21 @@ class ServicesController < ApplicationController
 
   # GET /services
   def index
-    @artist = Artist.find(params[:artist_id]) #why is this here?
+    @artist = Artist.friendly.find(params[:artist_id]) #why is this here?
     @services = Service.paginate(page: params[:page], per_page: 8)
   end
 
   # GET /services/new
   def new
-    @artist = Artist.find(params[:artist_id])
+    @artist = Artist.friendly.find(params[:artist_id])
     @service = Service.new
   end
 
   # POST /services
   def create
     @service = Service.new(service_params)
-    # @artist = Artist.find(params[:artist_id])
-    @artist = Artist.find_by(artist_name: params[:artist_id])
+    @artist = Artist.friendly.find(params[:artist_id])
+    # @artist = Artist.find_by(artist_name: params[:artist_id])
     # @artist = current_user.artist_id
     @service.artist = @artist
     if @service.save
@@ -66,7 +66,8 @@ class ServicesController < ApplicationController
 
   # GET /services/1/edit
   def edit
-    @artist = Artist.find_by(artist_name: params[:artist_id])
+    # @artist = Artist.find_by(artist_name: params[:artist_id])
+    @artist = Artist.friendly.find(params[:artist_id])
     # @service = Service.find(params[:id])
     @service = Service.friendly.find(params[:id])
   end
@@ -75,14 +76,14 @@ class ServicesController < ApplicationController
     @user = current_user # before_action :authenticate_user, only: [:likes]
     @service = Service.friendly.find(params[:id])
     @service.liked_by @user
-    redirect_to @service.artist, notice: "Liked this service successfully!"
+    redirect_to artist_service_path(@service.artist, @service), notice: "Liked this service successfully!"
   end
 
   def unlikes
     @user = current_user # before_action :authenticate_user, only: [:likes]
     @service = Service.friendly.find(params[:id])
     @service.unliked_by @user
-    redirect_to @service, notice: "Unliked this service successfully!"
+    redirect_to artist_service_path(@service.artist, @service), notice: "Unliked this service successfully!"
   end
 
   private

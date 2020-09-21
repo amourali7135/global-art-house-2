@@ -5,21 +5,21 @@ class CollaborationsController < ApplicationController
 
   # GET /collaborations
   def index
-    @artist = Artist.find(params[:artist_id]) #why is this here?
+    @artist = Artist.friendly.find(params[:artist_id]) #why is this here?
     @collaborations = Collaboration.paginate(page: params[:page], per_page: 10)
   end
 
   # GET /collaborations/new
   def new
-    @artist = Artist.find(params[:artist_id])
+    @artist = Artist.friendly.find(params[:artist_id])
     @collaboration = Collaboration.new
   end
 
   # POST /collaborations
   def create
     @collaboration = Collaboration.new(collaboration_params)
-    # @artist = Artist.find(params[:artist_id])
-    @artist = Artist.find_by(artist_name: params[:artist_id])
+    @artist = Artist.friendly.find(params[:artist_id])
+    # @artist = Artist.find_by(artist_name: params[:artist_id])
     # @artist = current_user.artist_id
     @collaboration.artist = @artist
     if @collaboration.save
@@ -33,8 +33,7 @@ class CollaborationsController < ApplicationController
 
   # GET /collaborations/1
   def show
-    # @comment = Comment.new
-    # @collaboration = Collaboration.friendly.find(params[:id])
+    @collaboration = Collaboration.friendly.find(params[:id])
     # @collaboration = Collaboration.find(params[:id])
     @artist = @collaboration.artist #nested, he changed it to make it work...OHHHH.
     @collaboration.punch(request)
@@ -65,7 +64,8 @@ class CollaborationsController < ApplicationController
 
   # GET /collaborations/1/edit
   def edit
-    @artist = Artist.find_by(artist_name: params[:artist_id])
+    # @artist = Artist.find_by(artist_name: params[:artist_id])
+    @artist = Artist.friendly.find(params[:artist_id])
     @collaboration = Collaboration.friendly.find(params[:id])
     # @collaboration = Collaboration.find(params[:id])
   end

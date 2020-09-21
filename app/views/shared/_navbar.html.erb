@@ -36,8 +36,6 @@
         </div>
       </li>
 
-
-
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown II
@@ -52,6 +50,23 @@
         <% end %>
         </div>
       </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        About Us
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <% def style  #style
+        ["Abstract", "Realist", "Modern", "Pop", "Cubism", "Deco", "Nouveau", "Surrealism", "Contemporary", "Abstract Expressionism", 'Post-Impressionism', 'Collage', 'Figure Drawing', 'Landscapes', 'Still Life',  'Graffiti', 'Tattoo', 'Experimental', 'Portrait', 'Political', 'Earth', 'National/Nationalist', 'Propaganda', 'Advertising', 'Industrial', 'Agricultural', 'UX/UI', 'Social Justice' ].sort
+        end %>
+        <% style.each do |tag| %>
+          <%#= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
+          <a class="dropdown-item justify-content-center" href=><%= link_to tag, "/browse?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Btag_list%5D%5B%5D=&search%5Bcountry%5D=&search%5Bcity%5D=&search%5Bsorted_by%5D=&commit=Submit" %></a>
+        <% end %>
+        </div>
+      </li>
+
+
       <li class="nav-item active">
         <%= link_to "Articles", articles_path, class: "nav-link" %>
       </li>

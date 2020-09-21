@@ -5,21 +5,21 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   def index
-    @artist = Artist.find(params[:artist_id]) #why is this here?
+    @artist = Artist.friendly.find(params[:artist_id]) #why is this here?
     @articles = Article.paginate(page: params[:page], per_page: 8)
   end
 
   # GET /articles/new
   def new
-    @artist = Artist.find(params[:artist_id])
+    @artist = Artist.friendly.find(params[:artist_id])
     @article = Article.new
   end
 
   # POST /articles
   def create
     @article = Article.new(article_params)
-    # @artist = Artist.find(params[:artist_id])
-    @artist = Artist.find_by(artist_name: params[:artist_id])
+    @artist = Artist.friendly.find(params[:artist_id])
+    # @artist = Artist.find_by(artist_name: params[:artist_id])
     # @artist = current_user.artist_id
     @article.artist = @artist
     if @article.save
