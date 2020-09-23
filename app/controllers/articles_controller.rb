@@ -65,7 +65,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
-    @artist = Artist.find_by(artist_name: params[:artist_id])
+    @artist = Artist.friendly.find(params[:artist_id])
     @article = Article.friendly.find(params[:id])
     # @article = Article.find(params[:id])
   end

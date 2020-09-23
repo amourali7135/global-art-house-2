@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :services, except: :index
     resources :collaborations, except: :index
     resources :lessons, except: :index
+    resources :events, except: :index
   end
 
   #Wtf is this array?  I dont' even remember.

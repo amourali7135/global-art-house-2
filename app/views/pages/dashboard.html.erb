@@ -23,19 +23,22 @@
     <li class="nav-item">
       <a class="nav-link" id="pills-article-tab" data-toggle="pill" href="#pills-article" role="tab" aria-controls="pills-article" aria-selected="false">Articles</a>
     </li>
-     <li class="nav-item">
+    <li class="nav-item">
       <a class="nav-link" id="pills-service-tab" data-toggle="pill" href="#pills-service" role="tab" aria-controls="pills-service" aria-selected="false">Services</a>
     </li>
-     <li class="nav-item">
+    <li class="nav-item">
       <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-collaboration" role="tab" aria-controls="pills-collaboration" aria-selected="false">Collaborations</a>
     </li>
     </li>
-     <li class="nav-item">
+    <li class="nav-item">
       <a class="nav-link" id="pills-social-tab" data-toggle="pill" href="#pills-social" role="tab" aria-controls="pills-social" aria-selected="false">Social</a>
     </li>
     </li>
-     <li class="nav-item">
+    <li class="nav-item">
       <a class="nav-link" id="pills-lesson-tab" data-toggle="pill" href="#pills-lesson" role="tab" aria-controls="pills-lesson" aria-selected="false">Lessons</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-event-tab" data-toggle="pill" href="#pills-event" role="tab" aria-controls="pills-event" aria-selected="false">Events</a>
     </li>
   </ul>
 </div>
@@ -233,6 +236,25 @@
                 <%= render partial: 'shared/lesson_card_dashboard', locals: {lesson: lesson} %>
               </div>
                 <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane fade" id="pills-event" role="tabpanel" aria-labelledby="pills-event-tab">
+    <div class="dashboard_container mt-4">
+  <p class="grid-headers">See or modify your events below</p>
+    <div class="row align-items-center justify-content-center ">
+      <div class="container front-page-grid">
+        <%# @artist.articles.each do |article| %>
+          <div class="row">
+            <div class=" products pl-5 card-grid-3c mb-3">
+              <div>
+                <%#= render partial: 'shared/article_card_dashboard', locals: {article: article} %>
+              </div>
+                <%# end %>
             </div>
           </div>
         </div>

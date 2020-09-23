@@ -31,7 +31,7 @@
   </div>
 </div>
 
-<%= link_to 'Delete this article!', artist_article_path(@artist, article), class: 'btn btn-primary btn-sm', method: :delete, data: {confirm: "Are you sure?  This cannot be undone."}  %>
-<%= link_to 'Edit this article!', edit_artist_article_path(@artist, article), class: 'btn btn-primary btn-sm', method: :delete, data: {confirm: "Are you sure?  This cannot be undone."}  %>
+<%= link_to 'Edit this article!', edit_artist_article_path(@artist, article), class: 'btn btn-primary btn-sm' %>
 <%= link_to 'View this article!', artist_article_path(@artist, article), class: 'btn btn-primary btn-sm', method: :get %>
+<%= link_to 'Delete this article!', artist_article_path(@artist, article), class: 'btn btn-primary btn-sm', method: :delete, data: {confirm: "Are you sure?  This cannot be undone."}  %>
 

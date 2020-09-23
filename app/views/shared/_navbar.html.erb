@@ -16,10 +16,10 @@
         <%= link_to "Home", root_path, class: "nav-link" %>
       </li>
       <li class="nav-item active">
-        <%= link_to "Browse Creations", browse_path, class: "nav-link" %>
+        <%= link_to "Creations", browse_path, class: "nav-link" %>
       </li>
       <li class="nav-item active">
-        <%= link_to "Browse Creators", artists_path, class: "nav-link" %>
+        <%= link_to "Creators", artists_path, class: "nav-link" %>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -79,8 +79,11 @@
       <li class="nav-item active">
         <%= link_to "Lessons", lessons_path, class: "nav-link" %>
       </li>
+        <li class="nav-item active">
+        <%= link_to "Events", lessons_path, class: "nav-link" %>
+      </li>
       <li class="nav-item active">
-        <%= link_to "About Us", about_path, class: "nav-link" %>
+        <%= link_to "Jobs", about_path, class: "nav-link" %>
       </li>
       <% if user_signed_in? %>
       <li class="nav-item active">
@@ -94,9 +97,6 @@
         </li>
       <li class="nav-item active">
           <%= link_to "Followers", followers_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item active">
-          <%= link_to "Orders", liked_path, class: "nav-link" %>
         </li>
         <li class="nav-item active">
         <% counter = 0 %>
