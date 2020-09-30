@@ -1,5 +1,4 @@
 <section>
-SHOW CREATORS THAT YOU HAVE FOLLOWED HERE AND GRID IT!!!
 <h3 class = "text-dark row align-items-center justify-content-center py-2">The recent activity of those you are following</h3>
 
 <%# <div class="row align-items-center justify-content-center"> %>
@@ -55,6 +54,10 @@ SHOW CREATORS THAT YOU HAVE FOLLOWED HERE AND GRID IT!!!
       <% end %>
     </div>
   </div>
+      <%# pick up here again %>
+      <div class="row align-items-center justify-content-center py-2">
+        <%= will_paginate @art_array %>
+      </div>
 
   <div class="tab-pane fade show active" id="creation" role="tabpanel" aria-labelledby="creation-tab">
     <div class="container artists-index-grid">
@@ -75,7 +78,7 @@ SHOW CREATORS THAT YOU HAVE FOLLOWED HERE AND GRID IT!!!
       <% @article_array.sort_by { |article| -article.id}.each do |article| #20 is a placeholder till pagy works%>
       <%# @art_array.sort_by { |art| -art.id}.last(40).each do |art| #20 is a placeholder till pagy works%>
       <div class="row">
-        <div class=" products  card-grid-3c mb-3">
+        <div class=" products pl-5 card-grid-3c mb-3">
           <%= render partial: 'shared/article_card', locals: {article: article, artist: article.artist } %>
         </div>
       </div>
@@ -130,6 +133,8 @@ SHOW CREATORS THAT YOU HAVE FOLLOWED HERE AND GRID IT!!!
     <% end %>
     </div>
   </div>
+
+
 
   </div>
 

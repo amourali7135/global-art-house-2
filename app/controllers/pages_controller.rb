@@ -193,15 +193,25 @@ class PagesController < ApplicationController
 
     #91520:  check the bullet gem here, I don't get what it's saying.
     @user.all_following.sort_by { |followed| followed }.each do |following|
-      following.arts.map { |art| @art_array << art }
-      following.articles.map { |article| @article_array << article }
-      following.collaborations.map { |collaboration| @collaboration_array << collaboration }
-      following.services.map { |service| @service_array << service }
-      following.lessons.map { |lesson| @lesson_array << lesson }
+      following.arts.map { |art| @art_array << art }.paginate(page: params[:page], per_page: 15)
+      following.articles.map { |article| @article_array << article }.paginate(page: params[:page], per_page: 15)
+      following.collaborations.map { |collaboration| @collaboration_array << collaboration }.paginate(page: params[:page], per_page: 15)
+      following.services.map { |service| @service_array << service }.paginate(page: params[:page], per_page: 15)
+      following.lessons.map { |lesson| @lesson_array << lesson }.paginate(page: params[:page], per_page: 15)
       @artist_array << following
+      @artist_array.paginate(page: params[:page], per_page: 15)
       # raise
     end
 
+    @art_array = []
+    @article_array = []
+    @collaboration_array = []
+    @service_array = []
+    @lesson_array = []
+    @artist_array = []
+
+
+    #What does this shit even mean again?
     if @art_array.length > 15
       @many_following = true
       @art_array = @art_array[-15..-1]
