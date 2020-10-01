@@ -203,12 +203,12 @@ class PagesController < ApplicationController
       # raise
     end
 
-    @art_array = []
-    @article_array = []
-    @collaboration_array = []
-    @service_array = []
-    @lesson_array = []
-    @artist_array = []
+    @art_array
+    @article_array
+    @collaboration_array
+    @service_array
+    @lesson_array
+    @artist_array
 
 
     #What does this shit even mean again?
