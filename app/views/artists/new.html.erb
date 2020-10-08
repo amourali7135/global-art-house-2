@@ -19,7 +19,7 @@
       <%= f.input :photo %>
       <%= f.input :photo_cache, as: :hidden %>
       <%= f.input :age %>
-      <%= f.input :bio, label: "Biography" %>
+      <%= f.input :bio, as: :trix_editor, label: "Biography" %>
       <%= f.input :tag_list, collection: Artist.media, input_html: {multiple: true, id: "artist_new_tags"}, label: "What kinds of creations do you create?" %>
       <%= f.input :tag_list, collection: Artist.styles, input_html: {multiple: true, id: "artist_new_styles"}, label: "What types of styles are they?" %>
       <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, input_html: {id: "artist_search_country"} %>

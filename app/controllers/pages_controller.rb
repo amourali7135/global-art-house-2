@@ -97,7 +97,6 @@ class PagesController < ApplicationController
       @articles = Article.global_search(@filter).includes([:artist]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
     else
       @articles = Article.includes([:artist]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
-      # @articles = Article.includes([:artist]).paginate(page: params[:page], per_page: 15)
     end
   end
 
@@ -108,9 +107,7 @@ class PagesController < ApplicationController
       @services = Service.global_search(@filter).includes([:artist]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
     else
       @services = Service.includes([:artist]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
-      # @articles = Article.includes([:artist]).paginate(page: params[:page], per_page: 15)
     end
-    # @services = Service.includes([:artist]).paginate(page: params[:page], per_page: 15)
   end
 
   def collaborations
@@ -120,9 +117,7 @@ class PagesController < ApplicationController
       @collaborations = Collaboration.global_search(@filter).includes([:artist]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
     else
       @collaborations = Collaboration.includes([:artist]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
-      # @articles = Article.includes([:artist]).paginate(page: params[:page], per_page: 15)
     end
-    # @collaborations = Collaboration.includes([:artist]).paginate(page: params[:page], per_page: 15)
   end
 
   def lessons
@@ -132,24 +127,20 @@ class PagesController < ApplicationController
       @lessons = Lesson.global_search(@filter).includes([:artist]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
     else
       @lessons = Lesson.includes([:artist]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
-      # @articles = Article.includes([:artist]).paginate(page: params[:page], per_page: 15)
     end
-    # @lessons = Lesson.includes([:artist]).paginate(page: params[:page], per_page: 15)
   end
 
 
   def browse
     if params["search"]
       @filter = params["search"]["tag_list"].concat([params["search"]["city"]]).concat([params["search"]["country"]]).flatten.reject(&:blank?)
-      @artists = Artist.global_search(@filter)
+      @artists = Artist.global_search(@filter)  #This shit even necessary
       @arts = Art.global_search(@filter).includes([:artist]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
       # pagination here
       # pagination here
 
     else
-      # @artists = Artist.all
       @arts = Art.includes([:artist]).includes([:taggings]).paginate(page: params[:page], per_page: 15)
-      # pagination here
       # pagination here
     end
 
@@ -158,24 +149,20 @@ class PagesController < ApplicationController
         # @arts = Art.global_search(@filter).sort_by { |art| -art.comments.count }
         @arts = @arts.sort_by { |art| -art.comments.count }
         # pagination here
-        # pagination here
       end
       if params[:search][:sorted_by] == 'most_likes'
         # @arts = Art.global_search(@filter).sort_by { |art| -art.get_likes.size }
         @arts = @arts.sort_by { |art| -art.get_likes.size }
-        # pagination here
         # pagination here
       end
       if params[:search][:sorted_by] == 'most_viewed'
         # @arts = Art.global_search(@filter).sort_by { |art| -art.hits }
         @arts = @arts.sort_by { |art| -art.hits }
         # pagination here
-        # pagination here
       end
       if params[:search][:sorted_by] == 'most_recent'
         # @arts = Art.global_search(@filter).sort_by { |art| -art.id }
         @arts = @arts.sort_by { |art| -art.id }
-        # pagination here
         # pagination here
       end
     end

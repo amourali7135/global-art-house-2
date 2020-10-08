@@ -5,11 +5,12 @@
         </div>
 
 <div class="container">
-<p class="row justify-content-center">
-  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Show search and filtering options
-  </a>
-</p>
+  <p class="row justify-content-center">
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      Show search and filtering options
+    </a>
+  </p>
+
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
   <%= simple_form_for :search, url: browse_path, method: "GET" do |f| %>

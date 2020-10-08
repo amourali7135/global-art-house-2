@@ -7,9 +7,9 @@
        <h2>Create a new lesson or class to teach to the world.</h2>
        <%= simple_form_for [@artist, @lesson] do |f|%>
        <%= f.input :title %>
-       <%= f.input :description, label: "Describe the lesson/class that you're offering." %>
+       <%= f.input :description, as: :trix_editor, label: "Describe the lesson/class that you're offering." %>
        <%= f.input :subdescription, label: "Place a one-liner to describe your lesson/class." %>
-       <%= f.input :learnings, label: "Put a list or a summary of what your students will learn by the time the course is finished." %>
+       <%= f.input :learnings, as: :trix_editor, label: "Put a list or a summary of what your students will learn by the time the course is finished." %>
        <%= f.input :prerequisites, label: "Are there any pre-requisites that your students should have?" %>
        <%= f.input :free, as: :radio_buttons, label: "Is your offering for free?" %>
        <%= f.input :price_cents, label: "How much will you charge per student if the course isn't free?" %>
