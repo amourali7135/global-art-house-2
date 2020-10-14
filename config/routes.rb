@@ -99,6 +99,7 @@ Rails.application.routes.draw do
 
   resources :subscriptions, only: [:new, :create, :destroy]
 
+  resources :jobs
 
 
   # kinds = %w|IPA brown_ale pilsner lager lambic hefweizen|

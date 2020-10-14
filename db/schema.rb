@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_17_105433) do
+ActiveRecord::Schema.define(version: 2020_10_14_084946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -214,6 +214,30 @@ ActiveRecord::Schema.define(version: 2020_09_17_105433) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "jobs", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.text "requirements"
+    t.string "salary"
+    t.string "photo"
+    t.boolean "remote"
+    t.string "city"
+    t.string "country"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "company"
+    t.string "seniority"
+    t.string "industry"
+    t.text "benefits"
+    t.text "why"
+    t.string "frequency"
+    t.text "preferred"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_jobs_on_user_id"
+  end
+
   create_table "lessons", force: :cascade do |t|
     t.string "title"
     t.string "subdescription"
@@ -388,6 +412,7 @@ ActiveRecord::Schema.define(version: 2020_09_17_105433) do
   add_foreign_key "commontator_subscriptions", "commontator_threads", column: "thread_id", on_update: :cascade, on_delete: :cascade
   add_foreign_key "followers", "artists"
   add_foreign_key "followers", "users"
+  add_foreign_key "jobs", "users"
   add_foreign_key "lessons", "artists"
   add_foreign_key "orders", "arts"
   add_foreign_key "orders", "users"
