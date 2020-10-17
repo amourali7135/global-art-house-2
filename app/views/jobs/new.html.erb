@@ -5,33 +5,29 @@
     </div>
     <div class="col card p-4 m-4 bg-light ">
     <div class="row align-items-center justify-content-center">
-      <h1>Are you a creator?</h1>
-      <h2>Share your creation with the world!</h2>
-      <h2>Let the world discover you directly!</h2>
-      <h2>No shady art dealers or galleries!</h2>
-      <p>Easy and free to sign up!</p>
+      <h1>Find an amazing creator to fill your job with</h1>
+      <p>Creaze has the best creators in the world</p>
     </div>
 
       <%= simple_form_for @job do |f|%>
       <%= f.input :title %>
-      <%= f.input :description, as: :trix_editor, label: "Job Description" %>
-      <%= f.input :requirements, label: "What are the job requirements?" %>
+      <%= f.input :description, as: :trix_editor, label: "Description of the job" %>
+      <%= f.input :requirements, label: "What's required for candidates to be eligible?" %>
       <%= f.input :photo %>
       <%= f.input :photo_cache, as: :hidden %>
-      <%= f.input :salary %>
-      <%= f.input :bio %>
-      <%= f.input :tag_list, collection: Job.media, input_html: {multiple: true, id: "artist_new_tags"}, label: "What kinds of creations do you create?" %>
-      <%= f.input :tag_list, collection: Job.styles, input_html: {multiple: true, id: "artist_new_styles"}, label: "What types of styles are they?" %>
+      <%= f.input :salary, label: "What's the salary?" %>
+      <%= f.input :tag_list, collection: Job.media, input_html: {multiple: true, id: "artist_new_tags"}, label: "Does the job involve a specific medium of creation?" %>
+      <%= f.input :tag_list, collection: Job.styles, input_html: {multiple: true, id: "artist_new_styles"}, label: "What about a certain style of art?" %>
       <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, input_html: {id: "artist_search_country"} %>
       <%= f.input :city %>
-      <%= f.input :remote, label: "Country of birth if different", collection: CountryStateSelect.countries_collection.sort %>
-      <%= f.input :company, placeholder: 'www.yourwebsite.com', label: "Full Website URL" %>
-      <%= f.input :seniority, placeholder: 'www.instagram.com/', label: "Instagram Username" %>
-      <%= f.input :industry, placeholder: 'www.facebook.com/', label: "Facebook Username" %>
-      <%= f.input :benefits %>
-      <%= f.input :why %>
-      <%= f.input :frequency %>
-      <%= f.input :preferred %>
+      <%= f.input :remote %>
+      <%= f.input :company, label: "Name of the hiring company?" %>
+      <%= f.input :seniority, collection: Job.seniority %>
+      <%= f.input :industry, collection: Job.industry %>
+      <%= f.input :benefits, label: "What benefits do you provide to employees?" %>
+      <%= f.input :why, label: "Why should candidates want to work for you?" %>
+      <%= f.input :frequency, collection: Job.frequency, input_html: {multiple: true, id: "job_new_frequency"} %>
+      <%= f.input :preferred, label: "What would you ideally prefer from candidates?" %>
       <div style="text-align:center">
       <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
       </div>

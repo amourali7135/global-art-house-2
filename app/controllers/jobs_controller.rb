@@ -3,7 +3,7 @@ class JobsController < ApplicationController
 
   def index
     if params["search"] #reject '' in middle added 112619
-      @filter = params["search"]["tag_list"].concat([params['country']]).concat([params["search"]["city"]]).concat([params["search"]["bio"]]).concat([params["search"]["birth_place"]]).concat([params["search"]["first_name"]]).concat([params["search"]["last_name"]]).concat([params["search"]["artist_name"]]).flatten.reject(&:blank?)
+      @filter = params["search"]["tag_list"].concat([params['country']]).concat([params["search"]["city"]]).concat([params["search"]["title"]]).concat([params["search"]["description"]]).concat([params["search"]["requirements"]]).concat([params["search"]["salary"]]).concat([params["search"]["remote"]]).concat([params["search"]["company"]]).concat([params["search"]["seniority"]]).concat([params["search"]["industry"]]).concat([params["search"]["benefits"]]).concat([params["search"]["why"]]).concat([params["search"]["frequency"]]).concat([params["search"]["preferred"]]).concat([params["search"]["active"]]).flatten.reject(&:blank?)
       @jobs = Job.global_search(@filter).includes([:taggings]).paginate(page: params[:page], per_page: 15)
 
     else #112619 I added this while trying to get sort to work.
