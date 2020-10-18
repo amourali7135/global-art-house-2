@@ -1,0 +1,102 @@
+<div class="section">
+  <div class="container">
+
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <h1><strong><%= @job.title %></strong></h1>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <h5>Originally posted on <%= @job.created_at.strftime("%b %d, %Y") %> by <%= @job.company %> <%= cl_image_tag @job.photo, class: "card-trip-user avatar-bordered" %> </h5>
+        </div>
+      </div>
+
+    <div class="container job-social">
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p> Viewed <%= @job.hits %> times  </p>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <% @job.tag_list.each do |tag| %>
+            <%= link_to tag, "/artists?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center py-2">
+        <div class="row">
+          <%= link_to 'like', articles_likes_path(@job), class: 'btn btn-primary' %>
+          <%= link_to 'unlike', articles_unlikes_path(@job), class: 'btn btn-primary' %>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p><strong>Share: </strong><%= social_share_button_tag(@job.title,) %> </p>
+          <br>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center">
+        <div class="row">
+          <p>Liked <%= @job.get_likes.size %> times! </p>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center pt-3">
+        <div class="row">
+          <p><strong><%= @job.city %>, <%= @job.country %></p>
+        </div>
+      </div>
+
+    </div>
+
+      <div class="row align-items-center justify-content-center pt-3">
+        <div class="row">
+          <p><strong>Job Description: </strong><%= @job.description.gsub(/"|\[|\]/, '')  %></p>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center pt-3">
+        <div class="row">
+          <p><strong>Job Requirements: </strong><%= @job.requirements %></p>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center pt-3">
+        <div class="row">
+          <p><strong>Job salary: </strong><%= @job.salary %></p>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center pt-3">
+        <div class="row">
+          <p><strong>Job Benefits: </strong><%= @job.benefits %></p>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center pt-3">
+        <div class="row">
+          <p><strong>Job why: </strong><%= @job.why %></p>
+        </div>
+      </div>
+
+      <div class="row align-items-center justify-content-center pt-3">
+        <div class="row">
+          <p><strong>Job preferred: </strong><%= @job.preferred %></p>
+        </div>
+      </div>
+
+     <div class="row align-items-center justify-content-center pb-4">
+       <div class="row">
+         <%= commontator_thread(@job) %>
+       </div>
+     </div>
+
+  </div>
+</div>

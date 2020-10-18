@@ -4,10 +4,11 @@ class JobsController < ApplicationController
   def index
     if params["search"] #reject '' in middle added 112619
       @filter = params["search"]["tag_list"].concat([params['country']]).concat([params["search"]["city"]]).concat([params["search"]["title"]]).concat([params["search"]["description"]]).concat([params["search"]["requirements"]]).concat([params["search"]["salary"]]).concat([params["search"]["remote"]]).concat([params["search"]["company"]]).concat([params["search"]["seniority"]]).concat([params["search"]["industry"]]).concat([params["search"]["benefits"]]).concat([params["search"]["why"]]).concat([params["search"]["frequency"]]).concat([params["search"]["preferred"]]).concat([params["search"]["active"]]).flatten.reject(&:blank?)
-      @jobs = Job.global_search(@filter).includes([:taggings]).paginate(page: params[:page], per_page: 15)
+      @jobs = Job.global_search(@filter).includes([:taggings]).paginate(page: params[:page], per_page: 20)
 
     else #112619 I added this while trying to get sort to work.
-      @jobs = Job.includes([:taggings]).paginate(page: params[:page], per_page: 16)
+      @jobs = Job.includes([:taggings]).paginate(page: params[:page], per_page: 20)
+      # @jobs = Job.all
     end
 
     #params[:search][:sorted_by] == "" by default...
@@ -51,6 +52,7 @@ class JobsController < ApplicationController
     else
       render "new"
     end
+    raise
 
   end
 
@@ -76,7 +78,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     @job.destroy
     flash[:notice] = "Your job posting was successfully deleted!"
-    redirect_to root_path
+    redirect_to dashboard_path
   end
 
   def edit
@@ -104,7 +106,7 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit( :title, :description, :requirements, :salary, :remote, :photo, :city, :country, :longitude, :latitude, :company, :seniority, :industry, :benefits, :why, :frequency, :preferred, :user, :user_id, tag_list: [] )
+    params.require(:job).permit( :title, :description, :requirements, :salary, :remote, :photo, :city, :country, :longitude, :latitude, :company, :seniority, :industry, :benefits, :why, :frequency, :preferred, :active, :user, :user_id, tag_list: [] )
   end
 
 end

@@ -5,6 +5,7 @@ class Job < ApplicationRecord
   geocoded_by :city
   after_validation :geocode, if: :will_save_change_to_country?
   after_validation :geocode, if: :will_save_change_to_city?
+  acts_as_taggable_on :tags
 
   validates :title, presence: true
   validates :description, presence: true
@@ -24,8 +25,7 @@ class Job < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :global_search,
-  # against: [ :first_name, :last_name, :artist_name, :bio, :birth_place, :city, :country],
-  against: [  :city, :country,  ],
+  against: [  :city, :country, :title, :description, :salary, :remote, :frequency, :seniority, :company ],
   associated_against: {
     tags: [:name],
   },

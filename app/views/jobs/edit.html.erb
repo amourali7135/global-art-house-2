@@ -20,7 +20,7 @@
       <%= f.input :tag_list, collection: Job.styles, input_html: {multiple: true, id: "artist_new_styles"}, label: "What about a certain style of art?" %>
       <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, input_html: {id: "artist_search_country"} %>
       <%= f.input :city %>
-      <%= f.input :remote %>
+      <%= f.input :remote, as: :radio_buttons, label: "Is it a remote position?" %>
       <%= f.input :company, label: "Name of the hiring company?" %>
       <%= f.input :seniority, collection: Job.seniority %>
       <%= f.input :industry, collection: Job.industry %>

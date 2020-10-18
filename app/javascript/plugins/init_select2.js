@@ -32,6 +32,11 @@ import $ from 'jquery';
    $("#collaboration_new_styles").select2();
    $("#lesson_new_tags").select2();
    $("#lesson_new_styles").select2();
+   $("#job_kinds_search").select2();
+   $("#job_styles_search").select2();
+   $("#job_new_frequency").select2();
+   $("#job_new_tags").select2();
+   $("#job_new_styles").select2();
 
 
     // $("#search_tag_ids").select2({

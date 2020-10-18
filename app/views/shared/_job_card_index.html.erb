@@ -1,0 +1,24 @@
+<div class="card-product">
+  <img src=<%= job.photo %> />
+  <div class="card-product-infos">
+    <h2><%= job.title %> at <%= job.company %>  <%= flag_icon(job.country.to_sym.downcase) %></h2>
+    <p> <%= job.city %>, <%= job.country %></p>
+    <p> <%= job.frequency %></p>
+    <p><%= job.description.truncate(150) %></p>
+    <div class="job-card-arts">
+      </div>
+    <% job.tag_list.each do |tag| %>
+            <%= link_to tag, "/jobs?utf8=✓&search%5Btag_list%5D%5B%5D=&search%5Btag_list%5D%5B%5D=#{tag}&search%5Bcountry%5D=&search%5Bcity%5D=&commit=Submit" %>
+    <% end %>
+    <%= link_to 'See more about this job', job_path(job)  %>
+
+ <div class="d-flex justify-content-between w-100">
+    <p><%=job.get_likes.size %> likes! </p>
+    <p> Viewed <%= job.hits %> times </p>
+    <%# Put applications submitted here when that model is fixed  %>
+</div>
+
+
+
+
+

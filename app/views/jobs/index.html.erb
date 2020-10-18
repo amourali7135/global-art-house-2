@@ -1,0 +1,51 @@
+<section class="clean-block clean-catalog dark">
+  <div class="container">
+    <div class="block-heading">
+      <h2 class="text-dark row align-items-center justify-content-center py-2">Browse available jobs for creatives</h2>
+    </div>
+
+<div class="container">
+<p class="row justify-content-center">
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Show search and filtering options
+  </a>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+<%= simple_form_for :search, url: jobs_path, method: "GET" do |f| %>
+    <%# Trying the hack for combining the names in the first_name parameter below...  %>
+    <%= f.input :title, placeholder: "Title, description, or company", required: false %>
+    <%= f.input :tag_list, collection: Job.media, input_html: {multiple: true, id: "job_kinds_search"}, label: "What kind of creative job do you wish to find?", required: false %>
+    <%= f.input :tag_list, collection: Job.styles, input_html: {multiple: true, id: "job_styles_search"}, label: "What style do you do want this job to have?", required: false %>
+    <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, required: false, input_html: {id: "jobs_country_search"}, label: "Would you like to see creators from a certain country?" %>
+    <%= f.input :city, id:"job_city", required: false, label: "Would you like to see creators from a certain city?" %>
+    <%= f.input :remote, as: :radio_buttons, required: false %>
+    <%= f.input :frequency, collection: Job.frequency, input_html: {multiple: true, id: "job_new_frequency"} %>
+    <%= f.input :sorted_by, :collection => %w[most_likes most_viewed most_recent most_followed], required: false %>
+    <%= link_to "Reset", jobs_path  %>
+    <%= f.submit 'Submit', class: 'btn btn-primary'%>
+  <% end %>
+  </div>
+</div>
+</div>
+
+  <div class="content pt-3">
+    <div class="container jobs-index-grid">
+     <% @jobs.each do |job| %>
+      <div class="row ">
+        <div class="products pl-5 card-grid-3c">
+          <%= render partial: 'shared/job_card_index', locals: {job: job} %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+
+  <div class="row align-items-center justify-content-center py-2">
+    <%= will_paginate @jobs %>
+  </div>
+</section>
+
+

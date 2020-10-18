@@ -16,11 +16,11 @@
       <%= f.input :photo %>
       <%= f.input :photo_cache, as: :hidden %>
       <%= f.input :salary, label: "What's the salary?" %>
-      <%= f.input :tag_list, collection: Job.media, input_html: {multiple: true, id: "artist_new_tags"}, label: "Does the job involve a specific medium of creation?" %>
-      <%= f.input :tag_list, collection: Job.styles, input_html: {multiple: true, id: "artist_new_styles"}, label: "What about a certain style of art?" %>
+      <%= f.input :tag_list, collection: Job.media, input_html: {multiple: true, id: "job_new_tags"}, label: "Does the job involve a specific medium of creation?" %>
+      <%= f.input :tag_list, collection: Job.styles, input_html: {multiple: true, id: "job_new_styles"}, label: "What about a certain style of art?" %>
       <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, input_html: {id: "artist_search_country"} %>
-      <%= f.input :city %>
-      <%= f.input :remote %>
+      <%= f.input :city, id: "job_city" %>
+      <%= f.input :remote, as: :radio_buttons, label: "Is it a remote position?" %>
       <%= f.input :company, label: "Name of the hiring company?" %>
       <%= f.input :seniority, collection: Job.seniority %>
       <%= f.input :industry, collection: Job.industry %>
